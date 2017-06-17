@@ -38,16 +38,20 @@ public class MyClassLoader extends ClassLoader {
             return classCache.get(name);
         }
 
-        // 2. try to load the class from the system classloader if it exists
-        try {
-            clazz = findSystemClass(name);
-        } catch (ClassNotFoundException cnfe) {
-            //cnfe.printStackTrace();
-        }
+//        // 2. try to load the class from the system classloader if it exists
+//        try {
+//            clazz = findSystemClass(name);
+//            if (clazz != null) {
+//                System.out.println("Class(" + name + ") was loaded by the SystemClassLoader");
+//            }
+//        } catch (ClassNotFoundException cnfe) {
+//            //cnfe.printStackTrace();
+//        }
+
         // 3. next up, try to load the class by reading bytes and defining a class
         // we are also checking the class that this classloader will invoke should
         // of some specific package
-        if (clazz == null) {
+        if (name.startsWith("com.ak.learning")) {
             System.out.println("Attempting to load the class: " + name);
             String file = name.replace(".", File.separator) + ".class";
             byte buffer[] = null;
@@ -57,10 +61,16 @@ public class MyClassLoader extends ClassLoader {
                 // defineClass method is a JVM level implementation that takes in
                 // the byte array and turns into a class object
                 clazz = defineClass(name, buffer, 0, buffer.length);
+                resolveClass(clazz);
                 classCache.put(name, clazz);
             } catch (IOException ex) {
                 ex.printStackTrace();
                 return null;
+            }
+        } else {
+            clazz = findSystemClass(name);
+            if (clazz != null) {
+                System.out.println("class '" + name + "' was loaded by SystemClassLoader");
             }
         }
 
@@ -73,9 +83,6 @@ public class MyClassLoader extends ClassLoader {
 
     // this method either reads it from the path or from the jar file
     private byte[] readClass(String file) throws IOException {
-        // go through the list of all the folders mentioned in the jarPath variable.
-        // if every entry is a file, open the jar file and try to load the class
-        // if the entry is a directory, try to load the class from the directory
         if (isEmpty(jarPath)) {
             return _doReadFile(file);
         } else {
