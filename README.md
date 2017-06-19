@@ -5,4 +5,5 @@ Consists of:
 2. Custom ClassLoader
 3. Concurrency
    a. Producer consumer implementation with PriorityBlockingQueue
-   b. ReentrantReadWriteLock (...Work in Progress)
+   b. ReadWriteLock implementation using synchronized keyword
+   c. ReentrantReadWriteLock (...Work in Progress)
