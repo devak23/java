@@ -1,4 +1,4 @@
-package com.ak.learning.concurrency.reentrantlocks;
+package com.ak.learning.concurrency.boundedbuffer;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

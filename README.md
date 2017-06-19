@@ -7,4 +7,4 @@ Consists of:
    a. Producer consumer implementation with PriorityBlockingQueue
    b. ReadWriteLock implementation using synchronized keyword
    c. BoundedBuffer (an implementation of ArrayBlockingQueue)
-   d. ReentrantReadWriteLock (...Work in Progress)
+   d. ReentrantReadWriteLock (a simple implementation)

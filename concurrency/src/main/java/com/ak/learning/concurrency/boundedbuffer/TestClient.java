@@ -1,4 +1,4 @@
-package com.ak.learning.concurrency.reentrantlocks;
+package com.ak.learning.concurrency.boundedbuffer;
 
 public class TestClient {
     public static void main(String[] args) {

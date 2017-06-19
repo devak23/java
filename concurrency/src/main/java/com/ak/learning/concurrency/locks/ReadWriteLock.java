@@ -1,4 +1,4 @@
-package com.ak.learning.concurrency.readwritelock;
+package com.ak.learning.concurrency.locks;
 
 public class ReadWriteLock {
     private int DEFAULT_READERS = 10;
