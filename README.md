@@ -6,4 +6,5 @@ Consists of:
 3. Concurrency
    a. Producer consumer implementation with PriorityBlockingQueue
    b. ReadWriteLock implementation using synchronized keyword
-   c. ReentrantReadWriteLock (...Work in Progress)
+   c. BoundedBuffer (an implementation of ArrayBlockingQueue)
+   d. ReentrantReadWriteLock (...Work in Progress)
