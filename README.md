@@ -8,3 +8,5 @@ Consists of:
    b. ReadWriteLock implementation using synchronized keyword
    c. BoundedBuffer (an implementation of ArrayBlockingQueue)
    d. ReentrantReadWriteLock (a simple implementation)
+   e. Futures and Callables (a simple word search example)
+   f. Synchronization gotcha (Effective Java)
