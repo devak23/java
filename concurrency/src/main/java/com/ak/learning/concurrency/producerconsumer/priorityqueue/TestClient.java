@@ -1,4 +1,4 @@
-package com.ak.learning.concurrency.producerconsumer;
+package com.ak.learning.concurrency.producerconsumer.priorityqueue;
 
 import java.util.Queue;
 import java.util.concurrent.PriorityBlockingQueue;

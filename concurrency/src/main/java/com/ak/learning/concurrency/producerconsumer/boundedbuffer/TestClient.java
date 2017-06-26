@@ -1,4 +1,4 @@
-package com.ak.learning.concurrency.boundedbuffer;
+package com.ak.learning.concurrency.producerconsumer.boundedbuffer;
 
 public class TestClient {
     public static void main(String[] args) {

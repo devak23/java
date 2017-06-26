@@ -1,4 +1,4 @@
-package com.ak.learning.concurrency.producerconsumer;
+package com.ak.learning.concurrency.producerconsumer.priorityqueue;
 
 public class Person implements Comparable<Person> {
     private int age;
