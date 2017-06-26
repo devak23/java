@@ -11,3 +11,4 @@ Consists of:
    e. Futures and Callables (a simple word search example)
    f. Synchronization gotcha (Effective Java)
    g. Futures using ExecutorService
+   h. Added a sample program that uses SynchronousQueue for Producer Consumer problem
