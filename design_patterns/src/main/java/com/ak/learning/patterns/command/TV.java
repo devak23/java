@@ -1,12 +1,8 @@
 package com.ak.learning.patterns.command;
 
 
-public final class TV {
-    private static final TV instance = new TV();
-
-    public static final TV getInstance() {
-        return instance;
-    }
+public enum TV {
+    INSTANCE;
 
     public void increaseVolume() {
         System.out.println("Volume of the TV has been increased");
