@@ -1,4 +1,9 @@
 **/.idea
 **/*.iml
 **/target
-
+**/java_pid*
+/.metadata/
+**/.settings/
+**/.classpath
+**/.project
+/.recommenders/
