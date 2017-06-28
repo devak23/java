@@ -74,10 +74,11 @@ public class WordCounter {
     }
 
     /**  To sort the TreeMap by values */
-    private static <K,V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> map) {
+    private static <K,V extends Comparable<V>>  Map<K, V> sortByValues(final Map<K, V> map) {
         Comparator<K> valueComparator = new Comparator<K>() {
             @Override
             public int compare(K key1, K key2) {
+//                return map.get(key1).compareTo(map.get(key2));
                 int comparison = map.get(key1).compareTo(map.get(key2));
                 if (comparison == 0) {
                     return 1;
