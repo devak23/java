@@ -15,3 +15,5 @@ Consists of:
 - Added a sample program that uses SynchronousQueue for Producer Consumer problem
 4. NIO examples
 - WordCount
+- Direct and NonDirect ByteBuffer file read
+- MemoryMappedFile example
