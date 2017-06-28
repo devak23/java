@@ -17,3 +17,5 @@ Consists of:
 - WordCount
 - Direct and NonDirect ByteBuffer file read
 - MemoryMappedFile example
+5. Core examples
+- OutOfMemory analysis
