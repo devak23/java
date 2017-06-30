@@ -22,3 +22,4 @@ Consists of:
 - MemoryMappedFile example
 5. Core examples
 - OutOfMemory analysis
+- Added a simple DBConnectionPool impementation
