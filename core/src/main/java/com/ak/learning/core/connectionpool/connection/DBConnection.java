@@ -21,7 +21,7 @@ public class DBConnection implements Connection {
 
     public void executeQuery(String query) {
         if (STATE.OPEN.equals(getState())) {
-            System.out.println("Running a query");
+            System.out.println("Running a query"); // delegate to the driver object
         } else {
             throw new RuntimeException("Connection is closed. Please fetch a new one from the Queue");
         }
