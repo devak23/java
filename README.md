@@ -23,3 +23,4 @@ Consists of:
 5. Core examples
 - OutOfMemory analysis
 - Added a simple DBConnectionPool impementation
+- Added a program to find the first non repeating character in a string
