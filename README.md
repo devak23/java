@@ -17,6 +17,7 @@ Consists of:
 - Added examples of BlockingServer, ThreadedBlockingServer, ThreadPoolBlockingServer, NIOBlockingServer, PollingNIOBlockingServer
 - Added a core package with a sample program that tells you how many threads are allowed by the OS on your machine
 - Added a sample application which processes 2 stocks GOOG and APPL
+- Added a simple race condition example
 4. NIO examples
 - WordCount
 - Direct and NonDirect ByteBuffer file read
@@ -25,3 +26,4 @@ Consists of:
 - OutOfMemory analysis
 - Added a simple DBConnectionPool impementation
 - Added a program to find the first non repeating character in a string
+- Added a sample program for testing String Deduplication (VM argument)
