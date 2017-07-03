@@ -27,3 +27,4 @@ Consists of:
 - Added a simple DBConnectionPool impementation
 - Added a program to find the first non repeating character in a string
 - Added a sample program for testing String Deduplication (VM argument)
+- Added a vmoptions list from my machine (linux antergos - thinkpad X220 core i5)
