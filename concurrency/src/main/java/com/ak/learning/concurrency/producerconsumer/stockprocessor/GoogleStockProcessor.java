@@ -17,7 +17,7 @@ public class GoogleStockProcessor implements Runnable {
         while (true) {
             Stock stock = queue.peek();
             if (stock != null && stock.getCode().equals("GOOG")) {
-                System.out.println("[" + Thread.currentThread().getName() + "] processing Apple Stock " + stock.getPrice());
+                System.out.println("[" + Thread.currentThread().getName() + "] processing Google Stock " + stock.getPrice());
                 queue.remove();
             }
 
