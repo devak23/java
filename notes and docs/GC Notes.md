@@ -1,4 +1,4 @@
-#<span style="color:green">GARBAGE COLLECTION</span>#
+#GARBAGE COLLECTION#
 
 Trade offs are inevitable. When it comes to GC, we need to play with only 3 variables:
 
