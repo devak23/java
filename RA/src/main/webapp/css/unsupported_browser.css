@@ -1,0 +1,40 @@
+.unsupported-browser-wrapper {
+    background-color: #44474B;
+    border-bottom: 2px solid #555;
+    z-index: 1055;
+    width: 100%;
+    text-align: center;
+}
+
+.unsupported-browser-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 15px;
+    color: #fff;
+}
+
+.unsupported-browser-container p {
+    margin: 5px 0;
+    font-size: 12px;
+    display: inline-block
+}
+
+.unsupported-browser-container .unsupported-browser-btns {
+    margin-top: 0;
+    display: inline;
+}
+
+.unsupported-browser-container .unsupported-browser-btns input{
+    background-image: none;
+}
+
+.unsupported-browser-container a {
+    margin-right: 15px;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: underline
+}
+
+.unsupported-browser .unsupported-browser-wrapper {
+    display: block!important;
+}

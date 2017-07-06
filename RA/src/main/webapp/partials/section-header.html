@@ -1,0 +1,10 @@
+<div style='float:left'>
+  <h1>
+    <span data-ng-if="userSelection.sponsor.companyName">{{ userSelection.sponsor.companyName }} - </span>
+    {{ text }}
+  </h1>
+</div>
+
+<div style='float:right' data-ng-if="userSelection.sponsor.logoUrl">
+  <img data-ng-src='{{ userSelection.sponsor.logoUrl }}' alt='company logo'></div>
+<div style='clear:both'></div>

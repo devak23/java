@@ -1,0 +1,135 @@
+<div class="">
+  <div class="headblock">
+    <h1>Home</h1>
+    <div id="j_id102" class="updated animated bounce" tabindex="-1" role="alert">
+      {{userSelection.profile.username }}, You have successfully created a web profile.
+      <span data-ng-if="userSelection.profile.uniqueId"> Unique ID: {{ userSelection.profile.uniqueId }}</span>
+    </div>
+  </div><form id="DashBoardForm" name="DashBoardForm" method="post" action="https://www6.pearsonvue.com/testtaker/registration/Dashboard/CISCOTESTING" enctype="application/x-www-form-urlencoded"><div id="bannerSurroundingDiv" class="hasMarketingBanners">
+
+  <div id="personalInfo" class="displayDesktopOnlyView" role="navigation">
+    <h2>My Account</h2>
+    <ul>
+      <li><input id="myProfileLinkBannerSection" name="myProfileLinkBannerSection" type="submit" value="My Profile" title="My Profile" class="personalInfo_link"></li>
+      <li><input id="accountSignInLinkBannerSection" name="accountSignInLinkBannerSection" type="submit" value="Account Sign In" title="Account Sign In" class="personalInfo_link"></li>
+      <li><input id="additionalInfoLinkBannerSection" name="additionalInfoLinkBannerSection" type="submit" value="Additional Information" title="Additional Information" class="personalInfo_link"></li>
+      <li><input id="personalSettingsLinkBannerSection" name="personalSettingsLinkBannerSection" type="submit" value="Preferences" title="Preferences" class="personalInfo_link"></li>
+      <li><input id="examHistoryLinkBannerSection" name="examHistoryLinkBannerSection" type="submit" value="Exam History" title="Exam History" class="personalInfo_link"></li>
+      <li><input id="viewScoreReportsLinkBannerSection" name="viewScoreReportsLinkBannerSection" type="submit" value="View Score Reports" title="View Score Reports" class="personalInfo_link"></li>
+      <li><input id="viewReceipts_Link" name="viewReceipts_Link" type="submit" value="My Receipts" title="My Receipts" class="personalInfo_link"></li>
+    </ul>
+  </div><div id="bannerArea" class="verticalBannerArea">
+  <a href="https://www6.pearsonvue.com/webresources/testtaker/banners/CISCOTESTING_dashboard_redirect.asp" title="Opens in new window." target="_blank">
+    <img src="images/CISCOTESTING_dashboard.png" alt="Purchase practice materials for Apple Inc.">
+  </a></div></div><input type="hidden" name="DashBoardForm_SUBMIT" value="1"><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="6D6O5A9RsxpZfwjC7VPYfcDIrh6Vtqnmxd3X+cpPTEugIbBb0zWtP33wn2vkiDmgARhKXcIH4Y4R6Oyx30c6AxHNyGhb4Lj2qZ6e5Q0vvlvqOL4sHgMqsnyVFcs1bWey"></form>
+  <script type="text/javascript"><!--
+
+  /*<![CDATA[*/
+  function postForm() {
+    var candidatePortalURL = "https://my.pearsonvue.com/CandidatePortal/sso";
+    var sharedToken = $$("#formsSharedTokenInputHidden").val();
+    var candidateID = "249774591";
+    var webngReturnURL = window.location.href.toString();
+    var formCode = "FSOTELIG";
+    if (sharedToken === "") {
+      alert("We were unable to load your form. Please try again. ");
+      location.reload();
+    } else {
+
+      //create the hidden form here and set submit method and action
+      var form = document.createElement("form");
+      form.setAttribute("method", "POST");
+      form.setAttribute("action", candidatePortalURL);
+
+      var token = document.createElement("input");
+      token.setAttribute("type", "hidden");
+      token.setAttribute("name", "sharedToken");
+      token.setAttribute("value", sharedToken);
+      form.appendChild(token);
+
+      var candID = document.createElement("input");
+      candID.setAttribute("type", "hidden");
+      candID.setAttribute("name", "candidateID");
+      candID.setAttribute("value", candidateID);
+      form.appendChild(candID);
+
+      var fID = document.createElement("input");
+      fID.setAttribute("type", "hidden");
+      fID.setAttribute("name", "formCode");
+      fID.setAttribute("value", formCode);
+      form.appendChild(fID);
+
+      var sessionID = document.createElement("input");
+      sessionID.setAttribute("type", "hidden");
+      sessionID.setAttribute("name", "webngReturnURL");
+      sessionID.setAttribute("value", webngReturnURL);
+      form.appendChild(sessionID);
+
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+    }
+  }
+  /*]]>*/
+
+  //--></script><form id="DashBoardForm2" name="DashBoardForm2" method="post" action="https://www6.pearsonvue.com/testtaker/registration/Dashboard/CISCOTESTING" enctype="application/x-www-form-urlencoded"><input type="hidden" name="DashBoardForm2_SUBMIT" value="1"><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="6D6O5A9RsxpZfwjC7VPYfcDIrh6Vtqnmxd3X+cpPTEugIbBb0zWtP33wn2vkiDmgARhKXcIH4Y4R6Oyx30c6AxHNyGhb4Lj2qZ6e5Q0vvlvqOL4sHgMqsnyVFcs1bWey"></form>
+
+  <div id="registrationSection">
+    <h2>
+    <span id="showAvailableExams" class="displayMobileOnlyView" onclick="javascript: var $$ = jQuery.noConflict(); $$(&#39;#availableExams&#39;).toggle(); $$(&#39;#preApproved&#39;).toggle();"><span class="displayMobileOnlyView">Options for Cisco Systems, Inc.</span>
+		</span><span class="displayDesktopOnlyView">Options for Apple Inc.</span>
+    </h2>
+    <div id="availableExams" class="displayDesktopOnlyView">
+      <div id="examCatalogContainer"><form id="dashboardFindExamMixedMode" name="dashboardFindExamMixedMode" method="post" action="https://www6.pearsonvue.com/testtaker/registration/Dashboard/CISCOTESTING" enctype="application/x-www-form-urlencoded">
+        <h3><span>Exam Catalog</span></h3>
+        <p>Find exams currently offered</p>
+        <div class="dashboardButtonDiv"><input id="findExamOfficial" name="findExamOfficial" type="submit" value="Proctored Exams" title="Proctored Exams" class="btnPositive">
+        </div>
+        <h3><span>Online Exam Catalog</span></h3>
+        <p>Find online exams currently offered<br></p>
+        <div class="dashboardButtonDiv"><input id="findExamOnline" name="findExamOnline" type="submit" value="Unproctored Online Exams" title="Unproctored Online Exams" class="btnPositive">
+        </div><input type="hidden" name="dashboardFindExamMixedMode_SUBMIT" value="1"><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="6D6O5A9RsxpZfwjC7VPYfcDIrh6Vtqnmxd3X+cpPTEugIbBb0zWtP33wn2vkiDmgARhKXcIH4Y4R6Oyx30c6AxHNyGhb4Lj2qZ6e5Q0vvlvqOL4sHgMqsnyVFcs1bWey"></form>
+      </div>
+    </div>
+
+    <div id="additionalOptions" class="displayDesktopOnlyView">
+      <p id="switchClient">I want to see exams for a different
+        <a href="https://www6.pearsonvue.com/testtaker/addNewClient/SelectTestingProgram.htm">testing program</a>.
+      </p>
+    </div>
+
+  </div><div id="upcomingNoAppt">
+  <h2>Upcoming Appointments</h2>
+  <p class="none">You do not have any appointments scheduled.</p></div>
+  <form id="dashboard3" name="dashboard3" method="post" action="https://www6.pearsonvue.com/testtaker/registration/Dashboard/CISCOTESTING" enctype="application/x-www-form-urlencoded">
+    <div id="myAccountSection" class="displayMobileOnlyView">
+      <h2>
+        <span id="showMyAccountSection" onclick="javascript: var $$ = jQuery.noConflict(); $$(&#39;#myAccountSectionMenu&#39;).toggle();">
+          My Account
+        </span>
+      </h2>
+
+      <div id="myAccountSectionMenu" style="display:none">
+        <ul>
+          <li><input id="myProfileCommandButton" name="myProfileCommandButton" type="submit" value="My Profile" title="My Profile" class="personalInfo_link">
+          </li>
+          <li><input id="accountSignInCommandButton" name="accountSignInCommandButton" type="submit" value="Account Sign In" title="Account Sign In" class="personalInfo_link">
+          </li>
+          <li><input id="additionalInfoCommandButton" name="additionalInfoCommandButton" type="submit" value="Additional Information" title="Additional Information" class="personalInfo_link">
+          </li>
+          <li><input id="personalSettingsCommandButton" name="personalSettingsCommandButton" type="submit" value="Preferences" title="Preferences" class="personalInfo_link">
+          </li>
+          <li><input id="examHistoryCommandButton" name="examHistoryCommandButton" type="submit" value="Exam History" title="Exam History" class="personalInfo_link">
+          </li>
+          <li><input id="viewScoreReportsCommandButton" name="viewScoreReportsCommandButton" type="submit" value="View Score Reports" title="View Score Reports" class="personalInfo_link">
+          </li>
+          <li><input id="viewReceiptsCommandButton" name="viewReceiptsCommandButton" type="submit" value="My Receipts" title="My Receipts" class="personalInfo_link">
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <input type="hidden" name="dashboard3_SUBMIT" value="1">
+    <input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="6D6O5A9RsxpZfwjC7VPYfcDIrh6Vtqnmxd3X+cpPTEugIbBb0zWtP33wn2vkiDmgARhKXcIH4Y4R6Oyx30c6AxHNyGhb4Lj2qZ6e5Q0vvlvqOL4sHgMqsnyVFcs1bWey">
+  </form>
+</div>

@@ -1,0 +1,4778 @@
+@charset "UTF-8";
+/* CSS Generic Styles - Responsive Web Design */
+
+
+/* Start General Page Elements */
+body {
+	color: #000;
+	font: 100% verdana,arial,san-serif;
+	margin: 0; 
+	padding: 0; 
+	border: 0;
+	-webkit-text-size-adjust: 100%; /* Added in hopes to fix the large text rendering on iPhone 5 landscape view */
+}
+
+
+h1, h2, h3, h4 {
+	margin: 0;	
+}
+
+h1 {
+	font-size: 1.5em;
+	font-weight: normal;
+	margin-top: .75em;
+	padding-bottom: .25em;
+}
+h2 {
+	font-size: 1.3em;
+	font-weight: normal;
+	clear: both;
+}
+h3, .h3 {
+	font-size: 1.15em;
+	font-weight: normal;
+	margin-top: .5em;
+	margin-bottom: 0;
+}
+h4 {
+	font-size: .75em;
+	margin-top: .5em;
+}
+
+p, td, th, legend, label, li {
+	font-size: .8em;
+}
+td label, #signInHelp .personalInfo_link  {
+	font-size: 1em;	
+}
+p {
+	margin: 1em 0;
+	line-height: 1.5em;
+
+}
+td, th {
+	vertical-align: top;
+	padding: 0;
+	text-align: left;
+}
+hr {
+	color: #e0e0e0;
+	margin: .5em 0;	
+	clear: both;
+}
+form, fieldset, legend, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+img {
+	max-width: 100%;	
+	max-height: auto;
+	border: none;
+	display: inline-block;
+}
+label, .in {
+	display: inline;	
+}
+input, select {
+	outline: none;
+    transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    border: 1px solid #666;
+	font-family: verdana, arial, sans-serif;
+	/*-webkit-user-modify: read-only;*/  /*Removing to fix EDGE Browser compatibility*/
+	font-size: .8em;
+}
+td input {
+	font-size: 1em;	
+}
+
+input[type="radio"], input[type="checkbox"] {
+	border: none;	
+	margin-right: .25em;
+	margin-top: 0;
+	box-shadow: none;
+	display: inline;
+}
+
+input[type="submit"] {
+	cursor: pointer;	
+}
+.hideRow {
+	display: none;	
+}
+.fontNormal {
+	font-style: normal !important;
+}
+.pseudoHeader {
+	font-weight: bold;	
+	margin-top: .5em;
+}
+.inactive {
+	color:gray;
+}
+
+.inactiveColumn
+{
+	color:gray;
+	text-align: right;
+	width: 70px;
+	white-space: nowrap;
+}
+
+.block {
+	display: block;	
+}
+.secondTableHeader {
+	margin-top: 2em;	
+}
+/* End General Page Elements */
+
+
+/* START Shared color and border attributes */
+
+/* ----------- Rounded Corners -------------- */
+#registrationSection, #upcomingAppt, #onlineExams, #upcomingNoAppt, #personalInfo, #myAccountSection, #availableFormsSection, #readyToSchedule, #regLicSection {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid #E0E0E0;
+
+}
+#registrationSection h2, #upcomingAppt h2, #upcomingNoAppt h2, #personalInfo h2, #myAccountSection h2, #onlineExams h2, #availableFormsSection h2, #readyToSchedule h2, #regLicSection h2  {
+	background: #F2F1EF;	
+	padding: .25em .5em;
+	font-size: 1.1em;
+}
+
+#contactDetails, #otherAccomodForm {
+	border: 1px solid #E0E0E0;
+	border-radius: 5px;
+	padding: .5em;
+}
+
+
+
+/* ----------- Font size -------------- */
+#locale, #copyright { /* Small print */
+	font-size: .7em;	
+}
+label .labelDescription, #enterContactDetails .infoOnlyBlock, #enterContactDetails p, .infoOnlyLabel, .infoOnlyValue, span.value_nonEditable { 
+	font-size: .8em;	
+}
+.infoOnlyLabel label, .infoOnlyValue span.value_nonEditable { 
+	font-size: 1em;	
+}
+
+
+#availableExams h3, #preApproved h3, #onlineExams h3 {
+	font-size: 1em;	
+}
+.beginTagalong, #SignInForm a {
+	font-size: .8em;	
+}
+
+#progressDialog {
+	font-size: .9em;	
+}
+.examRegistrationPolicyDialog li {
+	font-size: .75em;
+}
+.examRegistrationPolicyDialog .listReasons li {
+	font-size: .8em;
+}
+
+
+/* ----------- Spacing and alignment -------------- */
+#registrationSection, #availableFormsSection, #readyToSchedule, #regLicSection {
+	margin-bottom: 2em;	
+}
+.userNameLookupTable, .requestPasswordTable, .securityQuestionTable, .usernameRetrievalTable, #websitePreferencesContainer, #requestPasswordContainer, #authenticateContainer, #authenticateResultsContainer, #switchTestingProgramsContainer, #cancelOrderSummaryArea, #detailedCancelOrderSummaryArea, #overviewCancelOrderSummaryArea, #createAccountContainer, .chooseOneGroupFormSectionBlock, #questionsContainer, #authenticateResultsContainerNoBiometrics, #proctorLaunch, #deliveryModeContainer, #VerifyPhoto, #photoCapture{
+	padding: .5em;	
+}
+.radioTable, .webAccommodationChoiceTable, #yesAudioDiv, .proctorVerificationProcess {
+	padding: 1em;	
+	*margin: 1em; /* IE7 HACK */
+}
+#availableExams, #preApproved, #yesAudioDiv, #onlineExams div, #availableForms {
+	padding: 1em;	
+}
+.formblock .radioTable {
+	*margin: 0; /* Remove IE7 HACK above */	
+}
+#yesAudioDiv select {
+	margin-top: .5em;	
+}
+.tagalongExamLabel {
+	white-space: nowrap;	
+}
+.fyi {
+	padding: .5em;	
+}
+.price, .quantityCol {
+	text-align: right;	
+}
+.price, .modulePriceCell, .multiSelectButton {
+    white-space: nowrap;
+}
+.right {
+    float: right;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.currentExam {
+	margin: 1em 0 2em 0;	
+	padding: .5em;
+}
+.updated {
+	margin-bottom: 	1em;
+	padding: .75em;
+}
+.testcenterDetailsShort {
+	margin-top: 1.5em;
+}
+.requiredCell {
+	width: 1%;	
+}
+#resetPasswordForm #requestPasswordContainer .errorContainer{
+	margin-right: 2em;
+}
+
+
+
+/* ----------- Data Tables and non-rounded border divs -------------- */
+#preApproved table, #examTable, #selectedCentersTable, #jsf_proximitySearch, #jsf_databaseSearch, #centerTable, #calendarDiv, #apptTable, #policies, .historyTable, .examDetailsModal, .checkPassTableHolder, .userNameLookupTable, .requestPasswordTable, #moduleSelection, .authorization table, .profileContainer, .securityQuestionTable, .usernameRetrievalTable, #websitePreferencesContainer, #requestPasswordContainer, #authenticateContainer, #authenticateResultsContainer, #switchTestingProgramsContainer, #cancelOrderSummaryArea, #detailedCancelOrderSummaryArea, #overviewCancelOrderSummaryArea, #createAccountContainer, #infoBox, #questionsContainer, #authenticateResultsContainerNoBiometrics, .srchRsltsTable, .srchSelection, .borderContainer, #multiSearch .proximity, #multiSearch .testCenterCode, #singleSearch, #proctorLaunch, #deliveryModeContainer, #VerifyPhoto, #photoCapture, .proctorVerificationProcess{
+	border: 1px solid #e0e0e0;
+	border-collapse: collapse;
+}
+#examTable, .examSelection, #apptTable, .orderDetails, .futureappt, .historyTable, .examDetailsModal, .checkPassTable, #cancelOrderSummaryAreaContainerTable, .srchRsltsTable, .srchSelection, .receiptsTable {
+	width: 100%;	
+}
+.tableRollOverEffect, .tableRollOverNoClick, #preApproved th, #examTable th, #apptTable th, #centerTable th, #jsf_proximitySearch, #jsf_databaseSearch, .orderDetails th, .historyTable th, .futureappt th, .examDetailsModal th, .checkPassTable caption, #moduleSelection th, .authorization th, #passwordScorebar, #cancelOrderSummaryArea, #detailedCancelOrderSummaryArea, #overviewCancelOrderSummaryArea, #infoBox, .chooseOneGroupFormSectionBlock, .srchRsltsTable th, .srchSelection th, .receiptsTable caption, #multiSearch .proximity, #multiSearch .testCenterCode, #singleSearch {
+	background: #F2F1EF; 	
+}
+#preApproved td, #examTable td, .formSectionBlock, .infoOnlyBlock, #allDetails .infoBlock, #selectedCentersTable, #apptTable td #displayMorningAppts td, #apptTable td #displayAfternoonAppts td, #centerTable td, .orderDetails td, #upcomingAppt table, .productArea, .orderDetails td, .historyTable td, .examDetailsModal td, .checkPassTable td, .authorization td, .srchRsltsTable td, .srchSelection td, .receiptsTable td, .anywhereProctoredPac {
+    border-top: 1px solid #e0e0e0;
+}	
+.futureappt th {
+	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+}
+.orderDetails td, .futureappt td, #displayMorningAppts th, #displayAfternoonAppts th, .waiverModalGroup .infoOnlyBlock {
+	 border-bottom: 1px solid #e0e0e0;
+}
+#preApproved td, #preApproved th, #examTable td, #examTable th, #selectedCentersTable td, #displayMorningAppts td, #displayAfternoonAppts td, #centerTable th, #centerTable td, .orderDetails th, .orderDetails td, #apptTable th, .futureappt th, .futureappt td, .paymentTotal td, .paymentTotal th, .historyTable td, .historyTable th, .examDetailsModal td, .examDetailsModal th, .modules_selectTable td, .checkPassTable th, .checkPassTable td, .checkPassTable caption, #paymentArea #summary th, #paymentArea #summary td,  #moduleSelection th, #moduleSelection td, #moduleSelection caption, .authorization th, .authorization td, .srchRsltsTable td, .srchSelection td, .srchRsltsTable th, .srchSelection th, .receiptsTable th, .receiptsTable td, .receiptsTable caption {
+	padding: .75em .5em;	
+}
+
+#centerTable td.selectRow, #centerTable td.marker {
+	padding: .75em 0;	
+}
+.orderDetails th {
+	 border-top: 1px solid #e0e0e0;
+}
+#apptTable td:first-child {
+    border-right: 1px solid #e0e0e0;
+}
+.examSelection td, .examSelection th, #subtotal td, #subtotal th, #summaryHolder td, #cancelSummaryArea td, #summary td, #cancelOrderSummaryAreaContainerTable td td, #detailedCancelOrderSummaryArea td, #overviewCancelOrderSummaryArea td, #totalPaidDialogDiv td {
+	padding: .25em .5em; /* Less padding than most tables */	
+}
+.examSelection caption {
+	padding: 0 .5em;	
+}
+#examTable .displayMobileOnlyView {
+	text-align: right;	
+}
+.examSelection caption, #moduleSelection caption {
+	text-align: left;	
+}
+.examSelection th {
+	text-align: right;	
+}
+.tableRowFocus {
+	background: #ececec;	
+}
+.tableRow {
+	background: #fff;	
+}
+.formSectionBlock .organizationSearchTable input[type="text"] {
+	width: 100%;
+}
+.organizationSearchTable input {
+	margin-left: 0 !important;
+	margin-bottom: .25em;
+	font-size: 1em;
+}
+.errorContainer .organizationSearchComponent, .errorContainer .organizationSearchComponent label {
+	color: #000 !important;
+	font-weight: normal;
+}
+.organizationSearchTable label {
+	padding-right: 10px;
+	font-weight: normal;
+	text-align: right !important;
+}
+.organizationSearchResults .pseudoHeader, .srchSelection.organizationSearchSelection .pseudoHeader {
+	display: none !important;
+}
+.organizationSearchResults .tableRollOverEffect{
+	cursor: default;
+}
+.organizationSearchResults .table_header_btn_link:active {
+	border: none;
+}
+.organizationSearchSelection .btn_remove:focus, .organizationSearchSelection .btn_remove:active {
+	outline: none;
+}
+.organizationSearchSelection, .organizationSearchResults .srchRsltsTable {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.organizationSearchInstructionsMessage {
+	text-align: center;
+}
+
+/* --------- Styled Lists -------------*/
+#personalInfo ul, #RHC ul, #myAccountSection ul {
+	margin-left: .5em;
+	padding-left: .5em;
+}
+#personalInfo li, #RHC li, #myAccountSection li {
+	list-style-type: none;
+}
+
+
+/* ---------- Styled divs -----------*/
+#allDetails, #examRegistrationQuestionsTable, #subtotal, #addressInfo, #summary, #cancelSummaryArea, #availableProducts, #orderSummaryArea, #accommodationsFormTable, #EOT, #paymentDetails, #readyReckoner, #cancelPolicies, #communicationHistory, #ibtCandInfo  {
+	border: 1px solid #e0e0e0;
+}
+#subtotal, #addressInfo, #summary, #cancelSummaryArea, #orderSummaryArea, #ibtCandInfo  {
+	background: #F2F1EF;
+}
+#examRegistrationQuestionsTable, #addressInfo, #summary, #cancelSummaryArea, #orderSummaryArea, #accommodationsFormTable, #EOT, #cancelPolicies, .profileContainer, #communicationHistory, #ibtCandInfo  {
+	padding: .5em;	
+}
+#details {
+	border-top: 2.5em solid #F2F1EF;	/* Looks like an empty table row */
+	display: block;
+}
+.currentExam, .updated, .fyi, #currentAppt {
+    background: #ffc;
+    border: 1px solid #fc0;
+    clear: both;
+}
+#currentAppt {
+	font-size: .8em;
+	padding: 1em;
+}
+
+/* Clear button for input forms */
+input[type="button"].clearTextButton {
+    cursor: pointer;
+    display: none;
+    margin-left: -1.5em;
+    font-size: 1.2em;
+    background-color: transparent;
+    color: #000;
+    border: none;
+}
+input[type="text"]#testCentersNearAddress {
+	padding-right: 2.5em;
+	margin-right: 2em\9;
+	*margin-right: .5em;
+}
+
+input[type="button"].clearTextButton:hover, input[type="button"].clearTextButton:focus{
+	font-weight: bold;
+}
+
+input[type="text"].clearInputX, input[type="text"].clearInputX:focus {
+    padding-right: 2em;
+}
+
+/*this keeps IE 10 and IE 11 from displaying "clear x"*/
+input[type="text"].clearInputX::-ms-clear {
+    display: none !important;
+}
+
+.clearTextButtonHolder {
+    *display:none;
+}
+
+
+
+
+
+
+
+/* ---------- Chevrons -----------------*/
+#RHC a:link, #RHC a:visited, #personalInfo a:link, #personalInfo a:visited, #personalInfo .personalInfo_link, #myAccountSection .personalInfo_link {
+	background: url('images/chevron.gif') no-repeat .25em 0.3em;
+	padding-left: 1.25em;
+	border: none;
+}
+
+
+
+/* ---------- Show/Hide Icons ----------*/
+.discountLinkPlus, .policyLinkPlus, .expandLinkPlus, #showPreApproved, #showHelpModuleContentDSA, #showAvailableExams, #showMyAccountSection, .calculatedTitlePlus {
+	background-image: url(images/plus_icon.png);
+	background-repeat: no-repeat;
+ }
+.discountLinkPlus, .policyLinkPlus, .expandLinkPlus, .calculatedTitlePlus {
+	 padding-left: 1.5em;
+	 background-position: left top;
+ }
+.discountLinkMinus, .policyLinkMinus, .expandLinkMinus, .calculatedTitleMinus {
+     padding-left: 1.5em;
+     background: url(/webresources/testtaker/images/minus_icon.png) no-repeat top left;
+ }
+ 
+
+
+
+/* ---------- Error styling ----------*/
+#errorMessages {
+	width: 100%;	
+}
+.warning {
+    background: url("images/icon_alert.gif") no-repeat 0 0;
+	background-position: 0 0;
+    color: #B60000;
+    font-weight: bold;
+    margin: 1em 0;
+    min-height: 2.5em;
+    padding: .25em 0 .25em 2.75em;
+	display: block;
+	font-size: .8em;
+}
+.proctorUnlockMessage {
+	background: url("images/icon_alert.gif") no-repeat 0 0;
+	background-position: 0 0;
+    margin: 1em 0;
+    min-height: 2.5em;
+    padding: .25em 0 .25em 2.75em;
+	display: block;
+}
+.warning h1 {
+	margin: 0;
+	font-size: 1.7em;
+	font-weight: bold;
+	color: #B60000;
+}
+.warning_textonly, .errorContainer legend, .errorContainer label {
+    color: #B60000;
+    font-weight: bold;
+}
+.fieldLevelError {
+	display: block;	
+	color: #B60000;
+	background: url("/webresources/testtaker/images/icon_alert_sm.gif") no-repeat scroll 0 0 transparent;
+    min-height: 1.5em;
+    padding: 0 0 0 2em;
+	font-weight: bold;
+	margin-left: .5em;
+	font-size: .8em;
+}
+.warning_label {
+	color: #B60000;
+	font-weight: bold;
+	background:url(/webresources/testtaker/images/icon_alert_sm.gif) no-repeat;
+	padding: 0 0 0 2em;
+	min-height: 1.5em;
+}
+.LoginTable .warning_label { /* Little angry triangles would not appear next to label when set as a block element - hidden */
+	background: none;	
+	padding: 0;
+}
+.alert, .exception {
+	font-weight: bold;
+	color: #B60000;
+}
+.errorContainer {
+	border: 1px solid #B60000;	
+	padding: .5em 0;
+	overflow: hidden;
+}
+.emphasizeText {
+	color: #B60000;	
+}
+.errorContainer .warning_label {
+	background-image: none;
+	padding-left: 0;
+	font-weight: normal;
+	color: #000;
+}
+.errorContainer label.warning_label span  {
+	background-image: none;	
+	font-weight: normal;
+	color: #000;
+}
+/*.errorContainer span:first-child*/ .fieldLevelError {
+	display: block;	
+	color: #B60000;
+	margin-bottom: 1em;
+	background: url("/webresources/testtaker/images/icon_alert_sm.gif") no-repeat scroll 0 0 transparent;
+    	min-height: 1.5em;
+    	padding: 0 0 5px 23px;
+	font-weight: bold;
+	margin-left: .5em;
+	font-size: 0.8em;
+}
+.warningAreaContainer table {
+	width: 100%;
+}
+.warningAreaContainer table span.warning {
+	font-size: 1.1em;	
+}
+
+.warningAreaContainer span.warning {
+	font-size: .8em;	
+}
+
+table .warning ul {
+	margin-left: 2em;	
+}
+table .warning li, .warning li {
+	font-size: 1em;	
+	margin-bottom: .5em;
+}
+#addressUsedMsg:not(:empty) {
+	background: url("images/icon_warning.gif") no-repeat;
+	padding: .25em 0 .25em 2.5em;
+	min-height: 30px;
+	font-style: italic;
+}
+.error {
+    background: #FFDFDF; /* Light Pink */
+}
+.advisory, #MaestroCardMessageTable, #examDetails .examSelection, .examAlertTitle {
+	background:url(/webresources/testtaker/images/icon_warning.gif) no-repeat;
+	padding: .25em 0 .25em 2.5em;
+	min-height: 30px;
+}
+.advisory_label {
+    background: url("/webresources/testtaker/images/icon_warning_sm.gif") no-repeat;
+    font-style: italic;
+    min-height: 15px;
+    padding: 0 0 .25em 1.5em;
+}
+#quickResultsForm .advisory_label {
+	display: block;
+	margin-top: 1em;	
+}
+.advisory_field {
+    background: #FFFFDD;
+}
+.examAlertTitle {
+	background-position: .5em 2em;	
+	padding-bottom: 1em;
+}
+.advisory, #MaestroCardMessageTable, #examDetails .examSelection {
+	font-style: italic;
+	margin-top: 1em;
+	display: block;
+	font-size: .8em;
+}
+.advisory li {
+	font-size: 1em;	/* Embedded in .advisory --> bump up font size */
+}
+.importantText {
+    color: #CC0000;
+}
+.veryImportantText {
+	color: #c00;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 1.25em 0;
+}
+
+
+#unknownErrorContainer {
+	background: #fff;	
+	padding: 1em;
+}
+
+
+
+/* START STEP-TRACKER */
+#section {
+    margin: 0 5px 0 0;
+    overflow: visible;
+    padding-top: 1em;
+}
+#steps {
+	margin-top:-2px;
+    margin-left: 0;
+	padding-left: 23px; 
+    overflow: hidden;
+    padding-bottom: 1em;
+    width: 800px;
+}
+#steps li {
+    float: left;
+    list-style-type: none;
+}
+#steps li.step {
+    padding-left: 16px;
+    width:120px;
+}
+#steps li.stepactive {
+    padding-left: 16px;
+    width: 120px;
+}
+
+
+/* 2 Step */
+#progress2step .s1 {
+    width: 26px;
+}
+#progress2step .s2 {
+    width: 164px;
+}
+#progress2step .s2 #marker {
+    background-position: -26px 0;
+}
+#progress2step .sfinal #markerfinal {
+    background-position: 0 0;
+    height: 32px;
+}
+
+
+/* 3 Step  */
+#progress3step .s1 {
+    width: 26px;
+}
+#progress3step .s2 {
+    width: 162px;
+}
+#progress3step .s3 {
+    width: 300px;
+}
+#progress3step .s2 #marker {
+    background-position: -26px 0;
+}
+#progress3step .s3 #marker {
+    background-position: -52px 0;
+}
+#progress3step .sfinal #markerfinal {
+    background-position: 0 0;
+    height: 32px;
+}
+
+
+/* 4 Step  */
+#progress4step .s1 {
+    width: 26px;
+}
+#progress4step .s2 {
+    width: 162px;
+}
+#progress4step .s3 {
+    width: 298px;
+}
+#progress4step .s4 {
+    width: 436px;
+}
+#progress4step .s2 #marker {
+    background-position: -26px 0;
+}
+#progress4step .s3 #marker {
+    background-position: -52px 0;
+}
+#progress4step .s4 #marker {
+    background-position: -78px 0;
+}
+#progress4step .sfinal #markerfinal {
+    background-position: 0 0;
+    height: 32px;
+}
+
+
+/* 5 Step Progress Tracker */
+#progress5step .s1 {
+    width: 26px;
+}
+#progress5step .s2 {
+    width: 162px;
+}
+#progress5step .s3 {
+    width: 298px;
+}
+#progress5step .s4 {
+    width: 435px;
+}
+#progress5step .s5 {
+    width: 574px;
+}
+#progress5step .s2 #marker {
+    background-position: -26px 0;
+}
+#progress5step .s3 #marker {
+    background-position: -52px 0;
+}
+#progress5step .s4 #marker {
+    background-position: -78px 0;
+}
+#progress5step .s5 #marker {
+    background-position: -104px 0;
+}
+#progress5step .sfinal #markerfinal {
+    background-position: 0 0;
+    height: 32px;
+}
+
+
+
+
+/* START General Styling */
+.current, .active, .boldStyle, .paymentTotal th.boldStyle, .charge {
+	font-weight: bold;	
+}
+.normal {
+	font-weight: normal;
+}
+
+#examRegistrationQuestionsTable td {
+	font-size: .9em;
+}
+.buttonArea, .proceedbuttonArea {
+	display: block;
+	clear: both;
+	text-align: right;
+	margin-top: 1.5em;
+	padding-bottom: .25em; /* bottom button was being cut off slightly in chrome */
+	overflow: hidden;
+}
+.previous, .previous_final, .modalButtonSecondary, .ui-state-default.ui-corner-all.modalButtonSecondary {
+	float: left;
+	position: relative;
+}
+.modalButtonSecondary {
+	margin-top: 20px;
+}
+.forward, .modalButtonPrimary  {
+	float: right;
+	position: relative;
+}
+.closeWindowBtnContainer {
+	text-align: center;	
+}
+.none, #myExamHistory p.none {
+	text-align: left;
+	padding-left: .75em;
+	margin: 1em 0;
+}
+.beginTagalong {
+	margin-bottom: 1.5em;
+}
+.disclaimer, .requiredText {
+	font-style: italic;
+	margin-top: 1em;
+}
+.discount, .italicStyle {
+	font-style: italic;	
+}
+
+.changeCell, .summary_label {
+	text-align: right;	
+}
+.changeCell {
+	white-space: nowrap;	
+}
+.proctorVerificationProcess .sectionEdit {
+	text-align: right;
+	margin-top: 1em;
+	padding-bottom: .5em;
+	float: none;
+}
+.sectionEdit {
+	float: right;
+	margin-top: 1em;
+	padding-bottom: .5em;
+}
+.detailsDate .gregorianDate, .dateColumn .gregorianDate {
+	color: #333;
+}
+
+#locationCodeLabel {
+	width: 50% ;
+	margin-left: auto ;
+	margin-right: auto ;
+}
+
+#discountAccessCodeLabel {
+    width: 50% ;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+#additionalOptions {
+	margin: 0 1em ;
+}
+
+/* END General Styling */
+
+
+
+/* START link and button styles */
+a:link, a:visited, A:link, A:visited, a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+.tableRollOverEffect{
+	cursor: pointer;
+}
+.buttonArea input, .dashboardButtonDiv input,  a.btnPositive:link, a.btnPositive:visited, #apptTable .btn_select, .topButtonArea .btn, .btn_disabled, .proceedbuttonArea .btn, #checkoutButton, #checkoutBtnStyleAddAnotherExamBtn,.btn_cart, .previous .btn_link_dialog, #cancelButton.btn_link, .href_link.btnPositiveNoModal, .btn_link.returnHomeBtn, .launchIBT .btn, .usernameRetrievalTable .btn, .languageOKButton input, a.btnPositiveNoModal:link, a.btnPositiveNoModal:visited, #examContainer .buttonArea .btn_link, .profile_topButtonArea .btn {
+	color: #fff;
+	font-weight: bold;
+	font-size: .9em;
+	margin: 0;
+	cursor: pointer;
+	display: inline;
+	overflow: visible;
+	outline: none;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	text-decoration: none;
+	-webkit-appearance: none;
+}
+.btn, .btn_dialog, .btn_nojs, .btnPositive, .btnPositiveNoModal, .btn_select, .btn_disabled, .languageOKButton input, #homeButton.btn_link, #switchTestingProgramForm .btn_link_dialog {
+	background-image: url(images/arrowright.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding: 0.3em 1.5em 0.35em 0.75em; /* Allow spacing for right arrow */
+}
+
+.previous .btn_link, #examContainer .buttonArea .btn_link {
+	background-image: url(images/arrowleft.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding: 0.3em 0.75em 0.35em 1.5em;	/* Allow spacing for left arrow */
+}
+
+.closeWindowBtnContainer .btn_link {
+	padding: .3em .75em .35em .75em;	
+}
+.dashboardButtonDiv .btnPositive, #MyProfileForm .btn, #examHistoryForm .btn, #SignInForm .btn, #examTable .btnPositive, #viewScoreReportsForm .btnPositive, #apptTable .btn_select, #checkPassCertificatePageFormId .btn, #checkPassCertificatePageFormId .btnPositive, .launchIBT .btn, .languageOKButton input, .viewScoreReportColumn .btnPositiveNoModal, #homeButton.btn_link, #scheduleExamReviewsForm .btnPositiveNoModal, #scheduleExamReviewsForm .btn, #scoreReportErrorForm .btn, #changePassword .btn, #UpdateQuestionsForm .btn, #btnTakePicture .btnPositiveNoModal {
+	padding-right: .75em; /* Remove spacing for right arrow */
+	background-image: none;
+}
+.href_link.btnPositiveNoModal, .btn_link.returnHomeBtn {
+	padding: .3em .75em .35em .75em;
+	background-image: none;
+}
+#applyDiscount.btn, #applyVoucher.btn, #applyPromo.btn {
+	font-size: .8em;	
+	color: #fff;
+	padding: .1em .5em .2em .5em;
+	background-image: none;
+	border-radius: 4px;
+	font-weight: bold;
+}
+#OrderSummary .btn_link, #myReceiptsPageForm .btn_link {
+	background-image: none;
+	padding-left: .75em; /* Remove spacing for left arrow */
+}
+.previous .btn_link_dialog, #cancelButton.btn_link {
+	background-image: url(images/x.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding: 0.3em 0.75em 0.35em 1.5em;	
+	margin-left: 1em;
+}
+.btn_edit, .btn_edit_ajx, .btn_edit_display, #readyReckoner a, #examContainer .btn_link, #examGroupContainer .btn_link, #addSecondaryAddressButton, a:link.btn_edit, a:visited.btn_edit, #selectExamModules .btn_link, #moduleForm #cancelChangeModules, .singleSelectButton a.btnPositiveNoModal:link, #filterExamList .btn_link_dialog, #filterExamList .btn_link {
+	background-color: #F2F1EF;
+	border: 1px solid #000;
+	color: #000;
+	font-weight: normal;
+	font-size: .7em;
+	padding: .3em;
+	border-style: outset;
+	margin: 0;
+	cursor: pointer;
+	overflow:visible;
+	display: inline-block;
+	text-decoration: none;
+	width: auto;
+	-webkit-appearance: none;
+}
+.singleSelectButton a.btnPositiveNoModal:link {
+	background-image: none;
+	border-radius: 0;
+	font-size: .85em
+}
+
+.btn_remove, .product_remove, #changeExamButton, .actionCol .btn_remove, #viewAuthLink a, .actionCol .btn_link, .actionCol .btn_link_dialog, .editOrder .btn_link_dialog, .changeTimeZone input { /* Style like a hyperlink */
+	color: #000;
+	border: 1px solid transparent;
+	background: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em; /* a little larger because link is within table cell */
+    font-weight: normal;
+    overflow: hidden;
+    text-decoration: underline;
+	padding: 0;
+}
+.editOrder .btn_link_dialog {
+	font-size: .8em; /* larger font-size overruled...sits outside of table */	
+}
+.directionsCell a:link, .directionsCell a:visited {
+	color: #000;
+	font-weight: normal;
+	text-decoration: underline;
+}
+#labelkm, #labelmi {
+    background: none ;
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    text-decoration: underline;
+}
+.btn_disabled {
+	opacity: .5; filter:Alpha(Opacity=50);
+	cursor: text;
+}
+
+
+.personalInfo_link {
+	border: 1px solid #fff;
+	cursor: pointer;
+	display: inline-block;
+	overflow: visible;
+	word-wrap: normal; 
+	text-wrap: normal;
+	background-color: #fff;
+}
+.table_header_btn_link {
+	color: #000;
+	text-decoration: underline;
+	border: 1px solid #F2F1EF; /* Same color as TH background */
+	background: none;
+	padding: 0;
+	margin: 0;
+	font-size: 1em;
+	font-weight: bold;
+	display: inline-block;
+	overflow: visible;
+}
+
+.btn_cart {
+	background-color: #6A9F45;
+	font-weight: normal;
+	padding: 0.3em 0.75em 0.35em .75em;
+}
+.printicon {
+    background: url("images/print_icon.png") no-repeat scroll left center transparent;
+    float: right;
+    font-size: 1em;
+    padding-left: 2.5em;
+	text-decoration: none;
+	padding-bottom: .5em;
+	padding-top: .5em;
+	clear: right;
+}
+.previous .printicon {
+	float: left;	
+}
+
+.confirmation {
+	background:url(images/email_icon.png) no-repeat left top;
+	padding: 0 0 0 3em;
+	min-height: 2.5em;
+	margin-right: 12em;
+}
+
+
+/* Hyperlink styled button */
+#selectedCentersArea .btn_link, #showMoreTestCenters .btn_edit_ajx, .orderDetails .btn_link, #discountArea .btn_link {
+	font-size: 1em;
+	text-decoration: underline;
+	background: none;
+	border: 1px solid transparent;
+	margin: 0;
+	padding: 0;
+}
+/* END link and button styles */
+
+
+
+/* START Accessibility: Focus and other attributes including hiding off-screen */
+.skip, .hidden {
+    height: 1px;
+    left: -1000em;
+    position: absolute;
+    top: -1000em;
+    width: 1px;
+	z-index: 1000;
+}
+.moveOffScreen {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+a.skip:focus, a.skip:active {
+	font-size: .8em;
+	position: absolute;
+	width: auto;
+	height: auto;
+}
+.screenreaderHint {
+   position: absolute !important;
+   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+   clip: rect(1px, 1px, 1px, 1px);
+}
+.access, .outOfTheWay {
+    left: -999em;
+    position: absolute;
+    top: -999em;
+}
+input:focus, input:active, textarea:focus, textarea:active, select:focus, select:active, #proximitySearch .btn_edit_display:focus, #proximitySearch .btn_edit_display:active, .previous .btn_link:focus, .previous .btn_link:active, input[type="text"]:focus, input[type="text"]:active, input[type="password"]:focus, input[type="password"]:active, #OrderSummary .btn_link:focus, #OrderSummary .btn_link:active, #logoutLinkOnMastHead:active, #logoutLinkOnMastHead:focus, #myReceiptsTables a.btnPositiveNoModal:link:focus, #myReceiptsTables a.btnPositiveNoModal:link:active, #myReceiptsPageForm .btn_link:focus, #myReceiptsPageForm .btn_link:active, #quickResultsForm a.btnPositiveNoModal:focus, #quickResultsForm a.btnPositiveNoModal:active {
+	outline: none;
+	border: 1px solid #ed6b06;
+	box-shadow: 0 0 .5em #f29044;
+}
+
+
+
+
+input[type="radio"]:focus, input[type="checkbox"]:focus, input[type="radio"]:active, input[type="checkbox"]:active {
+	border: none;	
+	margin-right: .25em;
+	outline: 1px #ed6b06 dotted;
+	margin-top: 0;
+}
+
+
+#personalInfo input:focus, #personalInfo input:active, #examTable input:focus, #examTable input:hover, .examSelection .btn_link_dialog:focus, .examSelection .btn_link_dialog:active, .orderDetails .btn_link:focus, .orderDetails .btn_link:active, .btn_remove:focus, .btn_remove:active, .product_remove:focus, .product_remove:active {
+	box-shadow: none;
+	border: 1px solid transparent;
+	outline: 1px #666 dotted;
+}
+
+#examTable th input {
+	border: 1px solid transparent;	
+}
+
+/* END Accessibility: Focus and other attributes */
+
+
+
+
+/* Updated Form Styling without Tables */
+
+.formSectionBlock, .infoOnlyBlock, .anywhereProctoredPac { /* Group similar form elements in the SectionBlock */
+	/*padding-top: 1.5em;
+	margin-top: 2.5em;*/
+	padding: .5em 0;
+	margin: .5em 0;
+	clear: left;
+	overflow: hidden;
+}
+.revealFormSectionBlock {
+  	clear: left;
+  	overflow: hidden;
+  	margin-top: -1em;
+}
+
+.formSectionBlock:first-child, .infoOnlyBlock:first-child, #availability, .userNameLookupTable .formSectionBlock:first-child, #collectCCID, #fasttrackCredentials, .proctorVerificationProcess .formSectionBlock {
+	border-top: none;
+	margin-top: 0;
+	padding-top: 0;
+}
+#allDetails .infoBlock:first-child {
+	border-top: none;
+	margin-top: 0;
+}
+.formblock, .infoBlock, .nestedFormBlock {
+	padding: .5em 0;
+	clear: left;
+	overflow: hidden;
+}
+
+#allDetails .infoBlock {
+	padding-top: 1em;	
+}
+
+.capva_Table .formblock {
+	margin-left: 3em;	
+}
+.formSectionBlock h3 {
+	clear: left;	
+}
+
+.formSectionBlock input, .infoOnlyValue, .formSectionBlock legend, .revealFormSectionBlock input, .revealFormSectionBlock legend {
+	float: left;	
+}
+.formblock .radioTable, .infoBlock .radioTable {
+	padding: 0;	
+}
+.formSectionBlock input, .formSectionBlock select, .infoOnlyValue, .revealFormSectionBlock input, .revealFormSectionBlock select, .formSectionBlock textarea {
+	margin-left: .5em;
+}
+.infoOnlyValue {
+	width: 70%;	
+}
+
+.formSectionBlock select {
+    max-width: 95%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* START CONTAINER STYLES */
+
+/* --------- Container styles ------------ */
+#signin, #review, #myProfile, #signedIn {
+	margin: 0 auto;
+}
+#container {
+	position: relative;	
+	overflow: hidden;
+	margin: 0;
+}
+
+
+
+/* --------- Masthead styles ------------ */
+#locale {
+	margin: .5em .5em 0 0;
+	text-align: right;
+}
+#locale a {
+	font-weight: normal;	
+	padding: 0 5px;
+}
+#welcome {
+		text-align: right;
+		float: right;
+		clear: right;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) { /* Safari-browser hack */
+	#welcome {
+		width: 100%;	
+	}
+}
+#welcome ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+#welcome li {
+	display: inline;
+	list-style-type: none;
+	margin: 0;
+}
+#welcome li.first {
+	background: none;	
+}
+.candidateInfo {
+	float: right; 
+	font-size: .8em; 
+	text-align: right; 
+	margin-top: -.75em;	
+}
+
+
+
+
+
+
+
+
+
+/* --------- Copyright/Footer styles ------------ */
+#copyright {
+	text-align: center;
+	margin: 1em auto 0 auto;
+	padding-top: 2em;
+	clear: both;
+	padding-bottom: 1.5em;
+}
+#copyright a {
+	margin: 0 .15em;
+}
+/* END copyright styles */
+
+
+
+
+
+/* ---------------------------PAGE SPECIFIC STYLES------------------------ */
+/* Cross- Page Styles */
+.tc_name {
+	font-weight: bold;	
+}
+
+/* START SIGN IN PAGE */
+.LoginTable label, .LoginTable legend {
+    width: 40%;
+}
+#SignInForm fieldset {
+	white-space: nowrap;
+}
+.LoginTable label.screenreaderHint {
+	width: 1em;
+}
+#pageInstruction {
+	clear: both;
+	display: block;
+}
+#SignInForm {
+	width: 55%;
+	padding: 1em;
+	border: 1px solid #e0e0e0;
+	margin-bottom: 2em;
+	*margin-top: -6.5em; /* IE7/IE9 comp. hack */
+}
+
+
+
+
+
+
+/* START DASHBOARD PAGE */
+.dashboardButtonDiv {
+	text-align: center;
+	padding: 1em 0;
+}
+#upcomingAppt, #onlineExams {
+	margin-bottom: 2em;	
+}	
+#upcomingAppt .futureappt .apptActionsCol {
+	width: 40%;	
+}
+#upcomingAppt .futureappt .examDescriptionCol, #upcomingAppt .futureappt .apptDescriptionCol {
+	width: 30%;
+}
+.launchIBT .launchBtn{
+    text-align: right;
+}
+.updated {
+	font-size: .8em;
+}
+#upcomingAppt .appointmentDetails {
+	padding: 1em 1em 0 1em;
+	font-weight: bold;
+	font-size: .9em;
+}
+#upcomingAppt .description {
+	font-size: .9em;
+	padding: 0 1em 1em 1em;
+}
+#onlineExams .description {
+	padding: 0;	
+}
+#personalInfo input {
+	font-size: 1em;	
+}
+#onlineExams li {
+	font-size: .9em;	
+}
+.apptNumber a, .orderNumber a { /* Attempt to over-ride mobile styling a link when thinking these numbers are phone number */
+	text-decoration: none;
+	color: #000;
+	background: none;
+}
+#registrationSection #preApproved table, #registrationSection #preApproved td {
+	border: none;	
+}
+#registrationSection #preApproved td li {
+	font-size: .9em;	
+}
+#APEArea label {
+	padding-left: 2em;	
+}
+#deliveryModeContainer #APEArea label {
+	padding-left: 0;	
+}
+#switchClient {
+	font-size: .75em;
+	margin-top: 3em;
+	text-align: right;
+}
+#APEArea {
+	margin-top: 1em;
+	display: block;
+	border-top: none;
+}
+#AccessCodeFieldErrorContainer {
+	margin-top: .75em;	
+}
+.imitationLink {
+	text-decoration: underline;
+	cursor: pointer;
+}
+.APE_examDetails {
+	font-size: .8em;
+	margin-left: 2.5em;
+}
+
+#personalInfo, .hasMarketingBanners {
+	float: right;
+	width: 28%;
+}
+.hasMarketingBanners #personalInfo {
+	width: 100%;
+	float: none;
+}
+.verticalBannerArea {
+	text-align: right;	
+}
+.verticalBannerArea img {
+	padding-top: 2em;	
+}
+legend .legendHelp {
+	display: block;
+	margin-top:.4em;
+}
+
+
+
+
+
+/* START SELECT EXAM PAGE */
+#examTable {
+	clear: right;	
+}
+#examTable th .btn_link {
+	border: 0 solid;
+	background: transparent;
+}
+#examTable td.authCol, #examTable th.authCol {
+	width: 2em;
+	text-align: right;
+	padding: .75em 0;
+}
+#examGroupContainer #examTable {
+	border: none;	
+}
+.refeshExamList {
+	margin-top: 1em;	
+	margin-bottom: 1em;
+}
+#SelectExamForm .formSectionBlock {
+	border-top: none;
+}
+
+li.ui-menu-item .filteredExamCode {
+    font-style: italic;
+}
+
+li.ui-menu-item .filteredExamTitle {
+    font-weight: bold;
+}
+
+li.ui-menu-item .filteredInstructions {
+    line-height: 2.5em;
+}
+
+#filterExamList .btn_link_dialog, #filterExamList .btn_link {
+	margin-left: .5em;	
+}
+#filterExamList.formSectionBlock {
+	border-top: none;	
+}
+#SelectExamForm .right {
+	margin-left: 1.5em;	
+}
+
+
+/* START EXAM DETAILS */
+#allDetails .infoOnlyLabel {
+	width: 30%;	
+}
+#allDetails .infoOnlyValue {
+	width: 	68%;
+}
+#allDetails .infoOnlyBlock {
+	margin: 0;
+	padding: 0;
+	border-top: none;
+	clear: both;
+}
+#examDetails .infoOnlyLabel {
+	width: 40%;	
+	font-size: .8em;
+}
+#examDetails .infoOnlyValue {
+	width: 55%;	
+}
+.waiverModalGroup .infoOnlyLabel {
+	width: 40%;	
+	font-size: .8em;
+}
+.waiverModalGroup .infoOnlyValue {
+	width: 58%;	
+}
+.waiverModalGroup p, .waiverModalGroup .infoOnlyValue, .waiverModalGroup .advisory, #examDetails .infoOnlyValue {
+	font-size: .8em;	
+}
+
+.authTitle, .waiverTitle, .examTitle {
+	text-align: center;
+	font-weight: bold;
+	margin-top: 1em;
+	font-size: .9em;
+}
+.waiverTitle {
+	margin-top: 0;	
+}
+#languageSubmit legend {
+	font-size: 1em;	
+}
+#languageSubmit td label {
+	font-size: 1.2em;	
+}
+ul.examModules {
+	margin: 0;
+	padding: 0;
+}
+.examModules li {
+	list-style-type: none;
+	font-size: 1em;
+	padding-top: .75em;
+}
+.examModules li:first-child {
+	padding-top: 0;	
+}
+#viewAuthLink {
+	margin-top: -2em;	
+	margin-right: 1em;
+    float: right;
+}
+#examDetails .examSelection {
+	width: 90%;	
+}
+
+
+
+.examAlertTitle {
+	font-weight: bold;
+	padding-top: 2em;
+}
+.examAlert {
+	padding-top: 2em;
+}
+#selectableModulesModalGroup #selectExamModules #examTable {
+	width: 100%;	
+}
+#selectableModulesModalGroup #selectExamModules #examTable .moduleDurationCell {
+	white-space: nowrap;
+}
+#languageModal #languageSubmit legend {
+	font-size: .85em;
+}
+#languageModal #languageSubmit td label {
+	font-size: 1.1em;
+}
+
+#examContainer h2 {
+	font-size: .9em;
+}
+#examDetails #examSelection {
+	font-size: .8em;	
+}
+
+.visibleDiv {
+    display: block;
+}
+.hiddenDiv {
+	display: none;
+}
+
+#viewExamPrice .infoOnlyBlock {
+	border-top: none;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+#viewExamPrice .formblock label, #viewExamPrice .infoOnlyBlock .infoOnlyLabel {
+	width: 20%;	
+}
+
+.infoOnlyValue #systemRequirements li {
+	font-size: 1em;	
+	padding-bottom: 1em;
+}
+
+.infoOnlyValue #systemRequirements p {
+	font-size: 1em;	
+}
+.infoOnlyValue #systemRequirements p:first-child {
+	margin-top: 0;	
+}
+
+/* LOCATION CODE SMART SEARCH PAGE */
+li.ui-menu-item .filteredLocationCode {
+	font-style: italic;
+}
+
+/* START SELECTABLE EXAM MODULES PAGE */
+.multiSelectButton {
+	width: 5%;	
+	text-align: right;
+}
+#selectExamModules {
+	position: relative;
+	overflow: auto;
+}
+#selectExamModules #examTable {
+	width: 65%;
+	float: left;
+}
+#moduleSelection {
+	width: 100%;
+	margin-bottom: 1.5em;
+}
+#moduleList {
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+#moduleList.withSticky {
+    float: left;
+    width: 50%;
+}
+#floatContainer {
+    float: left;
+    margin-left: 2%;
+}
+#selectedModuleResults {
+	float: right;
+    max-width: 338px;
+}
+#selectedModuleResults.fixed_top {
+    position: fixed;
+    top: 0;
+}
+#selectedModuleResults.fixed_bottom {
+    position: fixed;
+    bottom: 99px;
+}
+#selectedModuleResults .topButtonArea {
+	margin-top: 2em;
+}
+
+#moduleForm .topButtonArea {
+	clear: right;
+	padding-top: 1.5em;
+}
+
+
+/* START SELECTABLE AUTHORIZATION PAGE */
+.authorization caption {
+	text-align: left;
+	padding-top: 1.5em;
+	padding-bottom: .5em;
+	margin-left: -1.5em;
+}
+.authorization table {
+	margin-left: 1.5em;	
+	width: 97%;
+}
+.authorization td {
+	width: 25%;	
+}
+.authorization td.price, .authorization th.price {
+	text-align: left;
+}	
+
+
+/* START EXAM LANGUAGE */
+#LanguageField td {
+	white-space: nowrap; /* Adding this stupid style to fix weird rendering issue seen only in Chrome */	
+}
+
+/* START ACCOMMODATIONS PAGE */
+.webAccommodations {
+	margin-left: 3em;	
+}
+.webAccommodationChoiceTable table {
+	margin: .25em 0;
+}
+.webAccommodationChoiceTable table td {
+	padding: .25em;
+}
+#accomOptions, .webAccommodationChoiceTable {
+	width: 100%;	
+}
+#yesAudioDiv:first-child table {
+	width: 100%;
+	margin-top: 0;
+	padding-top: 0;
+}	
+
+#accommodationsTable legend a {
+	margin-left: 1em;	
+}
+
+/* START EXAM QUESTIONS PAGE */
+.ft_value_question td {
+	padding-top: 1em;		
+}
+
+.ft_value_question .radioTable {
+	padding-top: 0;	
+}
+#examRegistrationQuestionsTable table table table td {
+	font-size: 1em;	
+}
+#examRegistrationQuestionsTable td select {
+	font-size: 1em;	
+}
+
+#examRegistrationQuestionsTable {
+	margin-bottom: 2.5em;	
+}
+.ft_Table .disclaimer {
+	font-size: .8em;
+}
+#examRegistrationQuestionsForm table.radioTable  {
+	width: 100%; /* Added to fix strange Chrome wrapping */
+}
+
+/* START ACCOMMODATIONS FORM PAGE */
+#accommodationMessage {
+	font-weight: bold;	
+}
+#accommodationsTable .CCIDModalLink {
+	display: inline;
+}	
+
+
+/* START BACK TO BACK PAGE */
+
+
+/* -------------- NOTE for KAIYA ---------- replace #BackToBackForm with the new name of the form ID on this page */
+#backtobackArea {
+	padding-top: 3em;
+	clear: both;
+}
+#backtobackArea h2 {
+	font-size: 1em;	
+}
+
+#back2BackDialogDivMessage li {
+	font-size: 1em;
+}
+
+#BackToBackForm .examSelection td, #BackToBackForm .examSelection th {
+	border-top: 1px solid #e0e0e0;
+	padding-top: 1em;
+}
+#BackToBackForm .examSelection tr:first-child td, #BackToBackForm .examSelection tr:first-child th {
+	border-top: none;
+	padding-top: .25em;
+}
+.back2backButton {
+	padding-bottom: .5em;	
+}
+
+
+
+#BackToBackForm .detailsExamName, #BackToBackForm .detailsExamModules {
+	float: left;	
+	clear: left;
+	width: 45%;
+}
+.detailsExamNameRemove, .detailsExamModulesChange {
+	float: left;
+	padding-left: 2em;
+}
+
+
+/* START TEST CENTER PAGE */
+#jsf_proximitySearch, #jsf_databaseSearch, #multiSearch .proximity, #multiSearch .testCenterCode, #singleSearch {
+	padding: .5em;
+	margin-bottom: 1em;
+}
+#jsf_proximitySearch .formSectionBlock, #jsf_databaseSearch .formSectionBlock, #singleSearch .formSectionBlock {
+	border-top: 0;
+	margin: 0;
+	padding: 0;
+}
+#jsf_proximitySearch .formSectionBlock label, #jsf_databaseSearch .formSectionBlock label, #jsf_databaseSearch .infoOnlyLabel, #singleSearch .formSectionBlock label {
+	width: 30%;
+}
+#jsf_databaseSearch .infoOnlyLabel label, #singleSearch .infoOnlyLabel label {
+	width: 100%;	
+}
+#multiSearch label {
+	text-align: left;
+    width: 100%;	
+}
+#multiSearch .proximity input[type="search"] {
+    width: 95%;
+}
+
+#jsf_databaseSearch .infoOnlyValue, #singleSearch .infoOnlyValue {
+	width: 68%;	
+}
+#jsf_proximitySearch p, #singleSearch p {
+	margin-top: 0;	
+}
+#testCentersNearAddress {
+	width: 50%;	
+}
+
+#proximityHint {
+	clear: left;
+	text-align: center;
+	font-size: .7em;
+	padding-top: .25em;
+}
+#publicToMilitarySearchLinkProximity {
+	display: block;
+	text-align: center;
+	border-top: 1px solid #e0e0e0;
+	padding-top: .5em;
+}
+#confirmMilitaryTestCenterProximity { /* Hidden button just to open the modal or please wait  dialog */
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);	
+}
+
+#militaryCheckBox {
+	margin: 1em 0;	
+}
+
+#militaryCheckBox input[type="checkbox"] {
+	float: left;
+}
+#militaryCheckBox label {
+	float: left;
+	display: block;
+	margin: -1.5em 0 0 2em;
+	*margin: 0; /* IE7 Hack */
+}
+#errorMilitaryAccessConfirmationUnCheckedAndHitOKProximity {
+	clear: both;
+	font-size: .8em;
+	padding-top: .5em;
+	margin-left: 2em;
+}
+#confirmMilitaryTestCenterProximity, #setModalDisplayedProximity {
+	display: none;	
+}
+#ambiguousSearchSection {
+	font-size: .8em;
+	margin: 1em 0 0 30%;
+}
+
+#didYouMeanMsg, #matchingSearchResult {
+	margin-top: -.5em;
+	display: block;
+	padding-left: 2.5em;	
+}
+
+h2#testCenterListTitle {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-top: 2em;
+	font-size: 1em;
+}
+#testCenterList {
+    float: left;
+	width: 50%;
+}
+.topButtonArea {
+    margin-bottom: 2em;
+    text-align: right;
+}
+#map_area_Container {
+    margin-left: 2%;
+	float: left;
+	/*width: 53%;
+	text-align: right;
+	position: relative;*/
+}
+#floatdiv {
+    position: relative;
+	padding: 0;
+}
+#map_provider {
+    height: 350px;
+    /*width: 100%;  - FUTURE STORY */
+	width: 350px;
+	padding: 0;
+}
+#centerTable {
+	width: auto;	/* Not using 100% - causing right-border to disappear in IE8 */
+}
+#centerTable th {
+	vertical-align: bottom;	
+}
+#directionsDisclaimer {
+	clear: both;	
+}
+#testCenterListTable img {
+	max-width: none;
+}
+#floatdiv img {
+    border: 1px solid #000;
+}
+ 
+#floatdiv.fixed_top {
+    position: fixed;
+    top: 0;
+}
+ 
+#floatdiv.fixed_bottom {
+    position: fixed;
+    bottom: 80px;
+}
+#jsf_databaseSearch input.btn_edit {
+	margin-left: 30.8%;	
+}
+#jsf_databaseSearch p {
+	margin-bottom: 0;	
+}
+#multiSearch h2 {
+	font-size: 1em;	
+}
+
+
+#multiSearch .proximity #testCentersNearAddress {
+	width: 95%;	
+}
+#multiSearch .formSectionBlock input.sitesearch {
+	margin-left: 0;
+}
+
+#multiSearch label {
+	width: 100%;
+	text-align: left;	
+}
+#multiSearch .searchButtonContainer {
+	clear: both;
+	padding-top: 1em;
+	text-align: right;
+	padding-right: 5%;
+	display: block;
+}	
+#multiSearch .formSectionBlock {
+	border-top: none;
+	margin: 0;
+	padding: 0;
+}
+.sitesearch {
+	padding: .25em;	
+}
+
+#testCenterListDirections, #clientHasRestrictedExamSeriesMsgParagraph {
+	clear: both;	
+}
+
+
+/* START TEST CENTER DETAILS */
+#tcDirectionsContainer {
+    border: 1px solid #e0e0e0;
+    margin: auto;
+    width: 99%;
+	max-width: 800px;
+	background: #fff;
+}
+#topBar {
+    background: #F2F1EF; 
+    padding: .75em;
+}
+#topBar h1 {
+	font-size: 1em;	
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+.actions {
+    float: right;
+}
+.actions .printicon {
+	float: none;
+	font-size: .8em;
+	background: none;
+	padding: 0;
+}
+.actions .closeWindow {
+	font-size: .8em;
+	margin-left: 1em;
+}
+#tc_Info {
+	padding: 1em;	
+	font-size: .8em;
+	overflow: hidden;
+}
+.tcInfo_cell {
+	float: left;
+	margin-bottom: 2em;
+	width: 25%;
+}
+.directions {
+	float: right;	
+	width: 70%;
+}
+#tcDirectionsContainer h2, #tcDirectionsContainer h3 {
+	font-weight: bold;
+	font-size: 1.2em;
+	margin: 0;
+	padding: 0;
+}
+.tc_phone {
+	margin-top: 1em;	
+}
+
+/* START PREFERRED DATE PAGE */
+.searchPreferenceRadio {
+	padding-top: 1em;	
+}
+#SelectAppointmentSearchPreferenceForm .fyi {
+	margin-bottom: 1em;	
+}
+.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all.ui-datepicker-multi-2.ui-datepicker-multi {
+	width: 28em;	
+}
+
+
+/* START CALENDAR PAGE */
+#selectedCentersArea {
+	width: 25%;	
+	float: left;
+	padding-top: 1.5em;
+}
+#selectedCentersArea table {
+	width: 100%;	
+}
+#selectedCentersTable #testCenterRadioCell {
+    padding-right: 0;
+	text-align: right;
+}
+#calendarArea, #advancedSearch, .expanded {
+    width: 72%;
+	float: right;
+	margin-left: 3%;
+}
+#calendarArea {
+	padding-top: 1.5em;	
+	position: relative;
+}	
+#calendarDiv {
+	padding-bottom: 4em;
+	position: relative;
+	margin-top: -0.75em;
+}
+.accessibleCalendarOption {
+    bottom: 1em;
+	right: 3%;
+    position: absolute;
+	font-size: .85em;
+	text-align: right;
+}
+.accessibleCalendarOption label {
+	margin-right: .5em;	
+}
+#chooseAppointments {
+	margin-top: 1em;
+	margin-bottom: .5em;
+}
+#displayMorningAppts, #displayAfternoonAppts {
+    border: medium none;
+    width: 100%;
+}
+#displayMorningAppts th, #displayAfternoonAppts th {
+    background: none;
+    border-top: none;
+}
+#apptTable td #displayMorningAppts tr:first-child td, #apptTable td #displayAfternoonAppts tr:first-child td {
+	border-top: none;	
+}
+#apptTable td:first-child #displayMorningAppts td:first-child, #apptTable #displayAfternoonAppts td:first-child {
+    border-right: none;
+}
+#mobileCalendarDiv fieldset {
+	display: inline;	
+}
+#mobileCalendarDiv select {
+	font-size: .75em;	
+}
+#calendarDiv h2 {
+	padding: .5em;
+}
+#calendarDiv h2 .normal {
+    font-size: 0.7em;
+    font-weight: normal;
+    padding-left: 1em;
+}
+#apptTable td {
+	width: 50%;	
+}
+#apptTable td, #displayMorningAppts th, #displayAfternoonAppts th {
+	font-size: .9em;	
+}
+#apptTable th {
+	font-size: .8em;	
+}
+.ui-datepicker td span.gregorianDate {
+	/*text-align: right; */	
+	color: #666;
+	text-align: left; /*Only swap if we switch source order of dates */
+}
+.ui-datepicker td span.hijriDate {
+	/*text-align: left;*/
+	text-align: right; /*Only swap if we switch source order of dates */
+}
+
+.hijriCalendarDiv .ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all.ui-datepicker-multi-2.ui-datepicker-multi {
+	width: 40em;	
+}
+.ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all.ui-datepicker-multi-2.ui-datepicker-multi {
+	width: 34em;	
+}
+.ui-datepicker-hijri-monthname {
+	font-size: 	.75em;
+}
+/*.hijriCalendarDiv .ui-datepicker-month, .hijriCalendarDiv .ui-datepicker-year {
+	font-size: 	1em;
+	font-weight: normal;
+}*/
+.hijriCalendarDiv .accessibleCalendarOption {
+    font-size: 0.85em;
+    text-align: left;
+	left: 2%;
+	right: inherit
+} 
+.importantText.expanded {
+	font-size: .8em;	
+}
+
+#calendarArea.remoteProctor, #chooseAppointments.remoteProctor.expanded {
+	float: none;
+	width: 100%;
+	margin-left: 0;	
+}
+
+/*START ORDER DETAILS SECTION HERE (CART, SUBMIT, SUMMARY, ETC.*/
+.orderDetails h3, .futureappt h3, .orderDetails div, .futureappt div {
+	font-size: 1em;	
+}
+.orderDetails h3, .futureappt h3 {
+	font-weight: bold;
+}	
+
+.detailsExamName {
+	margin-bottom: 1em;	
+}
+.detailsExamAccommodations, #upcomingAppt .apptNumber {
+	margin-top: 1em;	
+}
+.apptNumber {
+	margin-top: 0;	
+}
+.description li {
+	font-size: 1em;	
+}
+.detailsExamLanguage, .detailsExamModules {
+	clear: both;	
+}
+#cartPaymentInfo {
+	float: right;
+	width: 50%;
+	margin-top: 2em;
+}
+#subtotal {
+	float: right;
+	margin: 0;
+	width: 50%;
+	padding: .5em;
+	text-align: center;
+	font-size: .8em;
+	clear: both;
+}
+
+.proctorVerificationProcess #subtotal {
+	float: none;
+	width: auto;
+	margin-bottom: 15px;
+	text-align: right;
+	overflow: hidden;
+}
+
+#subtotalZero {
+	font-size: .8em;	
+}
+#subtotal td, #subtotal .btn, #subtotalZero .btn, #subtotal th {
+	font-size: 1em;	
+}
+#subtotal th {
+	font-weight: normal;
+}
+#subtotal .btn_edit, #subtotalZero .btn_edit {
+	font-size: .8em;	
+}
+#subtotal input {
+	margin-top: 1em;	
+}
+
+#subtotalZero {
+	float: right;
+	padding: .5em;
+	text-align: center;
+	margin: 1em 0 2em 0;
+	border: none;
+	background: none;
+}
+#subtotal table {
+	width: auto;
+	margin: 0 auto;
+}
+
+.proctorVerificationProcess #subtotal table {
+	margin: 0;
+	float: right;
+}
+.proctorVerificationProcess #subtotal .buttonHolder {
+	display: block;
+	text-align: right;
+	clear: right;
+}
+
+
+
+
+
+.voucherNote {
+	display: block;
+	margin-top: 1em;
+	font-size: 1em;
+}
+#reviewArea #currentAppt {
+	margin-bottom: 1.5em;	
+}
+
+.actionCol, .price {
+	width: 15%;	
+}
+.quantityCol {
+	text-align: center;
+}
+.orderDetails td.price, .orderDetails td.actionCol {
+	padding-top: 1.15em;
+}
+.examDescriptionCol, .apptDescriptionCol {
+	width: 35%;	
+}
+.completed .examDescriptionCol, .completed .apptDescriptionCol, .futureappt .examDescriptionCol, .futureappt .apptDescriptionCol {
+	width: 30%;	
+}
+.futureappt .orderInfoCol {
+	width: 27%;	
+}
+.futureappt .price {
+	width: 13%;	
+}
+#changeDeliveryModalPanelGroup {
+	font-size: .8em	
+}
+#changeDeliveryModalPanelGroup td {
+	font-size: 1em;	
+}
+#changeDeliveryModalPanelGroup .radioTable {
+	padding: 0;	
+}
+#changeDeliveryModalPanelGroup input, #changeDeliveryModalPanelGroup label {
+	display: block;
+	float: left;
+}
+#changeDeliveryModalPanelGroup label {
+	margin-left: 2em;
+	margin-top: -1em;
+}
+.quantityCol {
+	text-align: center;	
+}
+.quantityCol .btn_link {
+	font-size: .85em;	
+	margin-top: .5em;
+	color: #000;
+}
+#availability .infoOnlyLabel {
+	float: none;
+	text-align: left;
+}
+#availability .infoOnlyValue {
+	margin-left: 2em;	
+}
+#availability .infoBlock {
+	margin: 0;
+	padding: 0;
+}
+#OrderConfirmSubmitForm #currentAppt {
+	margin-bottom: 2em;	
+}
+
+
+/* PRODUCT UPSELL AREA */
+#availableProducts {
+	padding: 1em;
+	overflow: hidden;
+}
+.modalProductArea p, .modalProductArea li {
+	font-size: .9em;	
+}
+
+.productName h3 {
+	margin-bottom: .5em;
+	font-size: .8em;
+	margin-top: 0;
+}
+.productDescription {
+	font-size: .8em;
+}
+.upsellButtonArea {
+	font-size: .8em;
+}
+#availableProducts .productArea:first-child {
+	border-top: none;
+	padding-top: 0;
+	margin-top: 0;
+}
+.productArea {
+	padding-top: 1em;	
+	overflow: hidden;
+	margin-top: 1em;
+}
+.productPrice {
+	margin-right: 1em;	
+}
+
+.productModalPrice {
+	margin-top: 1em;
+	text-align: center;
+	font-size: .85em;
+}
+.productButton {
+	text-align: center;	
+}
+
+.smallPrints {
+	font-size: .7em;
+	margin-top: 1.5em;
+}
+
+
+
+/* START CONFIRM PERSONAL INFO PAGE */
+#addressInfo {
+	width: auto;	
+}
+#addressInfo .infoOnlyLabel, #ibtCandInfo .infoOnlyLabel {
+	width: 35%;	
+}
+#addressInfo .infoOnlyValue, #ibtCandInfo .infoOnlyValue {
+	width: 60%;
+}
+
+
+/* 	START POLICIES PAGE */
+#policies {
+	padding: 1em;	
+}
+#policies h3:first-child {
+    margin-top: 0;
+}
+#policyArea h2 + h3, #policyArea div h3:first-child {
+	margin-top: 1em;	
+}
+#policies h3, #policyArea h3 {
+	margin-top: 1.5em;
+    margin-bottom: .2em;
+	font-size: 1em
+}
+.policyContent p:first-child {
+	margin-top: 0;	
+}
+.policyContent {
+	font-size: 	.75em;
+}
+.policyContent p, .policyContent li {
+	font-size: 	1.05em;
+}
+#policies ul {
+	margin-left: 2em;
+	padding-left: 2em;
+	margin-bottom: 1em;
+}
+#confirmPolicies {
+	background: #ffd; 
+	padding: .75em; 
+	text-align: right;
+}
+#confirmPoliciesError, .confirmPoliciesError {
+	background: #FFDFDF;
+	text-align: right;
+	padding: .75em; 
+}
+#confirmPolicies label, #confirmPoliciesError label {
+	font-size: .95em;	
+}
+#confirmPolicies label, #confirmPoliciesError label {
+	cursor: pointer;
+}
+#confirmPolicies input, #confirmPoliciesError input {
+	margin-right: .5em;
+}
+
+
+
+/* START PAYMENT PAGE */
+
+#paymentArea .paymentTotal {
+	width: 100%;	
+}
+#paymentArea #summary {
+	width: inherit;
+	float: none;
+}
+#paymentArea .paymentTotal caption {
+	text-align: left;
+	font-size: 1.2em;
+}
+.paymentTotal th {
+	font-weight: normal;
+	text-align: right;
+	width: 36%; /* Defined width to align with field labels below */
+}
+#discountHeader {
+	font-size: .9em;
+	color: #000;
+}
+#discountHeader .normal, #APEHeader .normal {
+	font-size: .8em;	
+	margin-left: 1em;
+}
+#discountArea .btn_link {
+	font-size: .8em;
+	color: #000;
+}
+a#discountLink, a#APELink, a#policyLink {
+	color: #000;	
+}
+#discountField {
+	margin: 0 .5em;	
+}
+#showCC, #showDebit, #showCheck, #showAuth {
+	margin-top: 2em;	
+}
+#cardTypes img {
+	margin-right: 1em;
+	max-width: none;
+}
+#cardDetails, #billingAddress, #cardTypes {
+	width: 100%;	
+}
+#paymentArea .infoOnlyLabel, #paymentArea label {
+	width: 35%;	
+}
+#paymentArea .infoOnlyValue {
+	width: 63%;	
+}
+
+
+.csvImage {
+	text-align: center;
+}
+#billingAddress.formSectionBlock, #shippingAddress.formSectionBlock, #collectPersonalInfoFirst.formSectionBlock {
+	border-top: none;	
+	padding: 0;
+	margin: 0;
+}
+#cardDetails select {
+	margin-right: 1em;	
+}
+.mobilePhonePlusIndicator, #mobilePhonePlusIndicator {
+	margin-left: 0.5em;
+	display: block;
+	float: left;
+	font-size: .8em;
+}
+.countryCodeLookup {
+	clear: left;
+	font-size: .7em;
+	margin-left: 35%;
+	padding-left: 2em;
+	margin-top: .5em;
+	display: block;
+}
+#showWhatIsCsv {
+	margin-left: 1em;
+	font-size: 0.8em;
+}
+#cardTypes .infoOnlyBlock, #cardTypes .infoBlock {
+	margin-bottom: 0;	
+	padding-bottom: 0;
+}
+#MaestroCardMessageTable {
+	width: 75%;
+	margin: 0 auto;
+}
+#echeckTermsContainer, .echeckTermsContainer {
+	margin-left: 36%;
+	font-size: .8em;
+	clear: right;
+}
+#echeckTermsContainer input[type="checkbox"], .echeckTermsContainer input[type="checkbox"] {
+	margin-left: -2em;	
+}
+#sampleCheck, .sampleCheck {
+	margin-top: -6em;	
+}
+.right.sampleCheck {
+	float: inherit; /*Not sure why, but IE8 would not render check image without this attribute. */
+}
+#shippingAddressOptions table, #paymentMethodOptions {
+	width: 100%;	
+}
+#subtotal td.shippingLine {
+	padding: 0;
+}
+.shippingContent {
+	padding: 0.25em 0.5em;	
+}
+#shipToAddressRadio {
+	width: 100%;	
+}
+
+
+/* START SUBMIT PAGE */
+.orderDetails, .futureappt {
+	margin-bottom: 3em;	
+	clear: right;
+}
+#orderSummaryArea {
+	overflow: hidden;	
+}
+#profileInfoHolder {
+    float: left;
+    width: 50%;
+	*width: 48%;
+}
+#profileInfoHolder .infoOnlyBlock {
+	border-top: none;
+	padding: 0;
+	margin: 0;
+}
+#profileInfoHolder .infoOnlyLabel {
+	display: inline;
+	text-align: left;
+	width: auto;
+	float: none;
+}
+#profileInfoHolder .infoOnlyValue {
+	display: inline;
+	width: auto;
+	float: none;
+}
+#profileInfoHolder .infoBlock {
+	padding: 0;	
+}
+#QuickResultsOrderConfirmSubmitForm #profileInfoHolder, #QuickResultsOrderSummary #profileInfoHolder {
+	display: none;	
+}
+#summaryHolder, #cancelSummaryArea, #summary {
+	width: 50%;
+	float: right;
+}
+.summary_label {
+	width: auto;	
+}
+.charge {
+	border-top: 1px solid #333;	
+}
+
+#OrderCancelReviewForm #cancelSummaryArea {
+	margin-bottom: 2em;	
+}
+
+
+/* START EOT (Summary) PAGE */
+.quickDetails {
+	margin-top: 2em;	
+}
+
+/* START SUMMARY PAGE */
+#summaryDisclaimer .disclaimer {
+    font-style: italic;
+    margin-top: 1.5em;
+	font-size: .7em;
+}
+.directionsContainer {
+	font-size: .8em;
+	margin-top: 3em;
+}
+.directionsContainer h3 {
+	margin-bottom: 1em;
+}
+#OrderSummary .forward, #QuickResultsOrderSummary .forward {
+	margin: 1em 0;	
+}
+#OrderSummary .printicon {
+	margin-top: -2.5em;	/* Reduced by 1em to prevent overlapping of IBT Cancel */
+}
+
+#OrderSummary .buttonArea .printicon {
+	margin-top: .25em;	
+}
+.ibtMessage {
+	margin-right: 15em;	
+}
+.orderDetails td.launchAreaCell, .futureappt td.launchAreaCell {
+	border-top: none;	
+}
+#OrderSummary #policyArea {
+	margin-top: 1.5em;	
+}
+#OrderSummary .warning_textonly {
+	margin-right: 8em;	
+}
+.paymentText {
+	color: #CC0000;
+	margin-top: -3em;
+	margin-bottom: -1em;
+}
+
+
+/* 	START CANCEL PAGE */
+#instruction_summary {
+	float: left;
+	width: 45%;
+}
+#policyArea {
+	clear: both;	
+}
+td.charge {
+	vertical-align: bottom;	
+}
+#cancelOrderSummaryArea {
+	margin-bottom: 1.5em;	
+}
+#OrderConfirmSubmitForm #policyArea {
+	margin-top: 2em;	
+}
+#cancelOrderSummaryArea .disclaimer {
+	font-size: .8em;	
+}
+.calculatedTotalTitle {
+	font-size: .8em;	
+	margin: .5em 0 .75em 0;
+}
+.calculatedTotalTitle a {
+	color: #000;	
+}
+#totalPaidDialogDiv table {
+	width: 90%;	
+	margin: 1em auto 0 auto;
+}
+#totalPaidDialogDiv .price {
+	width: 50%;	
+}
+
+
+/* START CHECK PASS CERTIFICATE */
+
+.checkPassTableHolder {
+	margin-bottom: 2.5em;	
+}
+.checkPassTable caption, .receiptsTable caption {
+	font-size: .8em;
+}
+.certNumber {
+	float: left;
+	display: block;
+}
+.certExpirationDate {
+	float: right;
+	display: block;
+}
+.checkPassTableHolder p {
+	margin-left: .5em;	
+}
+
+.checkPassTable .dateColumn {
+	text-align: right;	
+}
+.checkPassTable .btn_link {
+	background: none;
+}
+
+/* START APPOINTMENT DETAILS PAGE */
+#examQuestionGrid #buttonGroup {
+	margin-left: 1em;	
+}
+#examRegistrationQuestionsTable h2 {
+	margin-bottom: .5em;	
+}
+.futureappt .actionCol {
+	text-align: left;	
+}
+
+.btn_warning {
+	color: #666;
+	margin-top: .5em;
+	display: block;	
+}
+.changeTimeZone {
+  	margin-top: 1em;	
+}
+   
+   
+   
+/* START UPDATE PROFILE SECTION */
+
+.profileContainer .noHeader .sectionEdit {
+	margin-top: 0;	
+}
+.profileContainer .sectionEdit {
+		
+}
+.profileContainer .infoOnlyBlock {
+	position: relative;	
+}
+  
+  
+/* EDIT COMMUNICATIONS PREFERENCES */
+.profileContainer .disclaimer {
+  	font-style: normal;
+}
+.profileContainer .neverSellEmailAddressesContainer, #createAccountContainer .neverSellEmailAddressesContainer {
+  	font-size: 0.75em;
+  	display: block;
+  	clear: both;
+}
+
+#collectCommPref .formSectionBlock  {
+	border-top: none;	
+}
+
+
+
+/* START UPDATE PROFILE SECTION */
+.nonEditable {
+	font-weight: bold;	
+}
+
+
+/* EDIT COMMUNICATIONS PREFERENCES */
+.profileContainer .disclaimer {
+	font-style: normal;
+}
+.profileContainer .neverSellEmailAddressesContainer, #createAccountContainer .neverSellEmailAddressesContainer {
+	font-size: 0.75em;
+	display: block;
+	clear: both;
+}
+
+
+/* VIEW SCORE REPORTS PAGE */
+.viewScoreReportColumn {
+	text-align: right;	
+}
+.viewScoreReportColumn a.btnPositiveNoModal:link {
+	font-size: 1em;	
+}
+#examTable td.moduleNameColumn {
+	padding-left: 2em;	
+}
+
+
+/* PASSWORD Section */
+#passwordTipsArea {
+	padding: .25em .25em .75em .75em;
+	width: 36%;
+	border-radius: 5px;
+	float: right;
+}
+.formSectionBlock #labelPasswordStrength {
+	text-align: right;
+	display: block;
+	float: left;
+	clear: left;
+	width: 20%;
+}
+.formSectionBlock #pwStrengthGroup {
+	width: auto;
+	float: left;
+	margin-left: .5em;
+}
+.formSectionBlock #passwordScorebar {
+	padding: .5em 2em;
+	text-align: center;
+	font-weight: bold;
+	border: 1px solid #666666;
+}
+.formSectionBlock .available {
+	margin-left: 12%;
+	color: #090;
+	font-weight: bold;
+	font-size: .9em;
+}	
+
+.formblock #labelPassword, .formblock #labelConfirmPassword {
+	width: 40%;	
+}
+.formblock #labelConfirmPassword {
+	clear: left;
+}
+
+.formblock .labelDescription, .infoBlock .labelDescription {
+	display: block;
+}
+#labelPasswordStrength, #pwStrengthGroup {
+	font-size: .8em;
+	margin-top: .75em;
+	margin-bottom: .75em;
+}
+
+#requestPasswordContainer input[type="password"] {
+	width: 50%;
+}
+#requestPasswordContainer #pwStrengthGroup {
+	width: auto;	
+}
+
+/* Start AUTHENTICATE A SCORE REPORT APP */
+.scorereport_photo {
+    float: right;
+    text-align: center;
+    width: 40%;
+}
+#authenticateResultsContainer {
+	width: 60%;	
+	*margin-top: -160px;
+}
+#authenticateResultsContainer .infoOnlyBlock, #authenticateResultsContainerNoBiometrics .infoOnlyBlock {
+	margin: 0;
+	padding: 0;
+}
+.bannerArea {
+	margin: 2.5em auto 2em;	
+	text-align: center;
+}
+#authenticateResultsContainer .detailsExamModules, #authenticateResultsContainerNoBiometrics .detailsExamModules {
+	margin-bottom: 1.5em;	
+}
+
+
+/* START EXAM HISTORY PAGE */
+.historyTable .examStatusColumn, .historyTable .scheduleExamReviewColumn {
+	padding-top: .95em;	
+}
+.historyTable .btn_link {
+	background: none;
+}
+#historyTableContainer p {
+	font-size: .8em;	
+}
+#historyTableContainer p span {
+	padding: 1em 0 1em 3em;
+	display: block;
+}
+#historyTableContainer p.ui-accordion-content {
+	width: auto;	
+}
+
+
+/* START EXAM PLAYBACK PAGE */
+.scheduleExamReviewColumn {
+	text-align: right;	
+}
+
+/* START TESTING PROGRAM SWITCH */
+#switchTestingProgramsContainer label {
+	display: block;	
+}
+#switchTestingProgramsContainer .radioTable label {
+	display: inline;	
+}
+#switchTestingProgramsContainer select {
+	margin: 1em;	
+}
+
+
+/* -------------START CAPVA/FASTRACK APPS--------------- */
+/* Step 1 */
+#signUpForm #createAccountContainerWrapper {
+    width: 70%;
+    float: left;
+}
+#signUpForm #createAccountContainer {
+	width: 100%;
+}
+#signUpForm .buttonArea {
+	width: 100%;
+	clear: both;
+	padding: 1em;
+}
+#signinArea2, #infoBox {
+    padding: .5em 1em;
+    width: 22%;
+	float: right;
+}
+#infoBox {
+	margin-top: 1.5em;
+	clear: right;
+}
+#privacyCheckBoxContainer  {
+	float: left;
+}
+#privacyLabelContainer {
+	margin-left: 1.75em;	
+}
+#errorOptInUnCheckedAndHitOK {
+	font-size: .8em;
+	margin-top: .15em;
+}
+#createAccountContainer .radioTable input[type="text"] {
+	float: none;
+	margin-top: .5em;
+	margin-bottom: 1em;
+}
+.componentSeparator {
+	text-weight: bold;
+	float: left;
+	margin-left: .5em;
+}
+.alienRegistration-A {
+	float: left;
+	margin-left: .5em;
+	font-size: .8em;
+}
+
+#signUpForm #pageInstruction {
+	font-style: italic;
+}
+.CCIDModalLink {
+	font-size: 1em;
+	display: block;
+}
+#signinArea h2, #signinArea2 h2, #infoBox h2 {
+	font-size: 1.15em	
+}
+.mktgOptIn {
+	font-size: .8em;	
+}
+.mktgOptIn input, .neeaOptIn input {
+	margin-right: .5em;	
+}
+#collectCCID .radioTable td {
+	padding: .25em .25em .75em .25em;	
+}
+
+#signUpForm #fasttrackCredentials #ccidGroup label {
+	width: 100%;	
+}
+
+.iconIndicator {
+	background: url("images/icon_alert.gif") no-repeat 0 0;
+	background-position: 0 0;
+    color: #000;
+    margin: 2em 0;
+    min-height: 2.5em;
+    padding: .25em 0 .25em 2.75em;
+	display: block;
+}
+
+
+
+
+
+
+/* Step 2 */
+#addSecondaryAddressButton {
+	padding: .5em;	
+}
+#secondaryAddressPanel {
+	clear: right;	
+}
+#neeaOptIn_editPrimaryAddress {
+	text-align: left;	
+}
+.profileContainer .neeaOptIn label {
+	width: auto;
+	text-align: left;	
+}
+
+/* Step 3 */
+#createAccountForm #createAccountContainer label, #securityQuestions label, #changePassword label {
+	width: 23%;	
+}
+#createAccountForm #createAccountContainer label#currentPasswordLabel, #createAccountForm #createAccountContainer label#labelPassword, #createAccountForm #createAccountContainer label#labelConfirmPassword, .formblock #labelPasswordStrength  {
+	width: 40%;	
+}
+#checkButton {
+	margin-left: .5em;	
+}
+.referenceMedia {
+	font-size: .8em;
+	margin-top: 1em;
+}
+#questionsContainer .referenceMedia {
+	margin-left: 1em;	
+}
+#questionsContainer input + label {
+	display: inline;
+	margin-left: 0;
+}
+
+#questionsContainer .infoOnlyValue {
+	width: 100%;	
+}
+
+
+#questionsContainer legend {
+	display: block;	
+	width: 100%;
+	float: none;
+	text-align: left;
+	margin-bottom: 1em;
+}
+
+#categoryContainer h3 {
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px solid #e0e0e0;	
+}
+
+#categoryContainer h3:first-child {
+	margin-top: .5em;
+	padding-top: 0;
+	border: none;	
+}
+
+#questionsContainer .ft_label_common {
+	text-align: right;	
+}
+
+
+
+/* Read - Only page: Verify Profile */
+.profile_topButtonArea {
+	float: right;
+	width: auto;
+	margin-top: 10em;
+	margin-left: 3em;
+} /* Currently used just by GMAC */
+
+.infoBlock.questionsReadOnly .infoOnlyLabel {
+	width: auto;
+	float: none;
+	text-align: left;
+}
+
+.infoBlock.questionsReadOnly .infoOnlyValue {
+	margin-left: 0;	
+}
+
+#questionsContainer .infoBlock.questionsReadOnly .advisory_textonly, #questionsContainer .infoBlock.questionsReadOnly .ft_value_question_readonly {
+	padding-left: 2em;	
+	padding-top: .75em;
+	display: block;
+}
+#questionsContainer .radioTable .value_nonEditable {
+	display: inline;
+}
+
+label.value_nonEditable {
+	padding: 0;	
+}
+
+.value_nonEditable {
+	font-weight: bold;	
+}
+
+
+.profileContainer h3 .normal {
+	padding-left: 2em;	
+}
+
+
+
+#createAccountContainer h2, .profileContainer h2 { /* h2 size changed to mimic h3 */
+	font-size: 1.15em;
+    font-weight: normal;	
+	margin-top: .5em;
+}
+
+/* Smart Search */
+.searchResults caption, .selectedSearchResults caption {
+    font-size: .9em;
+    font-weight: bold;
+    margin: 2em 0 0.5em;
+    text-align: left;
+}
+.searchResultsNumber {
+    font-size: 0.85em;
+    font-weight: normal;
+}
+
+.smartSearchContainer td {
+	font-family: verdana,arial,san-serif; /*Customize at the client level */
+    font-size: 1.2em;
+    padding: .3em .1em;
+}
+.selectedSearchResults {
+    margin-bottom: 1em;
+    margin-top: 1.15em;
+}
+
+
+/* Communication History / Resend */
+
+#communicationHistory {
+	margin-bottom: 1.5em;
+}	
+
+
+
+
+/* Sign out page */
+.horizontalBannerArea {
+	width: auto;
+	margin: 1em auto 2.5em auto;
+	text-align: center;
+}
+
+/* Start My Receipts page */
+.borderContainer {
+	margin-bottom: 1.5em;	
+}
+.receiptExamName {
+	float: left;
+	display: block;
+	text-align: left;
+}
+.receiptExamDate {
+	float: right;
+	display: block;
+}
+#receiptEmail {
+	text-align: center;	
+}
+#receiptEmail input {
+	margin: 0 auto;	
+}
+#myReceiptsPageForm .forward {
+	padding: 1em 0;	
+}
+
+/* Start Proctor Unlock page */
+#proctorLogin {
+	border-top: none;
+	margin-top: 2.5em;	
+}
+#groupUnlockProctorID {
+	border-top: none;	
+}
+#proctorLogin h2 {
+	font-size: 1em;	
+}
+#proctorLogin label, #groupUnlockProctorID label {
+	width: 35%;
+}
+#proctorAuthenticationDiv {
+	position: relative;
+}
+#proctorAuthenticationDiv .disclaimer {
+	position: absolute;
+	bottom: 0;
+}
+#proctorAuthenticationDiv .formSectionBlock {
+	padding-bottom: 2em;
+}
+
+.testCenterInstructionalText {
+    font-size: .9em;
+    color: #000000;
+}
+
+#logo_print {
+	display: none;	
+}
+
+/* Start Photo Capture page */
+#photoCapture {
+	overflow: hidden;
+	margin-bottom: 2em;
+}
+	
+.inputArea {
+	float: left;
+	margin-right: 2%;	
+}
+.outputArea {
+	float: left;
+}
+
+#webcam, #photoCaptureOutput {
+	width:320px;
+	height:261px;
+	border:5px solid #333;
+	background:#333;
+	overflow:hidden;
+}
+
+#webcam {
+	position:relative;
+	margin-bottom: 1em;
+}
+
+#webcam > span {
+	z-index:2;
+	position:absolute;
+	color:#eee;
+	font-size:10px;
+	bottom: -16px;
+	left:152px;
+}
+
+#webcam video{
+	margin-top:-9px; /*forced vertical centering*/
+}
+
+#webcam > img {
+	z-index:1;
+	position:absolute;
+	border:0px none;
+	padding:0px;
+	bottom:-40px;
+	left:89px;
+}
+
+
+
+#webcam a {
+	background:#fff;
+	font-weight:bold;
+}
+
+#webcam a > img {
+	border:0px none;
+}
+
+#photoCaptureOutput {
+	border:5px solid #ccc;
+	background:#eee;
+}
+
+#flash {
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:5000;
+	width:100%;
+	height:500px;
+	background-color:#c00;
+	display:none;
+}
+
+object {
+	display:block;
+	position:relative;
+	z-index:1000;
+	margin-top:9px; /*forced vertical centering*/
+}
+
+.feeDisclaimer {
+	display: block;
+	padding-bottom: 1em;
+}	
+
+
+
+/* Proctor Input Specific styles */
+.twoSidedBorder {
+	border-top: 1px solid #ccc;	
+	border-bottom: 1px solid #ccc;	
+	margin: .5em 0;
+}
+
+.proctorNotification {
+	font-style: italic;
+	text-align: center;	
+	padding: .5em 0 .25em 2.5em;
+	min-height: 30px;
+	font-size: .8em;
+}
+.proctorNotification img {
+	margin-bottom: -6px; 
+	margin-right: 4px;	
+}
+
+.proctorVerificationProcess h2 {
+	border-bottom: none;
+}
+
+td.editButtonTD {
+	border-top: none;
+	padding-right: 0;	
+}
+
+td.editButtonTD .sectionEdit {
+	margin-top: 0;
+	font-size: 1.25em;
+}
+
+.verifyPhotoContainer, .proctorHasNotUnlockedMessageArea {
+	text-align: center;	
+}
+.twoSidedBorder + .proctorVerificationProcess {
+	margin-top: 2em;
+}
+
+.proctorVerificationForm {
+	margin-top: 2em;
+}
+
+
+/* Original cookies message from Pearson */
+/* Pearson websites, Privacy and cookies - NF 042012, Digital Marketing LTG */
+#cookiemsgbox{
+		width:300px;
+		right:80px;
+		bottom:60px;
+		position:fixed;
+		font-size: 1em;
+		display:none;
+		background:#faf7f1 url('/images/cookiegrad.gif') bottom left repeat-x;
+		border:1px #d2c1b5 solid;
+		box-shadow:0 0 6px 0 #A4A4A4;
+		z-index: 1000;
+		text-align: center;
+		padding: 15px;
+}
+#cookiemsgbox span{ 
+	color:#595959;
+	display:block;
+	font-size:120%;
+	font-weight:bold;
+}
+
+#cookiemsgbox input.cookieMessageLearnMoreButton, #cookiemsgbox input.cookieMessageCloseMessageButton {
+	background-color: #595959;
+	margin:0 0 0 15px;
+	padding: 6px 12px;
+	color:#fff;
+	display:inline-block;
+	cursor: pointer;
+	font-size: 14px;
+	border: 1px solid #595959;
+	-webkit-appearance: none;	
+	border-radius: 0;
+}
+
+
+
+#cookiemsgbox input.cookieMessageLearnMoreButton:focus, #cookiemsgbox input.cookieMessageLearnMoreButton:active, #cookiemsgbox input.cookieMessageCloseMessageButton:focus, #cookiemsgbox input.cookieMessageCloseMessageButton:active {
+	background-color: #000 !important;	
+}
+
+#cookiemsgbox input.cookieMessageLearnMoreButton:hover, #cookiemsgbox input.cookieMessageCloseMessageButton:hover {
+	background-color: #000 !important;		
+}
+
+ 
+
+
+
+@media print {
+	#logo_print { display: block; float: left; }
+	#logo, #welcome, #locale, .fyi { display: none; }
+	#signin, #signedIn { background: none }
+	#clientlogo { padding-top: 0; }
+	.detailsScheduleFee.displayMobileOnlyView { display: none; }
+}
+
+
+@media screen and (max-width: 480px) {
+	html {
+		-webkit-text-size-adjust: 100%;	
+	}
+	div#cookiemsgbox {
+		width: 18em;
+		right:0;
+		bottom:0;
+		font-size: 1em;
+	}
+	div#cookiemsgbox span{ 
+		color:#000;
+		font-size:1.2em;
+	}
+	.displayDesktopOnlyView, .beginTagalong, .candidateInfo, .signinImageArea, #pageInstruction, #proximityHint, #testCenterListTitle, #directionsDisclaimer, #section, #cardTypes, #profileInfoHolder, #summaryHolder h3, .printicon, .historyTable .examStatusColumn, #testCenterFormId .buttonArea, #skiplink, .historyTable .examCodeColumn, .hasMarketingBanners, .printLink, .receiptType {
+		display: none;	/* Hide elements for mobile view */
+	}
+	.displayMobileOnlyView {
+		display: block; /* Show for mobile view */	
+	}
+	td.displayMobileOnlyView, th.displayMobileOnlyView {
+		display: table-cell;
+		padding-right: .25em;
+	}
+	#maincontent {
+		padding: .25em;
+	}	
+	#accommodationsFormTable, .userNameLookupTable, .requestPasswordTable, .authorization table, .authorization td, .profileContainer, .securityQuestionTable, .usernameRetrievalTable, #requestPasswordContainer, #websitePreferencesContainer, #authenticateContainer, #switchTestingProgramsContainer, #createAccountContainer, #questionsContainer, #examRegistrationQuestionsTable, #proctorLaunch, #deliveryModeContainer, #VerifyPhoto, #photoCapture, .proctorVerificationProcess{
+		border: none; /* Remove containing element border for mobile */
+	}
+	#authenticateResultsContainer, #authenticateResultsContainerNoBiometrics {
+		border-right: none;
+		border-left: none;
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.profileContainer, #requestPasswordContainer, #websitePreferencesContainer, .userNameLookupTable, #authenticateContainer, #switchTestingProgramsContainer, #createAccountContainer, #questionsContainer, #examRegistrationQuestionsTable, #proctorLaunch, #deliveryModeContainer, #VerifyPhoto, #photoCapture, .proctorVerificationProcess{
+  		padding: 0;	
+	}
+	.authorization {
+		border-bottom: 1px solid #e0e0e0;
+		overflow: hidden;
+	}
+	.authorization table {
+		margin-left: 1em;	
+	}
+	.authorization caption {
+		width: 20em; /* Hard-coded width to stop Chrome from wrapping label */	
+		margin-left: -1em;
+		font-weight: bold;
+	}
+	#examTable td, #examTable th {
+		padding: .5em .15em;
+	}
+	#examTable.scoreTable td, #examTable.scoreTable th {
+		padding: .5em;	
+	}
+	#examTable td.moduleNameColumn {
+		padding-left: 2em;
+	}
+	#examTable td.displayMobileOnlyView {
+		padding-right: .25em;	
+	}
+	#signin, #review, #myProfile, #signedIn {
+		width: 100%;
+		max-width: none; /* Remove once screen goes 100% */
+	}
+	.helperLinks {
+		margin-bottom: .75em;	
+	}
+	#welcome {
+		margin-top: 0;
+	}
+	#welcome li {
+		background: none;	
+		padding: 0;
+		width: 2em;
+	}
+	#welcome li .displayMobileOnlyView {
+		display: inline;	
+	}
+	#welcome img {
+		padding: .15em 0 0 .25em;	
+		height: 1.75em;
+		display: inline;
+		max-width: none; /* Needed for inline alignment in IE8 */
+	}
+	#welcome a, #welcome span {
+		padding-left: 1em;
+	}
+	#showPreApproved, #showHelpModuleContentDSA, #showAvailableExams, #showMyAccountSection {
+		background-position: right center;
+		padding-right: 1.5em;
+		display: block;
+		cursor: pointer;
+	 }
+	 .formSectionBlock label, .revealFormSectionBlock label, .infoOnlyLabel, .formSectionBlock legend, .revealFormSectionBlock legend, #addressInfo .infoOnlyLabel, #paymentArea label, #accommodationsFormTable .infoOnlyLabel, #accommodationsFormTable .formSectionBlock label, .revealFormSectionBlock label, #accommodationsFormTable legend, #anywhereProctored label, #websitePreferencesContainer .formSectionBlock label, #websitePreferencesContainer .formSectionBlock legend, .formblock #labelPassword, .formblock #labelPasswordStrength, .formblock #labelConfirmPassword, #allDetails .infoOnlyLabel, .CCIDModalLink, #createAccountForm #createAccountContainer label, #createAccountForm #createAccountContainer label#labelPassword, #createAccountForm #createAccountContainer label#labelConfirmPassword, .formblock #labelPasswordStrength, #proctorLogin label, #groupUnlockProctorID label, #questionsContainer span.value_nonEditable {
+		width: 100%;
+		text-align: left;
+		display: block;
+		float: none;
+		clear: none;
+		padding-left: .5em;
+	}
+	
+	
+	
+	#questionsContainer fieldset .infoOnlyValue {
+		margin-top: -1em;	
+	}
+	.formSectionBlock .infoOnlyLabel label, #questionsContainer .infoOnlyValue span.value_nonEditable {
+		padding-left: 0;	
+	}
+	.formSectionBlock input + label  {
+		width: auto;
+	}
+	#createAccountForm #createAccountContainer label#labelConfirmPassword {
+		clear: left;	
+	}
+	#createAccountContainer .formblock #labelPasswordStrength {
+		width: auto;
+		display: inline;
+		float: left;
+	}
+	#createAccountContainer #inputPassword {
+		margin-bottom: 1.25em;	
+	}
+	#createAccountContainer #checkButton {
+		margin-top: 1em;	
+	}
+	.infoOnlyBlock .infoBlock label {
+		padding-left: 0;
+	}
+	.infoOnlyValue {
+		width: 100%;
+	}
+	.profileContainer .infoOnlyValue, .profileContainer legend {
+		padding-left: .5em;	
+		margin-left: 0;
+	}
+	.formSectionBlock .radioTable label, .revealFormSectionBlock .radioTable label {
+		clear: none;
+		display: inline;
+		float: left;
+		text-align: left;
+		width: auto;
+		margin-right: 2em;
+	}
+	#paymentOptions .radioTable label {
+		clear: none;
+		display: inline;
+		text-align: left;
+		width: auto;
+		margin-right: 2em;
+	}
+	#billingSectionOne h3, #billingSectionOne p,#chargeNoteCustom {
+		padding-left: .5em;	
+	}
+	.formblock, .infoBlock {
+		margin: 0;
+	}
+	input[type="text"], input[type="text"]:focus, input[type="password"], input[type="password"]:focus, select, select:focus {
+		padding: .75em;	
+	}
+	.componentSeparator, .alienRegistration-A {
+		padding: .5em 0 .75em 0;	
+	}
+	input[type="password"], input[type="text"], #testCentersNearAddress, #requestPasswordContainer input[type="password"], #requestPasswordContainer #pwStrengthGroup {
+		width: 85%;  
+	}
+	.nestedFormBlock input[type="password"], .nestedFormBlock input[type="text"], .nin input[type="password"], .nin input[type="text"] {
+		width: auto;	
+	}
+	
+	#testCentersNearAddress {
+		display: block;	
+	}
+	#examTable th input[type="image"], .historyTable th input[type="image"] {
+		display: none;	
+	}
+	#examContainer .right, #examGroupContainer .right {
+		float: none;	
+	}
+	#signinArea, #signinChatLinkArea, #SignInForm, #signinAreaMobile {
+		float: none;
+		width: 100%;
+		border-top: 1px solid #e0e0e0;
+	}
+	#SignInForm {
+		border-bottom: 1px solid #e0e0e0;
+		border-right: none;
+		border-left: none;
+		margin-bottom: 2em;
+		padding: 0;
+	}
+	#copyright {
+		text-align: left;	
+		margin: 0 2%;
+	}
+	h1 {
+		font-size: 1.3em;
+		clear: both;
+		margin-top: 0;
+	}
+	h2, #EOT .summaryArea h3 {
+		font-size: 1em;	
+	}
+	.providedBy h2, .helpModule h2, #registrationSection, #upcomingAppt, #upcomingNoAppt, #myAccountSection, #onlineExams, #selectedCentersArea h2, #readyToSchedule, #regLicSection {
+		border-radius: 0;	
+		margin: 0;
+	}
+	#upcomingAppt, #onlineExams {
+		border-bottom: none;	
+	}
+	#upcomingNoAppt h2, #upcomingNoAppt .none {
+		padding: 0;	
+	}
+	h3 {
+		font-size: .9em;	
+	}
+	.profileContainer h3, #createAccountContainer h3 {
+		font-size: 1.15em;	
+	}
+	.profileContainer h3 .normal, #createAccountContainer h3 .normal {
+		font-size: .9em;	
+	}
+	#logo {
+		width: 10em;
+		text-align: left;
+	}
+	#clientlogo {
+		padding-left: 0;
+		text-align: right;
+	}
+	.webAccommodationChoiceTable {
+		padding: 0;	
+	}
+	
+	#selectedCentersArea {
+		padding-top: 1em;	
+		float: none;
+		width: 100%;
+	}
+	#calendarArea, #advancedSearch, .expanded, .averageTestLength {
+		width: auto;
+		float: none;
+		margin-left: 0;
+	}
+	#calendarArea {
+		clear: both;
+		padding-top: .5em;
+	}
+	.tc_name {
+		font-weight: normal;
+	}
+	#selectedCentersTable {
+		border: none;	
+	}
+	#selectedCentersTable tr td:first-child {
+		display: none;	
+	}
+	#selectedCentersTable td {
+		margin: 0;
+	}	
+	#mobileCalendarDiv h2 {
+		margin-bottom: .5em;	
+	}
+	
+	#registrationSection, #upcomingAppt, #onlineExams, #myAccountSection, #upcomingNoAppt, #instruction_summary, #availableFormsSection, #readyToSchedule, #regLicSection {
+		float: none;
+		width: 100%;
+	}
+	#myAccountSection {
+		margin-top: 1.5em;	
+	}
+	#myAccountSection .personalInfo_link {
+		padding-bottom: 0.5em;
+		padding-top: 0.5em;
+		background-position: .25em .75em;
+		font-size: 1em;
+	}
+	#upcomingNoAppt {
+		border: none;	
+		margin-top: 1em;
+	}
+	#upcomingNoAppt h2 {
+		background: #fff;
+		border: 0;
+	}	
+	#upcomingNoAppt p {
+		margin: 0;
+	}	
+	#examTable a, .historyTable a {
+		text-decoration: none;
+		color: #000;
+	}
+	#viewScoreReportsForm a.btnPositiveNoModal:link, #viewScoreReportsForm .btnPositiveNoModal {
+		background-color: none;
+	}
+	#jsf_proximitySearch, #singleSearch {
+		text-align: center;	
+	}
+	.formSectionBlock input#addressSearch {
+		margin: 1em auto 0 auto;
+		font-size: 1em;
+		padding: .4em .75em;
+	}
+	#map_area_Container {
+		display: none;
+	}
+	#mobileStepTracker {
+		float: none;
+		text-align: right;
+		clear: both;
+		margin-top: -.5em;
+	}
+	#upcomingAppt .futureappt .detailsExamName {
+		font-weight: bold;
+		margin-bottom: 0;
+	}
+	.warning {
+		margin: .25em 0;	
+	}
+	#policies {
+		border-left: 0;
+		border-right: 0;
+		padding: 0 .5em;
+	}
+	#policies ul {
+		margin-left: 1em;
+		padding-left: 1em;
+		margin-bottom: 1em;
+	}
+	#confirmPolicies, #confirmPoliciesError {
+		text-align: left;
+	}
+	.paymentTotal th {
+		width: auto;
+	}	
+	input[type="text"]#SecurityCodeField, input[type="text"]#phoneCountryCode, input[type="text"]#TelephoneField, input[type="text"]#billingAddressId_phoneCountryCodeId, input[type="text"]#billingAddressId_telephoneFieldId, input[type="text"]#editPrimary_editAddressGridTELEPHONE, input[type="text"]#editPrimary_editAddressGridMOBILE_PHONE, input[type="text"]#editPrimaryAddress_editAddressGridTELEPHONE, input[type="text"]#editPrimaryAddress_editAddressGridMOBILE_PHONE, input[type="text"]#editSecondary_editAddressGridTELEPHONE, input[type="text"]#editSecondary_editAddressGridMOBILE_PHONE, input[type="text"]#editSecondaryAddress_editAddressGridTELEPHONE {
+		width: auto;
+	}
+	#countryLink, #policyArea h3, #policyArea h2  {
+		margin-left: 0;	
+	}
+	#ambiguousSearchSection {
+		margin: 0;	
+	}
+	#selectedCentersArea p, .averageTestLength, .veryImportantText, .contactETA, #policyArea, #summaryDisclaimer, #instruction_summary, #cancelSummaryArea .disclaimer, #checkPassCertificatePageFormId p, #checkPassCertificatePageFormId p.requiredText, .timeOutParagraph {
+		margin-left: .5em;	
+	}
+	#accommodationMessage {
+		margin-left: .5em;
+		display: block;
+	}
+	#summaryHolder {
+		float: none;
+		width: 100%;
+	}
+	#OrderSummary #summary {
+		width: auto;	
+	}
+	
+	#cancelSummaryArea {
+		width: 100%;
+		border: 0;
+		margin-bottom: 1em;
+	}
+	#instruction_summary {
+		width: 98%;	
+	}
+	#OrderConfirmForm .orderDetails {
+		margin-bottom: 1em;
+	}
+	#OrderConfirmForm .forward, #OrderConfirmForm .previous  {/* 3 button alignment adjustments */
+		float: none;
+	}
+	#OrderConfirmForm .forward {
+		margin-bottom: 1em;	
+	}
+	#OrderConfirmForm .previous {
+		text-align: left;	
+	}
+	#EOT {
+		border: none;	
+	}
+	#EOT h2, #instruction_summary h2 {
+		margin-left: 0;	
+	}
+	.ibtMessage, .confirmation {
+		margin-right: 0;	
+	}
+	.changeCell a, .changeCell #changeExamButton  {
+		background: none;	
+	}
+	.changeCell img {
+		max-width: none;	
+	}
+	#currentAppt {
+		margin-bottom: 1em;	
+	}
+	#preferredMobileCalendarDiv {
+		padding-left: 1.5em;
+		padding-top: .5em;
+	}
+	.authorization table, .authorization thead, .authorization tbody, .authorization th, .authorization td, .authorization tr, .profileContainer table, .profileContainer tbody, .profileContainer td, .profileContainer tr, #createAccountContainer td { 
+		display: block;
+		width: 100%;
+		float: left;
+		clear: left;
+	}
+	#createAccountContainer .radioTable td {
+		display: table-cell;
+		width: auto;
+		float: none;
+		clear: inherit;
+	}
+	#createAccountContainer #collectCommPref .radioTable td {
+		display: block;
+		width: 100%;
+		float: left;
+		clear: left;
+		padding-top: 1em;
+	}
+	#collectCCID .radioTable {
+		padding-top: 1em;	
+	}
+	.authorization th { 
+	 position: absolute !important;
+	   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	   clip: rect(1px, 1px, 1px, 1px);
+	}
+	.profileContainer td {
+		padding-top: 1em;	
+	}
+	input[type="text"].countryCodeInput {
+		width: auto;	
+	}
+	input[type="text"].telephoneNumberInput {
+		width: 50%
+	}
+	.countryCodeLookup {
+		margin-left: 0;
+	}
+	.profileContainer .neverSellEmailAddressesContainer, #createAccountContainer .neverSellEmailAddressesContainer {
+		padding-left: .5em;
+	}
+	#subtotalZero .btn_edit {
+		margin-bottom: 2em;	
+	}
+	.forward .btn {
+		margin-bottom: .5em;	
+	}
+	#OrderConfirmSubmitForm .forward .btn {
+		margin-bottom: 2em;	
+	}
+	.right.sampleCheck {
+		float: none;
+		text-align: left;
+		padding-left: .5em;
+	}
+	.sampleCheck {
+		margin-top: 1em;	
+	}
+	.echeckTermsContainer {
+		margin-left: 10%;
+		margin-top: 1.5em;
+	}
+	#anywhereProctored input {
+		clear: both;
+		padding: .4em .75em;	
+		margin-top: 1em;
+		font-size: 1em;
+	}
+	.selectButton {
+		display: block;
+		height: 3em;
+		width: 3em;
+	}
+	.viewScoreReportColumn a.btnPositiveNoModal:link {
+		background: none;	
+	}
+	#viewScoreReportsForm .examStatusColumn, #viewScoreReportsForm .examCodeColumn {
+		display: none;	
+	}
+	#viewScoreReportsForm .viewScoreReportColumn {
+		width: 35px;	
+	}
+	#passwordTipsArea {
+		float: none;
+		width: auto;
+	}
+    #securityTipsArea {
+   		float: none;
+   		width: auto;
+   	}
+	#pwStrengthGroup {
+		margin-top: 0;	
+	}
+	#newPassword {
+		margin-bottom: 1em;	
+	}
+	#labelPasswordStrength {
+		margin-bottom: 0;	
+	}
+	.formblock #labelConfirmPassword {
+		clear: left;	
+	}
+	.scorereport_photo {
+		float: none;
+		text-align: center;
+		width: auto;
+		margin-bottom: 1em;
+	}
+	.scorereport_photo img {
+		max-width: none;	
+	}
+	#authenticateResultsContainer {
+		width: auto;	
+	}
+	#jsf_databaseSearch input.btn_edit, #filterExamList .btn_link_dialog, #filterExamList .btn_link {
+		font-size: 1em;
+		padding: .4em .75em;
+		margin-left: .5em;
+		margin-top: 1em;
+	}
+	#dbTestCenterFormId .buttonArea {
+		display: none;	
+	}
+	.advisory {
+		margin-left: .5em;	
+	}
+	.examSelection td {
+		padding-left: 0;	
+	}
+	#scheduleExamReviewsForm a.btnPositiveNoModal:link, #scheduleExamReviewsForm .btnPositiveNoModal {
+		background: none;
+	}
+	#allDetails .infoOnlyValue {
+		width: auto;
+	}
+	.infoOnlyValue.alertContainer {
+		padding-left: 2.5em;	
+	}
+	.currentExam {
+		padding: 0;	
+	}
+    #signUpForm #createAccountContainerWrapper, #signUpForm #createAccountContainer {
+		width: 100%;	
+	}
+	#collectCCID {
+		border-top: 1px solid #e0e0e0;	
+		padding-top: 1em;
+	}
+	#createAccountContainer .formSectionBlock legend {
+		float: none;
+		padding-left: .5em;
+	}
+	#signUpForm .buttonArea {
+		width: auto;
+		padding: 0 0 .25em 0;
+	}
+	#OrderSummary .warning_textonly {
+		margin-right: 0;	
+	}
+	#switchClient {
+		text-align: left;
+	}
+    #passwordTipsArea {
+   		margin-top: .5em;
+   		padding-bottom: 0;
+   	}
+    #securityTipsArea {
+   		margin-top: .5em;
+   		padding-bottom: 0;
+   	}
+	#passwordTipsArea p {
+		margin-top: .5em;	
+	}
+	#usernameInstructions, #securityInstructions {
+		padding: .75em .25em .75em .75em;
+		border-radius: 5px;
+	}
+	.profileContainer p {
+		margin-right: 5em;	
+	}
+	#questionsContainer input + label span, #questionsContainer table input + label {
+		display: block;
+		margin-left: .5em;
+		padding-left: 1.5em;
+	}
+	
+	#questionsContainer table.radioTable input + label {
+		padding-left: 0;
+		margin-left: 0;
+	}
+	#questionsContainer table.radioTable {
+		width: 100%;	
+	}
+	#questionsContainer input + label span.required {
+		display: inline;
+		margin-left: 0;
+		padding-left: 0;	
+	}
+	.receiptExamDate {
+		float: none;
+		clear: both;	
+		text-align: left;
+		padding-top: .5em;
+	}
+	#applyDiscount.btn, #applyVoucher.btn, #applyPromo.btn {
+		display: block;
+		clear: both;
+		margin: .75em 0 0 .5em;	
+	}
+	#questionsContainer input + label {
+		display: inherit; /* Added to fix what I thought was a hack - to align the check box when the label wraps onto multiple lines */
+	}
+
+	#categoryContainer .btn_edit_ajx {
+		clear: both;
+		float: right;
+		font-size: 1em;
+		margin: 1em 8% 0 auto;
+		padding: 0.4em 0.75em;
+		width: auto;
+	}
+
+	.organizationSearchComponent .fieldLevelError, .organizationSearchTable {
+		margin-top: 1.25em;
+	}
+	.organizationSearchResults tr, .srchSelection.organizationSearchSelection tr{
+		border-bottom: 1px solid #e0e0e0;;
+		display: block;
+	}
+	.organizationSearchResults td, .srchSelection.organizationSearchSelection td {
+		display: block;
+		border: none;
+		padding: 0 .5em 0 .5em;
+	}
+	.srchSelection.organizationSearchSelection .removeButtonColumn {
+		padding-top: 1em;
+		padding-bottom: .5em
+	}
+	.organizationSearchResults thead, .srchSelection.organizationSearchSelection thead {
+		display: none !important;
+	}
+	.organizationSearchResults .pseudoHeader , .srchSelection.organizationSearchSelection .pseudoHeader {
+		display: block !important;
+		color: #000;
+		font-weight: bold;
+		padding-left: 0px;
+	}
+	.organizationSearchTable .btn_edit_ajx {
+		float: left !important;
+	}
+	.organizationSearchResults .srchRsltsCell {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.organizationSearchResults td .singleSelectButton {
+		padding-top: 1em;
+	}
+
+
+	.profile_topButtonArea {
+		display: none;
+	}
+	.upsellButtonArea {
+		padding-top: .5em;
+		padding-bottom: .5em;
+		overflow: hidden;
+	}
+	.upsellButtonArea .confirmDecision-dialog, .productButton {
+		width: auto;
+		float: right;	
+	}
+	.productPrice, .productModalPrice {
+		width: auto;
+		float: left;	
+		margin-top: .5em;
+	}
+	.productName {
+		clear: both;	
+	}
+	.leftColumn {
+		margin: 1em  auto;
+		text-align: center;
+	}
+	.leftColumn img {
+		padding-bottom: 1em;	
+	}
+	.productLongDesc {
+		padding-top: 1em;
+		clear: both;
+	}
+	.orderDetails td {
+		border-top: none;	
+	}
+	.orderDetails tr {
+		border-bottom: 1px solid #e0e0e0;	
+	}
+    input[type="button"].clearTextButton {
+        font-size: 1.2em;
+        margin-top: .5em !important;
+    }
+	#RPPolicies.formSectionBlock legend, #RPPolicies.formSectionBlock label {
+		text-align: left;
+		float: none;
+	}	
+	#RPPolicies fieldset label, #RPPolicies.formSectionBlock select {
+		margin-top: 20px;
+		display: block;	
+		margin-left: 0;
+	}
+	#RPPolicies fieldset input[type="checkbox"] {
+		margin-left: 0;	
+	}
+	#RPPolicies .formblock {
+		margin-bottom: 2em;	
+	}
+	#RPPolicies.formSectionBlock label {
+		margin-left: 20px;	
+		width: auto;
+	}
+	#RPPolicies fieldset input[type="checkbox"] {
+		margin-left: -20px;	
+	}
+	#RPPolicies .formblock {
+		margin-bottom: 2em;	
+	}
+	#proctorAuthenticationDiv .formSectionBlock {
+		padding-bottom: 5em;
+	}
+	
+}
+
+
+@media screen and (max-width: 600px) {
+	#jsf_proximitySearch .formSectionBlock label, #singleSearch .formSectionBlock label {
+		text-align: left;
+		display: block;
+		float: none;
+		clear: none;
+		padding-left: .5em;
+		width: auto;
+	}
+	#testCentersNearAddress {
+		width: 82%;
+		display: block;
+		padding-right: .75em;
+		padding: .75em;
+	}
+	.formSectionBlock input#addressSearch, .searchButtonContainer .btn_edit_display {
+		margin: 1em auto 0 auto;
+		float: right;
+		clear: both;
+		width: auto;
+		margin-right: 8%;
+		font-size: 1em;
+		padding: .4em .75em;
+	}
+	#proximityHint {
+		display: none;
+	}
+	input[type="button"].clearTextButton {
+		font-size: 1.2em;
+		margin-top: .15em;
+
+	}
+	
+	.changeCell img {
+		max-width: none;	
+	}
+	.changeCell .btn_remove, .changeCell #changeexambutton {
+		background: none;	
+	}
+	.changeCell .displayMobileOnlyView {
+		display: block;	
+	}
+	.changeCell .displayDesktopOnlyView {
+		display: none;	
+	}
+	.changeCell a, .changeCell #changeExamButton {
+		background: none;
+	}
+	#createAccountContainer select, #questionsContainer select, #switchTestingProgramsContainer select {
+		width: 92%;	
+	}
+	#createAccountContainer .dateComponent select, #questionsContainer .dateComponent select, #fasttrackCredentials select, #createAccountContainer #editPrimaryAddress_editAddressGridADDRESS_TYPE, #createAccountContainer #editPrimaryAddress_editAddressGridCOUNTRY, .quantityCol input {
+		width: auto;	
+	}
+	#questionsContainer label + span.hideRow + table {
+		margin-top: .5em;	
+	}
+	#testCenterCodeSearch {
+		display: block;
+		padding: .75em;
+		margin: 0;
+	}
+	#multiSearch #testCentersNearAddress {
+		width: 95%;
+	}
+	#multiSearch .formSectionBlock input#addressSearch, .searchButtonContainer .btn_edit_display {
+		margin: 0;	
+	}
+	#deliveryModeContainer #APEArea label {
+		padding-left: 2em;
+		clear: none;
+		display: block;
+		float: none;
+		text-align: left;
+		width: auto;
+		margin-right: 2em;
+	}
+	#deliveryModeContainer #APEArea fieldset legend {
+		margin-bottom: 1.5em;
+	}
+	#proctorAuthenticationDiv .formSectionBlock {
+		padding-bottom: 5em;
+	}
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+
+    #filterExamListForm input[type="button"].clearTextButton {
+		margin-top: .15em;
+	}
+}
+
+/*media query accounting for PAC selection display error on IPAD and phones*/
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	.formblock #pacOptions{
+		min-width: 30em;
+		padding-top: 10px;
+		padding-left: 3em;
+	}
+	#deliveryModeContainer #radioTable1 legend{
+		text-align: left !important;
+		white-space: nowrap;
+	}
+}
+
+@media screen and (max-width: 635px) {
+	.orderDetails table, .orderDetails thead, .orderDetails tbody, .orderDetails th, .orderDetails td, .orderDetails tr,
+	.completed .examDescriptionCol, .completed .apptDescriptionCol, 
+	.futureappt table, .futureappt thead, .futureappt tbody, .futureappt th, .futureappt td, .futureappt tr, .futureappt .examDescriptionCol, .futureappt .apptDescriptionCol, #upcomingAppt .futureappt td.examDescriptionCol, #upcomingAppt .futureappt td.apptDescriptionCol, .futureappt .orderInfoCol { 
+		display: block;
+		width: 100%;
+		float: left;
+		clear: left;
+	}
+	.orderDetails th, #upcomingAppt .futureappt h3, .futureappt th { 
+	 position: absolute !important;
+	   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	   clip: rect(1px, 1px, 1px, 1px);
+	}
+	.orderDetails .actionCol, .orderDetails .price, .futureappt .actionCol {
+		display: none;	
+	}
+	.orderDetails .detailsExamName, .detailsScheduleFeeLabel {
+		float: left;
+	}
+	.detailsExamPrice.displayMobileOnlyView, .detailsScheduleFee.displayMobileOnlyView {
+		display: block;	
+	}
+	.examDescriptionCol .confirmDecision-dialog, .futureappt .rescheduleLink, .futureappt .cancelLink, .productDescriptionCol .confirmDecision-dialog {
+		float: right;
+		margin-top: 1.5em;
+		margin-right: .25em;
+		display: inline;
+	}
+	.launchIBT .cancelLink {
+		margin-top: -.5em;	
+	}
+	.detailsScheduleFee {
+		float: right;
+		margin-right: 2em;
+		display: inline;
+	}
+	.futureappt .cancelLink {
+		clear: both;	
+	}
+	.futureappt .apptActionsCol {
+		display: none;	
+	}
+	
+	.detailsExamPrice {
+		clear: left;	
+	}
+	#subtotal {
+		float: none;
+		width: auto;
+	}
+	#subtotal table {
+		float: none;	
+	}
+	#cartPaymentInfo {
+		float: none;
+		margin-top: 1em;
+		width: 100%;
+	}
+	#subtotal input {
+		display: block;
+		margin: .5em auto;
+		width: auto;
+	}
+	.displayMobileOnlyView .btn_remove, .displayMobileOnlyView .btn_link, .displayMobileOnlyView .product_remove {
+		background: #F2F1EF url("images/remove_icon.png") no-repeat left;
+		padding: .5em .5em .5em 2em;
+		color: black;
+		border: 1px solid black;
+		text-decoration: none;
+		font-size: .9em;
+	}
+	.checkPassTable .displayMobileOnlyView .btn_link, .historyTable .displayMobileOnlyView .btn_link, .receiptsTable .displayMobileOnlyView .btn_link {
+		background: none;
+		padding: 0;
+		border: none;
+	}
+	.rescheduleLink.displayMobileOnlyView .btn_link {
+		background: #F2F1EF url("images/icon_change.png") no-repeat left;
+		padding: .5em .5em .5em 2em;
+		color: black;
+		border: 1px solid black;
+		text-decoration: none;
+		font-size: .9em;
+	}
+	.launchIBT a {
+		padding-left: 2.75em;	
+	}
+	.btn_warning {
+		background:url(/webresources/testtaker/images/icon_warning.gif) no-repeat;
+		padding: .25em 0 .25em 2.5em;
+		min-height: 30px;
+		margin-top: 1em;
+		display: block;
+	}
+	#profileInfoHolder .infoOnlyValue {
+		clear: left;	
+	}
+	.tcInfo_cell, .directions {
+		float: none;
+		width: 100%;
+	}
+	#topBar h1 {
+		clear: none;	
+	}
+	.examDescriptionCol .description, .apptDescriptionCol .rescheduleLink, .apptDescriptionCol .cancelLink {
+		padding-right: 1em;	
+	}
+	.deliminator {
+		margin-bottom: 1em;	
+		text-align: center;
+	}
+	.proctorVerificationProcess .displayMobileOnlyView {
+		display: block;
+	}
+	#proctorAuthenticationDiv .formSectionBlock {
+		padding-bottom: 5em;
+	}
+}
+
+/* At this width, hide the sticky div if it exists, and expand the module list to 100%. */
+@media screen and (max-width: 750px) {
+    #selectedModuleResults {
+        display: none;
+    }
+    #moduleList.withSticky {
+        width: 100%;
+    }
+	#map_provider {
+		display: none;	
+	}
+	#testCenterList, #centerTable {
+		width: 100%;
+	}
+	#selectedCentersArea table {
+		width: auto;
+		border: none;
+	}
+	.topButtonArea {
+		display: none;	
+	}
+
+    .ui-autocomplete .ui-menu-item a {
+        line-height: 2;
+        padding: 0.2em 0.4em;
+    }
+}
+
+
+@media screen and (max-width: 998px) {
+	#SignInForm .formSectionBlock label, #SignInForm .formSectionBlock legend {
+		text-align: left;
+		display: block;
+		float: none;
+		clear: none;
+		padding-left: .5em;
+		width: 21em;
+	}
+}
+
+
+@media screen and (min-width: 701px) {
+	
+	#signUpForm .dob_select_fields, #signUpForm #inputGENDER { /* IE7/IE9 comp. hack */
+		*display: block;
+		*float: left;
+		*margin-left: 17em;
+		*margin-top: -1em;
+	}	
+	
+	
+}
+
+@media screen and (min-width: 998px) {
+	#SignInForm .dob_select_fields { /* IE7/IE9 comp. hack */
+		*display: block;
+		*float: left;
+		*margin-left: 13.25em;
+		*margin-top: -1em;
+	}
+	
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 700px) { 
+	#section { /* Hide step-tracker before it cuts off */
+		display: none;
+	}
+	.candidateInfo {
+		display: none;	
+	}
+	#mobileStepTracker.displayMobileOnlyView { /* Display mobile step tracker */
+		display: block;
+		text-align: right;
+	}
+	.printicon {
+		margin-top: 0;	
+	}
+    #signUpForm #createAccountContainerWrapper {
+        width: auto;
+        float: none;
+    }
+	#signUpForm #createAccountContainer {
+		width: auto;
+	}
+	#signUpForm .buttonArea {
+		width: auto;
+		padding: 0 0 .25em 0;
+	}
+	#signinAreaMobile {
+		display: block;	
+	}
+	#signinArea2, #infoBox {
+		display: none;	
+	}
+	.right.sampleCheck {
+		float: none;
+		text-align: left;
+		margin-left: 36%;
+		clear: both;
+		margin-top: 0;
+		margin-bottom: 1em;
+	}
+	#createAccountContainer label, #signUpForm #createAccountContainer label, #signUpForm #createAccountContainer legend, #createAccountContainer #ccidGroup, #createAccountContainer .infoOnlyLabel, #createAccountContainer legend, #signUpForm #createAccountContainer .nestedFormBlock legend, #createAccountContainer .nestedFormBlock legend, #signUpForm #createAccountContainer .chooseOneGroupFormSectionBlock legend, #signUpForm #createAccountContainer .chooseOneGroupFormSectionBlock .nestedFormBlock legend, .formblock #labelPasswordStrength {
+		width: auto;
+		float: none;
+		clear: left;
+		text-align: left;
+	}
+	.CCIDModalLink {
+		width: auto;
+		float: none;
+		clear: left;
+		text-align: left;
+		display: block;
+	}
+	.countryCodeLookup {
+		margin-left: 0;	
+	}
+	#editCommunicationPreferences .countryCodeLookup {
+		margin-left: 35%;	
+	}
+	#createAccountContainer input, #createAccountContainer select, #createAccountContainer .infoOnlyValue {
+		margin-left: 0;	
+	}
+	#createAccountContainer #editPrimaryAddress_editAddressGridTELEPHONE, #createAccountContainer #editPrimaryAddress_editAddressGridMOBILE_PHONE, #createAccountContainer #editPrimary_editAddressGridTELEPHONE, #createAccountContainer #editPrimary_editAddressGridMOBILE_PHONE {
+		margin-left: .5em;	
+	}
+	#createAccountContainer #fasttrackCredentials select {
+		margin-right: .5em;	
+	}
+	.formblock #labelPasswordStrength {
+		text-align: left;
+		width: auto;
+	}
+	#createAccountContainer #inputPassword {
+		margin-bottom: 1em;	
+	} 
+	.errorContainer {
+		padding: .5em;	
+	}
+	.deliminator {
+		margin-bottom: 1em;	
+		text-align: center;
+	}
+	#proctorAuthenticationDiv .formSectionBlock {
+		padding-bottom: 5em;
+	}
+	
+}
+
+@media screen and (min-width: 481px) and (max-width: 905px) {
+	#calendarArea, #advancedSearch, .expanded, .averageTestLength {
+		width: auto;
+		float: none;
+		margin-left: 0;
+	}
+	#selectedCentersArea {
+		float: none;
+		padding-top: 1.5em;
+		width: 100%;
+	}
+	#selectedCentersArea .tableRowClickEffect {
+		background: #fff;
+		color: #000;
+	}
+	#map_provider {
+		height: 335px;
+		/*width: 100%;  - FUTURE STORY */
+		width: 335px;
+		padding: 0;
+	}
+	.productDetails {
+		width: 55%;
+		display: inline-block;	
+	}
+	
+}
+
+@media screen and (min-width: 906px) {
+	.productDetails {
+		width: 68%;
+		display: inline-block;	
+	}	
+}
+
+@media screen and (min-width: 701px) {
+	.mktgOptIn, .neeaOptIn {
+     	margin-left: 35%;
+  	}
+	#signUpForm .mktgOptIn {
+		margin-left: 40%;	
+	}
+	#signUpForm #createAccountContainer label, #signUpForm #createAccountContainer legend {
+		width: 40%;
+	}	
+	#createAccountContainer #ccidGroup {
+		width: 40%;
+		float: left;
+		clear: left;
+		text-align: right;
+	}
+	#createAccountContainer legend #ccidGroup {
+		width: auto;
+		float: none;
+		clear: none;
+		text-align: inherit;
+	}
+	#multiSearch .proximity {
+		width: 59%;
+		float: left;	
+		border-right: 1px solid #e0e0e0;
+	}
+	#multiSearch .deliminator {
+		float: left;
+		padding: 3em .5em;	
+		text-align: center;
+	}
+	#multiSearch .testCenterCode {
+		width: 30%;
+		float: right;
+		padding-bottom: 1em;	
+		
+	}	
+	#multiSearch #ambiguousSearchSection {
+		margin: 1em 0 0 10%;
+	}
+	
+	
+}
+
+
+@media screen and (min-width: 481px) {
+	.displayMobileOnlyView {
+		display: none; /* Hide for desktop view */	
+	}
+	#signin, #review, #myProfile, #signedIn {
+		max-width: 1500px;	
+	}
+	#welcome {
+		margin-top: 1.5em;
+	}
+	#welcome li {
+		background: url("images/welcome_divider.gif") no-repeat left center;
+		padding: 0 10px;
+	}
+	.formSectionBlock label, .revealFormSectionBlock label, .infoOnlyLabel, .formSectionBlock legend, .revealFormSectionBlock legend {
+		text-align: right;
+		display: block;
+		float: left;
+		clear: left;
+	}
+	#RPPolicies.formSectionBlock legend, #RPPolicies.formSectionBlock label {
+		text-align: left;
+		float: none;
+	}	
+	#RPPolicies fieldset label, #RPPolicies.formSectionBlock select {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		display: block;	
+		margin-left: 0;
+	}
+	#RPPolicies.formSectionBlock label {
+		margin-left: 20px;	
+	}
+	#RPPolicies fieldset input[type="checkbox"] {
+		margin-left: -20px;	
+	}
+	
+	#RPPoliciesForm .errorContainer {
+		margin-bottom: 5px;	
+	}
+	#questionsContainer label, #questionsContainer fieldset {
+		text-align: left;
+		display: block;
+		float: none;
+		margin-left: 1em;
+	}
+	#questionsContainer .infoOnlyLabel {
+		text-align: left;
+		display: block;
+		float: none;
+	}
+	#questionsContainer .value_nonEditable {
+		margin-left: .75em;
+	}	
+	#questionsContainer label {
+		margin-bottom: 1.25em;	
+	}
+	#questionsContainer fieldset select {
+		margin-left: 0;
+		margin-right: .5em;
+	}
+	#questionsContainer label .required, #questionsContainer legend .required {
+		margin-left: -.5em;
+	}
+	#questionsContainer select, #questionsContainer input, #questionsContainer .value_nonEditable {
+		margin-left: 1.25em;	
+	}
+	#questionsContainer th input {
+		margin-left: 0;	
+	}
+	#questionsContainer input[type="button"].clearTextButton {
+		margin-left: -1.5em;
+	}
+    #questionsContainer input[type="text"].clearInputX {
+        padding-right: 2.25em;
+    }
+	
+	#createAccountContainer #ccidGroup label {
+		float: none;
+		clear: none;
+		width: auto;
+		text-align: inherit;
+	}
+	
+	.formSectionBlock .radioTable label, .revealFormSectionBlock .radioTable label, #createAccountContainer .radioTable label {
+		display: inline;
+		width: auto;
+		text-align: left;
+		float: left;
+		clear: none;
+	}
+	#contactDetails .formSectionBlock label, #contactDetails .infoOnlyLabel, #contactDetails .formSectionBlock legend, #accommodationsFormTable .infoOnlyLabel, #accommodationsFormTable .formSectionBlock label, #accommodationsFormTable legend, .userNameLookupTable label, .requestPasswordTable label, .profileContainer label, .profileContainer legend, .profileContainer .revealFormSectionBlock label, .profileContainer .revealFormSectionBlock legend, .profileContainer .infoOnlyLabel, #requestPasswordContainer label, #authenticateContainer label, #authenticateResultsContainer .infoOnlyLabel, #createAccountContainer label, #createAccountContainer legend, #createAccountContainer .infoOnlyLabel, #authenticateResultsContainerNoBiometrics .infoOnlyLabel, #communicationHistory .infoOnlyLabel, #proctorLaunch label,  .requestPasswordTable label, .requestPasswordTable legend, #attNumber label, #deliveryModeContainer label, #deliveryModeContainer legend, #deliveryModeContainer .infoOnlyLabel, #VerifyPhoto label, #VerifyPhoto legend, #VerifyPhoto .infoOnlyLabel, .proctorVerificationProcess label  {
+		width: 35%;
+	}
+	#VerifyPhoto .infoOnlyValue {
+		width: 	60%;
+	}
+
+	#VerifyPhoto .candidateSkippedMessage legend{
+		width: auto;
+	}
+	
+	#deliveryModeContainer input[type="radio"] + label {
+		width: auto;
+		display: inline-block;
+	}	
+	
+	#createAccountContainer .infoOnlyLabel label, .profileContainer .infoOnlyLabel label, #communicationHistory .infoOnlyLabel label {
+		width: 100%;	
+	}
+	.infoOnlyBlock .questionsReadOnly label, .infoOnlyBlock .questionsReadOnly legend {
+		width: auto;
+		padding-right: 4em;
+	}
+	
+	#signUpForm #createAccountContainer .chooseOneGroupFormSectionBlock legend, .profileContainer .chooseOneGroupFormSectionBlock legend {
+		width: auto;	
+		text-align: left;
+		float: none;
+	}
+	#signUpForm #createAccountContainer .nestedFormBlock legend, .profileContainer .nestedFormBlock legend {
+		width: 40%;
+		float: left;
+		text-align: right;
+	}
+	#websitePreferencesContainer .formSectionBlock label, #websitePreferencesContainer .formSectionBlock legend {
+		width: 20%	
+	}
+  	.profileContainer .neverSellEmailAddressesContainer, #createAccountContainer .neverSellEmailAddressesContainer {
+     		margin-left: 36%;
+  	}
+	
+	#contactDetails .infoOnlyValue, #accommodationsFormTable .infoOnlyValue, .profileContainer .infoOnlyValue, #authenticateResultsContainer .infoOnlyValue, #authenticateResultsContainerNoBiometrics .infoOnlyValue, #createAccountContainer .infoOnlyValue, #communicationHistory .infoOnlyValue, #deliveryModeContainer .infoOnlyValue {
+		width: 60%;	
+	}
+	#signUpForm #createAccountContainer .radioTable label, #deliveryModeContainer table {
+		width: auto;	
+	}
+	
+	
+	#websitePreferencesContainer table {
+		width: 78%;	
+	}
+	.securityQuestionTable label {
+		clear: none;
+		display: block;
+		float: none;
+		padding-left: 0.5em;
+		text-align: left;
+		width: 100%;
+}
+	.formblock, .infoBlock, .nestedFormBlock {
+		margin: 0.5em 0;
+	}
+		input[type="text"], input[type="text"]:focus, input[type="password"], input[type="password"]:focus, select, select:focus {
+		padding: .25em;	
+	}
+	#signinArea, #signinChatLinkArea {
+		margin-left: 3%;
+		padding: 1em;
+		float: right;
+		width: 35%;
+		clear: right;
+	}
+	
+	#registrationSection, #upcomingNoAppt, #myAccountSection, #upcomingAppt, #onlineExams, #availableFormsSection, #readyToSchedule, #regLicSection {
+		float: left;
+		width: 70%;
+		clear: left;
+	}
+	#subtotal .summary_label {
+		white-space: nowrap;
+	}
+	#signUplabel {
+		display: block;	
+	}
+	#questionsContainer input + label span {
+		display: block;
+		margin-left: .75em;
+		padding-left: 2.25em;
+	}
+	#questionsContainer input + label span.required {
+		display: inline;
+		margin-left: 0;
+		padding-left: 0;
+	}
+	#questionsContainer label span.advisory_label, #questionsContainer legend span.advisory_label {
+		margin-left: -1em;
+		padding: 0 0 0.25em 2.5em;
+	}
+	.profileContainer .sectionEdit {
+		position: absolute;
+		right: 0;
+		margin-top: -1.5em;
+	}
+	.receiptsTable .receiptType {
+		width: 10%;	
+	}
+	.receiptsTable .priceColumn, .receiptsTable .viewScoreReportColumn {
+		width: 20%;	
+	}
+	.productThumb {
+		float: left;
+		padding-right: 1em;
+	}
+	.upsellButtonArea {
+		float: right;	
+		text-align: right;
+	}
+	.productDescription {
+		margin-right: 30px;
+	}
+	.leftColumn {
+		margin: 1em 1em 1em 0;
+		float: left;
+		display: inline;
+		width: 25%;
+	}
+	.productLongDesc {
+		float: left;
+		width: 70%;
+		margin-top: 1em;
+	}
+	#quickResultsForm .statusColumn, #quickResultsForm .regIDColumn, #quickResultsForm .dateColumn {
+		width: 15%;	
+	}
+	#proctorAuthenticationDiv .formSectionBlock {
+		padding-bottom: 3.5em;
+	}
+	
+}
+/*This targets the IPAD in Landscape and Portrait*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    #questionsContainer input[type="button"].clearTextButton {
+        margin-left: -2.25em;
+    }
+    #filterExamListForm input[type="button"].clearTextButton {
+        margin-left: -2.25em;
+    }
+	#LocationCodeForm input[type="button"].clearTextButton {
+		margin-left: -2.25em;
+	}
+}
+/*This will target the IPHONE and IPOD in Landscape only*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+    #questionsContainer input[type="button"].clearTextButton {
+        margin-left: -2.75em;
+    }
+    #filterExamListForm input[type="button"].clearTextButton {
+        margin-left: -2.75em;
+    }
+	#LocationCodeForm input[type="button"].clearTextButton {
+		margin-left: -2.75em;
+	}
+
+}
+
+
+@media only screen and (max-device-width: 568px) and (orientation: portrait) {
+    #questionsContainer input[type="button"].clearTextButton {
+       margin-left: -2.5em;
+    }
+    #filterExamListForm input[type="button"].clearTextButton {
+        margin-left: -2.5em;
+    }
+	#LocationCodeForm input[type="button"].clearTextButton {
+		margin-left: -2.5em;
+	}
+	/*#DashBoardForm input[type="button"].personalSettingsLink {
+		margin-left: -2.5em;
+	}*/
+
+}
+
+.errors {
+	color: red;
+}

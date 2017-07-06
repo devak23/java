@@ -1,0 +1,714 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en"
+      class=" eventlistener canvas video multiplebgs hsla mediaqueries borderradius boxshadow fontface">
+<head>
+  <base href="/RA/">
+  <title> Pearson VUE - AppleSystems, Inc. - Create a Web Account: Step 1 </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">window.RICH_FACES_EXTENDED_SKINNING_ON = true;</script>
+  <script src="js/skinning.js" type="text/javascript"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name="DCSext.VUE_PAGE_VIEW" content="CiscoTESTING_VUE_CAPVA_SIGNUP">
+  <meta name="DCSext.CLIENT_CODE" content="CiscoTESTING">
+
+  <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="css/rwd.css">
+  <link rel="stylesheet" type="text/css" href="css/webng_liquid.css">
+  <link rel="stylesheet" class="component" href="css/jquery-ui-base-liquid.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/cookiemsg.css">
+  <link rel="stylesheet" href="css/unsupported_browser.css">
+  <link rel="stylesheet" href="css/toaster.min.css">
+
+
+  <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="js/respond.min.v1.4.2.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.9.2.basic.min.js"></script>
+  <script type="text/javascript" src="js/jquery.json-2.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery.bgiframe-2.1.2.min.js"></script>
+  <script type="text/javascript" src="js/testtaker-fx.js"></script>
+  <script type="text/javascript" src="js/pwd_meter.js"></script>
+  <script type="text/javascript" src="js/modalSize.js"></script>
+  <script type="text/javascript" src="js/ITSBrowserStrategies.js"></script>
+  <script type="text/javascript" src="js/ABEBrowserStrategy.js"></script>
+  <script type="text/javascript" src="js/secureBrowser.js"></script>
+  <script type="text/javascript" src="js/cordova.js"></script>
+  <script type="text/javascript" src="js/ITSUI.js"></script>
+  <script type="text/javascript" src="js/defaultFormActionButton.js"></script>
+
+  <style type="text/css">
+  .outOfTheWay {
+    display: none;
+    visibility: hidden;
+    clear: both;
+  }
+  </style>
+  <script type="text/javascript"><!--
+
+  var timeoutInSeconds = 1800;
+  var warnPeriodMinutes = 5;
+  var sessionTimeoutPage = "/testtaker/common/SessionExpired.htm?clientCode=AppleTESTING";
+  var sessionWarningModalTitle = "Timeout Warning";
+  var timeoutWarningOKButtonText = "I need more time";
+
+  //--></script>
+  <script type="text/javascript" src="js/timeout.js"></script>
+  <script type="text/javascript" src="js/ie9patch.js"></script>
+  <script type="text/javascript" language="javascript"><!--
+
+  /*<![CDATA[*/
+  // This code below was included to prevent double click action.
+  // on all html input element with 'type' = 'submit', meaning it
+  // it will prevent double cilck only on buttons.
+  var $$ = jQuery.noConflict();
+
+  $$('form').submit(function () {
+    $$(':submit', this).click(function () {
+      return false;
+    });
+  });
+
+  function doFocus(x, y) {
+    var oDiv = x.parentNode.parentNode;
+    oDiv.style.background = (y) ? '#ececec' : '#FFFFFF';
+  }
+
+  function doFocusMultiple(x, y) {
+    var oDiv = x.parentNode.parentNode.parentNode;
+    oDiv.style.background = (y) ? '#ececec' : '#FFFFFF';
+  }
+  /*]]>*/
+
+  //--></script>
+  <script type="text/javascript" src="js/SignUp.js"></script>
+  <script type="text/javascript" src="js/signInRedirect.js"></script>
+  <script type="text/javascript"><!--
+
+  /*<![CDATA[*/
+  // cdata needed because i'm using an '&&' in my js code below.
+
+  var $$ = jQuery.noConflict();
+
+  if ("false".toLowerCase() === "true") {
+    signInRedirect.performSignInRedirect("", "AppleTESTING");
+  }
+
+  var okLabel = "OK";
+  var cancelLabel = "Cancel";
+  var myAutoOpen = false;
+  $$(document).ready(function () {
+    $$("#privacyOptInDialog").dialog({
+      title: "Privacy Policy Acceptance",
+      width: 490,
+      height: 310,
+      position: 'center',
+      resizable: true,
+      autoOpen: !myAutoOpen,
+      bgiframe: true,
+      fontSize: 15,
+      modal: true,
+      closeOnEscape: false,
+      beforeClose: function (event, ui) {
+        beforeOptInClose();
+        focsOnFirstInput();
+      },
+      buttons: {
+        "Yes, I agree to the policies": function () {
+          onOptInOkClick($$("#privacyOptInDialog"));
+        },
+        "No, I do not agree to the policies": function () {
+          onOptInCancelClick($$("#privacyOptInDialog"));
+        }
+      }
+    });
+
+  });
+
+
+  var optInOkButtonWasClicked = false;
+  function onOptInOkClick(modalThing) {
+    closeOptInErrorDivs();
+    optInOkButtonWasClicked = true;
+    if (isOptInChecked()) {
+      $$(modalThing).dialog('close');
+    } else {
+      showDiv("#errorOptInUnCheckedAndHitOK");
+    }
+    optInOkButtonWasClicked = false;
+  }
+
+  function onOptInCancelClick(modalThing) {
+    closeOptInErrorDivs();
+    setOptInChecked(false);
+    $$(modalThing).dialog('close');
+  }
+
+  function closePrivacyOptInDialog() {
+    $$('#privacyOptInDialog').dialog('close');
+    return false;
+  }
+
+  function beforeOptInClose() {
+    //return false;
+    if (isOptInChecked() && optInOkButtonWasClicked) {
+      // Woo Hoo, All good here!  Continue on with registration!
+    } else {
+      sendUserToNonCompliancePage();
+    }
+  }
+
+  function setOptInChecked(isChecked) {
+    $$("#privacyOptInAcceptanceCheckBox").attr('checked', isChecked);
+  }
+
+  function isOptInChecked() {
+    var isOptInChecked = $$("#privacyOptInAcceptanceCheckBox").attr('checked');
+    return isOptInChecked;
+  }
+
+  function sendUserToNonCompliancePage() {
+    window.location.href = '/testtaker/common/StartOverMessage.htm?clientCode=AppleTESTING';
+  }
+
+  function showDiv(divName) {
+    $$(divName).removeClass("hidden");
+    $$(divName).addClass("alert");
+    $$(divName).show();
+  }
+  function hideDiv(divName) {
+    $$(divName).hide();
+  }
+  function closeOptInErrorDivs() {
+    hideDiv("#errorOptInUnCheckedAndHitOK");
+    hideDiv("#errorOptInPleaseUncheck");
+  }
+
+  function privacyOptInAcceptanceCheckBoxChanged(element) {
+    if (isOptInChecked()) {
+
+      $$("#agreeToPrivacyOptIn").val("true");
+    } else {
+      $$("#agreeToPrivacyOptIn").val("false");
+    }
+  }
+
+
+  /*]]>*/
+
+  //--></script>
+  <script type="text/javascript"><!--
+
+  var $$ = jQuery.noConflict();
+  var linkClicked = false;
+  $$(document).ready(function () {
+    // from defaultFormActionButton.js:
+    // this needs to be done before registering the "please wait" dialog
+    // so the default button will also trigger the dialog on form submit
+    if (enableDefaultButton) {
+      enableDefaultButton();
+    }
+
+    enableConfirmDialog('.showConfirm',
+      "Are you sure you want to leave this page? You have unsaved changes that will be lost.  Would you like to continue?", "",
+      "Yes",
+      "No",
+      "Confirm",
+      "Please Wait...",
+      "Processing Request");
+
+
+    // This code below was included to prevent double click action.
+    // on all html input element with 'type' = 'submit', meaning it
+    // it will prevent double cilck only on buttons.
+    $$('form').submit(function () {
+      $$(':submit', this).click(function () {
+        return false;
+      });
+    });
+
+    $$('.btn, .btn_link, .href_link, .btn_edit, .btn_cart, .btn_info, .btn_select, .personalInfo_link, .btnPositive').click(function () {
+      progressDialog("Please Wait...",
+        "Processing Request");
+    });
+  });
+  // prevent double click on an anchor link as well as selection of another link if one
+  // has already been selected.
+  function preventSecondClick(evt) {
+    if (!linkClicked) {
+      progressDialog("Please Wait...",
+        "Processing Request");
+      linkClicked = true;
+    } else {
+      if (evt.preventDefault) {
+        evt.preventDefault();
+      } else {
+        evt.keyCode = 0;
+        evt.returnValue = false;
+      }
+    }
+  }
+  /*<![CDATA[*/
+  // /testtaker/Template.xhtml
+  function doFocus(x, y) {
+    //				var oDiv = x.parentNode.parentNode;
+    //				oDiv.className = (y) ? 'tableRowFocus ' : 'tableRow';
+  }
+
+  function doFocusMultiple(x, y) {
+    //				var oDiv = x.parentNode.parentNode.parentNode;
+    //				oDiv.className = (y) ? 'tableRowFocus ' : 'tableRow';
+  }
+  /*]]>*/
+
+  //--></script>
+  <script src="js/modernizr.min.js" type="text/javascript"></script>
+  <script src="js/unsupportedBrowser.js" type="text/javascript"></script>
+  <script type="text/javascript"><!--
+
+  //<![CDATA[
+  // This is the skiplink javascript. This makes the skip link work for WebKit browsers (e.g. Safari and Chrome. It must appear after both the skip link and skip target, so the bottom of the page is best
+  var is_webkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1;
+  var is_opera = navigator.userAgent.toLowerCase().indexOf('opera') > -1;
+  if (is_webkit || is_opera) {
+    var target = document.getElementById('skipToMainContent');
+    target.href = "#skipToMainContent";
+    target.setAttribute("tabindex", "0");
+    document.getElementById('skiplink').setAttribute("onclick", "document.getElementById('skipToMainContent').focus();");
+  }
+
+  // This is the context check javascript
+  var $$ = jQuery.noConflict();
+  function isMobileContext() {
+    return ($$(".displayMobileOnlyView").length > 0) && ($$(".displayMobileOnlyView").css("display") != 'none');
+  }
+
+  function isiPad() {
+
+    return navigator.userAgent.match(/iPad/i) != null;
+  }
+
+  function isiPhone() {
+
+    return navigator.userAgent.match(/iPhone/i) != null;
+  }
+  //]]>
+
+  //--></script>
+  <script type="text/javascript" src="js/firstMessageFocus.js"></script>
+  <script type="text/javascript" src="js/firstFieldFocus.js"></script>
+  <script type="text/javascript" src="js/cookiemsg.js"></script>
+  <script type="text/javascript"><!--
+  checkPrivacyCookie('<span class="cookieMessageTitle">Privacy and Cookies</span><p>This website stores cookies on your computer which help us make the website work better for you.</p><input type="button" class="cookieMessageLearnMoreButton" name="Learn more" value="Learn more" onclick="javascript: window.open(&#39;/legal/privacy/#cookies&#39;, &#39;_blank&#39;, &#39;&#39;)"/><input type="button" class="cookieMessageCloseMessageButton" name="Close this message" value="Close this message" onclick="javascript:createPrivacyCookie()"/>');
+  //--></script>
+  <script type="text/javascript" src="js/modalAccessibility.js"></script>
+</head>
+<body data-ng-app="RegistrationAssistant" data-ng-controller="TempController">
+<div class="outOfTheWay">
+
+</div>
+<span><a name="skipToMainContent" id="skipToMainContent" tabindex="0" href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/CISCOTESTING#skipToMainContent"></a></span>
+
+<div class="unsupported-browser-wrapper" style="display: none">
+  <div class="unsupported-browser-container">
+    <p>The version of your browser or using Compatibility View is not supported
+      for this site. Please upgrade to a <a
+          id="supportedBrowserPageLink"
+          href="https://www2.pearsonvue.com/testtaker/common/UnsupportedBrowserHelp.htm?clientCode=AppleTESTING"
+          target="_blank">supported browser.</a>
+    </p>
+    <span class="unsupported-browser-btns buttonArea">
+      <input type="submit" id="acceptUnSupportedBrowserPolicyId"
+             class="btn_nojs" value="I understand">
+    </span>
+  </div>
+</div>
+
+<div id="signin">
+  <div id="container">
+    <a id="skiplink"
+       href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#skipToMainContent"
+       class="skip" title="Go to the main content"
+       onclick="document.getElementById(&#39;skipToMainContent&#39;).focus();">Go
+      to the main content</a>
+    <div id="topnav" role="banner">
+      <form id="languageSelectionForm" name="languageSelectionForm"
+            method="post"
+            action="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING"
+            enctype="application/x-www-form-urlencoded">
+        <div id="locale"><span id="languageSelectionForm:languageLabel">Language:</span>&nbsp;
+          <strong>English (US)&nbsp;&nbsp;
+          </strong>&nbsp;|&nbsp;
+          <strong>
+          </strong>
+          <script type="text/javascript"><!--
+
+
+          function oamSetHiddenInput(formname, name, value) {
+            var form = document.forms[formname];
+            if (typeof form.elements[name] != 'undefined' && form.elements[name].nodeName == 'INPUT') {
+              form.elements[name].value = value;
+            }
+            else {
+              var newInput = document.createElement('input');
+              newInput.setAttribute('type', 'hidden');
+              newInput.setAttribute('id', name);
+              newInput.setAttribute('name', name);
+              newInput.setAttribute('value', value);
+              form.appendChild(newInput);
+            }
+
+          }
+
+          function oamClearHiddenInput(formname, name, value) {
+            var form = document.forms[formname];
+            var hInput = form.elements[name];
+            if (typeof hInput != 'undefined') {
+              form.removeChild(hInput);
+            }
+
+          }
+
+          function oamSubmitForm(formName, linkId, target, params) {
+
+            var clearFn = 'clearFormHiddenParams_' + formName.replace(/-/g, '\$:').replace(/:/g, '_');
+            if (typeof window[clearFn] == 'function') {
+              window[clearFn](formName);
+            }
+
+            var form = document.forms[formName];
+            var oldTarget = form.target;
+            if (target != null) {
+
+              form.target = target;
+            }
+            if ((typeof params != 'undefined') && params != null) {
+
+              for (var i = 0, param; (param = params[i]); i++) {
+                oamSetHiddenInput(formName, param[0], param[1]);
+              }
+
+            }
+
+            oamSetHiddenInput(formName, formName + ':' + '_idcl', linkId);
+
+            if (form.onsubmit) {
+              var result = form.onsubmit();
+              if ((typeof result == 'undefined') || result) {
+                try {
+                  form.submit();
+                }
+                catch (e) {
+                }
+              }
+
+            }
+            else {
+              try {
+                form.submit();
+              }
+              catch (e) {
+              }
+            }
+
+            form.target = oldTarget;
+            if ((typeof params != 'undefined') && params != null) {
+
+              for (var i = 0, param; (param = params[i]); i++) {
+                oamClearHiddenInput(formName, param[0], param[1]);
+              }
+
+            }
+
+            oamClearHiddenInput(formName, formName + ':' + '_idcl', linkId);
+            return false;
+          }
+
+          //--></script>
+          <a href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#"
+             onclick="return oamSubmitForm(&#39;languageSelectionForm&#39;,&#39;languageSelectionForm:locale_en_GB&#39;);"
+             id="languageSelectionForm:locale_en_GB" lang="en" class="btn_link">English
+            (UK)</a>&nbsp;|&nbsp;
+          <strong>
+          </strong><a
+              href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#"
+              onclick="return oamSubmitForm(&#39;languageSelectionForm&#39;,&#39;languageSelectionForm:locale_zh_CN&#39;);"
+              id="languageSelectionForm:locale_zh_CN" lang="zh-CN"
+              class="btn_link">中文</a>&nbsp;|&nbsp;
+          <strong>
+          </strong><a
+              href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#"
+              onclick="return oamSubmitForm(&#39;languageSelectionForm&#39;,&#39;languageSelectionForm:locale_ko_KR&#39;);"
+              id="languageSelectionForm:locale_ko_KR" lang="ko"
+              class="btn_link">한국어</a>&nbsp;|&nbsp;
+          <strong>
+          </strong><a
+              href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#"
+              onclick="return oamSubmitForm(&#39;languageSelectionForm&#39;,&#39;languageSelectionForm:locale_ja_JP&#39;);"
+              id="languageSelectionForm:locale_ja_JP" lang="ja"
+              class="btn_link">日本語</a>
+
+          &nbsp;
+        </div>
+        <input type="hidden" name="languageSelectionForm_SUBMIT" value="1">
+        <input type="hidden" name="javax.faces.ViewState"
+               id="javax.faces.ViewState"
+               value="oAhOjoP2n6lyWAlcePsEn8bqZjK3MRrgE1gJmFoJSClmRlzCeXafEiGnvqm3aI2essy4T3aq97ajkIdf51T8T+x6MrBqdXw+hjvVOUBFCHfU8A/oFtMYRZAMfEGExqEK">
+      </form>
+      <div>
+        <!--<div id="clientlogo">-->
+          <!--<img src="images/apple-testing.png" alt="company logo">-->
+          <!--&lt;!&ndash;<img data-ng-src="images/{{ userSelection.client }}-testing.png" alt="company logo">&ndash;&gt;-->
+        <!--</div>-->
+
+      </div>
+      <div id="logo"></div>
+    </div>
+
+    <div id="maincontent" role="main">
+
+      <span><a name="skipToMainContent" id="skipToMainContent" tabindex="0"
+               href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#skipToMainContent"></a></span>
+
+      <script type="text/javascript"><!--
+
+      //<![CDATA[
+      var is_webkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1;
+      var is_opera = navigator.userAgent.toLowerCase().indexOf('opera') > -1;
+      if (is_webkit || is_opera) {
+        var target = document.getElementById('skipToMainContent');
+        target.href = "#skipToMainContent";
+        target.setAttribute("tabindex", "0");
+        document.getElementById('skiplink').setAttribute("onclick", "document.getElementById('skipToMainContent').focus();");
+      }
+      //]]>
+
+      //--></script>
+
+  <toaster-container toaster-options="{'time-out': 20000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+
+  <div class="animated fadeIn" ng-view></div>
+
+
+
+
+      <div role="contentinfo">
+        <div id="copyright" style="clear: both;">
+                <span class="copyrightTextHolder">Copyright © 1996-2016 Pearson Education, Inc. or its affiliate(s). All rights reserved.
+					<a href="https://www2.pearsonvue.com/legal/appterms/" id="termsLink"
+             target="_blank"
+             title="Opens in a new window">Terms</a> | <a
+                      href="https://www2.pearsonvue.com/legal/appprivacy/"
+                      id="privacyLink" target="_blank"
+                      title="Opens in a new window">Privacy</a> | <a
+                      href="https://www2.pearsonvue.com/contact/"
+                      id="contactLink" target="_blank"
+                      title="Opens in a new window">Contact</a><br>
+					<br>
+			<script type="text/javascript"><!--
+
+
+      var deliveryBrowser = new DeliveryBrowserStrategyChain();
+
+      $$(document).ready(function () {
+        if (deliveryBrowser.isBrowserRunning()) {
+          if (isiPad()) {
+            $$('#closeMobileAppDeliveryBrowserFooter').attr('class', '');
+          } else {
+
+            $$('#closeDeliveryBrowserFooter').attr('class', '');
+          }
+        }
+      });
+
+      //--></script>
+			<div class="closeWindow">
+				<a id="closeDeliveryBrowserFooter" class="outOfTheWay"
+           href="javascript:deliveryBrowser.closeWindow();">Close Window</a>
+			</div>
+            <div class="closeWindow">
+                <a id="closeMobileAppDeliveryBrowserFooter" class="outOfTheWay"
+                   href="javascript:deliveryBrowser.closeWindow();">Return to App Menu</a>
+            </div>
+                </span>
+        </div>
+        <img src="images/ajax-loader.gif" alt="" height="0" width="0">
+      </div>
+    </div>
+
+    <div id="progressDialog"></div>
+    <div id="messageDialog"></div>
+    <div id="confirmDialog" role="alertdialog"
+         aria-describedby="confirmDialog"></div>
+    <div
+        class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable ui-dialog-buttons"
+        tabindex="-1" role="dialog" aria-labelledby="ui-id-1"
+        style="display: none; outline: 0px; z-index: 1000; position: absolute;">
+      <div
+          class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span id="ui-id-1" class="ui-dialog-title">Timeout Warning</span>
+        <a href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/CiscoTESTING#"
+           class="ui-dialog-titlebar-close ui-corner-all" role="button"><span
+            class="ui-icon ui-icon-closethick">close</span></a>
+      </div>
+      <div id="warnOfSessionExpiring" role="alertdialog"
+           aria-describedby="warnOfSessionExpiring"
+           class="ui-dialog-content ui-widget-content">
+        <p>Your login session is about to expire. Do you need more time?</p>
+      </div>
+      <div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div>
+      <div
+          class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"
+          style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <div class="ui-dialog-buttonset">
+          <button type="button"
+                  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                  role="button"
+                  aria-disabled="false"><span class="ui-button-text">I need more time</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+        class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable ui-dialog-buttons"
+        tabindex="-1" role="dialog" aria-labelledby="ui-id-2"
+        aria-describedby="privacyOptInDialog"
+        style="outline: 0px; z-index: 1002; position: absolute; height: auto; width: 490px; top: 696px; left: 607px; display: none;">
+      <div
+          class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span
+          id="ui-id-2"
+          class="ui-dialog-title">Privacy Policy Acceptance</span><a
+          href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#"
+          class="ui-dialog-titlebar-close ui-corner-all" role="button"><span
+          class="ui-icon ui-icon-closethick">close</span></a>
+      </div>
+      <div id="privacyOptInDialog" class="ui-dialog-content ui-widget-content"
+           scrolltop="0" scrollleft="0" tabindex="0"
+           style="width: auto; min-height: 0px; height: 194px;">
+        <div id="privacyCheckBoxContainer" title="Check box for opt in"><input
+            type="checkbox"
+            name="privacyOptInAcceptanceCheckBox"
+            id="privacyOptInAcceptanceCheckBox"
+            value="true"
+            onchange="privacyOptInAcceptanceCheckBoxChanged(this);">
+        </div>
+
+        <div id="privacyLabelContainer">
+          <div id="errorOptInUnCheckedAndHitOK" class="alert"
+               style="display: none;">The checkbox must be selected if you
+            agree to the policies.
+          </div>
+          <label id="optInTextLabel" for="privacyOptInAcceptanceCheckBox">By
+            accessing this website and checking the box you
+            understand, acknowledge, agree, and accept the Pearson VUE Business
+            Group’s (“Pearson VUE”), a business of NCS
+            Pearson, Inc., <a
+                onclick="winPop=window.open(&#39;/legal/appprivacy.html&#39;, &#39;ppinfo&#39;, &#39;resizable=yes,scrollbars=yes,width=600,height=400&#39;);winPop.focus()"
+                target="ppinfo" href="https://www2.pearsonvue.com/legal/appprivacy/"
+                title="Opens in new window">Privacy and
+              Cookies Policy<span
+                  class="screenreaderHint"> - Opens in new window</span></a>
+            including the collection of
+            your data and the monitoring of your entire testing session through the
+            use CCTV and the Terms and Conditions
+            regarding our use of cookies and the processing operations of your
+            personal data to support your testing
+            experience. By providing your personal information you consent to the
+            collection, use, transfer, and processing
+            of your personal data to Pearson VUE located in the U.S., its authorized
+            third parties which may be located in
+            the U.S. or outside of the country where you are located, and the test
+            program owner, as the data controller,
+            that may be located outside of the country where you are located. In
+            addition, some test program owners have
+            their own, possibly different, privacy policies.
+          </label>
+        </div>
+      </div>
+      <div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div>
+      <div
+          class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"
+          style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <div class="ui-dialog-buttonset">
+          <button type="button"
+                  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                  role="button"
+                  aria-disabled="false"><span class="ui-button-text">Yes, I agree to the policies</span>
+          </button>
+          <button type="button"
+                  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                  role="button"
+                  aria-disabled="false"><span class="ui-button-text">No, I do not agree to the policies</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+        class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable ui-dialog-buttons"
+        tabindex="-1" role="dialog" aria-labelledby="ui-id-3"
+        style="display: none; outline: 0px; z-index: 1000; position: absolute;">
+      <div
+          class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span
+          id="ui-id-3"
+          class="ui-dialog-title">What is this?</span><a
+          href="https://www2.pearsonvue.com/testtaker/profile/create/SignUp/AppleTESTING#"
+          class="ui-dialog-titlebar-close ui-corner-all" role="button"><span
+          class="ui-icon ui-icon-closethick">close</span></a>
+      </div>
+      <div id="whatIsCCIDDiv" class="ui-dialog-content ui-widget-content">
+        <p><span style="font-weight: bold;">Apple ID:</span>
+        </p>
+      </div>
+      <div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div>
+      <div
+          class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"
+          style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div>
+      <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <div class="ui-dialog-buttonset">
+          <button type="button" id="whatIsCCIDDiv_close_btn_modal"
+                  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                  role="button"
+                  aria-disabled="false"><span
+              class="ui-button-text">Close Window</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/angular.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/angular-route.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/angular-messages.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/toaster.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="modules/app.js" charset="UTF-8"></script>
+<script type="text/javascript" src="modules/app_routes.js" charset="UTF-8"></script>
+<script type="text/javascript" src="modules/filters.js" charset="UTF-8"></script>
+<script type="text/javascript" src="modules/directives.js" charset="UTF-8"></script>
+<script type="text/javascript" src="modules/controllers.js" charset="UTF-8"></script>
+<script type="text/javascript" src="modules/services.js" charset="UTF-8"></script>
+</html>

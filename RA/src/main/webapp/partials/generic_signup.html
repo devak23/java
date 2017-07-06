@@ -1,0 +1,386 @@
+<div class="">
+  <div class="headblock">
+    <section-title text="Create a Web Account: Step 1" user-selection="userSelection"></section-title>
+    <!--<h1>Apple Inc. - Create a Web Account: Step 1 </h1>-->
+  </div>
+  <p id="mobileStepTracker" class="displayMobileOnlyView">1 of 4
+  </p>
+  <div id="section">
+    <div id="progress4step">
+      <div id="bar" class="s1">
+        <div id="marker"></div>
+      </div>
+    </div>
+    <p class="screenreaderHint">The following steps are tracking your progress.</p>
+    <ol id="steps" class="text_4step">
+      <li id="enterPersonalInformation_1_of_4_active" class="stepactive">
+        <span class="displayDesktopOnlyView">Enter Personal Information</span>
+        <span class="screenreaderHint"> (Current Step)</span>
+      </li>
+      <li id="contactInformation_2_of_4" class="step">
+        <span class="displayDesktopOnlyView">Contact Information</span>
+      </li>
+      <li id="additionalInformation_3_of_4" class="step">
+        <span class="displayDesktopOnlyView">Additional Information</span>
+      </li>
+      <li id="createAccount_4_of_4" class="step">
+        <span class="displayDesktopOnlyView">Create Account</span>
+      </li>
+    </ol>
+  </div>
+  <h2><span id="title">Enter Personal Information</span></h2>
+  <p class="requiredText"><span id="signUpMessage">Required information is marked with an asterisk (*).</span></p>
+  <p class="romanAlphabet">Enter information on this page in the Roman alphabet. (Alphanumeric)</p>
+
+  <form id="signUpForm" name="signUpForm" data-ng-submit="loadStep2(signUpForm, 'contactInfo')" novalidate >
+    <div id="createAccountContainerWrapper">
+      <div id="createAccountContainer">
+        <input type="hidden" id="agreeToPrivacyOptIn"
+               name="agreeToPrivacyOptIn" value="true">
+        <div id="signinAreaMobile" class="displayMobileOnlyView">
+          <h2><span id="signInTitleMobile"><a
+              href="https://www2.pearsonvue.com/testtaker/signin/SignInPage.htm?clientCode=CiscoTESTING"
+              class="href_link">Returning users, please sign in</a></span>
+          </h2>
+
+          <h2 class="screenreaderHint"><span id="privacyTitleMobile">Privacy Policy</span>
+          </h2>
+
+          <p><span id="privacyTextMobile">If you have questions about how your personal information may be used, please read our <a
+              onclick="winPop=window.open(&#39;/legal/appprivacy.html&#39;, &#39;ppinfo&#39;, &#39;resizable=yes,scrollbars=yes,width=600,height=400&#39;);winPop.focus()"
+              target="ppinfo"
+              href="https://www2.pearsonvue.com/legal/appprivacy/">Privacy Policy</a>.</span>
+          </p>
+
+        </div>
+        <div class="formSectionBlock" id="collectCCID" data-ng-if="userSelection.client">
+          <h3><span id="labelHeaderSignUp">New users, please sign up for a web account</span>
+          </h3>
+          <script type="text/javascript"><!--
+
+
+          /*<![CDATA[*/
+          // cdata needed because i'm using an '&&' in my js code below.
+          var $$ = jQuery.noConflict();
+          $$(function () {
+            capvaSignUp.performOnLoadEvent("Please Note", 'Since you have received your Cisco ID, you might save time if you return to this site when you have your Cisco ID with you. Or, you may proceed without your Cisco ID.', 'You might save time if you return to this site when you have your Cisco ID with you. Or, you may proceed without it.', "Close Window");
+          });
+          /*]]>*/
+
+          //--></script>
+          <div class="formblock">
+            <div class="">
+              <fieldset>
+                <legend>
+                  <span id="ccidGroup">
+                    <span id="signUplabel" class="">
+                      <span class="required">*</span>Do you know your {{ userSelection.client | capitalize }} ID?
+                    </span>
+                    <span class="CCIDModalLink"></span>
+		<div id="JustADumbDivToHideThisModalDivOnPageLoad" class="outOfTheWay">
+
+		</div>
+		<script type="text/javascript"><!--
+
+    /*<![CDATA[*/
+    var $$ = jQuery.noConflict();
+    $$(document).ready(function () {
+      $$("#whatIsCCIDDiv").dialog({
+        title: "What is this?",
+        width: 450,
+        height: 320,
+        autoOpen: false,
+        position: 'center',
+        resizable: true,
+        bgiframe: true,
+        modal: true,
+        closeOnEscape: true,
+        buttons: [{
+          text: "Close Window",
+          click: function () {
+            $$(this).dialog("close");
+          },
+          id: "whatIsCCIDDiv_close_btn_modal"
+        }]
+      });
+    });
+    function openCCIDDialog() {
+      $$("#whatIsCCIDDiv").dialog("open");
+    }
+    /*]]>*/
+
+    //--></script></span>
+                </legend>
+                <table cellspacing="0" role="presentation"
+                       class="radioTable">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <label>
+                        <input id="candidateIdOptions:0"
+                               type="radio"
+                               name="candidateIdOptions"
+                               value="1"
+                               onclick="capvaSignUp.handleRadioClick(this, &#39;true&#39;)">
+
+                      </label>
+                    </td>
+                    <td>
+                      <label for="candidateIdOptions:0">Yes, my {{ userSelection.client | capitalize}} ID is:</label>
+                      <br>
+                      <label id="test" class="screenreaderHint" for="candidateId">Yes, my Apple ID is:</label>
+                      <input id="candidateId"
+                             name="candidateId" type="text"
+                             data-ng-model="userSelection.applicant.person.id"
+                             value="" maxlength="30"
+                             size="30" class=""
+                             onfocus="capvaSignUp.doFocusCsandidateId(this,candidateIdOptions)"
+                             autocomplete="off" readonly="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>
+                        <input id="candidateIdOptions:2"
+                               type="radio"
+                               name="candidateIdOptions" value="3"
+                               onclick="capvaSignUp.handleRadioClick(this, &#39;true&#39;)">
+                      </label>
+                    </td>
+                    <td><label for="candidateIdOptions:2">No, I do not know my {{ userSelection.client | capitalize}} ID.</label></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </fieldset>
+              <input type="hidden" id="firstModalDisplayedFlag"
+                     name="firstModalDisplayedFlag" value="false"><input
+                type="hidden" id="secondModalDisplayedFlag"
+                name="secondModalDisplayedFlag" value="false"><span
+                id="liveAuthorized" style="display:none">false</span><input
+                type="hidden" id="hiddenInputCCID"
+                name="hiddenInputCCID" value="">
+            </div>
+          </div>
+        </div>
+
+        <div class="formSectionBlock" id="collectPersonalInfo">
+          <h3><span id="labelHeaderPersonal">Personal</span></h3>
+          <p><span id="personalMessage" class="emphasizeText">IMPORTANT: YOU MUST ENTER YOUR LEGAL NAME EXACTLY AS IT APPEARS ON THE IDENTIFICATION YOU WILL PRESENT AT THE TEST CENTER.</span>&nbsp;<span
+              id="personalMessage2">If there is not an exact match, you will not be able to take your test and you will not be reimbursed for any fees paid.</span>
+          </p><input type="hidden"
+                     id="validatePrevalidated_personalInfoComponent"
+                     name="validatePrevalidated_personalInfoComponent"
+                     value="1">
+          <div id="personalConfigSalutationFieldPanelGroup"
+               class="formblock">
+            <div id="personalConfigSalutationFieldErrorContainer" class="">
+              <span id="personalConfigSalutationFieldMessage"></span>
+              <span class=""><label
+                  id="editPersonalInformationGridSALUTATIONlabel"
+                  for="editPersonalInformationGridSALUTATION"><span
+                  id="editPersonalInformationGridSALUTATIONlabelText">Title:</span>
+ <span class="labelDescription">Example: Mr., Ms., Mrs., Dr.</span></label>
+                  </span>
+              <input id="editPersonalInformationGridSALUTATION"
+                     data-ng-model="userSelection.applicant.person.title"
+                     name="editPersonalInformationGridSALUTATION"
+                     type="text" value="" maxlength="50"
+                     size="30" class="">
+            </div>
+          </div>
+          <div id="personalConfigFirstNameFieldPanelGroup"
+               class="formblock">
+            <div id="personalConfigFirstNameFieldErrorContainer" class="">
+              <span id="personalConfigFirstNameFieldMessage"></span>
+              <span class=""><label
+                  for="editPersonalInformationGridFIRST_NAME"><span
+                  class="required">*</span>First Name / Given Name:</label>
+                  </span>
+              <input id="editPersonalInformationGridFIRST_NAME"
+                     data-ng-model="userSelection.applicant.person.firstName"
+                     name="editPersonalInformationGridFIRST_NAME"
+                     data-ng-required="true"
+                     type="text" value=""
+                     data-ng-maxlength="30"
+                     data-ng-minlength="1"
+                     data-ng-trim="true"
+                     size="30" class="">
+              <div  class="animated fadeInDown errors"
+                    data-ng-if="interacted(signUpForm.editPersonalInformationGridFIRST_NAME, signUpForm)"
+                    data-ng-messages="signUpForm.editPersonalInformationGridFIRST_NAME.$error">
+                <div data-ng-message="required">This is a required field</div>
+                <div data-ng-message="maxlength">This field can take at most 30 characters</div>
+              </div>
+            </div>
+          </div>
+          <div id="personalConfigMiddleNameFieldPanelGroup"
+               class="formblock">
+            <div id="personalConfigMiddleNameFieldErrorContainer" class="">
+              <span id="personalConfigMiddleNameFieldMessage"></span>
+              <span class=""><label
+                  for="editPersonalInformationGridMIDDLE_NAME">Middle Names:</label>
+                  </span>
+              <input id="editPersonalInformationGridMIDDLE_NAME"
+                     data-ng-model="userSelection.applicant.person.middleName"
+                     name="editPersonalInformationGridMIDDLE_NAME"
+                     type="text" value="" maxlength="30"
+                     size="30" class="">
+              <div class="animated fadeInDown errors" data-ng-messages="signUpForm.editPersonalInformationGridLAST_NAME.$error">
+                <div data-ng-message="maxlength">This field can take at most 30 characters</div>
+              </div>
+            </div>
+          </div>
+          <div id="personalConfigLastNameFieldPanelGroup" class="formblock">
+            <div id="personalConfigLastNameFieldErrorContainer" class="">
+              <span id="personalConfigLastNameFieldMessage"></span>
+              <span class=""><label
+                  for="editPersonalInformationGridLAST_NAME"><span
+                  class="required">*</span>Last Name / Surname / Family Name:</label>
+                  </span>
+              <input id="editPersonalInformationGridLAST_NAME"
+                     data-ng-model="userSelection.applicant.person.lastName"
+                     name="editPersonalInformationGridLAST_NAME"
+                     type="text" value=""
+                     data-ng-maxlength="50"
+                     data-ng-required="true"
+                     size="30"
+                     class="">
+              <div class="animated fadeInDown errors"
+                   data-ng-if="interacted(signUpForm.editPersonalInformationGridLAST_NAME, signUpForm)"
+                   data-ng-messages="signUpForm.editPersonalInformationGridLAST_NAME.$error">
+                <div data-ng-message="required">This is a required field</div>
+                <div data-ng-message="maxlength">This field can take at most 50 characters</div>
+              </div>
+            </div>
+          </div>
+          <div id="personalConfigSuffixFieldPanelGroup" class="formblock">
+            <div id="personalConfigSuffixFieldErrorContainer" class="">
+              <span id="personalConfigSuffixField_Message"></span>
+              <span class=""><label for="editPersonalInformationGridSUFFIX">Suffix:
+<br>
+<span class="labelDescription">Example: Jr., Sr., II, III, IV</span></label>
+                  </span>
+              <input id="editPersonalInformationGridSUFFIX"
+                     data-ng-model="userSelection.applicant.person.suffix"
+                     name="editPersonalInformationGridSUFFIX"
+                     type="text" value="" maxlength="10" size="30"
+                     class=""></div>
+          </div>
+        </div>
+        <div class="formSectionBlock" id="collectEmailInfo"><input
+            type="hidden" id="validatePrevalidated_email"
+            name="validatePrevalidated_email" value="1">
+          <div id="j_id203">
+            <h3><span id="labelHeaderEmail">Email</span>
+            </h3>
+            <p><span id="emailMessage">Most email correspondence is sent immediately, but some may take up to 24 hours. If you do not receive an email, please check your spam or bulk email folder.</span>&nbsp;<a
+                target="_blank"
+                href="https://www2.pearsonvue.com/legal/appprivacy"
+                title="Opens in new window">We
+              never sell email addresses.<span class="screenreaderHint"> - Opens in new window</span></a>
+            </p></div>
+          <div id="editEmailPanelGroup" class="formblock">
+            <div id="editEmailPanelGroupEMAILGroup">
+              <div id="editEmailPanelGroupEMAILErrorContainer" class="">
+                <span id="EmailField_Message">
+                  <label id="editEmailPanelGroupEMAILlabel" for="editEmailPanelGroupEMAIL">
+                      <span id="_styling_ADDRESS_TYPE" class="">
+                        <span class="required">*</span>
+                        <span id="editEmailPanelGroupEMAILlabelText">Email:</span>
+                      </span>
+                  </label>
+                </span>
+                <input id="editEmailPanelGroupEMAIL"
+                       name="editEmailPanelGroupEMAIL"
+                       type="email"
+                       data-ng-model="userSelection.applicant.person.email"
+                       data-ng-required="true"
+                       data-ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+                       value=""
+                       maxlength="255"
+                       size="30"
+                       class=""
+                       autocomplete="off">
+                <div class="animated fadeInDown errors"
+                     data-ng-if="interacted(signUpForm.editEmailPanelGroupEMAIL, signUpForm)"
+                     data-ng-messages="signUpForm.editEmailPanelGroupEMAIL.$error">
+                  <div data-ng-message="required">This is a required field</div>
+                  <div data-ng-message="maxlength">This field can take at most 255 characters</div>
+                  <div data-ng-show="signUpForm.editEmailPanelGroupEMAIL.$invalid">The email address does not have a valid format</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="confirmEmailPanelGroup" class="formblock">
+            <div id="confirmEmailPanelGroupErrorContainer" class="">
+
+            <span id="EmailConfirmField_Message">
+              <label id="editEmailConfirmPanelGroupEMAILlabel" class="" for="confirmEmail">
+                <span class="required">*</span>
+                <span id="editEmailPanelGroupEMAILConfirmlabelText">Confirm Email:</span>
+              </label>
+            </span>
+              <input id="confirmEmail"
+                     name="confirmEmail"
+                     data-ng-model="userSelection.applicant.person.confirmEmail"
+                     data-ng-required="true"
+                     data-ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+                     type="email"
+                     value=""
+                     data-ng-maxlength="255"
+                     size="30" class=""
+                     autocomplete="off">
+              <div class="animated fadeInDown errors"
+                   data-ng-if="interacted(signUpForm.confirmEmail, signUpForm)"
+                   data-ng-messages="signUpForm.confirmEmail.$error">
+                <div data-ng-message="required">This is a required field</div>
+                <div data-ng-message="maxlength">This field can take at most 255 characters</div>
+                <div data-ng-show="signUpForm.confirmEmail.$invalid">The email address does not have a valid format</div>
+              </div>
+            </div>
+          </div>
+          <div id="editOptInGrid" class="mktgOptIn">
+            <input type="checkbox"
+                   name="optInCheckbox"
+                   id="optInCheckbox"
+                   data-ng-model="userSelection.applicant.optInPVMarketingEmails"
+                   value="true">
+            <span id="optInLabel">I want to receive Pearson VUE marketing emails.</span>&nbsp;
+          </div>
+          <input type="hidden" id="emailConfirmEmailValidator" name="emailConfirmEmailValidator" value="1">
+        </div>
+
+      </div>
+
+      <div class="buttonArea">
+        <div class="previous">
+        </div>
+        <div class="forward">
+          <button id="nextButton" type="submit" name="nextButton" class="btn">Next</button>
+        </div>
+      </div>
+    </div>
+    <div id="signinArea2" class="displayDesktopOnlyView">
+      <h2><span id="signInTitle">Returning users, please sign in</span></h2>
+      <p><span
+          id="signInText">If you have a username and password, please <a
+          class="href_link"
+          href="https://www2.pearsonvue.com/testtaker/signin/SignInPage.htm?clientCode=AppleTESTING">sign in.</a></span>
+      </p>
+    </div>
+    <div id="infoBox" class="displayDesktopOnlyView">
+      <h2><span id="privacyTitle">Privacy Policy</span></h2>
+      <p><span id="privacyText">If you have questions about how your personal information may be used, please read our <a
+          onclick="winPop=window.open(&#39;/legal/appprivacy.html&#39;, &#39;ppinfo&#39;, &#39;resizable=yes,scrollbars=yes,width=600,height=400&#39;);winPop.focus()"
+          target="ppinfo"
+          href="https://www2.pearsonvue.com/legal/appprivacy/">Privacy Policy</a>.</span>
+      </p>
+    </div>
+    <input type="hidden" name="signUpForm_SUBMIT" value="1"><input
+      type="hidden" name="javax.faces.ViewState"
+      id="javax.faces.ViewState"
+      value="oAhOjoP2n6lyWAlcePsEn8bqZjK3MRrgE1gJmFoJSClmRlzCeXafEiGnvqm3aI2essy4T3aq97ajkIdf51T8T+x6MrBqdXw+hjvVOUBFCHfU8A/oFtMYRZAMfEGExqEK">
+  </form>
+</div>
+
+

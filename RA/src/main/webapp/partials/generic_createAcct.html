@@ -1,0 +1,383 @@
+<div class="">
+  <div class="headblock">
+    <section-title text="Create a Web Account: Step 4" user-selection="userSelection"></section-title>
+    <!--<h1>Apple Inc. - Create a Web Account: Step 4</h1>-->
+  </div>
+  <p id="mobileStepTracker" class="displayMobileOnlyView">4 of 4
+  </p>
+  <div id="section">
+    <div id="progress4step">
+      <div id="bar" class="s4">
+        <div id="marker"></div>
+      </div>
+    </div>
+    <p class="screenreaderHint">The following steps are tracking your
+      progress.</p>
+    <ol id="steps" class="text_4step">
+      <li id="enterPersonalInformation_1_of_4" class="step">
+        <span class="displayDesktopOnlyView">Enter Personal Information</span>
+      </li>
+      <li id="contactInformation_2_of_4" class="step">
+        <span class="displayDesktopOnlyView">Contact Information</span>
+      </li>
+      <li id="additionalInformation_3_of_4" class="step">
+        <span class="displayDesktopOnlyView">Additional Information</span>
+      </li>
+      <li id="createAccount_4_of_4_active" class="stepactive">
+        <span class="displayDesktopOnlyView">Create Account</span>
+        <span class="screenreaderHint"> (Current Step)</span>
+      </li>
+    </ol>
+  </div>
+  <h2><span id="title">Create Account</span></h2>
+  <p class="requiredText"><span id="signUpMessage"><span id="requiredMsg">All fields are required.</span></span>
+  </p>
+  <p class="romanAlphabet">Enter information on this page in the Roman alphabet.
+    (Alphanumeric)</p>
+  <form id="createAccountForm" name="createAccountForm">
+    <input
+        id="defaultButton-createAccountForm" name="nextButton" type="submit"
+        value="Finish" class="btn" aria-hidden="true" tabindex="-1"
+        style="position: absolute; left: -999px; top: -999px; height: 0px; width: 0px;">
+    <div id="createAccountContainer">
+      <div id="j_id59">
+        <div class="formSectionBlock">
+          <h3>Username</h3>
+          <p id="usernameInstructions">Your username must contain 6 or more
+            characters.</p>
+          <div class="formblock">
+            <div class=""><label id="labelUsername" class="" for="inputUsername">Username:</label>
+              <input id="inputUsername" name="inputUsername" type="text" value=""
+                     data-ng-model="userSelection.applicant.credential.username"
+                     maxlength="40" size="30" class="" autocomplete="off">
+              &nbsp;
+              <script type="text/javascript"><!--
+
+
+              function oamSetHiddenInput(formname, name, value) {
+                var form = document.forms[formname];
+                if (typeof form.elements[name] != 'undefined' && form.elements[name].nodeName == 'INPUT') {
+                  form.elements[name].value = value;
+                }
+                else {
+                  var newInput = document.createElement('input');
+                  newInput.setAttribute('type', 'hidden');
+                  newInput.setAttribute('id', name);
+                  newInput.setAttribute('name', name);
+                  newInput.setAttribute('value', value);
+                  form.appendChild(newInput);
+                }
+
+              }
+
+
+              function oamClearHiddenInput(formname, name, value) {
+                var form = document.forms[formname];
+                var hInput = form.elements[name];
+                if (typeof hInput != 'undefined') {
+                  form.removeChild(hInput);
+                }
+
+              }
+
+              function oamSubmitForm(formName, linkId, target, params) {
+
+                var clearFn = 'clearFormHiddenParams_' + formName.replace(/-/g, '\$:').replace(/:/g, '_');
+                if (typeof window[clearFn] == 'function') {
+                  window[clearFn](formName);
+                }
+
+                var form = document.forms[formName];
+                var oldTarget = form.target;
+                if (target != null) {
+
+                  form.target = target;
+                }
+                if ((typeof params != 'undefined') && params != null) {
+
+                  for (var i = 0, param; (param = params[i]); i++) {
+                    oamSetHiddenInput(formName, param[0], param[1]);
+                  }
+
+                }
+
+                oamSetHiddenInput(formName, formName + ':' + '_idcl', linkId);
+
+                if (form.onsubmit) {
+                  var result = form.onsubmit();
+                  if ((typeof result == 'undefined') || result) {
+                    try {
+                      form.submit();
+                    }
+                    catch (e) {
+                    }
+                  }
+
+                }
+                else {
+                  try {
+                    form.submit();
+                  }
+                  catch (e) {
+                  }
+                }
+
+                form.target = oldTarget;
+                if ((typeof params != 'undefined') && params != null) {
+
+                  for (var i = 0, param; (param = params[i]); i++) {
+                    oamClearHiddenInput(formName, param[0], param[1]);
+                  }
+
+                }
+
+                oamClearHiddenInput(formName, formName + ':' + '_idcl', linkId);
+                return false;
+              }
+
+
+              //--></script>
+              <a href="https://www6.pearsonvue.com/testtaker/profile/create/CreateAccount/CISCOTESTING/1709081#"
+                 onclick="return oamSubmitForm(&#39;createAccountForm&#39;,&#39;checkButton&#39;);"
+                 id="checkButton" class="btn_edit">Check Availability</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="formSectionBlock">
+          <h3><span id="passwordSection" class="sectionTitle">Password</span>
+          </h3>
+
+          <div id="passwordTipsArea"><p>Your password must contain:</p>
+            <ul>
+              <li>8 or more characters</li>
+              <li>a combination of uppercase and lowercase letters</li>
+              <li>numbers (0-9) or symbols (#, $, %, etc.)</li>
+            </ul>
+            <p><em>Your password cannot include your username.</em></p>
+          </div>
+
+          <div class="formblock">
+            <div class=""><label id="labelPassword"
+                                 for="inputPassword">Password:</label>
+              <input
+                  type="password" id="inputPassword" name="inputPassword"
+                  data-ng-model="userSelection.applicant.credential.password"
+                  maxlength="40" size="30"
+                  onkeyup="chkPass(this.value, &#39;passwordScorebar&#39;, pwStrengthLabels);"
+                  class="" autocomplete="off"><span id="labelPasswordStrength">Password Strength:</span>
+              <div id="pwStrengthGroup">
+                <div id="passwordScorebar" aria-live="assertive">TOO SHORT</div>
+              </div>
+              <label id="labelConfirmPassword" for="inputConfirmPassword">Confirm
+                Password:</label>
+              <input type="password" id="inputConfirmPassword"
+                     data-ng-model="userSelection.applicant.credential.confirmPassword"
+                     name="inputConfirmPassword" maxlength="40"
+                     size="30" class="" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="formSectionBlock">
+          <h3><span id="securityQuestionsSection" class="sectionTitle">Security Questions</span>
+          </h3>
+          <p id="securityInstructions">Your security answers cannot contain your
+            username or password.</p>
+
+          <div class="formblock">
+            <div class=""><label id="labelQuestionOne" class=""
+                                 for="inputSecurityQuestionOne">Question:</label>
+              <select data-ng-model="userSelection.applicant.credential.secQ1"
+                      id="inputSecurityQuestionOne" name="inputSecurityQuestionOne"
+                      size="1" class="">
+                <option value="" selected="selected">Select one...</option>
+                <option value="100">Who is your favorite actor, musician, or
+                  artist?
+                </option>
+                <option value="101">What was your favorite place to visit as a
+                  child?
+                </option>
+                <option value="102">What is your favorite song?</option>
+                <option value="103">What is the title of your favorite book?
+                </option>
+                <option value="104">What was your most memorable gift as a child?
+                </option>
+                <option value="105">What was the name of your first toy animal?
+                </option>
+                <option value="106">Who is your favorite athlete?</option>
+                <option value="136">What is your oldest siblings middle name?
+                </option>
+                <option value="137">What was the name of your elementary / primary
+                  school?
+                </option>
+                <option value="138">What is the country of your ultimate dream
+                  vacation?
+                </option>
+                <option value="139">What is the last name of your favorite high
+                  school teacher?
+                </option>
+                <option value="140">What was the last name of your third grade
+                  teacher?
+                </option>
+                <option value="141">What was your dream job as a child?</option>
+                <option value="142">What is the name, breed and color of your
+                  current pet?
+                </option>
+                <option value="143">What is the name of your favorite childhood
+                  friend?
+                </option>
+                <option value="144">In what city or town was your first job?
+                </option>
+                <option value="145">What was the first concert you attended?
+                </option>
+                <option value="146">What was your high school mascot?</option>
+                <option value="147">What school did you attend for sixth grade?
+                </option>
+                <option value="148">What month and day is your anniversary (e.g.
+                  January 2)?
+                </option>
+                <option value="149">In what city or town did your mother and father
+                  meet?
+                </option>
+                <option value="150">What is the name of your favorite childhood
+                  teacher?
+                </option>
+                <option value="151">In what city does your nearest sibling live?
+                </option>
+                <option value="152">What is the street number of the house you grew
+                  up in?
+                </option>
+                <option value="153">What is your preferred musical genre?</option>
+                <option value="154">What street did you live on in third grade?
+                </option>
+                <option value="155">What is the name of the place your wedding
+                  reception was held?
+                </option>
+                <option value="156">What year did you graduate from High School?
+                </option>
+                <option value="157">What was your childhood phone number including
+                  area code? (e.g. 000-000-0000)?
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="formblock">
+            <div class=""><label id="labelAnswer" class=" " for="inputAnswerOne">Answer:</label>
+              <input data-ng-model="userSelection.applicant.credential.secAns1"
+                     id="inputAnswerOne" name="inputAnswerOne" type="text" value=""
+                     maxlength="50" size="30" class="" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="formblock">
+            <div class=""><label id="labelQuestionTwo" class=""
+                                 for="inputSecurityQuestionTwo">Question:</label>
+              <select data-ng-model="userSelection.applicant.credential.secQ2"
+                      id="inputSecurityQuestionTwo" name="inputSecurityQuestionTwo"
+                      size="1" class="">
+                <option value="" selected="selected">Select one...</option>
+                <option value="108">What is the name of the first company for which
+                  you worked?
+                </option>
+                <option value="109">What is your dream occupation?</option>
+                <option value="110">What is your oldest sibling's (brother or
+                  sister) nickname?
+                </option>
+                <option value="111">What is your favorite food?</option>
+                <option value="112">In what city did you first meet your spouse or
+                  significant other?
+                </option>
+                <option value="113">What is your spouse or significant other's
+                  nickname?
+                </option>
+                <option value="107">What is the first and last name of the best man
+                  at your wedding?
+                </option>
+                <option value="180">What was your favorite place to visit as a
+                  child?
+                </option>
+                <option value="181">What is your grandmothers first name?</option>
+                <option value="182">To what city did you go on your honeymoon?
+                </option>
+                <option value="183">Where did you vacation last year?</option>
+                <option value="184">What was your childhood nickname?</option>
+                <option value="185">What is your oldest brother's birthday month and
+                  year (e.g. January 1900)?
+                </option>
+                <option value="186">What is the license plate (registration) of your
+                  dad's first car?
+                </option>
+                <option value="187">In what city and country do you want to
+                  retire?
+                </option>
+                <option value="188">What is your oldest sibling's birthday month and
+                  year (e.g. January 1900)?
+                </option>
+                <option value="189">What is the name of a college you applied to but
+                  didn't attend?
+                </option>
+                <option value="190">What are the last 5 digits of your National
+                  Identity Number?
+                </option>
+                <option value="191">What was the name of the first school your
+                  attended?
+                </option>
+                <option value="192">What is your oldest cousins first and last
+                  name?
+                </option>
+                <option value="193">What is your spouse's maiden name?</option>
+                <option value="194">What is your mother's middle name?</option>
+                <option value="195">What time of the day were you born?</option>
+                <option value="196">What is the name of your grandmother's dog?
+                </option>
+                <option value="197">What is your maternal grandmother's maiden
+                  name?
+                </option>
+                <option value="198">Who was your childhood hero?</option>
+                <option value="199">What is the name of the first undergraduate
+                  college/university you attended?
+                </option>
+                <option value="200">What is the middle name of your oldest child?
+                </option>
+                <option value="201">What is your current car registration number?
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="formblock">
+            <div class="">
+              <label id="labelAnswerTwo" class="" for="inputAnswerTwo">Answer:</label>
+              <input data-ng-model="userSelection.applicant.credential.secAns2"
+                     id="inputAnswerTwo" name="inputAnswerTwo" type="text" value=""
+                     maxlength="50" size="30" class="" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div id="j_id81"><input type="hidden" id="rootComponent"
+                                name="rootComponent" value="1481089230924"></div>
+
+        <script language="javascript" type="text/javascript"
+                src="js/pwd_meter.js"><!--
+
+        //--></script>
+        <script type="text/javascript"><!--
+        var pwStrengthLabels = ["TOO SHORT", "WEAK", "MODERATE", "STRONG"];
+        //--></script>
+      </div>
+
+    </div>
+    <div class="buttonArea">
+      <div class="previous">
+        <a id="prevButton" name="prevButton" class="btn_link" data-ng-href="#/additionalInfo">Previous</a>
+      </div>
+      <div class="forward">
+        <button id="nextButton" name="nextButton" class="btn" data-ng-click="registerUser()">Finish</button>
+      </div>
+    </div>
+    <input type="hidden" name="createAccountForm_SUBMIT" value="1"><input
+      type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState"
+      value="6D6O5A9RsxpZfwjC7VPYfcDIrh6Vtqnmxd3X+cpPTEugIbBb0zWtP33wn2vkiDmgpOgbSRDEb4cR6Oyx30c6A0SPG6bbyU+PJ2fTF7jUYT5Gtd0MyWjfZhTN43msx6Ip2y9FU8Z4BGk=">
+  </form>
+</div>

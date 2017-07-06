@@ -1,0 +1,3127 @@
+/* Updated Generic WebNG style - 1611 release  */
+
+/* open-sans-300 - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/open-sans-v13-latin-300.eot');
+    src: local('Open Sans Light'), local('OpenSans-Light'), url('../fonts/open-sans-v13-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/open-sans-v13-latin-300.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/open-sans-v13-latin-300.woff') format('woff'), /* Modern Browsers */ url('../fonts/open-sans-v13-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/open-sans-v13-latin-300.svg#OpenSans') format('svg');
+
+    /* IE9 Compat Modes */
+    /* Legacy iOS */
+}
+
+/* open-sans-regular - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/open-sans-v13-latin-regular.eot');
+    src: local('Open Sans'), local('OpenSans'), url('../fonts/open-sans-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/open-sans-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/open-sans-v13-latin-regular.woff') format('woff'), /* Modern Browsers */ url('../fonts/open-sans-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/open-sans-v13-latin-regular.svg#OpenSans') format('svg');
+
+    /* IE9 Compat Modes */
+    /* Legacy iOS */
+}
+
+/* open-sans-600 - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/open-sans-v13-latin-600.eot');
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('../fonts/open-sans-v13-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/open-sans-v13-latin-600.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/open-sans-v13-latin-600.woff') format('woff'), /* Modern Browsers */ url('../fonts/open-sans-v13-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/open-sans-v13-latin-600.svg#OpenSans') format('svg');
+
+    /* IE9 Compat Modes */
+    /* Legacy iOS */
+}
+
+/* open-sans-700 - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/open-sans-v13-latin-700.eot');
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/open-sans-v13-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/open-sans-v13-latin-700.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/open-sans-v13-latin-700.woff') format('woff'), /* Modern Browsers */ url('../fonts/open-sans-v13-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/open-sans-v13-latin-700.svg#OpenSans') format('svg');
+
+    /* IE9 Compat Modes */
+    /* Legacy iOS */
+}
+
+/* START General Page Elements */
+body {
+    font: 100% 'Open Sans', Arial, Verdana, Helvetica, san-serif;
+    color: #333;
+    background: #eee;
+    line-height: 1.42857;
+}
+
+#logo {
+    background-image: url("../images/pearson-vue.png");
+    display: block !important;
+    height: 44px;
+    width: 100%;
+    background-repeat: no-repeat;
+    max-width: 1170px !important;
+    padding-left: 1.5em !important;
+    padding-right: 1.5em !important;
+    background-position-x: 25px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    #logo {
+        background-image: url("/_assets/images/pearson_logo_white_bg@2x.png");
+        -webkit-background-size: 190px 40px;
+        -moz-background-size: 190px 40px;
+        -o-background-size: 190px 40px;
+        background-size: 190px 40px;
+    }
+}
+
+input, select, button {
+    transition: none;
+    -webkit-transition: none;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+input, select, #calendarDiv h2 .normal, #discountHeader .normal {
+    font-family: 'Open Sans', Arial, Verdana, Helvetica, san-serif;
+}
+
+input[type="text"], input[type="search"], input[type="password"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+select {
+    -webkit-border-radius: 0px;
+    border-radius: 0;
+}
+
+.formSectionBlock select {
+    max-width: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    line-height: 20px;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 29px;
+    line-height: 1.1em;
+    padding-bottom: 0;
+}
+
+.warning h1 {
+    font-weight: normal;
+    font-size: 29px;
+    color: #DB0020;
+}
+
+p, td, th, legend, label, li, .mktgOptIn, #examRegistrationQuestionsTable td, .policyContent, .referenceMedia, label .labelDescription, #enterContactDetails .infoOnlyBlock, #enterContactDetails p, .infoOnlyLabel, .infoOnlyValue, span.value_nonEditable, .policyContent p, .policyContent li {
+    font-size: 14px;
+}
+
+#calendarForm:apptdates {
+    font-size: 14px;
+}
+
+#preApproved td, #preApproved th, #examTable td, #examTable th, #selectedCentersTable td, #displayMorningAppts td, #displayAfternoonAppts td, #centerTable th, #centerTable td, .orderDetails th, .orderDetails td, #apptTable th, .futureappt th, .futureappt td, .paymentTotal td, .paymentTotal th, .historyTable td, .historyTable th, .examDetailsModal td, .examDetailsModal th, .modules_selectTable td, .checkPassTable th, .checkPassTable td, .checkPassTable caption, #paymentArea #summary th, #paymentArea #summary td, #moduleSelection th, #moduleSelection td, #moduleSelection caption, .authorization th, .authorization td, .srchRsltsTable td, .srchSelection td, .srchRsltsTable th, .srchSelection th, .receiptsTable th, .receiptsTable td, .receiptsTable caption, #BackToBackForm .examSelection tr:first-child td, #BackToBackForm .examSelection tr:first-child th, .examSelection td, .examSelection th, #subtotal td, #collectCorrespondencePreferences td {
+    padding: 12px 8px;
+}
+
+#centerTable td.selectRow, #centerTable td.marker {
+    padding: 12px 0;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+h2, .orderDetails h3, #backtobackArea h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+h1 + h2 {
+    margin-top: 20px;
+}
+
+#createAccountContainer h2, .profileContainer h2 {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.futureappt h3, .orderDetails h3, #orderSummaryArea h3 {
+    font-family: 'Open Sans', Arial, Verdana, Helvetica, san-serif;
+}
+
+#registrationSection h2, #upcomingAppt h2, #upcomingNoAppt h2, #personalInfo h2, #myAccountSection h2 {
+    font-size: 1em;
+}
+
+h3, #policies h3, #policyArea h3, #policies h4, #policyArea h4 {
+    font-size: 18px;
+}
+
+#policies h3, #policyArea h3, #policies h4, #policyArea h4 {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+#policies + hr {
+    display: none;
+}
+
+#policyArea h2 + h3, #policyArea div h3:first-child, #policies h4:first-of-type {
+    margin-top: 10px;
+}
+
+#availableExams h3 {
+    font-size: .9em;
+}
+
+.discountLinkMinus, .policyLinkMinus, .expandLinkMinus, .calculatedTitleMinus, .discountLinkPlus, .policyLinkPlus, .expandLinkPlus, .calculatedTitlePlus {
+    padding-left: 20px;
+    background: none;
+}
+
+#APEHeader .expandLinkPlus, #APEHeader .expandLinkMinus {
+    padding-left: 10px;
+}
+
+a#APELink:link, a#policyLink:link {
+    font-weight: normal;
+}
+
+.discountLinkPlus:before, .policyLinkPlus:before, .expandLinkPlus:before, .calculatedTitlePlus:before {
+    content: '\f078';
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -10px;
+    padding-right: 10px;
+    line-height: 10px;
+}
+
+.discountLinkMinus:before, .policyLinkMinus:before, .expandLinkMinus:before, .calculatedTitleMinus:before {
+    content: '\f077';
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -5px;
+    padding-right: 10px;
+    line-height: 10px;
+}
+
+.disclaimer p, .requiredText p, p.requiredText, .romanAlphabet, #proximityHint {
+    font-size: 12px;
+}
+
+#showPreApproved, #showHelpModuleContentDSA, #showAvailableExams, #showMyAccountSection, .calculatedTitlePlus {
+    background: none;
+    padding-right: 15px;
+}
+
+#showPreApproved:after, #showHelpModuleContentDSA:after, #showAvailableExams:after, #showMyAccountSection:after, .calculatedTitlePlus:after {
+    content: "\f078";
+    font-family: FontAwesome;
+    font-style: normal;
+    position: relative;
+    color: #007FA3;
+    margin-left: 10px;
+    float: right;
+    top: -9px;
+    line-height: 0;
+}
+
+#showMyAccountSection:after {
+    top: 10px;
+}
+
+#examTable th input[type="image"], .authCol img {
+    margin-left: 6px;
+}
+
+#examTable:j_id172 {
+    margin-left: 0;
+}
+
+#CORRESPONDENCE_CONFIRMATION_119 td, #CORRESPONDENCE_REMINDER_119 td, #CORRESPONDENCE_CONFIRMATION_139 td, .radioTable td {
+    padding-right: 20px;
+}
+
+#CORRESPONDENCE_CONFIRMATION_119 input, #CORRESPONDENCE_REMINDER_119 input, #CORRESPONDENCE_CONFIRMATION_139 input, .radioTable input {
+    margin-top: 3px;
+}
+
+/* END General Page Elements */
+
+/* START link and button styles */
+
+.buttonArea input, .dashboardButtonDiv input, a.btnPositive:link, a.btnPositive:visited, #apptTable .btn_select, .topButtonArea .btn, .btn_disabled, .proceedbuttonArea .btn, #checkoutButton, #checkoutBtnStyleAddAnotherExamBtn, .btn_cart, .previous .btn_link_dialog, #cancelButton.btn_link, .href_link.btnPositiveNoModal, .btn_link.returnHomeBtn, .launchIBT .btn, .usernameRetrievalTable .btn, .languageOKButton input, a.btnPositiveNoModal:link, a.btnPositiveNoModal:visited, #examContainer .buttonArea .btn_link, .profile_topButtonArea .btn {
+    border-radius: 0;
+}
+
+a:link, a:visited, .personalInfo_link, .btn_link, a.btn_linkNeutral:link, a.btn_linkNeutral:visited, .btn_link_dialog, .btn_remove, #changeExamButton, .actionCol .btn_link, .changeTimeZone input, .imitationLink, .btn_remove, .product_remove, #changeExamButton, .actionCol .btn_remove, #viewAuthLink a, .actionCol .btn_link, .actionCol .btn_link_dialog, .editOrder .btn_link_dialog, .changeTimeZone input, #discountArea .btn_link, a#discountLink, .directionsCell a:link, .directionsCell a:visited, #labelkm, #labelmi, a#discountLink, a#APELink, a#policyLink, #selectedCentersArea .btn_link, .orderDetails .btn_link, #availableProducts a, .changeTimeZone .personalInfo_link, input.btn_link_dialog, .cancelLink.displayMobileOnlyView .btn_link_dialog {
+    color: #007FA3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cancelLink.displayMobileOnlyView .btn_link_dialog {
+    border: none;
+    background: none;
+}
+
+#changeExamButton {
+    border: none;
+    font-size: 12px;
+}
+
+a:hover, .directionsCell a:hover, .directionsCell a:hover, #labelkm:hover, #labelmi:hover, #RHC a:hover, #personalInfo a:hover, #personalInfo .personalInfo_link:hover, #myAccountSection .personalInfo_link:hover, #selectedCentersArea .btn_link:hover, .orderDetails .btn_link:hover, .actionCol .btn_remove:hover, a#APELink:hover, #historyTableContainer .btn_link:hover, #changeExamButton:hover, #availableProducts a:hover, a#discountLink:hover, #viewAuthLink a:hover, .actionCol .btn_link:hover, .changeTimeZone .personalInfo_link:hover, input.btn_link_dialog:hover, .cancelLink.displayMobileOnlyView .btn_link_dialog:hover, .removePromo .btn_remove:hover {
+    text-decoration: underline;
+}
+
+a:focus, a:active, .ui-widget-content a:focus, .ui-widget-content a:active, .directionsCell a:focus, .directionsCell a:active, #labelkm:focus, #labelmi:focus, #labelkm:focus, #labelmi:active, #welcome a:focus, #welcome a:active, #RHC a:focus, #RHC a:active, #personalInfo a:focus, #personalInfo a:active, #personalInfo .personalInfo_link:focus, #personalInfo .personalInfo_link:active, #myAccountSection .personalInfo_link:focus, #myAccountSection .personalInfo_link:active, #personalInfo input:focus, a#discountLink:focus, a#APELink:focus, a#policyLink:focus, a#discountLink:active, a#APELink:active, a#policyLink:active, a.btn_link_dialog:active, a.btn_link_dialog:focus, #selectedCentersArea .btn_link:focus, #selectedCentersArea .btn_link:active, .actionCol .btn_remove:active, .actionCol .btn_remove:focus, .orderDetails .btn_link:active, .orderDetails .btn_link:focus, #changeExamButton:active, #changeExamButton:focus, #availableProducts a:active, #availableProducts a:focus, #viewAuthLink a:active, #viewAuthLink a:focus, .actionCol .btn_link:active, .actionCol .btn_link:focus, .changeTimeZone .personalInfo_link:active, .changeTimeZone .personalInfo_link:focus, input.btn_link_dialog:focus, input.btn_link_dialog:active, .cancelLink.displayMobileOnlyView .btn_link_dialog:focus, .cancelLink.displayMobileOnlyView .btn_link_dialog:active, .historyTable .btn_link:focus, .historyTable .btn_link:active, .removePromo .btn_remove:active, .removePromo .btn_remove:focus {
+    color: #fff;
+    background: #005A70;
+    text-decoration: none;
+    outline: 3px solid #005A70;
+    outline-offset: 0;
+}
+
+.changeTimeZone .personalInfo_link:active, .changeTimeZone .personalInfo_link:focus, .cancelLink.displayMobileOnlyView .btn_link_dialog:active, .cancelLink.displayMobileOnlyView .btn_link_dialog:focus, .removePromo .btn_remove:active, .removePromo .btn_remove:focus {
+    outline: 3px solid #005A70 !important;
+    border: none;
+    padding: 0;
+}
+
+#RHC a:focus, #RHC a:active, #personalInfo a:focus, #personalInfo a:active, #personalInfo .personalInfo_link:focus, #personalInfo .personalInfo_link:active, #myAccountSection .personalInfo_link:focus, #myAccountSection .personalInfo_link:active, #personalInfo input:focus {
+    padding: 0;
+    border: none;
+    outline: 3px solid #005A70 !important;
+}
+
+#welcome, #welcome a, #welcome li {
+    font-size: 12px;
+}
+
+#welcome a {
+    color: #007FA3;
+    text-decoration: none;
+}
+
+#welcome a:hover {
+    text-decoration: underline;
+}
+
+#welcome li {
+    background: none;
+}
+
+#steps li.stepactive {
+    color: #007FA3;
+}
+
+/* Primary Button */
+.btn, .btn_nojs, .btn_select, a.btnPositive:link, a.btnPositive:visited, .btnPositive, a.btnPositiveNoModal:link, a.btnPositiveNoModal:visited, .btnPositiveNoModal, .btn_disabled, .btn_link.returnHomeBtn, .languageOKButton input, #homeButton.btn_link, #switchTestingProgramForm .btn_link_dialog, .dashboardButtonDiv input, #SignInForm .btn, #mobileCalendarButton, #apptTable .btn_select, #checkoutButton {
+    background-color: #007FA3;
+    background-image: none;
+    color: #FFFFFF;
+    padding: 6px 12px;
+    font-weight: normal;
+    border-color: #006b8a;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.buttonArea input, .topButtonArea .btn, .previous .btn_link_dialog, .launchIBT .btn {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* Gray button */
+
+.btn_edit, .btn_edit_ajx, .btn_edit_display, #readyReckoner a, #examContainer .btn_link, #examGroupContainer .btn_link, #addSecondaryAddressButton, a.btn_edit:link, a.btn_edit:visited, #selectExamModules .btn_link, #moduleForm #cancelChangeModules, .singleSelectButton a.btnPositiveNoModal:link, #filterExamList .btn_link_dialog, #filterExamList .btn_link, .scoreTable a.btnPositiveNoModal:link, #applyDiscount.btn, #removeSecondaryAddressButton {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    padding: 6px 12px;
+    line-height: 20px;
+    color: #333;
+}
+
+#applyDiscount.btn {
+    border-radius: 0;
+    font-weight: normal;
+}
+
+/* Cart button - upsell */
+.btn_cart {
+    background-color: #84BD00;
+    background-image: none;
+    color: #000;
+    font-weight: normal;
+    border-color: #638e01;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* extra small button */
+.sectionEdit .btn_edit, .scoreTable a.btnPositiveNoModal:link, .back2backButton .btn_edit, #apptTable .btn_select {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* secondary button */
+.previous .btn_link, .previous .btn_link_dialog, #cancelButton.btn_link, #examContainer .buttonArea .btn_link, #moduleForm .buttonArea .btn_link, .closeWindowBtnContainer .btn_link {
+    background-color: #eee;
+    background-image: none;
+    border-color: #ccc;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #333;
+    padding: 6px 12px;
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 0;
+}
+
+#cancelButton, #cancelButtonResched {
+    margin-left: 12px;
+}
+
+#examTable tr td {
+    vertical-align: middle;
+}
+
+.tableRowClickEffect, .tableRollOverEffect, .selected {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+#selectedCentersTable .tableRowClickEffect {
+    background-color: #fff;
+}
+
+.tableRollOverEffect th, th.examStatusColumn {
+    cursor: default;
+}
+
+.tableRowClickEffect .btn_link, .selected .btn_link, .tableRowClickEffect .directionsCell a:link, .tableRowClickEffect .directionsCell a:visited {
+    color: #007FA3;
+}
+
+#apptTable #displayMorningAppts th, #apptTable #displayAfternoonAppts th {
+    background: none;
+    color: #000;
+}
+
+.importantText, .veryImportantText {
+    color: #b94a48; /* GED Red color */
+}
+
+.confirmation {
+    background: none;
+    padding: 0;
+    display: inline-block;
+}
+
+.confirmation:before {
+    content: "\f0e0";
+    font-family: FontAwesome;
+    margin-right: 8px;
+    font-style: normal;
+    position: relative;
+    font-size: 1.5em;
+    color: #007FA3;
+}
+
+.printicon {
+    background: none;
+    padding: 0;
+    font-size: 14px;
+}
+
+#OrderSummary .printicon {
+    margin-top: 0;
+}
+
+#OrderSummary .buttonArea .printicon {
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+div.printicon:before {
+    content: "\f02f";
+    font-family: FontAwesome;
+    margin-right: 8px;
+    font-style: normal;
+    margin-left: -25px;
+    position: relative;
+    font-size: 1.5em;
+    color: #007FA3;
+    bottom: -25px;
+}
+
+a.printicon:before {
+    content: "\f02f";
+    font-family: FontAwesome;
+    margin-right: 8px;
+    font-style: normal;
+    margin-left: -25px;
+    position: relative;
+    font-size: 1.5em;
+    color: #007FA3;
+}
+
+/* END link and button styles */
+
+/*Custom Form styles */
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    border: 1px solid #CCCCCC;
+    color: #333;
+    line-height: 20px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.formSectionBlock input[type="text"], .infoOnlyValue, .formSectionBlock legend, .revealFormSectionBlock input[type="text"], .revealFormSectionBlock legend, input[type="password"], select, #pwStrengthGroup {
+    float: none;
+    width: 50%;
+}
+
+.radioTable input[type="text"] {
+    width: 100%;
+}
+
+#editPrimaryAddress_editAddressGridTELEPHONE, #editPrimaryAddress_editAddressGridMOBILE_PHONE, #editPrimaryAddress_editAddressGridTELEPHONE_EXTENSION, #editSecondaryAddress_editAddressGridTELEPHONE, #editSecondaryAddress_editAddressGridTELEPHONE_EXTENSION, #selectMonthOption, #selectYearOption, #SecurityCodeField, #billingAddressId_phoneCountryCodeId, #billingAddressId_telephoneFieldId, #editPrimaryAddress_editAddressGridPOSTAL_CODE, #billingAddressId_postalCodeFieldId, #editPrimary_editAddressGridPOSTAL_CODE, #editPrimary_editAddressGridTELEPHONE, #editPrimary_editAddressGridTELEPHONE_EXTENSION, #editPrimary_editAddressGridMOBILE_PHONE, #editSecondary_editAddressGridTELEPHONE, #editSecondary_editAddressGridPOSTAL_CODE, #editSecondary_editAddressGridTELEPHONE_EXTENSION, #nativeAddressComponentJPN_inputPostalCode, .dateComponent select, #personalConfigNinonino1, #personalConfigNinonino2, #personalConfigNinonino3, #personalConfigNinonino4, #personalConfigNinonino5, #inputNinonino1, #inputNinonino2, #inputNinonino3, #inputNinonino4, #inputNinonino5, #personalConfigSsnssn1, #personalConfigSsnssn2, #personalConfigSsnssn3, #inputSsnssn1, #inputSsnssn2, #inputSsnssn3, #MOBILE_PHONE_COUNTRY_139, #MOBILE_PHONE_139, #personalConfigArnarn, #inputArnarn, #personalConfigI94ni94n1, #personalConfigI94ni94n2, #inputI94ni94n1, #inputI94ni94n2 {
+    width: auto;
+}
+
+#personalConfigSsnssn1, #personalConfigSsnssn2, #personalConfigSsnssn3, #inputSsnssn1, #inputSsnssn2, #inputSsnssn3, #personalConfigI94ni94n1, #personalConfigI94ni94n2, #inputI94ni94n1, #inputI94ni94n2 {
+    float: left;
+}
+
+#triggerFilter, #privateAccessCode, #filterExamList .btn_link_dialog, #filterExamList .btn_link, #checkButton, .accessibleCalendarOption .btn_edit_display {
+    float: none;
+    margin-left: -1px;
+    bottom: -1px;
+    position: relative;
+}
+
+#checkButton, .accessibleCalendarOption .btn_edit_display {
+    margin-left: -5px;
+}
+
+#chooseAppointments p {
+    margin-left: 30px;
+}
+
+#nativeContactInformationForm .formblock:first-of-type {
+    clear: both;
+}
+
+select {
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: none;
+    outline: 0 none;
+    color: #333;
+    padding: 6px 12px !important;
+    box-sizing: border-box;
+    height: 34px;
+    border-radius: 0;
+}
+
+.formSectionBlock, .infoOnlyBlock, #switchTestingProgramsContainer, #personalInfoGroup #correspondenceInfoGroup {
+    padding: 15px;
+    margin: 0;
+}
+
+#requestPasswordTable .formSectionBlock {
+    padding: 10px;
+}
+
+#switchTestingProgramsContainer .radioTable, #proctorLogin, #proctorLogin .formSectionBlock, #VerifyPhoto {
+    padding: 0;
+}
+
+#switchTestingProgramsContainer select {
+    margin: 0;
+}
+
+/* START Accessibility: Focus and other attributes */
+
+a.skip:focus, a.skip:active {
+    left: 0;
+    top: 0;
+    text-decoration: none;
+    font-size: 1em;
+    color: #005A70;
+    background: none;
+    padding: 8px;
+}
+
+#examTable th input, .historyTable th input, .srchRsltsTable .table_header_btn_link {
+    border: 1px solid transparent;
+}
+
+#examTable input.table_header_btn_link:focus, #examTable input.table_header_btn_link:active, #examTable input[type="image"]:focus, #examTable input[type="image"]:active, .historyTable input.table_header_btn_link:focus, .historyTable input.table_header_btn_link:active, .historyTable input[type="image"]:focus, .historyTable input[type="image"]:active {
+    outline: none;
+    padding: 0;
+    border: 1px dotted #333;
+}
+
+#examTable td.authCol, #examTable th.authCol {
+    padding: 12px 8px;
+}
+
+input:focus, input:active, textarea:focus, textarea:active, select:focus, select:active, #proximitySearch .btn_edit_display:focus, #proximitySearch .btn_edit_display:active, input[type="text"]:focus, input[type="text"]:active, input[type="password"]:focus, input[type="password"]:active, #logoutLinkOnMastHead:active, #logoutLinkOnMastHead:focus, #myReceiptsPageForm .btn_link:focus, #myReceiptsPageForm .btn_link:active {
+    outline: none !important;
+    box-shadow: none;
+    border: 1px solid #66afe9;
+    padding: 6px 12px;
+}
+
+input.clearTextButton[type="button"]:hover, input.clearTextButton[type="button"]:focus {
+    font-weight: bold;
+    padding: 0;
+}
+
+.clearTextButtonHolder {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.scoreTable a.btnPositiveNoModal:focus, .scoreTable a.btnPositiveNoModal:active {
+    padding: 4px 8px;
+}
+
+a#calendarTypeToggleLink:active, a#calendarTypeToggleLink:focus {
+    background-color: white;
+    left: 15em;
+    top: 35px;
+}
+
+/* Gray button hover */
+.btn_edit_display:hover, .btn_edit:hover, #triggerFilter:hover, .previous .btn_link:hover, #cancelButton:hover, .scoreTable a.btnPositiveNoModal:hover, .closeWindowBtnContainer .btn_link:hover, #applyDiscount.btn:hover, .closeWindowBtnContainer .btn_link:hover, #examContainer .btn_link:hover, #addSecondaryAddressButton:hover, #nativeContactInformationForm .btn_edit_ajx:hover, #checkButton:hover, .btn_edit_ajx:hover, #takeSnapshot:hover, #srchRsltsTable a.btnPositiveNoModal:hover, #removeSecondaryAddressButton:hover {
+    background-color: #d5d5d5;
+    border: 1px solid #adadad;
+}
+
+#cancelButton:hover {
+    text-decoration: none;
+}
+
+/* Gray button focus / primary and utility edit */
+.btn_edit_display:focus, .btn_edit_display:active, .btn_edit:focus, .btn_edit:active, #triggerFilter:focus, #triggerFilter:active, .previous .btn_link:focus, .previous .btn_link:active, #cancelButton:focus, #cancelButton:active, .scoreTable a.btnPositiveNoModal:focus, .scoreTable a.btnPositiveNoModal:active, .closeWindowBtnContainer .btn_link:active, .closeWindowBtnContainer .btn_link:focus, #applyDiscount.btn:active, #applyDiscount.btn:focus, #examContainer .btn_link:active, #examContainer .btn_link:focus, #addSecondaryAddressButton:focus, #addSecondaryAddressButton:active, #nativeContactInformationForm .btn_edit_ajx:active, #nativeContactInformationForm .btn_edit_ajx:focus, #checkButton:active, #checkButton:focus, .btn_edit_ajx:focus, .btn_edit_ajx:active, #takeSnapshot:focus, #takeSnapshot:active, table[id*="srchRsltsTable"] a.btnPositiveNoModal:focus, table[id*="srchRsltsTable"] a.btnPositiveNoModal:active, #removeSecondaryAddressButton:active, #removeSecondaryAddressButton:focus, #cancelButton:active, #cancelButton:focus {
+    background-color: #d5d5d5;
+    border: 1px solid #adadad;
+    outline: none !important;
+    box-shadow: none;
+}
+
+#cancelButton:active, #cancelButton:focus {
+    color: #333;
+}
+
+/*Upsell - cart */
+.btn_cart:hover {
+    background-color: #638e01;
+    border: 1px solid #435f01;
+    color: #fff;
+}
+
+.btn_cart:active, .btn_cart:focus {
+    background-color: #638e01;
+    border: 1px solid #435f01;
+    outline: none !important;
+    box-shadow: none;
+    color: #fff;
+}
+
+/* Primary button hover */
+.btn:hover, .btn_select:hover, #logoutLinkOnMastHead:hover, #SignInForm .btn:hover, #mobileCalendarButton:hover, #apptTable .btn_select:hover, #checkoutButton:hover, #OrderSummary .btn_link:hover, #OrderSummary .btn_link:hover, .dashboardButtonDiv .btnPositive:hover, .btn_link.returnHomeBtn:hover, a.btnPositiveNoModal:hover {
+    background-color: #005770;
+    border-color: #003b4c;
+}
+
+/* Primary button focus */
+.btn:focus, .btn:active, .btn_select:focus, .btn_select:active, #logoutLinkOnMastHead:active, #logoutLinkOnMastHead:focus, .btnPositive:focus, .btnPositive:active, .btn_link.returnHomeBtn:focus, .btn_link.returnHomeBtn:active, #SignInForm .btn:active, #SignInForm .btn:focus, #mobileCalendarButton:focus, #mobileCalendarButton:active, #apptTable .btn_select:active, #apptTable .btn_select:focus, #checkoutButton:active, #checkoutButton:focus, #OrderSummary .btn_link:focus, #OrderSummary .btn_link:active, a.btnPositiveNoModal:focus, a.btnPositiveNoModal:active, #myReceiptsTables a.btnPositiveNoModal:link:focus, #myReceiptsTables a.btnPositiveNoModal:link:active {
+    outline: none !important;
+    box-shadow: none;
+    background-color: #005770;
+    border-color: #00080a;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    outline: 3px transparent !important;
+    margin-right: 6px;
+}
+
+.dateComponent select, #personalConfigNinonino1, #personalConfigNinonino2, #personalConfigNinonino3, #personalConfigNinonino4, #personalConfigNinonino5, #inputNinonino1, #inputNinonino2, #inputNinonino3, #inputNinonino4, #inputNinonino5, #personalConfigSsnssn1, #personalConfigSsnssn2, #personalConfigSsnssn3, #inputSsnssn1, #inputSsnssn2, #inputSsnssn3, #cardDetails select, #personalConfigI94ni94n1, #personalConfigI94ni94n2, #inputI94ni94n1, #inputI94ni94n2 {
+    margin-right: 6px;
+}
+
+input[type="radio"]:focus, input[type="checkbox"]:focus, input[type="radio"]:active, input[type="checkbox"]:active {
+    outline: 3px solid #005770 !important;
+    margin-right: 6px;
+    padding: 0;
+}
+
+/* END Accessibility: Focus and other attributes */
+
+/* ---------------------------TEMPLATE SPECIFIC STYLES------------------------ */
+/* START CONTAINER STYLES */
+
+#maincontent, .copyrightTextHolder, #topnav > div:first-of-type, #logo, #locale, #welcome + div, #welcome, #signin #topnav #clientlogo, #welcome + #logo_print + div {
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#maincontent {
+    background: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: hidden;
+}
+
+#welcome {
+    float: none;
+    position: relative;
+    top: 112px;
+    right: -10px;
+    height: 0;
+}
+
+#languageSelectionForm ~ #welcome {
+    top: 82px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    /* Safari-browser hack */
+    #welcome {
+        width: auto;
+    }
+}
+
+#locale {
+    padding-bottom: 15px;
+}
+
+.updated {
+    border: 1px solid #569E50;
+    border-left: 10px solid #569E50;
+    background: #fff;
+}
+
+/*no border */
+#availableFormsSection, #allDetails, #singleSearch, #reviewArea, #addressInfo, .orderDetails, .directionsContainer, #editPersonalInformationGrid, #centerTable, .futureappt, .securityQuestionTable, #editCommunicationPreferences_866, #emailDisplyDiv_866, #editEmailSection_866, .historyTable, .scoreTable, #requestPasswordContainer, #securityQuestions .formSectionBlock, #changePassword .formSectionBlock, #examTable {
+    background: #fff;
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 30px;
+}
+
+.directionsContainer {
+    margin-bottom: 15px;
+}
+
+/* border */
+#registrationSection, #upcomingNoAppt, #upcomingAppt, #myAccountSection, #onlineExams, #personalInfo, #viewPersonalInfoGroup, #collectCCID, #collectPersonalInfo, #collectPersonalInfoFirst, #collectEmailInfo, #collectPrimaryAddress, #questionsContainer, #createAccountForm .formSectionBlock, #collectSecondaryAddress, #collectPersonalInformation, #primaryAddressInfoGroup, #secondaryAddressInfoGroup, #websitePreferencesContainer, #examRegistrationQuestionsTable, #policyArea, #switchTestingProgramsContainer, .requestPasswordTable, #j_id81 fieldset, #j_id68 fieldset, #SelectExamLanguageForm fieldset, #allDetails, #OrderPoliciesForm #policies, .currentExam, #personalInfoGroup, #discountSection, #paymentMethod, #orderSummaryArea, #selectPaymentType, #correspondenceInfoGroup, #deliveryModeContainer, .userNameLookupTable, #infoBox, #collectCommPref, #nativeContactInformationForm #createAccountContainer, #signUpForm #fasttrackCredentials, #editPersonalInformationGrid, #editCommunicationPreferences, .usernameRetrievalTable, .requestPasswordContainer, #requestPasswordContainer, #OrderConfirmSubmitForm #policyArea #policies, #photoCapture, .securityQuestionTable #changePassword, #authenticateResultsContainerNoBiometrics, #authenticateContainer, #authenticateResultsContainer, #collectCorrespondencePreferences {
+    background: #fff;
+    border-radius: 0;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+#OrderConfirmSubmitForm #policyArea, .profileContainer, #createAccountContainer {
+    border: none;
+}
+
+#changePassword, #OrderConfirmSubmitForm #policyArea, .securityQuestionTable #changePassword {
+    margin-bottom: 0;
+}
+
+#OrderConfirmSubmitForm #policyArea {
+    padding-left: 0;
+}
+
+#contactInformationForm #editCommunicationPreferences_119, #createAccountForm .formSectionBlock .formSectionBlock {
+    border: 0;
+    margin-left: -15px;
+    margin-top: 0;
+}
+
+#createAccountForm .formSectionBlock .formSectionBlock {
+    margin-bottom: 0;
+    margin-right: -15px;
+}
+
+#createAccountForm .formSectionBlock p.requiredText {
+    display: none;
+}
+
+/* in case padding is needed */
+#j_id81 fieldset, #j_id68 fieldset, #SelectExamLanguageForm fieldset, #OrderPoliciesForm #policies, #orderSummaryArea, #deliveryModeContainer, .usernameRetrievalTable, .requestPasswordContainer, #OrderConfirmSubmitForm #policyArea #policies, #photoCapture, #authenticateResultsContainerNoBiometrics, #authenticateResultsContainer, #collectCorrespondencePreferences {
+    padding: 15px;
+}
+
+#ibtCandInfo, #websitePreferencesContainer, #authenticateContainer, #collectCorrespondencePreferences .formSectionBlock {
+    padding: 0;
+}
+
+#OrderConfirmSubmitForm #policyArea #policies, #collectCorrespondencePreferences {
+    padding-top: 0;
+}
+
+#OrderSummary #policies ~ #policies {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 30px;
+}
+
+#deliveryModeContainer #radioTable1, #deliveryModeContainer #APEArea, .userNameLookupTable, .requestPasswordTable, #VerifySecurityForm .securityQuestionTable {
+    padding: 0;
+    margin: 0;
+}
+
+.securityQuestionTable > .formSectionBlock {
+    padding: 0;
+    margin: 0;
+}
+
+#selectPaymentType {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+#billingSectionOne {
+    border: 1px solid #ddd;
+    border-bottom: none;
+    padding: 15px;
+    padding-top: 0;
+}
+
+#billingAddressPanel {
+    display: block;
+    border: 1px solid #ddd;
+    border-top: 0;
+    margin-bottom: 30px;
+}
+
+#billingSectionOne p {
+    margin-top: 15px;
+}
+
+#OrderConfirmSubmitForm #policyArea #policies .policyContent {
+    display: block;
+    padding-top: 15px;
+}
+
+#discountSection {
+    border-top: none;
+}
+
+#LanguageField {
+    margin-top: -30px;
+}
+
+#selectPaymentType legend {
+    padding: 15px 15px 0 15px;
+}
+
+/* imitate panels */
+
+#examRegistrationQuestionsTable, #policyArea, #allDetails, .currentExam {
+    padding: 0 15px;
+}
+
+#registrationSection h2, #upcomingAppt h2, #upcomingNoAppt h2, #personalInfo h2, #myAccountSection h2, #onlineExams h2, #viewPersonalInfoGroup h2, #viewPersonalInfoGroup h3, #primaryAddressInfoGroup h2, #primaryAddressInfoGroup h3, #secondaryAddressInfoGroup h2, #secondaryAddressInfoGroup h3, #correspondenceInfoGroup h2, #correspondenceInfoGroup h3, #availableFormsSection h2, #collectCCID h3, #collectPersonalInfoFirst h3, #collectEmailInfo h3, #collectPrimaryAddress h3, #EditPrimaryContactInfoForm #collectPrimaryAddress h3, #createAccountForm .formSectionBlock h3, #collectSecondaryAddress h3, #editPersonalInformationGrid h2, #collectCommPref h3, #requestPasswordContainer h3, #securityQuestions .formSectionBlock h2, #changePassword .formSectionBlock h2, #collectPersonalInfo h3, #examRegistrationQuestionsTable h2, #policyArea h2, #allDetails #details, .currentExam caption, #discountHeader, #paymentMethod h2, #billingSectionOne h3, #paymentMethod h3, #selectPaymentType h3, #nativeContactInformationForm h3, #createAccountContainerWrapper h3, #signinArea2 h2, #signinArea h3, .LoginTable h3, #infoBox h2, #editPersonalInformationGrid h3, #editCommunicationPreferences h3, #OrderConfirmSubmitForm #None h3, #OrderSummary #None h2, #OrderConfirmSubmitForm #policyArea #policies h3, #collectCorrespondencePreferences h3, #proctorLogin h2, h2#candidateExamInfoHeader, h2#proctorAuthenticationHeader, h2#candidatePhotoVerificationHeader {
+    background: none;
+    border-bottom: 1px solid #DDD;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 -15px;
+}
+
+#proctorLogin h2, h2#candidateExamInfoHeader {
+    padding-top: 0;
+}
+
+#proctorLogin h2 span {
+    font-size: 16px !important;
+}
+
+#OrderConfirmSubmitForm #None h3, #OrderSummary #None h2 {
+    padding-top: 0;
+}
+
+#personalInfoGroup #correspondenceInfoGroup, h2#proctorAuthenticationHeader, h2#candidatePhotoVerificationHeader {
+    border-top: 1px solid #ddd;
+}
+
+#ConfirmPersonalInfoForm #personalInfoGroup #correspondenceInfoGroup {
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+#EditPrimaryContactInfoForm #collectPrimaryAddress h3, #editPrimaryContactForm #collectPrimaryAddress #j_id187 h3 {
+    margin-top: 30px;
+}
+
+#allDetails #details {
+    border-bottom: none;
+}
+
+#registrationSection h2, #upcomingAppt h2, #upcomingNoAppt h2, #personalInfo h2, #myAccountSection h2, #onlineExams h2, #paymentMethod h2, #paymentMethod h3, #selectPaymentType h3 {
+    padding-left: 15px;
+    margin-left: 0;
+}
+
+#allDetails .infoBlock {
+    padding-top: 15px;
+    border-top: none;
+}
+
+#allDetails .infoBlock:first-of-type, #authenticateResultsContainerNoBiometrics .infoBlock:first-of-type, #authenticateContainer .infoBlock:first-of-type, #authenticateResultsContainer .infoBlock:first-of-type {
+    padding-top: 0;
+}
+
+#authenticateResultsContainerNoBiometrics .infoBlock:first-of-type, #authenticateContainer .infoBlock:first-of-type, #authenticateResultsContainer .infoBlock:first-of-type {
+    margin-top: 0;
+}
+
+#editCommunicationPreferences_119 {
+    padding-top: 15px;
+}
+
+#editCommunicationPreferences_134, #emailDisplyDiv_134 {
+    padding-left: 0;
+}
+
+#emailDisplyDiv_134 {
+    margin-bottom: 15px;
+}
+
+#policyArea #termsandconditions {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    margin: 0 -15px;
+}
+
+#termsandconditions {
+    padding: 0 0 30px 0;
+    display: block;
+}
+
+#termsandconditions p:last-of-type {
+    margin-bottom: 0;
+}
+
+#policies, #questionsContainer .referenceMedia {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#registrationDetailForm #policies {
+    padding-bottom: 15px;
+}
+
+#examQuestionGrid {
+    margin: 15px -10px;
+}
+
+#questionsContainer {
+    padding: 0;
+}
+
+#questionsContainer .disclaimer {
+    display: block;
+    padding: 0 15px 15px 15px;
+    font-size: 14px;
+}
+
+#preApproved th, #examTable th, #centerTable th, .orderDetails th, #apptTable th, .futureappt th, .historyTable th, .examDetailsModal th, .checkPassTable th, .checkPassTable caption, #moduleSelection th, #moduleSelection caption, .authorization th, .srchRsltsTable th, .srchSelection th, .receiptsTable th, .receiptsTable caption {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+.futureappt th, .orderDetails th {
+    border-top: none;
+}
+
+#historyTableContainer th.examStatusColumn:hover {
+    border-bottom: 2px solid #ddd;
+    cursor: default;
+}
+
+.table_header_btn_link, #historyTableContainer .btn_link {
+    text-decoration: none;
+}
+
+#examTable input:hover {
+    outline: none;
+}
+
+#examTable.scoreTable {
+    width: 100%;
+}
+
+#reviewAreaWrapper #reviewArea {
+    background: none;
+    border: none;
+}
+
+#availableExams, #preApproved, #yesAudioDiv, #availableForms {
+    padding: 0 15px;
+}
+
+#onlineExams div {
+    padding: 10px 15px 15px;
+}
+
+#onlineExams ul, #preApproved ul, #examCatalogContainer ul {
+    margin: .5em 2em;
+    padding: .5em;
+}
+
+#addressInfo, .orderDetails, #directionsContainer, .directionsContainer, .futureappt {
+    padding: 0;
+}
+
+#reviewArea {
+    margin-top: 10px;
+}
+
+.orderDetails {
+    margin-bottom: 0;
+}
+
+#filterExamList, #APEArea {
+    padding: 0;
+}
+
+.anywhereProctoredPac {
+    margin-top: 40px;
+}
+
+#personalInfo ul, #RHC ul, #myAccountSection ul {
+    margin: 15px 25px;
+    padding-left: 25px;
+}
+
+#personalInfo li:before, #RHC li:before, #myAccountSection li:before {
+    content: "\f105";
+    font-family: FontAwesome;
+    margin-right: 8px;
+    line-height: 0.75em;
+    vertical-align: -15%;
+    font-style: normal;
+    margin-left: -26px;
+    position: relative;
+
+}
+
+#RHC a:link, #RHC a:visited, #personalInfo a:link, #personalInfo a:visited, #personalInfo .personalInfo_link, #myAccountSection .personalInfo_link {
+    background: none;
+    font-size: 14px;
+    padding-left: 0;
+    border: 0;
+    white-space: normal;
+    text-align: left;
+}
+
+#personalInfo li input {
+    box-sizing: border-box;
+}
+
+#collectPersonalInfoFirst.formSectionBlock {
+    border-top: 1px solid #DDD;
+    margin-bottom: 2em;
+}
+
+#signinArea h2, #signinArea2 h2, #infoBox h2 {
+    font-size: 16px;
+}
+
+.none, #collectPersonalInfoFirst p, #collectEmailInfo p, #createAccountForm .formSectionBlock p, #collectSecondaryAddress p, .sectionEdit, #editPersonalInformationGrid p, #secondaryAddressInfoGroup p, #collectPrimaryAddress p, #securityQuestions p, #collectPersonalInfo p, #nativeContactInformationForm p, #fasttrackCredentials p, #signinArea2 p, #signinArea p, #infoBox p, #instruction_summary p {
+    padding-top: 10px;
+}
+
+#examQuestionGrid .sectionEdit {
+    padding: 0;
+    margin-top: 0;
+}
+
+#createAccountContainer #editPersonalInformationGrid .infoOnlyLabel, #proctorAuthenticationDiv .formSectionBlock {
+    padding-left: 0;
+}
+
+#availableExams h3, #preApproved h3, #onlineExams h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.fyi, #currentAppt {
+    background: none;
+    border: none;
+}
+
+#currentAppt {
+    border: 1px solid #ddd;
+}
+
+.fyi, #createAccountContainer, #requestPasswordContainer {
+    padding: 0;
+}
+
+.fyi table {
+    width: auto;
+    margin-left: -8px;
+}
+
+.fyi td {
+    font-size: 12px;
+}
+
+.formSectionBlock {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+}
+
+#copyright, .candidateInfo, #summaryDisclaimer .disclaimer {
+    font-size: 12px;
+}
+
+.candidateInfo {
+    margin-top: 0;
+}
+
+#calendarArea {
+    background: #fff;
+    border: medium none;
+    margin: 1em 0 0 0;
+}
+
+#calendarArea, #advancedSearch, .expanded {
+    width: 70%;
+    margin-left: 0;
+}
+
+#calendarDiv {
+    border: medium none;
+}
+
+#selectedCentersArea table, .expanded, #apptTable th {
+    background: #fff;
+}
+
+#apptTable th {
+    border-bottom: 1px solid #ddd;
+}
+
+#chooseAppointments {
+    margin-top: 80px;
+}
+
+#singleSearch {
+    padding: 0;
+}
+
+.profileContainer {
+    padding: 0;
+}
+
+#singleSearch .formblock {
+    margin: 0;
+}
+
+#confirmPolicies, #confirmPoliciesError {
+    background: none;
+    text-align: left;
+    padding: 0;
+}
+
+#personalInfoGroup .infoOnlyLabel, #MyProfileForm .profileContainer .infoOnlyLabel {
+    text-align: left;
+}
+
+#reviewArea .orderDetails, .futureappt td {
+    border: none;
+}
+
+.futureappt td.launchAreaCell {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.securityQuestionTable label {
+    margin-left: 1em;
+    padding-left: 0;
+}
+
+.profileContainer .infoOnlyBlock {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 2em;
+}
+
+.profileContainer .infoOnlyBlock.noHeader {
+    padding-left: 0;
+}
+
+.profileContainer .infoOnlyLabel label {
+    padding-left: 0;
+}
+
+#editCommunicationPreferences_866 {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+#emailDisplyDiv_866 {
+    margin-bottom: 0;
+}
+
+#emailDisplyDiv_866 .sectionEdit {
+    margin-top: 1em;
+}
+
+#editEmailSection_866 {
+    border-top: none;
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.profileContainer .neverSellEmailAddressesContainer {
+    margin-left: 0;
+    padding-top: 1em;
+}
+
+/* Warning and Error messages */
+
+.errorContainer {
+    border: none;
+    padding: 0;
+    color: #DB0020;
+}
+
+#confirmPoliciesError label, .errorContainer .warning_label, #questionsContainer .fieldLevelError {
+    color: #DB0020;
+}
+
+.warning_textonly, .errorContainer legend, .errorContainer label {
+    color: inherit;
+}
+
+.errorContainer .referenceMedia {
+    color: #333;
+}
+
+.errorContainer legend .warning_label, .errorContainer .warning_label {
+    font-weight: bold;
+}
+
+.error, textarea.error, input[type="text"].error, input[type="password"].error, input[type="datetime"].error, input[type="datetime-local"].error, input[type="date"].error, input[type="month"].error, input[type="time"].error, input[type="week"].error, input[type="number"].error, input[type="email"].error, input[type="url"].error, input[type="search"].error, input[type="tel"].error, input[type="color"].error {
+    background: none;
+    border: 1px solid #DB0020;
+}
+
+td.error {
+    border: none;
+}
+
+#submit .warningAreaContainer + .error {
+    display: none;
+}
+
+.fieldLevelError, .advisory_label {
+    display: block;
+    color: inherit;
+    margin-bottom: 5px;
+    background: none;
+    padding: 0;
+    margin-left: 0;
+    font-size: 14px;
+    font-style: normal;
+
+}
+
+.fieldLevelError:before {
+    content: "\f00d";
+    font-family: FontAwesome;
+    padding-right: 6px;
+}
+
+.advisory_label:before {
+    content: "\f071";
+    font-family: FontAwesome;
+    padding-right: 6px;
+    color: #FFB81C;
+}
+
+.warning {
+    background: none;
+    color: #333;
+    border: 1px solid #DB0020;
+    border-left: 8px solid #DB0020;
+    font-weight: normal;
+    margin: 15px 0 30px 0;
+    padding: 10px;
+    font-size: 14px;
+
+    min-height: inherit;
+}
+
+.importantText, .veryImportantText, #jsf_databaseSearch .advisory, #errors.advisory, #authorizationRequiredMessageDiv .advisory, .proctorNotification {
+    background: none;
+    color: #333;
+    border: 1px solid #EA7600; /* Juicy orange */
+    border-left: 8px solid #EA7600; /* Juicy orange */
+    font-weight: normal;
+    margin: 15px 0 30px 0;
+    padding: 0;
+    font-size: 14px;
+    font-style: normal;
+}
+
+#preApproved .veryImportantText {
+    display: block;
+}
+
+#preApproved .veryImportantText:empty, #billingSectionOne:empty, #billingAddressPanel:empty, .proctorNotification img {
+    display: none;
+}
+
+#proctorAuthenticationDiv .disclaimer {
+    display: block;
+}
+
+.proctorVerificationProcess p#photoNotAcceptableText {
+    display: block;
+}
+
+#authorizationRequiredMessageDiv .advisory:before {
+    content: none;
+}
+
+#errors.advisory, #authorizationRequiredMessageDiv .advisory {
+    padding: 10px;
+    min-height: inherit;
+}
+
+.proctorNotification {
+    text-align: left;
+    padding: 10px;
+    min-height: unset;
+}
+
+/* Success */
+.ibtMessage {
+    background: none;
+    color: #333;
+    border: 1px solid #008638;
+    border-left: 8px solid #008638;
+    font-weight: normal;
+    margin: 15px 0 30px 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.veryImportantText {
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+#jsf_databaseSearch .advisory, .importantText {
+    padding: 15px;
+}
+
+#chargeNote .importantText {
+    padding: 0;
+}
+
+#veryImportantTextDiv {
+    margin-bottom: 25px;
+}
+
+#chargeNote {
+    margin-top: 15px;
+}
+
+#importantTextID, #chargeNoteCheck .importantText {
+    border: none;
+    margin: 30px;
+}
+
+#MaestroCardMessageTable, #examDetails .examSelection, .examAlertTitle, #usernameInstructions, #securityInstructions, #passwordTipsArea {
+    background: none;
+    padding: 0;
+    min-height: 30px;
+    padding-left: 25px !important;
+}
+
+.advisory, #addressUsedMsg:not(:empty) {
+    background: none;
+    font-size: 14px;
+}
+
+.advisory:before, #MaestroCardMessageTable:before, #examDetails .examSelection:before, .examAlertTitle:before, #addressUsedMsg:not(:empty):before {
+    content: "\f071";
+    font-family: FontAwesome;
+    margin-right: 8px;
+    color: #FFB81C;
+    font-size: 1.33333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+    font-style: normal;
+    margin-left: -26px;
+    position: relative;
+}
+
+.examAlertTitle:before {
+    margin-left: -24px;
+}
+
+#jsf_databaseSearch .advisory:before, #errors.advisory:before {
+    content: none;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+#usernameInstructions:before, #securityInstructions:before, #passwordTipsArea:before, #importantTextID:before, .importantText.expanded:before, #chargeNoteCheck .importantText:before {
+    content: "\f0eb";
+    font-family: FontAwesome;
+    margin-right: 8px;
+    color: #EA7600;
+    font-size: 1.33333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+    font-style: normal;
+    margin-left: -26px;
+    position: relative;
+}
+
+.importantText.expanded:before {
+    margin-left: 30px;
+}
+
+.importantText.expanded {
+    border: none;
+}
+
+#passwordTipsArea:before {
+    top: 17px;
+}
+
+#passwordTipsArea p:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.formSectionBlock .available {
+    color: #008638;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+.formSectionBlock .available:empty {
+    display: none;
+}
+
+.formSectionBlock .available .available {
+    display: inline;
+}
+
+.formSectionBlock .available:after {
+    content: "\f00c";
+    font-family: FontAwesome;
+    margin-left: 8px;
+}
+
+.formSectionBlock .available .available:after {
+    content: none;
+    margin-left: 0;
+}
+
+/* --------- Container styles ------------ */
+/* Masthead Styles */
+#topnav {
+    background: #fff;
+    margin-top: 0;
+    border-bottom: 5px solid #ddd;
+    margin-bottom: 30px;
+}
+
+#signin #topnav, #signedIn #topnav {
+    height: 100px;
+}
+
+/* ---------------------------PAGE SPECIFIC STYLES------------------------ */
+
+/* START SIGN IN PAGE */
+.buttonArea, .proceedbuttonArea {
+    border-top: 1px solid #ddd;
+    margin: 30px -15px 0;
+    padding: 10px 15px 2px;
+}
+
+#SignInForm .buttonArea, #signUpForm .buttonArea {
+    margin: 0;
+}
+
+#j_id82 .buttonArea .buttonArea {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#SignInForm {
+    padding: 0;
+    margin-top: auto !important; /* IE Combatibility mode hack */
+}
+
+#signUpForm .buttonArea {
+    width: auto;
+    padding: 15px 0;
+}
+
+.helperLinks {
+    margin-top: 15px;
+    padding: 0 15px 15px 15px;
+}
+
+.closeWindow {
+    text-align: center;
+}
+
+.profileContainer .neverSellEmailAddressesContainer, #createAccountContainer .neverSellEmailAddressesContainer {
+    font-size: 14px;
+}
+
+/* START DASHBOARD PAGE */
+#upcomingAppt .appointmentDetails, #upcomingAppt .description {
+    font-size: .85em;
+}
+
+#upcomingAppt td .appointmentDetails, #upcomingAppt td .description {
+    font-size: 14px;
+}
+
+.verticalBannerArea img {
+    margin-top: 0;
+    padding: 0;
+}
+
+/* START SELECT EXAM PAGE */
+#examTable {
+    clear: none;
+}
+
+#examGroupContainer {
+    margin-top: 30px;
+}
+
+.right {
+    margin-top: 1em;
+}
+
+/* START EXAM DETAILS PAGE */
+
+/* START SELECTABLE MODULE PAGE */
+.moduleName {
+    font-weight: bold;
+}
+
+.moduleDurationCell {
+    white-space: nowrap;
+}
+
+#moduleForm .topButtonArea, #moduleForm #floatContainer {
+    display: none;
+}
+
+#moduleList.withSticky {
+    float: none;
+    width: auto;
+}
+
+#allDetails .right {
+    margin-top: -1em;
+}
+
+/* START TEST CENTER PAGE */
+#militaryAccessConfirmationDialogProximity p {
+    margin-top: 0;
+}
+
+#publicToMilitarySearchLinkProximity {
+    display: block;
+    text-align: left;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+#publicToMilitarySearchLinkProximity:before {
+    content: "\f005";
+    font-family: FontAwesome;
+    margin-right: 8px;
+    color: #007FA3;
+}
+
+#testCentersNearAddress {
+    margin-bottom: 10px;
+}
+
+#jsf_databaseSearch p {
+    margin-bottom: inherit;
+}
+
+#jsf_databaseSearch input.btn_edit {
+    margin-left: 0;
+}
+
+#militaryToPublicSearchLinkSearchInput {
+    display: block;
+    margin-top: 1.5em;
+}
+
+#jsf_databaseSearch {
+    border: 0;
+    border-bottom: 2px solid #e0e0e0;
+    background: none;
+    padding: 0 0 15px 0;
+    margin-bottom: 30px;
+}
+
+#ambiguousSearchSection {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Calendar */
+#selectedCentersTable {
+    margin-bottom: 15px;
+}
+
+#calendarDiv .ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all.ui-datepicker-multi-2.ui-datepicker-multi {
+    margin: 0 0 0 30px;
+}
+
+.accessibleCalendarOption {
+    bottom: -50px;
+    right: inherit;
+    left: 30px;
+    text-align: left;
+}
+
+#calendarDiv h2 {
+    padding: .5em 0 0 30px;
+}
+
+#mobileCalendarDiv fieldset {
+    display: block;
+}
+
+#mobileCalendarDiv select {
+    margin-bottom: 10px;
+}
+
+#apptTable th {
+    font-size: 14px;
+}
+
+/* Cart */
+#subtotal, #cancelSummaryArea {
+    float: none;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    clear: inherit;
+    color: #fff;
+    background: none;
+    border: none;
+}
+
+#cartPaymentInfo, #orderItems + h2, #examPricingHeader {
+    float: none;
+    width: auto;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    font-size: 16px;
+    padding: 15px;
+    margin-bottom: 0;
+}
+
+#examPricingHeader, #proctorVerificationForm #subtotal {
+    margin-left: -15px;
+    margin-right: -15px;
+    border-left: none;
+    border-right: none;
+}
+
+#proctorVerificationForm #subtotal table {
+    border-left: none;
+    border-right: none;
+}
+
+.proctorVerificationProcess #subtotal .buttonHolder {
+    padding: 15px;
+}
+
+#proctorVerificationForm .orderDetails {
+    margin-bottom: 30px;
+}
+
+#availability {
+    padding-left: 0;
+}
+
+#myOrderForm #subtotal td:nth-child(3n+3) {
+    width: 15%;
+}
+
+#orderItems + h2, #examRegistrationQuestionsTable {
+    margin-top: 30px;
+}
+
+#paymentArea .paymentTotal caption {
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    font-size: 16px;
+    padding: 10px 15px;
+    margin-bottom: 0;
+}
+
+#OrderConfirmSubmitForm #None, #OrderSummary #None {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 0;
+}
+
+#OrderConfirmSubmitForm #None, #OrderSummary #None {
+    margin-top: 30px;
+}
+
+#subtotal table {
+    color: #333;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#summaryHolder table, #cancelSummaryArea table {
+    color: #333;
+    width: auto;
+}
+
+#summaryHolder, #cancelSummaryArea, #summary, #profileInfoHolder, #instruction_summary {
+    width: auto;
+    float: none;
+}
+
+#productUpsell {
+    margin-top: 45px;
+}
+
+#profileInfoHolder {
+    margin: 0 -15px 20px -15px;
+    padding: 15px;
+    padding-top: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#orderSummaryArea h3 {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+#paymentDue {
+    border: 1px solid #ddd;
+}
+
+#showCheckNotEligible p {
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+#showCheckNotEligible table {
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+#subtotal span {
+    color: #333;
+    display: block;
+    clear: both;
+    text-align: right;
+}
+
+#checkoutButton + span {
+    padding-top: 30px;
+}
+
+#subtotal td, #subtotal .btn, #subtotalZero .btn, #subtotal th {
+    font-size: 14px;
+}
+
+#checkoutButton {
+    float: right;
+}
+
+#subtotal .btn_edit {
+    float: left;
+}
+
+#summary {
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.paymentTotal th {
+    width: 20%;
+    white-space: normal;
+}
+
+#discountArea {
+    display: block;
+    padding: 0 15px;
+}
+
+#showCC, #showDebit {
+    margin-top: 0;
+}
+
+#cardDetails, #billingAddress, #cardTypes {
+    width: auto;
+}
+
+#cartPaymentInfo {
+    margin-top: 30px;
+}
+
+#billingSectionOne:is(:empty) {
+    border: none;
+}
+
+/* Confirm personal info */
+#personalInfoGroup .sectionEdit {
+    margin-top: 0;
+}
+
+#telephoneGroup .infoBlock, #ConfirmPersonalInfoForm #correspondenceInfoGroup .infoBlock {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#emailDisplyDiv_119.infoOnlyBlock.noHeader {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+#emailDisplyDiv_119.infoOnlyBlock.noHeader .infoBlock {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Create/Manage Account Settings Styles */
+.tips {
+    border: 1px solid #6857A0;
+    background: #6857A0;
+    color: #fff;
+}
+
+#passwordTips, #passwordTipsArea {
+    border: none;
+    background: #none;
+    color: #333;
+}
+
+#passwordTipsArea {
+    padding: 0;
+    width: auto;
+    border-radius: 0;
+    float: none;
+}
+
+.profileContainer .sectionEdit {
+    top: 0;
+    margin: 8px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+}
+
+* + html .profileContainer .sectionEdit {
+    margin-top: 10px; /* IE 7 hack */
+}
+
+.profileContainer .infoOnlyBlock.noHeader .sectionEdit {
+    padding-top: 15px;
+}
+
+#switchTestingProgramForm .CCIDModalLink {
+    display: inline;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+/* New Step-Tracker for GED */
+
+#steps {
+    padding-left: 0;
+    width: 630px;
+}
+
+#steps li.step, #steps li.stepactive {
+    padding: 0;
+}
+
+#steps.text_2step li.step, #steps.text_2step li.stepactive {
+    width: 50%;
+}
+
+#steps.text_3step li.step, #steps.text_3step li.stepactive {
+    width: 33%;
+}
+
+#steps.text_4step li.step, #steps.text_4step li.stepactive {
+    width: 25%;
+}
+
+#steps.text_5step li.step, #steps.text_5step li.stepactive {
+    width: 20%;
+}
+
+#progress2step {
+    background: url("../images/progress_bg.png") repeat scroll 0 0 transparent;
+    height: 20px;
+    margin: 0 0 5px 0;
+    position: relative;
+    width: 630px;
+}
+
+#progress3step {
+    background: url("../images/progress_bg.png") repeat scroll 0 0 transparent;
+    height: 20px;
+    margin: 0 0 5px 0;
+    position: relative;
+    width: 630px;
+}
+
+#progress4step {
+    background: url("../images/progress_bg.png") repeat scroll 0 0 transparent;
+    height: 20px;
+    margin: 0 0 5px 0;
+    position: relative;
+    width: 630px;
+}
+
+#progress5step {
+    background: url("../images/progress_bg.png") no-repeat;
+    height: 20px;
+    margin: 0 0 5px 0;
+    position: relative;
+    width: 630px;
+}
+
+#bar {
+    background: url("../images/progress_bar.png") no-repeat;
+    height: 20px;
+    margin: 0 0 5px 0;
+    position: relative;
+    width: 630px;
+}
+
+#progress2step .s1 {
+    width: 315px;
+}
+
+#progress2step .s2 {
+    width: 630px;
+}
+
+#progress3step .s1 {
+    width: 210px;
+}
+
+#progress3step .s2 {
+    width: 420px;
+}
+
+#progress3step .s3 {
+    width: 630px;
+}
+
+#progress4step .s1 {
+    width: 157px;
+}
+
+#progress4step .s2 {
+    width: 314px;
+}
+
+#progress4step .s3 {
+    width: 471px;
+}
+
+#progress4step .s4 {
+    width: 630px;
+}
+
+#progress5step .s1 {
+    width: 126px;
+}
+
+#progress5step .s2 {
+    width: 252px;
+}
+
+#progress5step .s3 {
+    width: 378px;
+}
+
+#progress5step .s4 {
+    width: 504px;
+}
+
+#progress5step .s5 {
+    width: 630px;
+}
+
+/* Stack the forms */
+#signUpForm #createAccountContainer label, #signUpForm #createAccountContainer legend, #signUpForm #createAccountContainer .nestedFormBlock legend, .profileContainer .nestedFormBlock legend, #contactDetails .formSectionBlock label, #contactDetails .infoOnlyLabel, #contactDetails .formSectionBlock legend, #accommodationsFormTable .infoOnlyLabel, #accommodationsFormTable .formSectionBlock label, #accommodationsFormTable legend, .userNameLookupTable label, .requestPasswordTable label, .profileContainer label, .profileContainer legend, .profileContainer .revealFormSectionBlock label, .profileContainer .revealFormSectionBlock legend, .profileContainer .infoOnlyLabel, #requestPasswordContainer label, #authenticateContainer label, #authenticateResultsContainer .infoOnlyLabel, #createAccountContainer label, #createAccountContainer legend, #createAccountContainer .infoOnlyLabel, #authenticateResultsContainerNoBiometrics .infoOnlyLabel, #communicationHistory .infoOnlyLabel, #proctorLaunch label, .requestPasswordTable label, .requestPasswordTable legend, #createAccountForm #createAccountContainer label, #createAccountForm #createAccountContainer label#currentPasswordLabel, #createAccountForm #createAccountContainer label#labelPassword, #createAccountForm #createAccountContainer label#labelConfirmPassword, .formSectionBlock #labelPasswordStrength, .LoginTable label, .LoginTable legend, #jsf_proximitySearch .formSectionBlock label, #jsf_databaseSearch .formSectionBlock label, #jsf_databaseSearch .infoOnlyLabel, #singleSearch .formSectionBlock label, #proximityHint, #allDetails .infoOnlyLabel, .formblock #labelPassword, .formblock #labelConfirmPassword, #securityQuestions label, #changePassword label, #APEArea label, #filterInputLabel, #websitePreferencesContainer .formSectionBlock label, #websitePreferencesContainer .formSectionBlock legend, #switchTestingProgramsContainer legend, #switchTestingProgramsContainer label, .accessibleCalendarOption label, #addressInfo .infoOnlyLabel, #ibtCandInfo .infoOnlyLabel, #paymentArea .infoOnlyLabel, #paymentArea label, #profileInfoHolder .infoOnlyLabel, #deliveryModeContainer legend, #proctorLogin label, #groupUnlockProctorID label, #VerifyPhoto legend, .proctorVerificationProcess label, #examFutLangLabel {
+    width: 100%;
+    text-align: left;
+    margin: 0 0 5px 0;
+    float: none;
+    padding: 0;
+}
+
+.advisory_label label {
+    display: inline;
+}
+
+.formSectionBlock #labelPasswordStrength {
+    margin-top: 15px;
+}
+
+#showSchedulingStartDatesLink {
+    display: block;
+}
+
+#discountAccessCodeLabel {
+    width: auto;
+}
+
+#pwStrengthGroup {
+    margin-bottom: 15px;
+}
+
+.accessibleCalendarOption label, #paymentArea label, #labelPasswordStrength, #profileInfoHolder .infoOnlyLabel {
+    display: block;
+}
+
+#paymentOptions input {
+    float: left;
+    margin-right: 6px;
+    margin-top: 3px;
+}
+
+#paymentOptions label {
+    display: inline;
+}
+
+#sampleCheckInd {
+    text-align: left;
+    float: none;
+}
+
+#echeckTermsContainer, .echeckTermsContainer {
+    margin-left: 0;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+#echeckTermsContainer input[type="checkbox"], .echeckTermsContainer input[type="checkbox"] {
+    margin-left: 0;
+}
+
+.accessibleCalendarOption select {
+    width: auto;
+}
+
+label, legend, .infoOnlyLabel, #labelPasswordStrength, .ft_label_question {
+    font-weight: bold;
+}
+
+#labelPasswordStrength {
+    margin-bottom: 5px;
+    font-size: 14px;
+    margin-top: .5em;
+    padding-top: .5em;
+}
+
+.radioTable label, #privacyLabelContainer label, label .labelDescription, input[type="radio"] + label, #confirmPolicies label, #confirmPoliciesError label {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.profileContainer input + label {
+    padding-left: .25em;
+}
+
+.examAlertTitle {
+    display: block;
+}
+
+#signUpForm #createAccountContainer input + label {
+    padding-left: .25em;
+}
+
+.formSectionBlock input, .formSectionBlock select, .infoOnlyValue, .revealFormSectionBlock input, .revealFormSectionBlock select, .formSectionBlock textarea, .formSectionBlock #pwStrengthGroup {
+    float: none;
+    margin-left: 0;
+}
+
+#discountField {
+    margin: 0;
+    font-weight: normal;
+}
+
+.formSectionBlock #pwStrengthGroup {
+    margin-top: 0;
+}
+
+#collectCCID .radioTable td {
+    padding: 0.25em 0.25em 0;
+}
+
+.mobilePhonePlusIndicator {
+    margin-left: 0;
+    margin-top: 6px;
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.componentSeparator, .alienRegistration-A {
+    margin-left: 0;
+    margin-right: 6px;
+}
+
+.countryCodeLookup {
+    clear: left;
+    font-size: 12px;
+    margin-left: 15px;
+    padding-left: 0;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.homeInstructions {
+    display: block;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+#currentUsername {
+    font-size: 1.1em;
+}
+
+.examSelection th {
+    text-align: left;
+}
+
+/* History */
+#historyTableContainer p {
+    font-size: 14px;
+}
+
+/* Proctor page */
+.twoSidedBorder {
+    border: none;
+    margin: 0;
+}
+
+.proctorVerificationProcess hr {
+    padding: 20px;
+    outline: 0;
+    border: 0;
+    height: 0;
+}
+
+#locationCodeLabel {
+    width: inherit;
+    margin: 0;
+}
+
+/* Copyright / Footer */
+#copyright {
+    background: #003057;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.copyrightTextHolder {
+    display: block;
+    text-align: left;
+}
+
+#copyright a {
+    color: #fff;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+#copyright a:focus, #copyright a:active {
+    background: #fff;
+    color: #003057;
+    text-decoration: none;
+    outline: 3px solid #fff;
+}
+
+/* Customized cookies message */
+#cookiemsgbox {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    font-size: 14px;
+    display: none;
+    background: #000;
+    z-index: 1000;
+    text-align: left;
+    color: #fff;
+    padding: 10px;
+}
+
+#cookiemsgbox span {
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 10px 0 0;
+    float: left;
+    padding-top: 10px;
+}
+
+#cookiemsgbox p {
+    color: #fff;
+    display: inline-block;
+    float: left;
+    padding: 10px 0 0 0;
+}
+
+#cookiemsgbox input.cookieMessageLearnMoreButton {
+    background-color: #eee;
+    margin: 0 0 0 15px;
+    padding: 6px 12px;
+    color: #333;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+#cookiemsgbox input.cookieMessageLearnMoreButton:hover {
+    background-color: #d5d5d5 !important;
+    border: 1px solid #adadad;
+    padding: 6px 12px;
+}
+
+#cookiemsgbox input.cookieMessageLearnMoreButton:focus, #cookiemsgbox input.cookieMessageLearnMoreButton:active {
+    background-color: #d5d5d5 !important;
+    border: 1px solid #adadad;
+    padding: 6px 12px;
+}
+
+#cookiemsgbox input.cookieMessageCloseMessageButton {
+    background-color: #000;
+    text-decoration: underline;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    -webkit-appearance: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+#cookiemsgbox input.cookieMessageCloseMessageButton:hover {
+    text-decoration: none;
+}
+
+#cookiemsgbox input.cookieMessageCloseMessageButton:focus, #cookiemsgbox input.cookieMessageCloseMessageButton:active {
+    border: 1px solid #fff;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+
+    #upcomingNoAppt {
+        display: none; /* Debating hiding this from mobile view */
+    }
+
+    #maincontent, #clientlogo, .copyrightTextHolder, #locale {
+        padding-left: 15px;
+        padding-right: 15px;
+        display: block;
+    }
+
+    #signin #topnav, #signedIn #topnav {
+        height: 150px;
+    }
+
+    #clientlogo {
+        padding-top: 80px;
+        text-align: center;
+    }
+
+    #languageSelectionForm ~ div #clientlogo {
+        padding-top: 40px;
+    }
+
+    #logo {
+        position: absolute;
+        top: 15px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        background-position-x: center;
+    }
+
+    #languageSelectionForm ~ #logo {
+        top: 40px;
+    }
+
+    #welcome {
+        top: 160px;
+        right: 15px;
+    }
+
+    #welcome a {
+        padding-left: 45px;
+    }
+
+    #welcome li {
+        width: auto;
+    }
+
+    #languageSelectionForm ~ #welcome {
+        top: 115px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+        margin-top: .25em;
+    }
+
+    #SignInForm {
+        padding: 0;
+        border-bottom: none;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    #locale {
+        text-align: left;
+        padding-top: 15px;
+    }
+
+    #pageInstruction {
+        display: block; /* Always display CITB custom text */
+    }
+
+    #pageInstruction em {
+        display: none; /* Hide browser back button junk */
+    }
+
+    .tableRowClickEffect, .selected {
+        background: none;
+        color: #000;
+    }
+
+    #usernameInstructions, #securityInstructions {
+        border: none;
+        background: none;
+        color: #333;
+    }
+
+    .formSectionBlock input#addressSearch {
+        text-align: center;
+        margin: 1em auto;
+        float: none;
+    }
+
+    #testCentersNearAddress {
+        width: 100%;
+    }
+
+    #publicToMilitarySearchLinkProximity {
+        text-align: left;
+    }
+
+    #copyright {
+        margin: 0;
+    }
+
+    #upcomingNoAppt .none {
+        padding: 15px;
+    }
+
+    #allDetails .infoOnlyLabel, #MyProfileForm .profileContainer .infoOnlyValue, .profileContainer .infoOnlyValue, .profileContainer legend, .formSectionBlock legend, .formSectionBlock label, .revealFormSectionBlock label, .infoOnlyLabel, .formSectionBlock legend, .revealFormSectionBlock legend, #addressInfo .infoOnlyLabel, #paymentArea label, #accommodationsFormTable .infoOnlyLabel, #accommodationsFormTable .formSectionBlock label, .revealFormSectionBlock label, #accommodationsFormTable legend, #anywhereProctored label, #websitePreferencesContainer .formSectionBlock label, #websitePreferencesContainer .formSectionBlock legend, .formblock #labelPassword, .formblock #labelPasswordStrength, .formblock #labelConfirmPassword, #allDetails .infoOnlyLabel, .CCIDModalLink, #createAccountForm #createAccountContainer label, #createAccountForm #createAccountContainer label#labelPassword, #createAccountForm #createAccountContainer label#labelConfirmPassword, .formblock #labelPasswordStrength, #proctorLogin label, #groupUnlockProctorID label, #questionsContainer span.value_nonEditable, #createAccountContainer .formSectionBlock legend {
+        padding-left: 0;
+    }
+
+    .formSectionBlock .radioTable label, .revealFormSectionBlock .radioTable label {
+        margin-right: 0;
+    }
+
+    #collectCCID .radioTable {
+        padding-top: 0;
+    }
+
+    .orderDetails tr {
+        border-bottom: none;
+    }
+
+    .orderDetails, .futureappt {
+        padding: .5em;
+    }
+
+    #editEmailSection_866 {
+        padding-bottom: 1em;
+    }
+
+    #SignInForm .formSectionBlock label, #SignInForm .formSectionBlock legend {
+        padding-left: 0;
+    }
+
+    #welcome li .displayMobileOnlyView img {
+        display: none;
+    }
+
+    #welcome a {
+        display: inline-block;
+    }
+
+    #homeLinkOnMastHead:before {
+        content: "\f015";
+        font-family: FontAwesome;
+        line-height: 0.75em;
+        font-style: normal;
+        position: absolute;
+        top: 0;
+        font-size: 2em;
+        color: #007FA3;
+        width: 30px;
+    }
+
+    .displayDesktopOnlyView #myProfileLinkOnMastHead:before {
+        content: "\f007";
+        font-family: FontAwesome;
+        line-height: 0.75em;
+        font-style: normal;
+        position: absolute;
+        top: 0;
+        font-size: 2em;
+        color: #007FA3;
+        width: 30px;
+    }
+
+    #myOrderLinkOnMastHead:before {
+        content: "\f07a";
+        font-family: FontAwesome;
+        line-height: 0.75em;
+        font-style: normal;
+        position: absolute;
+        top: 0;
+        font-size: 2em;
+        color: #007FA3;
+        width: 30px;
+    }
+
+    #liquidLogoutLinkOnMastHead:before {
+        content: "\f08b";
+        font-family: FontAwesome;
+        line-height: 0.75em;
+        font-style: normal;
+        position: absolute;
+        top: 0;
+        font-size: 2em;
+        color: #007FA3;
+        width: 30px;
+    }
+
+    div#cookiemsgbox {
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        font-size: inherit;
+        text-align: left;
+    }
+
+    div#cookiemsgbox span {
+        color: #fff;
+    }
+
+    #cookiemsgbox span, #cookiemsgbox span {
+        float: none;
+        display: block;
+    }
+
+    #collectCCID {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 0;
+    }
+
+    .formSectionBlock input[type="text"], .infoOnlyValue, .formSectionBlock legend, .revealFormSectionBlock input[type="text"], .revealFormSectionBlock legend, input[type="password"], select, input[type="text"], #testCentersNearAddress, #requestPasswordContainer input[type="password"], #requestPasswordContainer #pwStrengthGroup, .formSectionBlock #pwStrengthGroup {
+        width: 100%;
+    }
+
+    #signUpForm .buttonArea {
+        margin: 30px -15px 0;
+        padding: 10px 15px 2px;
+    }
+
+    #jsf_proximitySearch, #singleSearch {
+        text-align: left;
+    }
+
+    #anywhereProctored input {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    #privateAccessCode {
+        margin-top: 1em;
+    }
+
+    #editPrimaryAddress_editAddressGridTELEPHONE_COUNTRY_CODE, #editPrimaryAddress_editAddressGridMOBILE_PHONE_COUNTRY, #editSecondaryAddress_editAddressGridTELEPHONE_COUNTRY_CODE, #billingAddressId_phoneCountryCodeId, #editPrimary_editAddressGridTELEPHONE_COUNTRY_CODE, #editPrimary_editAddressGridMOBILE_PHONE_COUNTRY, #editSecondary_editAddressGridTELEPHONE_COUNTRY_CODE {
+        width: 60px !important;
+        margin-right: 12px;
+        text-align: inherit;
+        font-size: 14px;
+    }
+
+    #billingAddressId_phoneCountryCodeId {
+        width: auto !important;
+    }
+
+    #myAccountSection, #upcomingNoAppt {
+        margin-top: 0;
+    }
+
+    .scoreTable .viewScoreReportColumn a.btnPositiveNoModal {
+        background: none;
+        border: none;
+    }
+
+    .changeCell .displayMobileOnlyView, .tagalongExamLabel {
+        display: none;
+    }
+
+    .changeCell .displayDesktopOnlyView {
+        display: block;
+    }
+
+    #selectedCentersArea p, .averageTestLength, .veryImportantText, .contactETA, #policyArea, #summaryDisclaimer, #instruction_summary, #cancelSummaryArea .disclaimer, #checkPassCertificatePageFormId p, #checkPassCertificatePageFormId p.requiredText, .timeOutParagraph, #checkButton {
+        margin-left: 0;
+    }
+
+    #calendarArea, #advancedSearch, .expanded, .averageTestLength {
+        width: auto;
+        float: none;
+        margin-left: 0;
+    }
+
+    #createAccountContainer .formblock #labelPasswordStrength {
+        display: block;
+        float: none;
+    }
+
+    #reviewArea .orderDetails, #submit .orderDetails {
+        border: 1px solid #ddd;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .upsellButtonArea .confirmDecision-dialog, .productButton {
+        float: none;
+        clear: both;
+    }
+
+    .upsellButtonArea {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .productThumb {
+        text-align: center;
+    }
+
+    #switchTestingProgramForm .CCIDModalLink {
+        display: block;
+    }
+
+    #websitePreferencesContainer .radioTable {
+        width: 100%;
+    }
+
+    #examTable a, .historyTable a {
+        color: #007FA3;
+    }
+
+    #applyDiscount.btn, #applyVoucher.btn, #applyPromo.btn {
+        margin: .75em 0 0 .0;
+    }
+
+    #jsf_databaseSearch input.btn_edit {
+        margin-top: 0;
+    }
+
+    .LoginTable .formSectionBlock {
+        padding-left: 0;
+    }
+
+    #triggerFilter, #privateAccessCode, #filterExamList .btn_link_dialog, #filterExamList .btn_link, #checkButton, .accessibleCalendarOption .btn_edit_display {
+        margin-left: 0;
+        bottom: 0;
+    }
+
+    #examTable th input[type="image"], .historyTable th input[type="image"] {
+        display: inline-block;
+    }
+
+    #locale span {
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    #locale:before {
+        font-family: FontAwesome;
+        content: "\f0ac";
+        font-size: 1.25em;
+        padding-right: 5px;
+    }
+
+    #APEHeader .normal {
+        display: block;
+        margin-left: 30px;
+    }
+
+    #discountHeader .normal {
+        display: block;
+        margin-left: 40px;
+    }
+
+    .launchIBT .btn + cancelLink.displayMobileOnlyView {
+        margin-top: 15px;
+    }
+
+    .launchIBT .launchBtn {
+        text-align: left;
+    }
+
+    td.launchAreaCell:first-of-type {
+        display: none;
+    }
+
+    #OrderSummary .orderDetails td.launchAreaCell {
+        border-bottom: none;
+    }
+
+    #examLaunchLink2_6448864 {
+        margin-bottom: 15px;
+    }
+
+    .selectButton:before {
+        content: "\f0a9";
+        font-family: FontAwesome;
+        line-height: 0.75em;
+        font-style: normal;
+        position: relative;
+        font-size: 2em;
+        color: #007FA3;
+        margin-left: 10px;
+    }
+
+    .selectButton {
+        height: auto;
+        width: auto;
+    }
+
+    .viewScoreReportColumn a.btnPositiveNoModal:link, .scheduleExamReviewColumn a.btnPositiveNoModal:link {
+        border: none;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 780px) {
+    /* Iphone 5 */
+    #topnav {
+        height: 5em;
+    }
+
+    /*#welcome {
+        position: absolute;
+        right: .5em;
+        top: 2.5em;
+    }*/
+    #welcome li {
+        background: none;
+        padding: 0;
+        width: 2em;
+    }
+
+    #welcome li .displayMobileOnlyView {
+        display: none;
+    }
+
+    #welcome img {
+        padding: .15em 0 0 .25em;
+        height: 1.75em;
+        display: inline;
+        max-width: none; /* Needed for inline alignment in IE8 */
+    }
+
+    #welcome a, #welcome span {
+        padding-left: 1em;
+    }
+
+    #welcome .displayDesktopOnlyView {
+        display: inline;
+    }
+
+    .orderDetails tr {
+        border-bottom: none;
+    }
+
+    .orderDetails td {
+        border-top: none;
+    }
+
+    .orderDetails {
+        padding: .5em;
+    }
+
+    #SignInForm {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 700px) {
+    #createAccountContainer input#checkButton {
+        margin-left: -5px;
+    }
+
+    .right.sampleCheck {
+        margin-left: 0;
+    }
+
+}
+
+@media screen and (min-width: 481px) {
+    #signin, #review, #myProfile, #signedIn {
+        max-width: none;
+    }
+
+    #clientlogo {
+        float: right;
+        margin-top: 25px;
+    }
+
+    #languageSelectionForm ~ div #clientlogo {
+        margin-top: 0;
+    }
+
+    #logo {
+        display: inline-block;
+        margin-top: 25px;
+    }
+
+    * + html #logo {
+        margin-top: -50px; /*IE 7 hack for secure browser compatibility mode */
+    }
+
+    #languageSelectionForm ~ #logo {
+        margin-top: 0;
+    }
+
+    * + html #languageSelectionForm ~ #logo {
+        margin-top: -60px; /*IE 7 hack for secure browser compatibility mode */
+    }
+
+    #topnav {
+        padding-top: 15px;
+    }
+
+    #languageSelectionForm ~ #topnav {
+        padding-top: 0;
+    }
+
+    #welcome li.signout {
+        padding-right: 0;
+
+    }
+
+    #welcome {
+        right: auto;
+    }
+
+    #signinArea, #signinArea2, .signinArea, #infoBox {
+        background: #fff;
+        border: 1px solid #D9D9D9;
+        padding: 0 15px;
+    }
+
+    #infoBox {
+        margin-top: 30px;
+    }
+
+    #SignInForm {
+        *margin-top: -95px; /* IE7 hack to align sign in page */
+        background: #fff;
+        border: 1px solid #D9D9D9;
+    }
+
+    #editEmailPanelGroupEMAILlabelReadOnly {
+        margin-left: 1em;
+    }
+
+    #editEmailPanelGroupEMAILReadOnly, #questionsContainer label .required, #questionsContainer legend .required {
+        margin-left: 0;
+    }
+
+    #MyProfileForm .profileContainer .infoOnlyValue, #addressInfo .infoOnlyValue, #ibtCandInfo .infoOnlyValue {
+        width: auto;
+    }
+
+    .formSectionBlock label, .revealFormSectionBlock label, .infoOnlyLabel, .formSectionBlock legend, .revealFormSectionBlock legend, #signUpForm #createAccountContainer .nestedFormBlock legend {
+        text-align: left;
+    }
+
+    #contactDetails .formSectionBlock label, #contactDetails .infoOnlyLabel, #contactDetails .formSectionBlock legend, #accommodationsFormTable .infoOnlyLabel, #accommodationsFormTable .formSectionBlock label, #accommodationsFormTable legend, .userNameLookupTable label, .requestPasswordTable label, .profileContainer label, .profileContainer legend, .profileContainer .revealFormSectionBlock label, .profileContainer .revealFormSectionBlock legend, .profileContainer .infoOnlyLabel, #requestPasswordContainer label, #authenticateContainer label, #authenticateResultsContainer .infoOnlyLabel, #createAccountContainer label, #createAccountContainer legend, #createAccountContainer .infoOnlyLabel, #authenticateResultsContainerNoBiometrics .infoOnlyLabel, #communicationHistory .infoOnlyLabel, #proctorLaunch label, .requestPasswordTable label, .requestPasswordTable legend, #signUpForm #createAccountContainer .nestedFormBlock legend, .profileContainer .nestedFormBlock legend, #signUpForm #createAccountContainer label, #signUpForm #createAccountContainer legend, #deliveryModeContainer legend {
+        width: 100%;
+    }
+
+    input[type="text"], input[type="text"]:focus, input[type="password"], input[type="password"]:focus, select, select:focus {
+        padding: 6px 12px;
+    }
+
+    #editPrimaryAddress_editAddressGridTELEPHONE_COUNTRY_CODE, #editPrimaryAddress_editAddressGridMOBILE_PHONE_COUNTRY, #editSecondaryAddress_editAddressGridTELEPHONE_COUNTRY_CODE, #billingAddressId_phoneCountryCodeId, #editPrimary_editAddressGridTELEPHONE_COUNTRY_CODE, #editPrimary_editAddressGridMOBILE_PHONE_COUNTRY, #editSecondary_editAddressGridTELEPHONE_COUNTRY_CODE {
+        width: 60px !important;
+        margin-right: 12px;
+        text-align: inherit;
+        font-size: 14px;
+    }
+
+    #signUpForm .mktgOptIn, #questionsContainer label, #questionsContainer fieldset {
+        margin-left: 0;
+    }
+
+    .formSectionBlock .formblock:last-of-type, .infoOnlyBlock .infoBlock:last-of-type {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    #triggerFilter {
+        left: -4px;
+        position: relative;
+    }
+
+    .scoreTable .viewScoreReportColumn .selectButton:before {
+        display: none;
+    }
+
+    .productDescription {
+        /*margin-left: 175px;*/
+    }
+
+    #examTable > tbody > tr > td:first-child {
+        width: 15%;
+        white-space: nowrap;
+    }
+
+    #examTable > tbody > tr > td.authCol {
+        width: 55px;
+        text-align: left;
+    }
+
+    #signUplabel {
+        display: inline;
+    }
+
+    #questionsContainer select, #questionsContainer input, #questionsContainer .value_nonEditable {
+        margin-left: 0;
+    }
+
+    .formSectionBlock #pwStrengthGroup {
+        float: none;
+        width: 50% !important;
+    }
+
+    #registrationSection, #upcomingNoAppt, #myAccountSection, #upcomingAppt, #onlineExams, #availableFormsSection, #readyToSchedule, #regLicSection {
+        overflow: hidden;
+    }
+
+    .scorereport_photo {
+        float: right;
+        text-align: center;
+        width: 30%;
+    }
+
+    #createAccountContainer .neverSellEmailAddressesContainer {
+        margin-left: 0;
+    }
+
+}
+
+@media screen and (min-width: 701px) {
+
+    #SignInForm {
+        width: 60%;
+    }
+
+    #signinArea, #signinChatLinkArea {
+        width: 30%;
+    }
+
+    .mktgOptIn, .neeaOptIn {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 905px) and (min-width: 481px) {
+    #maincontent, .copyrightTextHolder, #topnav > div:first-of-type, #logo, #locale, #welcome + div, #welcome, #signin #topnav #clientlogo, #welcome + #logo_print + div {
+        max-width: 724px;
+    }
+
+}
+
+@media (max-width: 1199px) and (min-width: 980px) {
+    #maincontent, .copyrightTextHolder, #topnav > div:first-of-type, #logo, #locale, #welcome + div, #welcome, #signin #topnav #clientlogo, #welcome + #logo_print + div {
+        max-width: 940px;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    #maincontent, .copyrightTextHolder, #topnav > div:first-of-type, #logo, #locale, #welcome + div, #welcome, #signin #topnav #clientlogo, #welcome + #logo_print + div {
+        max-width: 1170px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #signin #topnav #clientlogo {
+        float: none;
+    }
+
+    #signin #topnav #clientlogo img {
+        float: right;
+        margin-top: 10px;
+    }
+
+    #signin #topnav div #clientlogo img {
+        margin-top: 0;
+    }
+
+}
+
+@media screen and (max-width: 905px) {
+    #selectedCentersArea .tableRowClickEffect {
+        background: #fff;
+        color: #666;
+    }
+
+    #selectedCentersArea table {
+        width: 100%;
+        margin-left: -5px;
+    }
+
+    #calendarDiv h2 {
+        padding: 0;
+    }
+
+    #calendarDiv .ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all.ui-datepicker-multi-2.ui-datepicker-multi {
+        margin: 0;
+    }
+
+    .accessibleCalendarOption {
+        left: 0;
+        bottom: -20px;
+    }
+
+    #chooseAppointments p {
+        display: none;
+    }
+
+    .importantText.expanded:before {
+        margin-left: 0;
+    }
+
+    .importantText.expanded {
+        padding: 0;
+    }
+
+}
+
+@media screen and (min-width: 480px) and (max-width: 905px) {
+    #selectedCentersTable tr {
+        display: inline-block;
+        float: left;
+        width: 33%;
+    }
+}
+
+@media screen and (min-width: 906px) {
+    #selectedCentersArea {
+        width: 28%;
+        padding-top: 2.25em;
+    }
+
+    #apptTable {
+        margin-left: 30px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #testCentersNearAddress {
+        display: block;
+        padding: 6px 12px;
+    }
+
+    .formSectionBlock input#addressSearch, .searchButtonContainer .btn_edit_display {
+        margin: 0;
+        float: none;
+        clear: both;
+        width: auto;
+        margin-right: 0;
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .changeCell .displayMobileOnlyView {
+        display: none;
+    }
+
+    .changeCell .displayDesktopOnlyView {
+        display: block;
+    }
+
+    #deliveryModeContainer #APEArea fieldset legend {
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 635px) {
+    .orderDetails .detailsExamName, .detailsScheduleFeeLabel {
+        float: none;
+    }
+
+    .examDescriptionCol .confirmDecision-dialog, .futureappt .rescheduleLink, .futureappt .cancelLink, .productDescriptionCol .confirmDecision-dialog {
+        float: none;
+        margin: -1em 0 1.5em 0;
+        display: block;
+    }
+
+    .displayMobileOnlyView .btn_remove, .displayMobileOnlyView .btn_link, .displayMobileOnlyView .product_remove, .rescheduleLink.displayMobileOnlyView .btn_link {
+        background: none;
+        padding: 0;
+        color: #007FA3;
+        border: none;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .orderDetails {
+        margin-left: -15px;
+    }
+
+    #cartPaymentInfo {
+        margin-top: 30px;
+    }
+
+    .futureappt .cancelLink {
+        margin-top: 0;
+    }
+
+}
+
+@media screen and (max-width: 768px) and (min-width: 481px) {
+    .formblock #pacOptions {
+        min-width: none;
+        padding-top: 0;
+        padding-left: 0;
+    }
+}
+
+@media print {
+    #logo_print {
+        display: block;
+        float: left;
+        padding-right: 25px;
+    }
+
+    #logo {
+        background: none;
+    }
+
+    .rescheduleLink.displayMobileOnlyView .btn_link, .cancelLink.displayMobileOnlyView .btn_link {
+        display: none;
+    }
+}
+
+/* IE Hacks */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    * {
+        border: 0px;
+        margin: 0px;
+    }
+
+    a:focus, a:active {
+        outline: none !important;
+    }
+
+    input[type="radio"], input[type="checkbox"], #questionsContainer input {
+        margin-left: 3px;
+    }
+
+    input[type="radio"]:focus, input[type="checkbox"]:focus, input[type="radio"]:active, input[type="checkbox"]:active, #questionsContainer input:active, #questionsContainer input:focus {
+        margin-left: 3px;
+    }
+
+}
