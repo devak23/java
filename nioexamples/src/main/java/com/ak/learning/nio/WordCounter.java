@@ -43,7 +43,8 @@ public class WordCounter {
             }
         });
 
-        return sortByValues(wordCount);
+        return wordCount;
+//        return sortByValues(wordCount);
     }
 
     private Map<String, Integer> countWords(String file) {
@@ -61,7 +62,8 @@ public class WordCounter {
            wordCount.merge(word, 1, Integer::sum);
         });
 
-        return sortByValues(wordCount);
+        return wordCount;
+//        return sortByValues(wordCount);
 
     }
 
@@ -73,22 +75,22 @@ public class WordCounter {
         }
     }
 
-    /**  To sort the TreeMap by values */
-    private static <K,V extends Comparable<V>>  Map<K, V> sortByValues(final Map<K, V> map) {
-        Comparator<K> valueComparator = new Comparator<K>() {
-            @Override
-            public int compare(K key1, K key2) {
-//                return map.get(key1).compareTo(map.get(key2));
-                int comparison = map.get(key1).compareTo(map.get(key2));
-                if (comparison == 0) {
-                    return 1;
-                } else {
-                    return comparison;
-                }
-            }
-        };
-        Map<K,V> sortedByValues = new TreeMap<>(valueComparator);
-        sortedByValues.putAll(map);
-        return sortedByValues;
-    }
+//    /**  To sort the TreeMap by values */
+//    private static <K,V extends Comparable<V>>  Map<K, V> sortByValues(final Map<K, V> map) {
+//        Comparator<K> valueComparator = new Comparator<K>() {
+//            @Override
+//            public int compare(K key1, K key2) {
+////                return map.get(key1).compareTo(map.get(key2));
+//                int comparison = map.get(key1).compareTo(map.get(key2));
+//                if (comparison == 0) {
+//                    return 1;
+//                } else {
+//                    return comparison;
+//                }
+//            }
+//        };
+//        Map<K,V> sortedByValues = new TreeMap<>(valueComparator);
+//        sortedByValues.putAll(map);
+//        return sortedByValues;
+//    }
 }
