@@ -31,3 +31,4 @@ Consists of:
 6. Documentation
 - Added a cheatsheet for GC options
 - Added a cheatsheet for OOM causes and solutions
+- Added notes on Garbage Collection
