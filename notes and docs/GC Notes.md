@@ -19,7 +19,7 @@ These 3 variables generally are interdependent and cannot be controlled singular
 
 For some systems like batch processing, latency may not be as important as throughput. However for other systems that incorporate a human interaction, the latency factor becomes more critical than the throughput. On the other hand, we also have cases where a system is bounded by memory and therefore latency and throughput may not even be considered.
 
-<span style="color:blue">***Why Generational Garbage Collectors?***</span>
+<span style="color:blue">**Why Generational Garbage Collectors?**</span>
 The concept of GC started with the idea that: objects, newly created by the application are likely to die sooner and very few of them live very long. This is called as "infant mortality" or "weak generational hypothesis". For ex: objects created in a for loop will die soon whereas static strings will remain for the lifetime of the application. Thus, by separation of the objects based on their age (generation), we know that the newly created collection of objects will be sparse of live objects. Therefore a GC algorithm that looks for these few live objects and moves them to a different region will theoretically be more efficient than any other GC algorithm. Thus arose a need to partition the heap into Eden space (young generation) and Tenured space (old generation) and hence came bout the development of "Generational garbage collector". Based on the weak generational hypothesis, the heap is divided into
 
 1. **Young Generation**: This is where the newly created objects will be placed after object allocation. Minor GC's occur frequently here and are very efficient as these areas are smaller in size and likely to contain more garbage.
@@ -27,7 +27,7 @@ The concept of GC started with the idea that: objects, newly created by the appl
 
 The age of the object is determined by how many minor and major GC cycles it survived.
 
-<span style="color:blue">***How are the objects allocated on the heap?***</span>
+<span style="color:blue">**How are the objects allocated on the heap?**</span>
 The object allocation is done using "bump-the-pointer" technique. As per this technique, the end address of the last object allocated is tracked (called the top). When a new object requirement is satisified, the top is bumped up to the end of newly allocated object. In a multi-threaded system, this becomes tricky as multiple threads will compete for locations in Eden to allocate object. If "synchronization approach" were to be used to allocate the object in Eden, the performance would plummet. Therefore, the Hotspot VM adopted a technique called TLAB.
 Each thread is allocated a Thread Local Allocation Buffer (TLAB) which is a part of heap. Since only one thread allocates the object in the TLAB, the need for synchronization is greatly reduced thereby improving the object allocation rate. Assuming that a TLAB can hold 10 objects, it needs to synchronize only when it creates the 11th object on the heap. If a thread runs out of TLAB (relatively infrequent) it needs to request space from Eden in a multi-threaded way.
 Some objects can be huge and may not fit in a TLAB. These objects can be controlled by the VM parameter -XX:PretenureSizeThreshold=<size> which denotes "max object size allowed to be allocated in young generation". If the object is humongos (size larger than Eden) then the object may be created directly into the Tenured generation!
@@ -53,7 +53,7 @@ In short, the allocation algorithm is something as follows:
 
 The size of TLAB can be set with the VM flag -XX:TLABSize. The individual object creation is very cheap (in fact cheaper than malloc in C). However, the rate of object allocation is directly proportional to "minor GC" frequency.
 
-<span style="color:blue">***How does the Garbage Collector track objects?***</span>
+<span style="color:blue">**How does the Garbage Collector track objects?**</span>
 In order to keep minor GC quick, GC algorithm has to identify the live objects quickly without scanning any region (and definitely not the old generation). Therefore, GC uses a data structure called as "card table" which is nothing but an array of bytes. Each region in the heap is further divided into chunks of 512 bytes called cards. For every card, one byte is registered in the card table. When a reference to an object is updated, the particular card is marked dirty and the corresponding value in the card table is also updated. Thus, during minor collection, only the dirty cards are scanned for a potential old-to-young reference and is known as - Remembered Set (RS). The RS also becomes the part of the "roots" for the GC.
 
 The 'card marking' uses a bit (or a byte) to indicate a word or a region in the old generation that is suspected of using the reference. These marks may be precise or imprecise i.e. it could record the exact location or just a region in memory.
