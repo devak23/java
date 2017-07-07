@@ -17,5 +17,10 @@ public class BrokenString {
         String eWithUmlaut = "e\u0308";
         System.out.println("eWithUmlaut: " + eWithUmlaut);
         System.out.println("eWithUmlaut.length(): " + eWithUmlaut.length());
+
+        String happyAndSadCats = "\uD83D\uDE38\uD83D\uDE3E";
+        System.out.println(happyAndSadCats);
+        System.out.println(happyAndSadCats.length());
+        System.out.println(new StringBuilder(happyAndSadCats).reverse());
     }
 }
