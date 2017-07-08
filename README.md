@@ -22,6 +22,7 @@ Consists of:
 - WordCount
 - Direct and NonDirect ByteBuffer file read
 - MemoryMappedFile example
+- Reading very large file (525MB). Just run the shell script run_streaming_file.sh
 5. Core examples
 - OutOfMemory analysis
 - Added a simple DBConnectionPool impementation

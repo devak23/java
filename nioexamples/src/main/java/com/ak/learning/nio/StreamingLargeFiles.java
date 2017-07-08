@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class StreamingLargeFiles {
     public static void main(String[] args) throws IOException {
         try (FileInputStream fis
-                     = new FileInputStream(String.valueOf(Paths.get("sherlock-large1.txt")));
+                     = new FileInputStream(String.valueOf(Paths.get("/tmp/sherlock-large3.txt")));
              Scanner in = new Scanner(fis, "UTF-8");
         ) {
             while (in.hasNextLine()) {
