@@ -1,4 +1,4 @@
-package com.ak.learning.concurrency.callablesandfutures;
+package com.ak.learning.concurrency.callablesandfutures.matchcounter;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,7 +7,6 @@ import java.util.Scanner;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
 public class MatchCounterPool implements Callable<Integer> {
     private File directory;
