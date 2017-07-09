@@ -23,14 +23,16 @@ Consists of:
 - Direct and NonDirect ByteBuffer file read
 - MemoryMappedFile example
 - Reading very large file (525MB). Just run the shell script run_streaming_file.sh
-- Converting an InputStream to String
 5. Core examples
 - OutOfMemory analysis
 - Added a simple DBConnectionPool impementation
 - Added a program to find the first non repeating character in a string
 - Added a sample program for testing String Deduplication (VM argument)
 - Added a vmoptions list from my machine (linux antergos - thinkpad X220 core i5)
-6. Documentation
+6. Guava examples
+- Added example of immutable maps, mutable arraylist
+- Converting an InputStream to String
+7. Documentation
 - Added a cheatsheet for GC options
 - Added a cheatsheet for OOM causes and solutions
 - Added notes on Garbage Collection
