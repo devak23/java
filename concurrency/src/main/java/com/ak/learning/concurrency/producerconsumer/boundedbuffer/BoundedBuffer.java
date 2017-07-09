@@ -25,7 +25,7 @@ public class BoundedBuffer {
 
             //TODO: I don't understand why this if block is required.
             if (++putIdx == items.length) {
-                putIdx = 0; // if the buffer is notEmpty, reset put index
+                putIdx = 0; // if the buffer is full, reset put index
             }
             count++;
             // signal the "reading threads" who are looking at the "buffer-is-not-empty-condition" to read
