@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+// Just run the run_streaming_file.sh script to execute this program.
+// the large file here is zipped under resources and the shell script does the job
+// of unzipping it and putting it under /tmp
 public class StreamingLargeFiles {
     public static void main(String[] args) throws IOException {
         try (FileInputStream fis
