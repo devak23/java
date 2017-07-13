@@ -3,10 +3,7 @@ package com.ak.learning.nio;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,6 +44,12 @@ public class StreamManipulations {
                 .collect(Collectors.toList());
         System.out.println("------------------ Reverse sorted words -----------------------");
         System.out.println(sortedWords);
+
+        // Find the words that start with the letter 'Q'
+        Optional<String> startsWithZ = Arrays.stream(wordArray).parallel().filter(w -> w.startsWith("Z")).findFirst();
+        System.out.println("Z Word = " + startsWithZ.orElse("Not Found"));
+        Optional<String> anyWordWithQ = Arrays.stream(wordArray).parallel().filter(w -> w.startsWith("Q")).findAny();
+        System.out.println("Q Word = " + anyWordWithQ.orElse("Not found"));
     }
 
 
