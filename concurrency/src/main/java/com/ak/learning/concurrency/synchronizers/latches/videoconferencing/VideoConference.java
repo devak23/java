@@ -3,7 +3,10 @@ package com.ak.learning.concurrency.synchronizers.latches.videoconferencing;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * The class that implements the VideoConferencing
+ * The class that implements the VideoConferencing using a countdown latch. A countdown latch
+ * is used to wait for multiple concurrent events. It is not used to protect a shared resource
+ * or for a critical section. It is used to synchronize events alone. It only admits one use.
+ * Once the counter reaches zero, any method invocation on it will have no effect.
  */
 public class VideoConference implements Runnable {
     // Conference will not start till all the participants arrive. This is controlled by
