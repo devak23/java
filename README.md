@@ -32,7 +32,11 @@ Consists of:
 6. Guava examples
 - Added example of immutable maps, mutable arraylist
 - Converting an InputStream to String
-7. Documentation
+7. Graphs
+- Added a sample Graph implementation
+- Added Dijkstra's shortest path algorithm
+- Added Bellman-Ford-Moore's shortest path algorithm
+8. Documentation
 - Added a cheatsheet for GC options
 - Added a cheatsheet for OOM causes and solutions
 - Added notes on Garbage Collection
