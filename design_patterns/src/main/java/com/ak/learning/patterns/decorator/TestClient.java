@@ -8,11 +8,11 @@ public class TestClient {
 
         PizzaDecorator decorator = PizzaDecorator.INSTANCE;
         decorator
-                .add(pizza, Condiments.OLIVES)
-                .add(pizza, Condiments.JALEPANO)
-                .add(pizza, Condiments.PINEAPPLE)
-                .add(pizza, Condiments.MUSHROOM)
-                .add(pizza, Condiments.EXTRA_CHEESE);
+                .add(pizza, Condiment.OLIVES)
+                .add(pizza, Condiment.JALEPANO)
+                .add(pizza, Condiment.PINEAPPLE)
+                .add(pizza, Condiment.MUSHROOM)
+                .add(pizza, Condiment.EXTRA_CHEESE);
 
         System.out.println(pizza);
     }

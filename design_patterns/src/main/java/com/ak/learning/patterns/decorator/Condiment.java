@@ -1,6 +1,6 @@
 package com.ak.learning.patterns.decorator;
 
-public enum Condiments {
+public enum Condiment {
     TOMATOES ("Red tomatoes"), EXTRA_TOMATOES("Extra tomatoes")
     , ONION ("Onion"), EXTRA_ONIONS ("Extra Onion")
     , OLIVES ("Black Olives"), EXTRA_OLIVES ("Extra Olives")
@@ -11,7 +11,7 @@ public enum Condiments {
 
 
     private String text;
-    Condiments(String text) {
+    Condiment(String text) {
         this.text = text;
     }
 

@@ -1,6 +1,6 @@
 package com.ak.learning.patterns.decorator.pizzas;
 
-import com.ak.learning.patterns.decorator.Condiments;
+import com.ak.learning.patterns.decorator.Condiment;
 import com.ak.learning.patterns.decorator.PizzaType;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public abstract class Pizza {
 
     public abstract PizzaType getType();
 
-    public void addCondiment(Condiments condiment) {
+    public void addCondiment(Condiment condiment) {
         this.contents.add(condiment.getText());
     }
 }
