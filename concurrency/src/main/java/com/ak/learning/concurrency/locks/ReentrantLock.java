@@ -26,15 +26,13 @@ public class ReentrantLock {
 
     public void unlock() {
         synchronized (monitor) {
-            if (lockedBy != null || Thread.currentThread() != lockedBy) {
-                return;
-            }
-            if (Thread.currentThread() == lockedBy) {
+            if (count > 0 && Thread.currentThread() == lockedBy) {
                 --count;
-                if (count == 0) {
-                    lockedBy = null;
-                    this.notify();
-                }
+            }
+
+            if (count == 0) {
+                lockedBy = null;
+                this.notify();
             }
         }
     }
