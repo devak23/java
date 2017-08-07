@@ -1,49 +1,28 @@
 package com.ak.learning.concurrency.locks;
 
+/**
+ * The ReadWriteLock operates on the principle that
+ * 1. Multiple readers can read the resource if there are no writers writing to the
+ * resource or write requests being placed on the resource
+ * 2. A writer can write to a resource only if there are no writers writing to the
+ * resource or readers reading the resource
+ */
 public class ReadWriteLock {
-    private int DEFAULT_READERS = 10;
-    private int DEFAULT_WRITERS = 10;
-    private int DEFAULT_LIMIT = 10;
-
     private int readers;
     private int writers;
     private final Object lock = new Object();
-    private int limit = 0;
-
-    public ReadWriteLock() {
-        this.readers = DEFAULT_READERS;
-        this.writers = DEFAULT_WRITERS;
-    }
-
-    public ReadWriteLock(int readers, int writers, int limit) {
-        this.readers = readers;
-        this.writers = writers;
-        this.limit = limit;
-        this._validateAndLoadDefaults();
-    }
-
-    private void _validateAndLoadDefaults() {
-        if (this.readers <= 0) {
-            this.readers = DEFAULT_READERS;
-        }
-        if (this.writers  <= 0) {
-            this.writers = DEFAULT_WRITERS;
-        }
-        if (this.limit <= 0) {
-            this.limit = DEFAULT_LIMIT;
-        }
-    }
+    private int writeRequests;
 
     public void readLock() {
         synchronized (lock) {
-            while (this.readers > limit || this.writers != 0) {
+            while (this.writers > 0 || this.writeRequests > 0) {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException("Cannot place a readLock on the resource");
+                    Thread.currentThread().interrupt();
                 }
             }
-            ++this.readers;
+            this.readers++;
             System.out.println(this.readers + " slots have been occupied");
         }
     }
@@ -60,14 +39,16 @@ public class ReadWriteLock {
 
     public void writeLock() {
         synchronized (lock) {
-            while (this.writers  > 0 || this.writers > limit) {
+            this.writeRequests++;
+            while (this.writers  > 0 || this.readers > 0) {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException("Cannot acquire lock");
+                    Thread.currentThread().interrupt();
                 }
             }
-            ++ this.writers;
+            this.writers++;
+            this.writeRequests--;
             System.out.println(this.writers + " slots have been occupied");
         }
     }
@@ -75,7 +56,7 @@ public class ReadWriteLock {
     public void writeUnlock() {
         synchronized (lock) {
             if (this.writers  > 0) {
-                -- this.writers;
+                this.writers--;
                 System.out.println(this.writers+ " slots are available");
                 notifyAll();
             }
