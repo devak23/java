@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Business Rules:
@@ -17,11 +19,13 @@ import java.util.*;
  */
 
 public class RankCacheImpl implements RankCache {
-    private static final Object monitor = new Object();
     private static final int MAX_PERMISSIBLE_SIZE = 5;
     private static final RankCache INSTANCE = new RankCacheImpl();
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private Lock readLock = lock.readLock();
+    private Lock writeLock = lock.writeLock();
     private String sourceFile;
-    private Set<StudentResultEntry> data = new TreeSet<>();
+    private Set<StudentResultEntry> data = new LinkedHashSet<>();
 
     private RankCacheImpl() {
         // singleton
@@ -35,18 +39,28 @@ public class RankCacheImpl implements RankCache {
     public void addToCache(StudentResult result) {
         if (result == null) return;
 
-        if (data.size() >= MAX_PERMISSIBLE_SIZE) {
-            // remove the least recently used
-            StudentResultEntry leastAccessed = Collections.min(data);
-            data.removeIf(sre -> sre.getInvocationTime() == leastAccessed.getInvocationTime());
+        writeLock.lock();
+        try {
+            if (data.size() >= MAX_PERMISSIBLE_SIZE) {
+                // remove the least recently used
+                StudentResultEntry leastAccessed = Collections.min(data);
+                data.removeIf(sre -> sre.getInvocationTime() == leastAccessed.getInvocationTime());
+            }
+            data.add(new StudentResultEntry(result, System.nanoTime()));
+        } finally {
+            writeLock.unlock();
         }
-        data.add(new StudentResultEntry(result, System.nanoTime()));
     }
 
     @Override
     public void removeFromCache(String studentRank) {
         int rank = Integer.parseInt(studentRank);
-        data.removeIf(sre -> sre.getStudentResult().getRank() == rank);
+        writeLock.lock();
+        try {
+            data.removeIf(sre -> sre.getStudentResult().getRank() == rank);
+        } finally {
+            writeLock.unlock();
+        }
     }
 
     @Override
@@ -54,10 +68,13 @@ public class RankCacheImpl implements RankCache {
         StudentResult result;
         int rank = Integer.parseInt(studentRank);
         if (data.isEmpty()) {
+            readLock.lock();
             try {
                 initialize();
             } catch (IOException | URISyntaxException e) {
                 throw new RuntimeException(e);
+            } finally {
+                readLock.unlock();
             }
         }
 
@@ -65,10 +82,15 @@ public class RankCacheImpl implements RankCache {
                 .filter(sre -> sre.getStudentResult().getRank() == rank)
                 .findFirst();
 
-        if (entry.isPresent()) {
-            StudentResultEntry sre = entry.get();
-            sre.setInvocationTime(System.nanoTime());
-            return sre.getStudentResult();
+        writeLock.lock();
+        try {
+            if (entry.isPresent()) {
+                StudentResultEntry sre = entry.get();
+                sre.setInvocationTime(System.nanoTime());
+                return sre.getStudentResult();
+            }
+        } finally {
+            writeLock.unlock();
         }
         return null;
     }
