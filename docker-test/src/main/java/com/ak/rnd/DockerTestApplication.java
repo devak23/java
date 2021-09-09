@@ -1,10 +1,9 @@
-package com.ak.rnd.dockertest;
+package com.ak.rnd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan("com.ak.rnd.resource")
 @SpringBootApplication
 public class DockerTestApplication {
 

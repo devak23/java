@@ -1,4 +1,6 @@
 FROM openjdk:8
-ADD target/docker-test.jar ./docker-test.jar
+ARG JAR_FILE=target/hello-0.0.1.jar
+COPY $JAR_FILE app.jar
+
 EXPOSE 8085
-ENTRYPOINT ["java" , "-jar", "docker-test.jar"]
+ENTRYPOINT ["java" , "-jar", "app.jar"]
