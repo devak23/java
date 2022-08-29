@@ -12,7 +12,7 @@ public class EmailCheckerFunctional {
         if (str == null || str.isEmpty()) {
             return new Result.Failure("email cannot be blank or null");
         } else if(emailPattern.matcher(str).matches()) {
-            return new Result.Success();
+            return new Result.Success(str);
         } else {
             return new Result.Failure("invalid email pattern");
         }
