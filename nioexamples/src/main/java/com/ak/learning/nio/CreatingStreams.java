@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public class CreatingStreams {
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("sherlock.txt");
+        Path path = Paths.get(CreatingStreams.class.getResource("/sherlock.txt").getPath());
         String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
 
         Stream<String> words = Stream.of(contents.split("\\P{L}+}"));
@@ -37,7 +37,7 @@ public class CreatingStreams {
         Stream<String> anotherWayWords = Pattern.compile("\\PL+").splitAsStream(contents);
         show("anotherWayWords", anotherWayWords);
 
-        try (Stream<String> lines = Files.lines(Paths.get("sherlock.txt"))) {
+        try (Stream<String> lines = Files.lines(path)) {
             show("lines", lines);
         }
     }

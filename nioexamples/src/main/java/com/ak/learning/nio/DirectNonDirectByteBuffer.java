@@ -8,15 +8,16 @@ import java.nio.file.Paths;
 
 public class DirectNonDirectByteBuffer {
     public static void main(String[] args) throws IOException {
+        String fileName = DirectNonDirectByteBuffer.class.getResource("/sherlock.txt").getFile();
         DirectNonDirectByteBuffer ddb = new DirectNonDirectByteBuffer();
         System.out.println("--------------- USING DIRECT BYTE BUFFER ----------------");
         long startTime = System.currentTimeMillis();
-        ddb.readWithDirectBuffer("sherlock.txt");
+        ddb.readWithDirectBuffer(fileName);
         System.out.println("time taken: " + (System.currentTimeMillis() - startTime) + " milli seconds");
 
         System.out.println("--------------- USING NON-DIRECT BYTE BUFFER ----------------");
         startTime = System.currentTimeMillis();
-        ddb.readWithNonDirectBuffer("sherlock.txt");
+        ddb.readWithNonDirectBuffer(fileName);
         System.out.println("time taken: " + (System.currentTimeMillis() - startTime) + " milli seconds");
 
     }

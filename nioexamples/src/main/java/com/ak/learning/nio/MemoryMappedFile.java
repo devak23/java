@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
-/**
+/*
  * Memory mapped files are special files in Java which allows Java program to access contents directly from
  * memory. This is achieved by mapping whole file or portion of file into memory and operating system takes
  * care of loading page requested and writing into file while application only deals with memory which results

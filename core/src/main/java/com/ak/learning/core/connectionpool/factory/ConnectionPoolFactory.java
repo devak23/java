@@ -2,9 +2,8 @@ package com.ak.learning.core.connectionpool.factory;
 
 import com.ak.learning.core.connectionpool.ResourceType;
 import com.ak.learning.core.connectionpool.pool.ConnectionPool;
-import com.ak.learning.core.connectionpool.pool.DBConnectionPool;
 import com.ak.learning.core.connectionpool.pool.DBConnectionPoolNonSynchronized;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 public enum ConnectionPoolFactory {
     INSTANCE;
@@ -27,6 +26,6 @@ public enum ConnectionPoolFactory {
                 //return new NetworkConnectionPool();
                 break;
         }
-        throw new NotImplementedException();
+        throw new IllegalArgumentException();
     }
 }
