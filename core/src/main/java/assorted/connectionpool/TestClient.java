@@ -3,7 +3,6 @@ package assorted.connectionpool;
 import assorted.connectionpool.factory.ConnectionPoolFactory;
 import assorted.connectionpool.pool.ConnectionPool;
 import assorted.connectionpool.tasks.*;
-import com.ak.learning.core.connectionpool.tasks.*;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
