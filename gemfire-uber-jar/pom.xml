@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <apache.geode.version>1.14.0</apache.geode.version>
+        <apache.geode.version>1.15.0</apache.geode.version>
         <jackson-databind.version>2.12.1</jackson-databind.version>
         <jetty.version>9.4.39.v20210325</jetty.version>
         <shiro.version>1.7.1</shiro.version>
