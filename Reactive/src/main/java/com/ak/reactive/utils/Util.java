@@ -2,6 +2,7 @@ package com.ak.reactive.utils;
 
 import com.github.javafaker.Faker;
 
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 public final class Util {
@@ -22,5 +23,13 @@ public final class Util {
 
     public static Faker faker() {
         return FAKER;
+    }
+
+    public static void sleep(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
