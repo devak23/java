@@ -3,12 +3,14 @@ package com.ak.reactive.utils.lectures;
 import com.ak.reactive.utils.Util;
 import reactor.core.publisher.Mono;
 
+/**
+ * More on subscribe method...
+ */
 public class Lec03Subscribe {
 
     public static void main(String[] args) {
-        // More on subscribe!
 
-        // Let's create a publisher
+        // Let's create a publisher of String data
         Mono<String> name = Mono.just("Abhay");
 
         // To consume this, we can use the subscribe method which accepts 3 callbacks

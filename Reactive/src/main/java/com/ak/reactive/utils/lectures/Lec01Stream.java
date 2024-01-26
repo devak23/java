@@ -6,9 +6,12 @@ import java.util.stream.Stream;
 public class Lec01Stream {
 
     public static void main(String[] args) {
-        Stream<Integer> intStream = Stream.of(1).map(i -> {
+        // Let's create a stream of integers which when iterated, pauses for 2 seconds and emits twice of the given
+        // number
+        Stream<Integer> intStream = Stream.of(1, 2, 3).map(i -> {
             try {
-                TimeUnit.SECONDS.sleep(3);
+                System.out.println("sleeping for 2 seconds... (simulating a delay!)");
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -16,9 +19,10 @@ public class Lec01Stream {
             return i * 2;
         });
 
-        // this won't execute anything. It will only print the stringified intStream Object
+        // If you print the stream now, it won't execute anything. It will only print the stringified intStream Object
         System.out.println(intStream);
-        // Stream by default is lazy and won't do anything unless you connect a "terminal operator".
+
+        // Why? - Because, stream by default, is lazy and won't do anything unless you connect a "terminal operator".
         // How do you attach a terminal operator? one way is to iterate...
 
         intStream.forEach(System.out::println); // now this will print the result
