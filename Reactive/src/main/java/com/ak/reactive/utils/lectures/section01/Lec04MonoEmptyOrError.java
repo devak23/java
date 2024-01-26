@@ -1,4 +1,4 @@
-package com.ak.reactive.utils.lectures;
+package com.ak.reactive.utils.lectures.section01;
 
 import com.ak.reactive.utils.Util;
 import com.github.javafaker.Faker;
