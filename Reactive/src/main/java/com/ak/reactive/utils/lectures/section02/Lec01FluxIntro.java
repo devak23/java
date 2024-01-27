@@ -17,10 +17,13 @@ public class Lec01FluxIntro {
 
         // once again you subscribe to the producer/publisher and extract data one at a time.
         integers.subscribe(
-                Util.onNext(),
-                Util.onError(),
-                Util.onComplete()
+                item -> System.out.println("Emitted item: " + item),
+                error -> System.out.println("Error: " + error),
+                () -> System.out.println("Completed consumption")
         );
+
+        // We could have reused definitions from Util, but this is just to demonstrate that the behavior is the same
+        // as Mono
 
         // if you do not have any data to emit, you can just use Flux.empty like so
         Flux<String> names = Flux.empty();
