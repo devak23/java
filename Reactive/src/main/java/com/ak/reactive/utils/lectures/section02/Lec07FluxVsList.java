@@ -22,6 +22,8 @@ public class Lec07FluxVsList {
         NameGenerator.getNames(5).subscribe(Util.onNext());
 
         // You can clearly see that in the second case (above invocation) the client frustration is much less than the
-        // traditional one.
+        // traditional one. We need to understand the difference here is that List is a data structure but Flux isn't
+        // However, in this particular example, the intent is NOT to compare datastructures but rather the client
+        // experience.
     }
 }
