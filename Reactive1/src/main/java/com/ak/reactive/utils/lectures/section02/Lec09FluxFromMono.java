@@ -26,7 +26,7 @@ public class Lec09FluxFromMono {
         // But how about finding a particular item rather always finding the first/next one? Simple, use the filter method
         numbersFlux.filter( i-> i > 5 && i % 2 == 0).next().subscribe(Util.onNext(), Util.onError(), Util.onComplete());
 
-        // the `next()` essentially makes Flux behave as a collection of Mono's. 
+        // the `next()` essentially makes Flux behave as a collection of Mono's.
 
     }
 
