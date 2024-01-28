@@ -1,7 +1,6 @@
 package com.ak.reactive.assignment.section02;
 
 import com.ak.reactive.utils.Util;
-import org.springframework.beans.factory.annotation.Autowired;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
