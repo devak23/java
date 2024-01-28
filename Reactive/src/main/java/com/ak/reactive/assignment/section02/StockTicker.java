@@ -1,27 +1,26 @@
 package com.ak.reactive.assignment.section02;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.ak.reactive.utils.Util;
+import org.springframework.beans.factory.annotation.Autowired;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * A StockTicker will emit a particular stock price at a specific frequency (5 seconds).
+ * @see BrokerService for problem definition.
+ * A StockTicker will emit a particular stock price at a specific frequency.
  */
 public class StockTicker {
-    @Value("${stock.base.price}=100.0")
-    private Double baseStockPrice;
-
-    public static final Integer MIN = -11;
-    public static final Integer MAX = 11;
+    private final Config config = new Config();
 
 
     public Flux<Double> getPriceUpdates() {
-        return Flux.interval(Duration.ofSeconds(5)).map(i -> baseStockPrice + priceTurn());
-    }
-
-    private double priceTurn() {
-        int range = (MIN + MAX) + 1;
-        return Math.random() * range + MIN ;
+        AtomicInteger atomicInteger = new AtomicInteger(config.getBaseStockPrice());
+        return Flux.interval(Duration.ofSeconds(config.getDuration()))
+                .map(i -> (double) atomicInteger.accumulateAndGet(
+                        Util.faker().random().nextInt(-5, 5),
+                        (a, b) -> a + b
+                ));
     }
 }
