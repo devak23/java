@@ -34,11 +34,11 @@ public final class Util {
         }
     }
 
-    public <T> Subscriber<T> getSubscriber(String name) {
+    public static <T> Subscriber<T> getSubscriber(String name) {
         return new DefaultSubscriber<>(name);
     }
 
-    public <T> Subscriber<T> getSubscriber() {
+    public static <T> Subscriber<T> getSubscriber() {
         return new DefaultSubscriber<>();
     }
 }
