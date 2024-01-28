@@ -1,6 +1,7 @@
 package com.ak.reactive.utils;
 
 import com.github.javafaker.Faker;
+import org.reactivestreams.Subscriber;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -31,5 +32,13 @@ public final class Util {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public <T> Subscriber<T> getSubscriber(String name) {
+        return new DefaultSubscriber<>(name);
+    }
+
+    public <T> Subscriber<T> getSubscriber() {
+        return new DefaultSubscriber<>();
     }
 }
