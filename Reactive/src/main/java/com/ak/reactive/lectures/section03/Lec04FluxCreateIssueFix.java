@@ -18,6 +18,7 @@ public class Lec04FluxCreateIssueFix {
                         System.out.println("Emitted: " + country);
                         fluxSink.next(country);
                     } while (!country.equalsIgnoreCase("Canada"));
+                    fluxSink.complete();
                 })
                 .take(3)
                 .subscribe(Util.getSubscriber());
