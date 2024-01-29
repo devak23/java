@@ -26,7 +26,8 @@ public class Lec05FluxGenerate {
         // AS you can see the take() sends the cancellation signal which is handled by the publisher well.
 
         System.out.println("********* SynchronousFluxSink with complete signal ***********");
-        // If you invoke the complete method from within the block, you can end the infinite loop
+        // If you invoke the complete method from within the block, you can end the infinite loop. Similar behavior
+        // will be seen if you emit an error.
         Flux.generate(synchronousSink -> {
             synchronousSink.next(Util.faker().cat().name());
             synchronousSink.complete();
