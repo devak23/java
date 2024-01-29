@@ -11,6 +11,14 @@ public class Lec02FluxCreateRefactor {
         NameProducer nameProducer = new NameProducer();
         Flux.create(nameProducer).subscribe(Util.getSubscriber());
 
-        nameProducer.produce();
+        Runnable runnable = () -> nameProducer.produce();
+        for (int i=0; i<10; i++) {
+            new Thread(runnable).start();
+        }
+
+        Util.sleep(3);
+
+        // Flux sink can be shared with multiple threads as is shown by the output. so if you want to create a Flux with
+        // the help of multiple threads, you can use FluxSink
     }
 }
