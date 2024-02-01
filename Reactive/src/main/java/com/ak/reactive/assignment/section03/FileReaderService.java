@@ -17,8 +17,6 @@ import java.util.function.Consumer;
  * to select a couple of lines itself.
  */
 public class FileReaderService {
-    // Defining where our file is residing
-
 
     private Callable<BufferedReader> openReader(Path path) {
         return () -> Files.newBufferedReader(path);
@@ -51,7 +49,8 @@ public class FileReaderService {
     }
 
     public Flux<String> readFile(Path path) {
-        return Flux.generate(openReader(path),
+        return Flux.generate(
+                openReader(path),
                 read(),
                 closeReader());
     }
