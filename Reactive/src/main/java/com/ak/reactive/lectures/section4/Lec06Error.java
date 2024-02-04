@@ -8,19 +8,29 @@ public class Lec06Error {
 
     public static void main(String[] args) {
 
+        System.out.println("********** onErrorReturn **************");
         Flux.range(1, 10)
                 .log()
                 .map(i -> 10 / (5 - i))
                 .onErrorReturn(-1)
                 .subscribe(Util.getSubscriber());
 
-        System.out.println("********** Fallback **************");
-
+        System.out.println("********** onErrorResume **************");
         Flux.range(1, 10)
                 .log()
                 .map(i -> 10 / (5 - i))
                 .onErrorResume(e -> fallback())
                 .subscribe(Util.getSubscriber());
+
+        System.out.println("********** onErrorResume **************");
+        Flux.range(1, 10)
+                .log()
+                .map(i -> 10 / (5 - i))
+                .onErrorContinue((e, obj) -> {
+                    System.out.println("Continuing..Error caused on: " + obj);
+                })
+                .subscribe(Util.getSubscriber());
+
     }
 
 
