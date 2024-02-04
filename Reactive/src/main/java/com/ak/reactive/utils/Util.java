@@ -41,4 +41,8 @@ public final class Util {
     public static <T> Subscriber<T> getSubscriber() {
         return new DefaultSubscriber<>();
     }
+
+    public static <T> Subscriber<T> getSlowSubscriber() {
+        return new SlowSubscriber<>("SlowPoke");
+    }
 }
