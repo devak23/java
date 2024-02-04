@@ -2,11 +2,18 @@ package com.ak.reactive.utils;
 
 import com.github.javafaker.Faker;
 import org.reactivestreams.Subscriber;
+import reactor.core.publisher.Mono;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 public final class Util {
+
+    private static final Path PATH = Paths.get("src/main/resources");
 
     public static <T> Consumer<T> onNext() {
         return o -> System.out.println("Util::onNext received: " + o);
@@ -44,5 +51,17 @@ public final class Util {
 
     public static <T> Subscriber<T> getSlowSubscriber() {
         return new SlowSubscriber<>("SlowPoke");
+    }
+
+    public static Mono<String> getQuotes() {
+        return Mono.fromSupplier(() -> {
+            String content;
+            try {
+                return Files.readString(PATH.resolve("quotes.txt"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return Util.faker().backToTheFuture().quote();
+            }
+        });
     }
 }
