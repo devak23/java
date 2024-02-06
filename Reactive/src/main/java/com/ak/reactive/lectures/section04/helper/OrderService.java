@@ -1,4 +1,4 @@
-package com.ak.reactive.lectures.section4.helper;
+package com.ak.reactive.lectures.section04.helper;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
