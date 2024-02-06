@@ -19,13 +19,16 @@ public class Lec12FlatMap {
 
     // 1. First create a Customer.
     // 2. Iterate over flux using flatmap
-    // 3.
+    // 3. Subscribe to the resulting data elements
 
     public static void main(String[] args) {
+        // This shows what happens when you use a map instead of a flatmap. The map wont "unpack" the elements in the flux
+        // It rather returns the Flux itself.
         CustomerService.getCustomers()
                 .map(customer -> OrderService.getOrdersFor(customer.getCustomerId()))
                 .subscribe(Util.getSubscriber());
 
+        // The flatmap will get rid of the extra abstraction of Flux over the elements and will return them as we want.
         CustomerService.getCustomers()
                 .flatMap(customer -> OrderService.getOrdersFor(customer.getCustomerId()))
                 .subscribe(Util.getSubscriber());
