@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * A Hot publisher on the other hand, starts producing the data the moment it receives the request for data and does
  * NOT care about how many subscribers were added later on.
  */
-public class Lec02HotPublisher {
+public class Lec02HotPublishShare {
     // So we create a Movie first
     public static Stream<String> streamMovie() {
         System.out.println("Got request for a movie...");
