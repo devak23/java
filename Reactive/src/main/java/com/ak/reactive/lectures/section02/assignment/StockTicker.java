@@ -1,4 +1,4 @@
-package com.ak.reactive.assignment.section02;
+package com.ak.reactive.lectures.section02.assignment;
 
 import com.ak.reactive.utils.Util;
 import reactor.core.publisher.Flux;

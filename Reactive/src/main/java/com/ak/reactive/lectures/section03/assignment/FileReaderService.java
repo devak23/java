@@ -1,4 +1,4 @@
-package com.ak.reactive.assignment.section03;
+package com.ak.reactive.lectures.section03.assignment;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.SynchronousSink;

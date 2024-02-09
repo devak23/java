@@ -1,4 +1,4 @@
-package com.ak.reactive.assignment.section01;
+package com.ak.reactive.lectures.section01.assignment;
 
 import java.io.IOException;
 import java.nio.file.Files;

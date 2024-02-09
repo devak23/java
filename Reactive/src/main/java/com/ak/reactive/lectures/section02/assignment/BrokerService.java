@@ -1,4 +1,4 @@
-package com.ak.reactive.assignment.section02;
+package com.ak.reactive.lectures.section02.assignment;
 
 /**
  * Problem: We are required to have a producer and consumer (possibly more than 1) Consumers will cancel subscription

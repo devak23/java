@@ -1,4 +1,4 @@
-package com.ak.reactive.assignment.section02;
+package com.ak.reactive.lectures.section02.assignment;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;

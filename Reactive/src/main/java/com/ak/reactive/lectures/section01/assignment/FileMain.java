@@ -1,4 +1,4 @@
-package com.ak.reactive.assignment.section01;
+package com.ak.reactive.lectures.section01.assignment;
 
 import com.ak.reactive.utils.Util;
 

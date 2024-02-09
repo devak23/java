@@ -1,6 +1,6 @@
-package com.ak.reactive.lectures.section03;
+package com.ak.reactive.lectures.section03.assignment;
 
-import com.ak.reactive.assignment.section03.FileReaderService;
+import com.ak.reactive.lectures.section03.assignment.FileReaderService;
 import com.ak.reactive.utils.Util;
 
 import java.nio.file.Path;
