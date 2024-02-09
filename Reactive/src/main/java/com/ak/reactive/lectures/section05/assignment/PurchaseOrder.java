@@ -7,13 +7,15 @@ import lombok.ToString;
 @Data
 @ToString
 public class PurchaseOrder {
+    private final String category;
     private String item;
-    private String price;
-    private int userId;
+    private Double price;
+    private int quantity;
 
-    public PurchaseOrder(int userId) {
-        this.userId = userId;
+    public PurchaseOrder() {
         this.item = Util.faker().commerce().productName();
-        this.price = Util.faker().commerce().price();
+        this.price = Double.parseDouble(Util.faker().commerce().price());
+        this.category = Util.faker().commerce().department();
+        this.quantity = Util.faker().random().nextInt(1, 10);
     }
 }
