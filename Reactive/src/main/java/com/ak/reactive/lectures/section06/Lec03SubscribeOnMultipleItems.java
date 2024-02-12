@@ -20,13 +20,14 @@ public class Lec03SubscribeOnMultipleItems {
                 })
                 .doOnNext(i -> printThreadName("next " + i));
 
-        Runnable runnable = () -> flux
+        flux
                 .subscribeOn(Schedulers.boundedElastic())
                 .subscribe(v -> printThreadName("sub " + v));
 
-        for (int i = 0; i < 4; i++) {
-            new Thread(runnable).start();
-        }
+        flux
+                .subscribeOn(Schedulers.parallel())
+                .subscribe(v -> printThreadName("sub " + v));
+
 
         Util.sleep(5);
     }
