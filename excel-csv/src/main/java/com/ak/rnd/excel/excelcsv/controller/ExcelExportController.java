@@ -4,16 +4,15 @@ import com.ak.rnd.excel.excelcsv.service.ExcelExportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.ByteArrayInputStream;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -22,7 +21,7 @@ import java.util.Optional;
 @RequestMapping("/excel")
 @Slf4j
 public class ExcelExportController {
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss");
     @Autowired
     ExcelExportService excelExportService;
     @GetMapping
@@ -30,18 +29,22 @@ public class ExcelExportController {
         return "Ready for download!";
     }
 
-    @GetMapping("/download")
-    public ResponseEntity<Resource> exportToExcel() {
+    @GetMapping("/download/{count}")
+    public ResponseEntity<?> exportToExcel(@PathVariable("count") int count) {
         String filename = "employee-" + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + ".xlsx";
 
-        Optional<ByteArrayInputStream> exportFile = excelExportService.exportToExcel(100);
+        if (count <= 0) {
+            return ResponseEntity.internalServerError().body("Nothing to download!");
+        }
+
+        Optional<ByteArrayInputStream> exportFile = excelExportService.exportToExcel(count);
         if (exportFile.isPresent()) {
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
                     .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
                     .body(new InputStreamResource(exportFile.get()));
         } else {
-            return ResponseEntity.internalServerError().body(null);
+            return ResponseEntity.internalServerError().body("Error creating Excel file.");
         }
     }
 }
