@@ -22,9 +22,9 @@ public class CsvExporter {
     @LogTime
     public Optional<ByteArrayInputStream> downloadEmployeesToFile(Flux<Employee> employeeFlux) {
         try (
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                PrintWriter pw = new PrintWriter(baos,false, StandardCharsets.UTF_8);
-                CsvWriter csvWriter = CsvWriter
+                final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                final PrintWriter pw = new PrintWriter(baos,false, StandardCharsets.UTF_8);
+                final CsvWriter csvWriter = CsvWriter
                         .builder()
                         .quoteStrategy(QuoteStrategies.ALWAYS)
                         .fieldSeparator(',')
