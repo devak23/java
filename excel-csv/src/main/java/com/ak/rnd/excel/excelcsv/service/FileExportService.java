@@ -10,15 +10,23 @@ import java.io.ByteArrayInputStream;
 import java.util.Optional;
 
 @Service
-public class ExcelExportService {
+public class FileExportService {
     @Autowired
-    private Exporter exporter;
+    private ExcelExporter excelExporter;
+
+    @Autowired
+    private CsvExporter csvExporter;
 
     @Autowired
     private EmployeeDAO employeeDAO;
 
     public Optional<ByteArrayInputStream> exportToExcel(int count) {
         Flux<Employee> employeeFlux = employeeDAO.getEmployees(count);
-        return exporter.downloadEmployeesToFile(employeeFlux);
+        return excelExporter.downloadEmployeesToFile(employeeFlux);
+    }
+
+    public Optional<ByteArrayInputStream> exportToCSV(int count) {
+        Flux<Employee> employeeFlux = employeeDAO.getEmployees(count);
+        return csvExporter.downloadEmployeesToFile(employeeFlux);
     }
 }
