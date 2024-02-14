@@ -19,6 +19,9 @@ public class AppConfig {
     @Value("#{${method.header.business}}")
     private Map<String, String> businessModelMap;
 
+    @Value("#{${method.header.commerce}}")
+    private Map<String, String> commerceModelMap;
+
     public Map<String, String> getModelMap(String key) {
         if (key.equalsIgnoreCase("Business")) {
             return businessModelMap;
@@ -26,6 +29,10 @@ public class AppConfig {
 
         if (key.equalsIgnoreCase("Employee")) {
             return employeeModelMap;
+        }
+
+        if (key.equalsIgnoreCase("Commerce")) {
+            return commerceModelMap;
         }
 
         return Collections.emptyMap();
