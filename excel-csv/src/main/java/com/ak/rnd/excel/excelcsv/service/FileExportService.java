@@ -1,8 +1,10 @@
 package com.ak.rnd.excel.excelcsv.service;
 
+import com.ak.rnd.excel.excelcsv.config.AppConfig;
 import com.ak.rnd.excel.excelcsv.dao.EmployeeDAO;
 import com.ak.rnd.excel.excelcsv.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
@@ -13,12 +15,13 @@ import java.util.Optional;
 public class FileExportService {
     @Autowired
     private ExcelExporter excelExporter;
-
     @Autowired
     private CsvExporter csvExporter;
-
     @Autowired
     private EmployeeDAO employeeDAO;
+    @Autowired
+    private AppConfig appConfig;
+
 
     public Optional<ByteArrayInputStream> exportToExcel(int count) {
         Flux<Employee> employeeFlux = employeeDAO.getEmployees(count);
@@ -27,6 +30,6 @@ public class FileExportService {
 
     public Optional<ByteArrayInputStream> exportToCSV(int count) {
         Flux<Employee> employeeFlux = employeeDAO.getEmployees(count);
-        return csvExporter.downloadEmployeesToFile(employeeFlux);
+        return csvExporter.downloadEmployeesToFile(employeeFlux, appConfig.getModelMap());
     }
 }
