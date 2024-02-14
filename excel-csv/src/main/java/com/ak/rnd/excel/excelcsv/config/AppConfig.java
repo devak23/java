@@ -4,6 +4,7 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Collections;
 import java.util.Map;
 
 
@@ -11,6 +12,22 @@ import java.util.Map;
 @Getter
 @Configuration
 public class AppConfig {
-    @Value("#{${headers}}")
-    private Map<String, String> modelMap;
+
+    @Value("#{${method.header.employee}}")
+    private Map<String, String> employeeModelMap;
+
+    @Value("#{${method.header.business}}")
+    private Map<String, String> businessModelMap;
+
+    public Map<String, String> getModelMap(String key) {
+        if (key.equalsIgnoreCase("Business")) {
+            return businessModelMap;
+        }
+
+        if (key.equalsIgnoreCase("Employee")) {
+            return employeeModelMap;
+        }
+
+        return Collections.emptyMap();
+    }
 }

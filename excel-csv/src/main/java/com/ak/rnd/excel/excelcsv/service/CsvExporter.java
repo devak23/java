@@ -20,7 +20,7 @@ import java.util.*;
 @Slf4j
 public class CsvExporter {
     @LogTime
-    public Optional<ByteArrayInputStream> downloadEmployeesToFile(Flux<?> fluxOfItems, Map<String, String> headerMethodMap) {
+    public Optional<ByteArrayInputStream> downloadDataToCsv(Flux<?> fluxOfItems, Map<String, String> headerMethodMap) {
         System.out.println(headerMethodMap);
         try (
                 final ByteArrayOutputStream baos = new ByteArrayOutputStream();

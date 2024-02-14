@@ -3,7 +3,6 @@ package com.ak.rnd.excel.excelcsv.service;
 import com.ak.rnd.excel.excelcsv.config.LogTime;
 import com.ak.rnd.excel.excelcsv.model.Employee;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -25,7 +24,7 @@ public class ExcelExporter {
     private static final int MAX_EXCEL_ROW_LIMIT = 1000000;
 
     @LogTime
-    public Optional<ByteArrayInputStream> downloadEmployeesToFile(Flux<Employee> employeeFlux) {
+    public Optional<ByteArrayInputStream> downloadDataToExcel(Flux<Employee> employeeFlux) {
         try (final ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             final Workbook workbook = new SXSSFWorkbook();
             Sheet sheet = workbook.createSheet(SHEET_TITLE);

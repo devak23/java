@@ -32,7 +32,7 @@ public class FileExportController {
 
     @GetMapping("/excel/{count}")
     public ResponseEntity<?> downloadExcel(@PathVariable("count") int count) {
-        String filename = FILE_NAME + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + EXCEL_XTN;
+        String filename = "Employee" + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + EXCEL_XTN;
 
         if (count <= 0) {
             return ResponseEntity.internalServerError().body("Nothing to download!");
@@ -49,15 +49,15 @@ public class FileExportController {
         }
     }
 
-    @GetMapping("/csv/{count}")
-    public ResponseEntity<?> downloadCsv(@PathVariable("count") int count) {
-        String filename = FILE_NAME + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + CSV_XTN;
+    @GetMapping("/csv/{key}/{count}")
+    public ResponseEntity<?> downloadCsv(@PathVariable("count") int count, @PathVariable("key") String key) {
+        String filename = key + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + CSV_XTN;
 
         if (count <= 0) {
             return ResponseEntity.internalServerError().body("Nothing to download!");
         }
 
-        Optional<ByteArrayInputStream> bais = fileExportService.exportToCSV(count);
+        Optional<ByteArrayInputStream> bais = fileExportService.exportToCSV(key, count);
         if (bais.isPresent()) {
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
