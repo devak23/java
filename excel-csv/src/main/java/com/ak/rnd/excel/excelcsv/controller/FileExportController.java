@@ -30,15 +30,15 @@ public class FileExportController {
         return "ExcelExporter is ready for download!";
     }
 
-    @GetMapping("/excel/{count}")
-    public ResponseEntity<?> downloadExcel(@PathVariable("count") int count) {
-        String filename = "Employee" + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + EXCEL_XTN;
+    @GetMapping("/excel/{key}/{count}")
+    public ResponseEntity<?> downloadExcel(@PathVariable("count") int count, @PathVariable("key") String key) {
+        String filename = key + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + EXCEL_XTN;
 
         if (count <= 0) {
             return ResponseEntity.internalServerError().body("Nothing to download!");
         }
 
-        Optional<ByteArrayInputStream> bais = fileExportService.exportToExcel(count);
+        Optional<ByteArrayInputStream> bais = fileExportService.exportToExcel(key, count);
         if (bais.isPresent()) {
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)

@@ -13,6 +13,9 @@ import reactor.core.publisher.Flux;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -20,36 +23,42 @@ import java.util.concurrent.atomic.AtomicReference;
 @Service
 @Slf4j
 public class ExcelExporter {
-    private static final String SHEET_TITLE = "EmployeeData";
     private static final int MAX_EXCEL_ROW_LIMIT = 1000000;
 
     @LogTime
-    public Optional<ByteArrayInputStream> downloadDataToExcel(Flux<Employee> employeeFlux) {
+    public Optional<ByteArrayInputStream> downloadDataToExcel(String key, Flux<?> fluxOfItems, Map<String, String> headerMethodMap) {
         try (final ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             final Workbook workbook = new SXSSFWorkbook();
-            Sheet sheet = workbook.createSheet(SHEET_TITLE);
-            createHeaders(sheet);
+            Sheet sheet = workbook.createSheet(key);
+            createHeaders(sheet, headerMethodMap);
 
             AtomicInteger rowIndex = new AtomicInteger(0);
             AtomicInteger sheetCounter = new AtomicInteger(0);
             AtomicReference<Sheet> currentSheet = new AtomicReference<>(sheet);
 
-            employeeFlux
+            fluxOfItems
                     .parallel()
-                    .subscribe( employee -> {
+                    .subscribe( item -> {
                         if (rowIndex.get() >= MAX_EXCEL_ROW_LIMIT) {
-                            Sheet newSheet = workbook.createSheet(SHEET_TITLE + "-" + sheetCounter.incrementAndGet());
-                            createHeaders(newSheet);
+                            Sheet newSheet = workbook.createSheet(key + "-" + sheetCounter.incrementAndGet());
+                            createHeaders(newSheet, headerMethodMap);
                             currentSheet.set(newSheet);
                             rowIndex.set(0);
                         }
+                        Field[] fields = item.getClass().getDeclaredFields();
+                        Map<String, Field> nameFieldMap = createNameFieldMap(fields);
+
                         Row row = currentSheet.get().createRow(rowIndex.incrementAndGet());
-                        row.createCell(0).setCellValue(employee.getFirstName());
-                        row.createCell(1).setCellValue(employee.getLastName());
-                        row.createCell(2).setCellValue(employee.getFullName());
-                        row.createCell(3).setCellValue(employee.getUserName());
-                        row.createCell(4).setCellValue(employee.getTitle());
-                        row.createCell(5).setCellValue(employee.getBloodGroup());
+                        int count = 0;
+                        for (String methodName: headerMethodMap.keySet()) {
+                            Field f = nameFieldMap.get(methodName);
+                            f.setAccessible(true);
+                            try {
+                                row.createCell(count++).setCellValue((String) f.get(item));
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
                     });
 
             workbook.write(baos);
@@ -60,13 +69,19 @@ public class ExcelExporter {
         }
     }
 
-    private void createHeaders(final Sheet sheet) {
+    private Map<String, Field> createNameFieldMap(Field[] fields) {
+        Map<String, Field> nameFieldMap = new HashMap<>(fields.length * 2);
+        for (Field f : fields) {
+            nameFieldMap.put(f.getName(), f);
+        }
+        return nameFieldMap;
+    }
+
+    private void createHeaders(final Sheet sheet, Map<String, String> headerMethodMap) {
         Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("First Name");
-        headerRow.createCell(1).setCellValue("Last Name");
-        headerRow.createCell(2).setCellValue("Full Name");
-        headerRow.createCell(3).setCellValue("User Name");
-        headerRow.createCell(4).setCellValue("Title");
-        headerRow.createCell(5).setCellValue("Blood Group");
+        int count = 0;
+        for(String key: headerMethodMap.keySet()) {
+            headerRow.createCell(count++).setCellValue(headerMethodMap.get(key));
+        }
     }
 }
