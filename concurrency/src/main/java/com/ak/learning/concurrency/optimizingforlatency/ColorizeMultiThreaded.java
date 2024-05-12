@@ -163,11 +163,23 @@ public class ColorizeMultiThreaded {
 }
 
 /**
- * Color basics - A digital image is composed of pixels. Each pixel color is represented by A,R,G,B which stands for
+ * Color basics -
+ * An image is nothing more than a 2-dimensional collection of Pixels. The color of a pixel can be encoded in different
+ * ways. A few frequently used groups of pixel color encoding are:
+ * - Y'UV - Luma (brightness), and 2 chroma (color) components
+ * - RGB - Red, Green, Blue
+ * - HSL and HSV - Hue, Saturation, Lightness/Brightness CIE XYZ
+ * - Device independent Red, Green and Blue
+ *
+ * A,R,G,B stands for
  * A = Alpha
  * R = Red
  * G = Green
  * B = Blue
+ *
+ * Each component is represented by 1 byte (8 bits) so the value of each component is in the range of 0
+ * (0x in hexadecimal) and 255 (0xFF in hexadecimal). Since we have 4 bytes, we can store the entire color of a pixel
+ * in a variable of type int
  * Using the RGB components you can achieve any color by using 1 component of the color and keeping others to a minimum.
  * If we keep all the components colors the same, you get varying shades of gray varying from White to Black. So looking
  * at the many-flowers.jpg file, you can see a shades of gray and that is how we are going to fina areas that we want to
