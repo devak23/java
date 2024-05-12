@@ -13,6 +13,16 @@ import java.nio.file.Paths;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * The lscpu command shows me:
+ *     Thread(s) per core:   2
+ *     Core(s) per socket:   4
+ *     Socket(s):            1
+ *  This means I have 1 (socket) x 4 (physical cores) x 2 (threads per core) = 8 virtual cores available. In other words,
+ *  I have 8 virtual CPU's available. This implies I cannot more than 8 threads running in parallel. If, the thread pool
+ *  size below becomes more than 8 then the performance is more than likely to suffer rather than improve.
+ */
+
 public class ThroughputServer {
     public static final Path SOURCE_PATH = Paths.get("src/main/resources/war_and_peace.txt");
     public static final Path RESPONSE_PAGE = Paths.get("src/main/resources/template.html");
