@@ -1,0 +1,14 @@
+name: STAGE
+modules:
+  -
+      name: advice-processor
+      source: advice-processor.yml
+      type: file
+#  -
+#      name: statement-processor
+#      source: statement-processor.yml
+#      type: file
+#  -
+#      name: report-processor
+#      source: report-processor.yml
+#      type: file
