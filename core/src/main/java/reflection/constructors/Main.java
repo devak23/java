@@ -13,13 +13,13 @@ public class Main {
         System.out.println("----- Address -------");
         printConstructors(Address.class);
 
-        Person p2 = (Person) createInstanceWithArguments(Person.class);
+        Person p2 = createInstanceWithArguments(Person.class);
         System.out.println(p2);
 
-        Person abhay = (Person) createInstanceWithArguments(Person.class, "Abhay", 45, "Powai, Mumbai");
+        Person abhay = createInstanceWithArguments(Person.class, "Abhay", 45, "Powai, Mumbai");
         System.out.println(abhay);
 
-        Person junk = (Person) createInstanceWithArguments(Person.class, null, null, null, null, null, null);
+        Person junk = createInstanceWithArguments(Person.class, null, null, null, null, null, null);
         System.out.println(junk);
     }
 
@@ -38,11 +38,11 @@ public class Main {
     }
 
 
-    public static Object createInstanceWithArguments(Class<?> clazz, Object ...args) {
+    public static <T> T createInstanceWithArguments(Class<T> clazz, Object ...args) {
         for (Constructor<?> constructor : clazz.getDeclaredConstructors()) {
             if (constructor.getParameterTypes().length == args.length) {
                 try {
-                    return constructor.newInstance(args);
+                    return (T) constructor.newInstance(args);
                 } catch (Exception e) {
                     System.out.printf("Problem creating an instance of the class desired:%s\n", e.getMessage());
                     return null;
