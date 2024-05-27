@@ -1,14 +1,15 @@
-package com.ak.rnd.framework.model;
+package com.ak.rnd.architecture.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.List;
+
 @Data
 @ToString
 @JsonIgnoreProperties
-public class BaseModule {
+public class BaseConfig {
     protected String name;
-    protected String source;
-    protected String type;
+    protected List<? extends BaseModule> modules;
 }

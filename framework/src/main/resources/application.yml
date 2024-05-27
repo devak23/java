@@ -4,6 +4,7 @@ modules:
       name: advice-processor
       source: advice-processor.yml
       type: file
+      processor: com.ak.rnd.framework.processor.AdviceProcessor
 #  -
 #      name: statement-processor
 #      source: statement-processor.yml

@@ -1,8 +1,9 @@
-package com.ak.rnd.framework;
+package com.ak.rnd.architecture;
 
-import com.ak.rnd.framework.model.AdviceConfig;
-import com.ak.rnd.framework.model.BaseConfig;
-import com.ak.rnd.framework.model.BaseModule;
+import com.ak.rnd.architecture.model.BaseConfig;
+import com.ak.rnd.architecture.model.BaseModule;
+import com.ak.rnd.architecture.processor.AdviceProcessor;
+import com.ak.rnd.architecture.processor.IProcess;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -11,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.InputStream;
+import java.lang.reflect.Method;
 
 @SpringBootApplication
 public class FrameworkApplication implements CommandLineRunner {
@@ -27,12 +29,10 @@ public class FrameworkApplication implements CommandLineRunner {
 			System.out.println(baseConfig);
 
 			for(BaseModule module : baseConfig.getModules()) {
-				if (module.getType().equalsIgnoreCase("file")) {
-					try (InputStream modStream = TypeReference.class.getResourceAsStream("/" + module.getSource())) {
-						AdviceConfig adviceConfig = mapper.readValue(modStream, AdviceConfig.class);
-						System.out.println(adviceConfig);
-					}
-				}
+				Class<?> clazz = Class.forName(String.valueOf(module.getProcessor()));
+				IProcess<String> processor = (AdviceProcessor) clazz.newInstance();
+				Method process = clazz.getDeclaredMethod("process");
+				process.invoke(processor);
 			}
 		}
 	}

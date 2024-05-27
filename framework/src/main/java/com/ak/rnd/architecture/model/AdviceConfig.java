@@ -1,4 +1,4 @@
-package com.ak.rnd.framework.model;
+package com.ak.rnd.architecture.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
