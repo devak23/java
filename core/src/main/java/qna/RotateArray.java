@@ -7,6 +7,9 @@ import qna.exception.InvalidInputException;
  * [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
  */
 public class RotateArray {
+
+    // Rotation is based on System.arrayCopy(source, sourcePosition, dest, destPosition, length)
+
     public int[] rotate(int[] input, int steps) throws InvalidInputException {
         if (steps < 0) {
             throw new InvalidInputException("Steps cannot be negative");
@@ -17,13 +20,13 @@ public class RotateArray {
         }
 
         int[] firstPart = new int[input.length - steps];
-        System.arraycopy(input, 0, firstPart, 0, input.length - steps); // will copy [1,2,3,4]
+        System.arraycopy(input, 0, firstPart, 0, input.length - steps); // will copy [1,2,3,4] into firstPart array
 
         int[] secondPart = new int[steps];
-        System.arraycopy(input, input.length - firstPart.length+1, secondPart, 0, steps); // will copy [5,6,7]
+        System.arraycopy(input, input.length - firstPart.length+1, secondPart, 0, steps); // will copy [5,6,7] into secondPart array
 
         int[] finalArray = new int[firstPart.length + secondPart.length];
-        System.arraycopy(secondPart, 0, finalArray, 0, secondPart.length); // will copy [5,6,7,0,0,0,0]
+        System.arraycopy(secondPart, 0, finalArray, 0, secondPart.length); // will result in [5,6,7,0,0,0,0]
         System.arraycopy(firstPart, 0, finalArray, secondPart.length, firstPart.length); // will copy [5,6,7,1,2,3,4]
 
         return finalArray;
