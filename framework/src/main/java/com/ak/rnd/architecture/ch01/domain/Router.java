@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-
 /**
+ * STEP1:
  * Entities help us build more expressive code. What characterizes an entity is its sense of continuity and identity,
  * as described by Domain-Driven Design: Tackling Complexity in the Heart of Software. That continuity is related to the
  * life cycle and mutable characteristics of the object. For example, in our network and topology inventory scenario, we

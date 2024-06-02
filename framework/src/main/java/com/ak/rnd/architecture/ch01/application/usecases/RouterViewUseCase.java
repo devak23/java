@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
+ * STEP 2:
  * Use cases represent the system's behavior through application-specific operations, which exist within the software
  * realm to support the domain's constraints. Use cases may interact directly with entities and other use cases, making
  * them flexible components. In Java, we represent use cases as abstractions defined by interfaces expressing what the

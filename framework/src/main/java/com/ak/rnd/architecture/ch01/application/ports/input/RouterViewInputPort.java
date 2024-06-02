@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
+ * STEP 3:
  * If use cases are just interfaces describing what the software does, we still need to implement the use case interface.
  * That's the role of the input port. By being a component that's directly attached to use cases, at the Application
  * level, input ports allow us to implement software intent on domain terms. Here is an input port providing an

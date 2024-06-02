@@ -9,6 +9,7 @@ import com.ak.rnd.architecture.ch01.framework.outputadapters.RouterViewFileAdapt
 import java.util.List;
 
 /**
+ * STEP 5:
  * This class illustrates the creation of an input adapter that gets data from the STDIN. Note the use of the input port
  * through its use case interface. Here, we passed the command that encapsulates input data that's used on the
  * Application hexagon to deal with the Domain hexagon's constraints. If we want to enable other communication forms in
