@@ -1,10 +1,13 @@
 package com.rnd.app.purchase.orderservice.controller;
 
+import com.rnd.app.purchase.orderservice.dto.OrderDto;
 import com.rnd.app.purchase.orderservice.dto.OrderRequest;
 import com.rnd.app.purchase.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,5 +21,10 @@ public class OrderController {
     public String placeOrder(@RequestBody OrderRequest orderRequest) {
         orderService.placeOrder(orderRequest);
         return "Order placed successfully";
+    }
+
+    @GetMapping
+    public List<OrderDto> getOrders() {
+        return orderService.getOrders();
     }
 }
