@@ -24,14 +24,10 @@
         <module>product-service</module>
         <module>order-service</module>
         <module>inventory-service</module>
+        <module>model</module>
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

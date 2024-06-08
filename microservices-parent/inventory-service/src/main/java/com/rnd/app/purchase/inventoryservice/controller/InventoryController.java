@@ -1,5 +1,6 @@
 package com.rnd.app.purchase.inventoryservice.controller;
 
+import com.rnd.app.purchase.dto.InventoryResponse;
 import com.rnd.app.purchase.inventoryservice.dto.InventoryDto;
 import com.rnd.app.purchase.inventoryservice.service.InventoryService;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +25,11 @@ public class InventoryController {
     @GetMapping ("/all")
     public List<InventoryDto> getAllInventory() {
         return inventoryService.getAllInventory();
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<InventoryResponse> isInStock(@RequestParam List<String> skuCodes) {
+        return inventoryService.isInStock(skuCodes);
     }
 }

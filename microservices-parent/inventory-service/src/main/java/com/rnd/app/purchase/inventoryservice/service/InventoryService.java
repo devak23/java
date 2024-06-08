@@ -1,5 +1,6 @@
 package com.rnd.app.purchase.inventoryservice.service;
 
+import com.rnd.app.purchase.dto.InventoryResponse;
 import com.rnd.app.purchase.inventoryservice.dto.InventoryDto;
 import com.rnd.app.purchase.inventoryservice.model.Inventory;
 import com.rnd.app.purchase.inventoryservice.repository.InventoryRepository;
@@ -15,7 +16,7 @@ public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
 
-    @Transactional (readOnly = true)
+    @Transactional(readOnly = true)
     public boolean isInStock(String skuCode) {
         return inventoryRepository.findBySkuCode(skuCode).isPresent();
     }
@@ -30,5 +31,16 @@ public class InventoryService {
                 .skuCode(inventory.getSkuCode())
                 .quantity(inventory.getQuantity())
                 .build();
+    }
+
+    @Transactional(readOnly = true)
+    public List<InventoryResponse> isInStock(List<String> skuCodes) {
+        return inventoryRepository.findBySkuCodeIn(skuCodes).stream()
+                .map(i -> InventoryResponse.builder()
+                        .skuCode(i.getSkuCode())
+                        .inStock(i.getQuantity() > 0)
+                        .build()
+                ).toList();
+
     }
 }
