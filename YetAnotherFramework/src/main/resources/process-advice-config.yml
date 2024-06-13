@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: SAGE
+
+sage:
+  artifact:
+    processors:
+      - name: AdviceProcessor
+        qualifier: adviceProcessor
+        modules:
+          - name: Ingestion Module
+            qualifier: ingestorModule
+            steps:
+              - name: Data Extract Action
+                qualifier: dataExtractAction
+              - name: Data Validate Action
+                qualifier: dataValidateAction
+              - name: Data Enrich Action
+                qualifier: dataEnrichAction
+              - name: Data Sink Action
+                qualifier: dataSinkAction
+          - name: Artifact Generation Module
+            qualifier: artifactGeneratorModule
+          - name: Delivery Module
+            qualifier: deliveryModule
