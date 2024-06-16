@@ -13,6 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -54,5 +57,19 @@ public class EmployeeControllerITests {
                 .andExpect(jsonPath("$.lastName", is(emp.getLastName())))
                 .andExpect(jsonPath("$.email", is(emp.getEmail())))
         ;
+    }
+    
+    @DisplayName("getAllEmployeeIT")
+    @Test
+    public void givenListOfEmployees_whenGetAllEmployees_thenReturnListOfEmployees() throws Exception {
+        // given - define precondition for test
+        List<Employee> employees = EmployeeFixture.getSampleListOfEmployees();
+        repository.saveAll(employees);
+        
+        // when - perform the desiredAction
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/employee"));
+    
+        // then - verify the output
+        response.andExpect(status().isOk()).andExpect(jsonPath("$.size()", is(employees.size())));
     }
 }
