@@ -13,9 +13,9 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-public class EmployeeRepositoryTests {
+public class IEmployeeRepositoryTests {
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private IEmployeeRepository IEmployeeRepository;
 
     // Junit test for saveEmployee operation
 
@@ -26,7 +26,7 @@ public class EmployeeRepositoryTests {
         Employee employee = EmployeeFixture.getSampleEmployee();
 
         // when
-        Employee savedEmployee = employeeRepository.save(employee);
+        Employee savedEmployee = IEmployeeRepository.save(employee);
 
         // then
         assertThat(savedEmployee).isNotNull();
@@ -39,10 +39,10 @@ public class EmployeeRepositoryTests {
     @Test
     public void givenMultipleEmployeeObjectsSaved_whenInvokeFindAll_thenReturnMultipleEmployees() {
         // given - define precondition for test
-        employeeRepository.saveAll(EmployeeFixture.getSampleListOfEmployees());
+        IEmployeeRepository.saveAll(EmployeeFixture.getSampleListOfEmployees());
 
         // when - perform the desiredAction
-        List<Employee> employees = employeeRepository.findAll();
+        List<Employee> employees = IEmployeeRepository.findAll();
 
         // then - verify the output
         assertThat(employees).isNotNull();
@@ -55,10 +55,10 @@ public class EmployeeRepositoryTests {
     public void givenEmployeeId_whenGetEmployeeById_thenReturnEmployee() {
         // given - define precondition for test
         Employee emp = EmployeeFixture.getSampleEmployee();
-        Long empId = employeeRepository.save(emp).getId();
+        Long empId = IEmployeeRepository.save(emp).getId();
 
         // when - perform the desiredAction
-        Optional<Employee> empOptional =  employeeRepository.findById(empId);
+        Optional<Employee> empOptional =  IEmployeeRepository.findById(empId);
 
         // then - verify the output
         assertThat(empOptional.isPresent()).isEqualTo(true);
@@ -70,10 +70,10 @@ public class EmployeeRepositoryTests {
     public void givenEmailAddress_whenFindByEmail_thenReturnRelatedEmployee() {
         // given - define precondition for test
         Employee emp = EmployeeFixture.getSampleEmployee();
-        employeeRepository.save(emp);
+        IEmployeeRepository.save(emp);
         
         // when - perform the desiredAction
-        Optional<Employee> empOptional = employeeRepository.findByEmail("abhayk@gmail.com");
+        Optional<Employee> empOptional = IEmployeeRepository.findByEmail("abhayk@gmail.com");
     
         // then - verify the output
         assertThat(empOptional.isPresent()).isEqualTo(true);
@@ -87,18 +87,18 @@ public class EmployeeRepositoryTests {
     public void givenEmployeeObject_whenUpdate_thenReturnUpdatedEmployee() {
         // given - define precondition for test
         Employee emp = EmployeeFixture.getSampleEmployee();
-        employeeRepository.save(emp);
+        IEmployeeRepository.save(emp);
         
         // when - perform the desiredAction
-        Employee savedEmployee = employeeRepository.findByEmail("abhayk@gmail.com").orElseThrow();
+        Employee savedEmployee = IEmployeeRepository.findByEmail("abhayk@gmail.com").orElseThrow();
         String newEmail = "abhaykulkarni@rediffmail.com";
         savedEmployee.setEmail(newEmail);
-        employeeRepository.save(savedEmployee);
-        Employee reFetchedEmployee = employeeRepository.findByEmail(newEmail).orElseThrow();
+        IEmployeeRepository.save(savedEmployee);
+        Employee reFetchedEmployee = IEmployeeRepository.findByEmail(newEmail).orElseThrow();
     
         // then - verify the output
         assertThat(reFetchedEmployee).isNotNull();
         assertThat(reFetchedEmployee).isEqualTo(savedEmployee);
-        assertThat(employeeRepository.findByEmail("abhayk@gmail.com").isPresent()).isEqualTo(false);
+        assertThat(IEmployeeRepository.findByEmail("abhayk@gmail.com").isPresent()).isEqualTo(false);
     }
 }

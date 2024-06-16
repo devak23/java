@@ -2,7 +2,7 @@ package com.rnd.learning.app.service.impl;
 
 import com.rnd.learning.app.exception.InvalidResourceException;
 import com.rnd.learning.app.model.Employee;
-import com.rnd.learning.app.repository.EmployeeRepository;
+import com.rnd.learning.app.repository.IEmployeeRepository;
 import com.rnd.learning.app.service.IEmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements IEmployeeService {
-    private final EmployeeRepository repository;
+    private final IEmployeeRepository repository;
 
     @Override
     public Employee saveEmployee(Employee employee) throws InvalidResourceException {
