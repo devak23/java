@@ -81,4 +81,24 @@ public class EmployeeRepositoryTests {
         assertThat(actual).isNotNull();
         assertThat(actual).isEqualTo(emp);
     }
+    
+    @DisplayName("Testing update")
+    @Test
+    public void givenEmployeeObject_whenUpdate_thenReturnUpdatedEmployee() {
+        // given - define precondition for test
+        Employee emp = EmployeeFixture.getSampleEmployee();
+        employeeRepository.save(emp);
+        
+        // when - perform the desiredAction
+        Employee savedEmployee = employeeRepository.findByEmail("abhayk@gmail.com").orElseThrow();
+        String newEmail = "abhaykulkarni@rediffmail.com";
+        savedEmployee.setEmail(newEmail);
+        employeeRepository.save(savedEmployee);
+        Employee reFetchedEmployee = employeeRepository.findByEmail(newEmail).orElseThrow();
+    
+        // then - verify the output
+        assertThat(reFetchedEmployee).isNotNull();
+        assertThat(reFetchedEmployee).isEqualTo(savedEmployee);
+        assertThat(employeeRepository.findByEmail("abhayk@gmail.com").isPresent()).isEqualTo(false);
+    }
 }
