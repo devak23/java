@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.rnd.foodorderingsystem</groupId>
+        <artifactId>order-domain</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>order-application-service</artifactId>
+    <packaging>jar</packaging>
+
+    <name>order-application-service</name>
+
+    <properties>
+
+    </properties>
+
+    <!-- STEP 2: no outside dependency, but this module should be able to call the core business logic from the
+    application service. Version will be managed by base application pom -->
+    <dependencies>
+        <dependency>
+            <groupId>com.rnd.foodorderingsystem</groupId>
+            <artifactId>order-domain-core</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.rnd.foodorderingsystem</groupId>
+        <artifactId>order-service</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>order-container</artifactId>
+    <packaging>jar</packaging>
+
+    <name>order-container</name>
+
+
+    <properties>
+    </properties>
+
+    <!-- STEP 6: This will have the reference of all the modules as it will run to create a single jar file that will be
+     deployed as a microservice -->
+    <dependencies>
+        <dependency>
+            <groupId>com.rnd.foodorderingsystem</groupId>
+            <artifactId>order-domain-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.rnd.foodorderingsystem</groupId>
+            <artifactId>order-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.rnd.foodorderingsystem</groupId>
+            <artifactId>order-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.rnd.foodorderingsystem</groupId>
+            <artifactId>order-dataaccess</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.rnd.foodorderingsystem</groupId>
+            <artifactId>order-messaging</artifactId>
+        </dependency>
+    </dependencies>
+</project>
