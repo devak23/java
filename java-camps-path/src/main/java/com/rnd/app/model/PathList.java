@@ -8,4 +8,10 @@ public record PathList(List<Path> paths) {
     public Optional<Path> shortestPath() {
         return paths.parallelStream().min(Comparator.comparing(Path::distance));
     }
+
+    public Optional<Path> shortestPath(Point includingPoint) {
+        return paths.parallelStream()
+                .filter(p -> p.doesSegmentIncludePoint(includingPoint))
+                .min(Comparator.comparing(Path::distance));
+    }
 }

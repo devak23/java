@@ -12,4 +12,9 @@ public record Segment(Point first,
 
         return first.distance(second);
     }
+
+    public boolean includesPoint(Point includingPoint) {
+        return first.equals(includingPoint) || second.equals(includingPoint);
+    }
+
 }
