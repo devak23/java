@@ -11,7 +11,7 @@ public record PathList(List<Path> paths) {
 
     public Optional<Path> shortestPath(Point includingPoint) {
         return paths.parallelStream()
-                .filter(p -> p.doesSegmentIncludePoint(includingPoint))
+                .filter(p -> p.includesPoint(includingPoint))
                 .min(Comparator.comparing(Path::distance));
     }
 }

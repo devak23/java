@@ -12,7 +12,7 @@ public record Path(List<Segment> segments) {
                 .orElse(BigDecimal.ZERO);
     }
 
-    public boolean doesSegmentIncludePoint(Point includingPoint) {
+    public boolean includesPoint(Point includingPoint) {
         return segments.stream()
                 .anyMatch(s -> s.includesPoint(includingPoint));
     }
