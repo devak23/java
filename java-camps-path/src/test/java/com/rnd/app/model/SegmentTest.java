@@ -1,6 +1,7 @@
 package com.rnd.app.model;
 
 
+import com.rnd.app.fixtures.PointFixture;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -13,8 +14,8 @@ class SegmentTest {
     @Test
     void givenValidSegment_whenDistanceIsInvoked_thenReturnDistance() {
         var segment = new Segment(
-                new Point(BigDecimal.ZERO, BigDecimal.ZERO),
-                new Point(BigDecimal.ZERO, BigDecimal.ONE)
+                PointFixture.getPoint00(),
+                PointFixture.getPoint01()
         );
 
         var actual = segment.distance();
@@ -26,7 +27,7 @@ class SegmentTest {
     void givenInvalidSegment_whenDistanceIsInvoked_thenThrowNullPointerException() {
         var segment = new Segment(
           null,
-          new Point(BigDecimal.ZERO, BigDecimal.ZERO)
+          PointFixture.getPoint00()
         );
 
         assertThatThrownBy(segment::distance).isInstanceOf(NullPointerException.class);
