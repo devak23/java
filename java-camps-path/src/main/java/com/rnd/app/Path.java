@@ -1,0 +1,14 @@
+package com.rnd.app;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+public record Path(List<Segment> segments) {
+
+    public BigDecimal distance() {
+        return segments.parallelStream()
+                .map(Segment::distance)
+                .reduce(BigDecimal::add)
+                .orElse(BigDecimal.ZERO);
+    }
+}
