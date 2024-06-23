@@ -9,9 +9,9 @@ public record PathList(List<Path> paths) {
         return paths.parallelStream().min(Comparator.comparing(Path::distance));
     }
 
-    public Optional<Path> shortestPath(Point includingPoint) {
+    public Optional<Path> shortestPath(List<Point> includingPoint) {
         return paths.parallelStream()
-                .filter(p -> p.includesPoint(includingPoint))
+                .filter(p -> p.includesPoints(includingPoint))
                 .min(Comparator.comparing(Path::distance));
     }
 }

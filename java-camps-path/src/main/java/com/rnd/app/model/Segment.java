@@ -1,6 +1,7 @@
 package com.rnd.app.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 public record Segment(Point first,
@@ -13,8 +14,8 @@ public record Segment(Point first,
         return first.distance(second);
     }
 
-    public boolean includesPoint(Point includingPoint) {
-        return first.equals(includingPoint) || second.equals(includingPoint);
+    public boolean includesAnyPoint(List<Point> points) {
+        return points.stream()
+                .anyMatch(p -> p.equals(first) || p.equals(second));
     }
-
 }

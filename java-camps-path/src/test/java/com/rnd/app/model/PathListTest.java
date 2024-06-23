@@ -39,7 +39,7 @@ class PathListTest {
         );
 
         PathList pathList = new PathList(List.of(path1, path2));
-        var actualOp = pathList.shortestPath(includingPoint);
+        var actualOp = pathList.shortestPath(List.of(includingPoint));
         assertThat(actualOp).isPresent();
         assertThat(actualOp.get()).isEqualTo(path2);
     }

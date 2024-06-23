@@ -12,8 +12,8 @@ public record Path(List<Segment> segments) {
                 .orElse(BigDecimal.ZERO);
     }
 
-    public boolean includesPoint(Point includingPoint) {
+    public boolean includesPoints(List<Point> points) {
         return segments.stream()
-                .anyMatch(s -> s.includesPoint(includingPoint));
+                .anyMatch(s -> s.includesAnyPoint(points));
     }
 }
