@@ -1,4 +1,4 @@
-package com.rnd.app;
+package com.rnd.app.model;
 
 import java.util.Comparator;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.rnd.app.fixtures;
 
-import com.rnd.app.Segment;
+import com.rnd.app.model.Segment;
 
 public final class SegmentFixture {
 

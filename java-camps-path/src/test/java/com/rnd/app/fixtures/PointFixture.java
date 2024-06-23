@@ -1,6 +1,6 @@
 package com.rnd.app.fixtures;
 
-import com.rnd.app.Point;
+import com.rnd.app.model.Point;
 
 import java.math.BigDecimal;
 

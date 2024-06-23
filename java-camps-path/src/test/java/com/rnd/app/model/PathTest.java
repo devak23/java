@@ -1,4 +1,4 @@
-package com.rnd.app;
+package com.rnd.app.model;
 
 import com.rnd.app.fixtures.SegmentFixture;
 import org.junit.jupiter.api.Test;

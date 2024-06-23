@@ -1,12 +1,11 @@
-package com.rnd.app;
+package com.rnd.app.model;
 
 import com.rnd.app.fixtures.PathFixture;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class PathListTest {
 

@@ -1,6 +1,6 @@
 package com.rnd.app.fixtures;
 
-import com.rnd.app.Path;
+import com.rnd.app.model.Path;
 
 import java.util.List;
 

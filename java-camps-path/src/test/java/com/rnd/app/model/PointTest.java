@@ -1,7 +1,6 @@
-package com.rnd.app;
+package com.rnd.app.model;
 
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
