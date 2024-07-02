@@ -14,8 +14,8 @@ public class PlayingWithPredicates {
         // So what is a predicate? - In English, it means the part of the sentence which tells what the "subject" does.
         // Ex: She had ice-cream after dinner. In this line, "she" is the subject, "had" is the verb and whatever else that
         // talks about the subject is predicate i.e. "ice-cream after dinner". Predicates in Java are no different.
-        // They tell about the "subject" in question.
-        // Munnabhai - Abe yeh subject, subject kya bolrahela hai... ek rakh ke doo kya tereko?? :X :X :X
+        // They tell about the "subject" that you're playing with.
+        // Munnabhai - Abe yeh subject, subject kya bolrahela hai... ek rakh ke doon kya tereko?? :X :X :X
 
         // So how do we define a predicate? It's nothing more than a lambda expression. For ex: if you wanted to see if
         // the string length is even, you would write something like:
@@ -28,7 +28,7 @@ public class PlayingWithPredicates {
         System.out.println("result = " + result); // evaluates to true! (dont miss the space between the two words)
 
         // Now, Say you have a list of 20 People
-        List<Person> people = RandomPerson.get().listOf(20); // courtesy: faker api..
+        List<Person> people = RandomPerson.get().listOf(20); // how did I get this? courtesy: faker api..
 
         /*
          *         <dependency>
@@ -52,8 +52,7 @@ public class PlayingWithPredicates {
         // doesn't that look sweeter than the earlier lambda function? It does! and its more readable!
         // (except the predicate function itself!)
 
-        // So what to do if you wanted all the Females whose first name starts with S. How do we do it?
-        // Again - build a predicate first
+        // So what to do if you wanted all the Females whose first name starts with S. Again - build a predicate first
         Predicate<Person> nameStartsWithS = p -> p.getFirstName().startsWith("S") || p.getFirstName().startsWith("s");
         // and then we apply it using the filter.
         List<Person> femalesWithNameStartingWithS = people.stream()
@@ -89,12 +88,5 @@ public class PlayingWithPredicates {
         // How to use it? ... Now you know!
         List<Person> notNullFemalesWithNameWithS = people.stream().filter(notNullFemaleWithNameStartingWithS).toList();
         System.out.println(notNullFemalesWithNameWithS);
-
-        // Now lets push the envelope a bit further! How many times in this article itself I have written the code:
-        // people.stream().filter(<some predicate condition>).toList() ?? At least a couple of times right? So how to
-        // eliminate the repetitive coding?
-
     }
-
-
 }
