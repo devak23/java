@@ -15,7 +15,7 @@ public class ForEachMain {
 
         // write the consumer function that does something with the given input
         Consumer<Integer> doPrintThem = System.out::println;
-        // quivalent to: Consumer<Integer> doPrintThem = num -> System.out.println(num);
+        // equivalent to: Consumer<Integer> doPrintThem = num -> System.out.println(num);
 
         forEachIn(numbers, doPrintThem);
     }
