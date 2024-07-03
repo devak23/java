@@ -33,7 +33,7 @@ public class StreamsMain {
         IntConsumer numberProcessor = n -> log.info("number: {}", n);
         IntStream.range(1, 5).forEach(numberProcessor);
 
-        URI uri = StreamsMain.class.getResource("./numbers.txt").toURI();
+        URI uri = StreamsMain.class.getClassLoader().getResource("numbers.txt").toURI();
         try (Stream<String> stream = Files.lines(Paths.get(uri))) {
             Consumer<String> numberConsumer = n -> log.info("yet another number: {}", n);
             stream.forEach(numberConsumer);
