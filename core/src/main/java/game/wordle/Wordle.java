@@ -9,14 +9,14 @@ public class Wordle {
     public static final String NEW_LINE = "\r\n";
     private final WordleRepository repository;
     private final Validator validator;
-    private final String WORD = "HILLY";
+    private final String WORD;
     private Stack<String> userInput;
     private List<Character> availableChars;
 
     public Wordle() {
         repository = new WordleRepository();
         validator = new Validator();
-        //WORD = repository.fetchRandomWord();
+        WORD = repository.fetchRandomWord();
         userInput = new Stack<>();
         availableChars = new ArrayList<>();
         initializeAvailableChars(availableChars);
