@@ -9,14 +9,14 @@ public class Wordle {
     public static final String NEW_LINE = "\r\n";
     private final WordleRepository repository;
     private final Validator validator;
-    private final String WORD;
+    private final String WORD = "HILLY";
     private Stack<String> userInput;
     private List<Character> availableChars;
 
     public Wordle() {
         repository = new WordleRepository();
         validator = new Validator();
-        WORD = repository.fetchRandomWord();
+        //WORD = repository.fetchRandomWord();
         userInput = new Stack<>();
         availableChars = new ArrayList<>();
         initializeAvailableChars(availableChars);
@@ -30,15 +30,16 @@ public class Wordle {
                 userInput.push(input);
 
                 Result result = validator.validate(userInput, WORD, availableChars);
-                prompt(result);
-
-                if (result.isOk()) {
+                if (result.doesUserWin()) {
+                    System.out.println("You Win!! :)");
                     break;
+                } else {
+                    prompt(result);
                 }
 
-                Result canPlay = validator.canPlay(userInput);
-                if (!canPlay.isOk()) {
-                    prompt(canPlay);
+                Result canPlay = validator.canUserPlay(userInput);
+                if (canPlay.isGameOver()) {
+                    System.out.println("Game Over!");
                     break;
                 }
             }
@@ -46,18 +47,12 @@ public class Wordle {
     }
 
     private void prompt(Result result) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Attempt # ").append(result.attempt()).append(": ").append(NEW_LINE)
-                .append("Word chosen: ").append(result.userInput()).append(NEW_LINE);
-        if (result.isOk() && result.correctPositionalChars().size() == 5) {
-            System.out.println(result.message());
-        } else {
-            System.out.println(result.message());
-            builder.append("Correctly placed characters are: ").append(result.correctPositionalChars()).append(NEW_LINE);
-            builder.append("Incorrectly placed characters are: ").append(result.incorrectPositionalChars()).append(NEW_LINE);
-            builder.append("Remaining characters to try: ").append(result.remainingChars()).append(NEW_LINE);
-            System.out.println(builder.toString());
-        }
+        String builder = "Attempt # " + result.attempt() + ": " + NEW_LINE +
+                "Word chosen: " + result.userInput() + NEW_LINE +
+                "Correctly placed characters are: " + result.correctPositionalChars() + NEW_LINE +
+                "Incorrectly placed characters are: " + result.incorrectPositionalChars() + NEW_LINE +
+                "Remaining characters to try: " + result.remainingChars() + NEW_LINE;
+        System.out.println(builder);
     }
 
     private String readWord() {

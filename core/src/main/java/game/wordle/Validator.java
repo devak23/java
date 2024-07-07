@@ -13,11 +13,11 @@ public class Validator {
         String input = userInput.peek();
         List<Character> actualCharacters =  WORD.toUpperCase().chars().mapToObj(i -> (char)i).toList();
         List<Character> inputCharacters = input.toUpperCase().chars().mapToObj(i -> (char)i).toList();
+
         availableChars.removeAll(inputCharacters);
 
         List<Character> incorrectlyPlacedChars = new ArrayList<>(10);
         List<Character> correctlyPlacedChars = new ArrayList<>(10);
-        List<Character> charsNotPresent = new ArrayList<>(10);
 
         for (int i = 0; i < inputCharacters.size(); i++) {
             char chr = inputCharacters.get(i);
@@ -27,15 +27,13 @@ public class Validator {
                 } else {
                     incorrectlyPlacedChars.add(chr);
                 }
-            } else {
-                charsNotPresent.add(chr);
             }
         }
 
         if (correctlyPlacedChars.size() == MAX_ALLOWED_WORD_LENGTH) {
             return Result.builder()
                     .correctPositionalChars(correctlyPlacedChars)
-                    .status(Status.OK)
+                    .status(Status.USER_WINS)
                     .message("You win!").build();
         }
         return Result.builder()
@@ -52,19 +50,19 @@ public class Validator {
 
     public Result validateInput(String userInput) {
         if (userInput == null || userInput.trim().isEmpty()) {
-            return Result.builder().status(Status.NOT_OK).message("input word cannot be empty").build();
+            return Result.builder().status(Status.NOT_OK).message("input word cannot be empty.").build();
         }
 
-        if (userInput.trim().length() > MAX_ALLOWED_WORD_LENGTH) {
-            return Result.builder().status(Status.NOT_OK).message("input word exceeds the expected length").build();
+        if (userInput.trim().length() != MAX_ALLOWED_WORD_LENGTH) {
+            return Result.builder().status(Status.NOT_OK).message("input word needs to be 5 characters long.").build();
         }
 
-        return Result.builder().status(Status.OK).message("everything is good").build();
+        return Result.builder().status(Status.OK).message("everything is good.").build();
     }
 
-    public Result canPlay(Stack<String> userInput) {
-        return userInput.size() > MAX_ALLOWED_ATTEMPTS
-                ? Result.builder().status(Status.NOT_OK).message("Game Over!").build()
+    public Result canUserPlay(Stack<String> userInput) {
+        return userInput.size() == MAX_ALLOWED_ATTEMPTS
+                ? Result.builder().status(Status.GAME_OVER).message("Game Over!").build()
                 : Result.builder().status(Status.OK).message("").build();
     }
 }

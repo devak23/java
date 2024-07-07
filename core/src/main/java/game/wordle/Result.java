@@ -16,4 +16,12 @@ public record Result(Status status
     public boolean isOk() {
         return status.equals(Status.OK);
     }
+
+    public boolean isGameOver() {
+        return status.equals(Status.GAME_OVER);
+    }
+
+    public boolean doesUserWin() {
+        return status.equals(Status.USER_WINS);
+    }
 }
