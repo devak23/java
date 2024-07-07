@@ -8,7 +8,9 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import java.util.stream.IntStream;
@@ -65,5 +67,16 @@ public class StreamsMain {
 
         However, it is a global setting.
         */
+
+        List<String> names = List.of("Abhay", "Guru", "Abhay", "Prateek", "Vishal", "Guru", "Abhay", "Tejas");
+        Map<String, Long> countMap = new HashMap<>(names.size());
+        for(String name: names) {
+            if (!countMap.containsKey(name)) {
+                long count = names.stream().filter(e -> e.equals(name)).count();
+                countMap.put(name, count);
+            }
+        }
+
+        System.out.println("Map: " + countMap);
     }
 }
