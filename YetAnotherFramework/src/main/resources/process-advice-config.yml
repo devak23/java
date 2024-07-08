@@ -19,7 +19,3 @@ sage:
                 qualifier: dataEnrichAction
               - name: Data Sink Action
                 qualifier: dataSinkAction
-          - name: Artifact Generation Module
-            qualifier: artifactGeneratorModule
-          - name: Delivery Module
-            qualifier: deliveryModule

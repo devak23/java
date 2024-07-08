@@ -24,7 +24,7 @@ public class AdviceProcessor implements IProcess {
     @Override
     public void execute() {
         Optional<ProcessorVO> processorVO = props.findProcessor("adviceProcessor");
-        processorVO.orElseThrow().getModuleVOs().forEach(m -> {
+        processorVO.orElseThrow().getModules().forEach(m -> {
             ICommand bean = (ICommand) context.getBean(m.getQualifier());
             bean.run();
         });

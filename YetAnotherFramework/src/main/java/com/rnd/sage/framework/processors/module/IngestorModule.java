@@ -23,7 +23,7 @@ public class IngestorModule implements ICommand {
     @Override
     public void run() {
         Optional<ModuleVO> moduleVO = props.findModule("ingestorModule");
-        moduleVO.orElseThrow().getStepsVO().forEach( s -> {
+        moduleVO.orElseThrow().getSteps().forEach( s -> {
             IAction action = (IAction) context.getBean(s.getQualifier());
             action.perform();
         });

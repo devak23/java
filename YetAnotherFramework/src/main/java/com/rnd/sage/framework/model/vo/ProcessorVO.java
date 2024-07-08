@@ -8,5 +8,5 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ProcessorVO extends BaseVO {
-    private List<ModuleVO> moduleVOs;
+    private List<ModuleVO> modules;
 }
