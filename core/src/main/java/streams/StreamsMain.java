@@ -120,5 +120,25 @@ public class StreamsMain {
                 ((sumOfNumbers, n) -> sumOfNumbers / n)
         ));
         System.out.println("mean = " + mean);
+
+        System.out.println("Total number of distinct characters in the name list: " + names.stream().distinct().mapToInt(String::length).sum());
+
+        // find the longest name in the list
+        String longestName = names.stream().reduce((n1, n2) -> n1.length() > n2.length() ? n1 : n2).orElseThrow();
+        String shortestName = names.stream().reduce((n1, n2) -> n1.length() < n2.length() ? n1 : n2).orElseThrow();
+        System.out.println("longest name = " + longestName + ", shortest name = " + shortestName);
+
+        // Streaming characters from a String
+        var lineOfText = "The sky is falling down";
+        lineOfText.chars().forEach(i -> System.out.println((char)i));
+        System.out.println("============ Again ================");
+        lineOfText.chars().mapToObj(i -> (char) i).forEach(System.out::println);
+
+        // Arrange the students in their ascending marks
+        List<Student> sortedAscending = students.stream().sorted(Comparator.comparing(Student::marks)).toList();
+        System.out.println(sortedAscending);
+        // Arrange the students in their descending order of marks
+        List<Student> sortedDescending = students.stream().sorted(Comparator.comparing(Student::marks).reversed()).toList();
+        System.out.println(sortedDescending);
     }
 }
