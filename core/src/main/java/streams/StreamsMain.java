@@ -9,9 +9,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
@@ -67,15 +65,13 @@ public class StreamsMain {
         which by default has as many threads as you have processors, as returned by Runtime.getRuntime().availableProcessors().
         But you can change the size of this pool using the system property java.util.concurrent.ForkJoinPool.common.parallelism,
         as in the following example: System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism","12");
-
         However, it is a global setting.
         */
 
+        // Convert a List of Person to Map of Firstname and Lastname
         List<Person> people = RandomPerson.get().listOf(20);
-
         Map<String, String> peopleMap = people.stream()
-                .collect(Collectors.toMap(Person::getFirstName, Person::getLastName));
-
+                .collect(Collectors.toMap(Person::getFirstName, Person::getLastName, (name1, name2) -> name1));
         System.out.println(peopleMap);
 
         // Find the number of occurrences of the names in the list.
@@ -88,9 +84,41 @@ public class StreamsMain {
                 ));
         System.out.println(nameMap);
 
-        // Another way to achieve the above
+        // Another way and probablym more efficient way to achieve the above
         Map<String, Long> nameCountMap = names.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(nameCountMap);
+
+        // Using Teeing to find the max and min marks of a Student
+        List<Student> students = List.of(
+                Student.builder().name("abhay").id(1).marks(91).build(),
+                Student.builder().name("manik").id(2).marks(96).build(),
+                Student.builder().name("soham").id(3).marks(99).build(),
+                Student.builder().name("kapil").id(4).marks(58).build(),
+                Student.builder().name("susheel").id(5).marks(57).build()
+        );
+
+        Map<String, Student> mapOfStudent = students.stream().collect(
+                Collectors.teeing(
+                        Collectors.maxBy(Comparator.comparing(Student::marks)),
+                        Collectors.minBy(Comparator.comparing(Student::marks)),
+                        (s1, s2) -> {
+                            Map<String, Student> highestAndLowest = new HashMap<>(5);
+                            highestAndLowest.put("Highest", s1.orElseThrow());
+                            highestAndLowest.put("Lowest", s2.orElseThrow());
+                            return highestAndLowest;
+                        }
+                )
+        );
+        System.out.println(mapOfStudent);
+
+        // Using teeing to get the mean of numbers
+        List<Integer> numbersAgain = List.of(1, 2, 3 ,4, 5, 6, 7, 8, 9, 10);
+        Long mean = numbersAgain.stream().collect(Collectors.teeing(
+                Collectors.summingInt(i -> i),
+                Collectors.counting(),
+                ((sumOfNumbers, n) -> sumOfNumbers / n)
+        ));
+        System.out.println("mean = " + mean);
     }
 }
