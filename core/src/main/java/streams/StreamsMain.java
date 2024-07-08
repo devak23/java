@@ -1,5 +1,7 @@
 package streams;
 
+import com.arakelian.faker.model.Person;
+import com.arakelian.faker.service.RandomPerson;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -8,11 +10,12 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -68,15 +71,26 @@ public class StreamsMain {
         However, it is a global setting.
         */
 
-        List<String> names = List.of("Abhay", "Guru", "Abhay", "Prateek", "Vishal", "Guru", "Abhay", "Tejas");
-        Map<String, Long> countMap = new HashMap<>(names.size());
-        for(String name: names) {
-            if (!countMap.containsKey(name)) {
-                long count = names.stream().filter(e -> e.equals(name)).count();
-                countMap.put(name, count);
-            }
-        }
+        List<Person> people = RandomPerson.get().listOf(20);
 
-        System.out.println("Map: " + countMap);
+        Map<String, String> peopleMap = people.stream()
+                .collect(Collectors.toMap(Person::getFirstName, Person::getLastName));
+
+        System.out.println(peopleMap);
+
+        // Find the number of occurrences of the names in the list.
+        List<String> names = List.of("Guru", "Abhay", "Meenakshi", "Abhay", "Kavita", "Guru", "Suhas", "Dhiren", "Abhay");
+        Map<String, Long> nameMap = names.stream()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        name -> names.stream().filter(n -> n.equals(name)).count(),
+                        (n1, n2) -> n1
+                ));
+        System.out.println(nameMap);
+
+        // Another way to achieve the above
+        Map<String, Long> nameCountMap = names.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(nameCountMap);
     }
 }
