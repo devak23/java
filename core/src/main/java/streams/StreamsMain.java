@@ -140,5 +140,17 @@ public class StreamsMain {
         // Arrange the students in their descending order of marks
         List<Student> sortedDescending = students.stream().sorted(Comparator.comparing(Student::marks).reversed()).toList();
         System.out.println(sortedDescending);
+
+        // Here, we construct a map that contains, for each language in the available locales, its name in your default
+        // locale (such as "German") as key, and its localized name (such as "Deutsch") as value.
+        Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
+        Map<String, String> languageNames = locales.collect(
+          Collectors.toMap(
+                  Locale::getDisplayLanguage,
+                  l -> l.getDisplayLanguage(l),
+                  (existingValue, newValue) -> existingValue
+          )
+        );
+        System.out.println(languageNames);
     }
 }
