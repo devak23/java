@@ -25,9 +25,3 @@ public class ApplyFunctionMain {
         return result;
     }
 }
-
-
-@FunctionalInterface
-interface ApplyFunction<T, R> {
-    R apply(T t);
-}

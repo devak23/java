@@ -1,4 +1,4 @@
-package functional;
+package functional.spec;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

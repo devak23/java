@@ -1,4 +1,4 @@
-package functional;
+package functional.model;
 
 import java.util.Comparator;
 import java.util.List;

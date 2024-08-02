@@ -1,4 +1,4 @@
-package functional;
+package functional.spec;
 
 @FunctionalInterface
 public interface TwoArgsProcessor<T> {

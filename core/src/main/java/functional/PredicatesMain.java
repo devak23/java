@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class PlayingWithPredicates {
+public class PredicatesMain {
 
     public static void main(String[] args) {
         // So what is a predicate? - In English, it means the part of the sentence which tells what the "subject" does.

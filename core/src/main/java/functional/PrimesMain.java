@@ -3,11 +3,11 @@ package functional;
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
-public class Primes {
+public class PrimesMain {
 
     public static void main(String[] args) {
         IntStream.range(1, 100)
-                .filter(Primes::isPrime)
+                .filter(PrimesMain::isPrime)
                 .boxed()
                 .forEach(System.out::println);
     }

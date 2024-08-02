@@ -1,7 +1,8 @@
 package functional;
 
 
-import org.assertj.core.api.Assertions;
+import functional.model.Line;
+import functional.model.Point;
 import org.junit.Test;
 
 import java.util.List;

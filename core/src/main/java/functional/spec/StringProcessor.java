@@ -1,4 +1,4 @@
-package functional;
+package functional.spec;
 
 import java.util.Objects;
 
