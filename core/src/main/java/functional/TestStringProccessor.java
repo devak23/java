@@ -1,5 +1,8 @@
 package functional;
 
+import functional.spec.StringProcessor;
+import functional.spec.TwoArgsProcessor;
+
 public class TestStringProccessor {
 
     public static void main(String[] args) {

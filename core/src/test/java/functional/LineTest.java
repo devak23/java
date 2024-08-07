@@ -1,7 +1,9 @@
 package functional;
 
 
-import org.junit.jupiter.api.Test;
+import functional.model.Line;
+import functional.model.Point;
+import org.junit.Test;
 
 import java.util.List;
 
