@@ -1,6 +1,8 @@
 import functional.EmailCheckerImperative;
 import mockit.Tested;
-import org.junit.Test;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 
 public class EmailCheckerFunctionalImperativeTest {
 
@@ -17,9 +19,9 @@ public class EmailCheckerFunctionalImperativeTest {
         classUnderTest.testEmail("testMe");
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test()
     public void testNullEmail() {
-        classUnderTest.testEmail(null);
+        Assertions.assertThatThrownBy(() -> classUnderTest.testEmail(null)).isInstanceOf(NullPointerException.class);
     }
 
     @Test
