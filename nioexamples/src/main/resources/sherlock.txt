@@ -182,7 +182,7 @@ which lead up from the hall to this room."
 "Quite so! You have not observed. And yet you have seen. That is just
 my point. Now, I know that there are seventeen steps, because I have
 both seen and observed. By-the-way, since you are interested in these
-little problems, and since you are good enough to chronicle one or
+little javacodingproblems, and since you are good enough to chronicle one or
 two of my trifling experiences, you may be interested in this." He
 threw over a sheet of thick, pink-tinted note-paper which had been
 lying open upon the table. "It came by the last post," said he. "Read
@@ -2200,7 +2200,7 @@ admiration. "It is so long a chain, and yet every link rings true."
 
 "It saved me from ennui," he answered, yawning. "Alas! I already feel
 it closing in upon me. My life is spent in one long effort to escape
-from the commonplaces of existence. These little problems help me to
+from the commonplaces of existence. These little javacodingproblems help me to
 do so."
 
 "And you are a benefactor of the race," said I.
@@ -2278,7 +2278,7 @@ sparkled upon his finger.
 "It was from the reigning family of Holland, though the matter in
 which I served them was of such delicacy that I cannot confide it
 even to you, who have been good enough to chronicle one or two of my
-little problems."
+little javacodingproblems."
 
 "And have you any on hand just now?" I asked with interest.
 
@@ -6038,7 +6038,7 @@ is not easy to restore lost property to any one of them."
 "What, then, did Peterson do?"
 
 "He brought round both hat and goose to me on Christmas morning,
-knowing that even the smallest problems are of interest to me. The
+knowing that even the smallest javacodingproblems are of interest to me. The
 goose we retained until this morning, when there were signs that, in
 spite of the slight frost, it would be well that it should be eaten
 without unnecessary delay. Its finder has carried it off, therefore,
@@ -6946,7 +6946,7 @@ chance."
 I had no keener pleasure than in following Holmes in his professional
 investigations, and in admiring the rapid deductions, as swift as
 intuitions, and yet always founded on a logical basis with which he
-unravelled the problems which were submitted to him. I rapidly threw
+unravelled the javacodingproblems which were submitted to him. I rapidly threw
 on my clothes and was ready in a few minutes to accompany my friend
 down to the sitting-room. A lady dressed in black and heavily veiled,
 who had been sitting in the window, rose as we entered.
@@ -8052,7 +8052,7 @@ my conscience."
 
 THE ADVENTURE OF THE ENGINEER'S THUMB
 
-Of all the problems which have been submitted to my friend, Mr.
+Of all the javacodingproblems which have been submitted to my friend, Mr.
 Sherlock Holmes, for solution during the years of our intimacy, there
 were only two which I was the means of introducing to his
 notice--that of Mr. Hatherley's thumb, and that of Colonel
@@ -12161,6 +12161,6 @@ Southampton the day after their flight, and he is now the holder of a
 government appointment in the island of Mauritius. As to Miss Violet
 Hunter, my friend Holmes, rather to my disappointment, manifested no
 further interest in her when once she had ceased to be the centre of
-one of his problems, and she is now the head of a private school at
+one of his javacodingproblems, and she is now the head of a private school at
 Walsall, where I believe that she has met with considerable success.
 

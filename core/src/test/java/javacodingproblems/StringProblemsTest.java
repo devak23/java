@@ -1,4 +1,4 @@
-package problems;
+package javacodingproblems;
 
 
 import org.assertj.core.api.Assertions;

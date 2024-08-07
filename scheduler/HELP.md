@@ -61,7 +61,7 @@ cd '/usr' ; /usr/bin/mariadbd-safe --datadir='/var/lib/mysql'
 You can test the MariaDB daemon with mariadb-test-run.pl
 cd '/usr/mariadb-test' ; perl mariadb-test-run.pl
 
-Please report any problems at https://mariadb.org/jira
+Please report any javacodingproblems at https://mariadb.org/jira
 
 The latest information about MariaDB is available at https://mariadb.org/.
 
