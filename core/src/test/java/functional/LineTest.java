@@ -3,7 +3,7 @@ package functional;
 
 import functional.model.Line;
 import functional.model.Point;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -30,7 +30,6 @@ public class LineTest {
 
         // then
         assertThat(actual).isEqualTo(true);
-
 
     }
 }
