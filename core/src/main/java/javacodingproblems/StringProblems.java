@@ -1,8 +1,10 @@
 package javacodingproblems;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -110,5 +112,35 @@ public class StringProblems {
         return inputString.codePoints()
                 .mapToObj(c -> String.valueOf(Character.toChars(c)))
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+    }
+
+
+    public String firstNonRepeatingChar(String inputString) {
+        // Solution that's presented here relies on LinkedHashMap. This Java map is an insertion-order map (it maintains
+        // the order in which the keys were inserted into the map) and is very convenient for this solution.
+        // LinkedHashMap is populated with characters as keys and the number of occurrences as values.
+        // Once LinkedHashMap is complete, it will return the first key that has a value equal to 1. Thanks to the
+        // insertion-order feature, this is the first non-repeatable character in the string:
+
+        // So here we will create map using the Collectors.groupingBy providing it a LinkedHashMap as the second argument
+        // The first one is Function.identity() which essentially means the element that is being passed. So instead of
+        // writing (ch) -> ch, the shorthand is Function.identity(). Finally Collectors.counting() will count the
+        // occurrences of the "Function.identity()" and that becomes the value. This always returns a Long.
+        Map<Integer, Long> elementsOfString = inputString.codePoints()
+                .boxed()
+                .collect(Collectors.groupingBy(
+                        Function.identity(), LinkedHashMap::new, Collectors.counting()
+                ));
+
+        // next up we iterate through this map and find the first character whose count == 1. There could be more such
+        // characters but LinkedHashMap ensures that we get the right one because it preserves the order of elements
+        // during insertion.
+        int cp = elementsOfString.entrySet().stream()
+                .filter(e -> e.getValue() == 1L)
+                .findFirst()
+                .map(Map.Entry::getKey)
+                .orElse((int) Character.MIN_VALUE);
+
+        return String.valueOf(cp);
     }
 }
