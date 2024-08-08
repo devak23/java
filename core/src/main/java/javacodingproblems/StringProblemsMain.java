@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class StringProblems {
+public class StringProblemsMain {
     public Map<Character, Integer> findDupes1(String inputString) {
         Map<Character, Integer> elementsOfString = new HashMap<>();
         // In order to find the dupes, we employ 2 strategies. One with hashmap's compute method which checks
