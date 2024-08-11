@@ -26,10 +26,14 @@ public record MelonRecord(String type, float weight, String batch, LocalDate exp
         this(DEFAULT_MELON_TYPE, weight, DEFAULT_BATCH, DEFAULT_EXPIRATION);
     }
 
+    MelonRecord(String type, float weight) {
+        this(type, weight, DEFAULT_BATCH, DEFAULT_EXPIRATION);
+    }
+
     // ... and a constructor which has no direct field within the record
     private static Set<String> countries = new HashSet<>(5);
     MelonRecord(String type, float weight, String country) {
-        this(type, weight, null, DEFAULT_EXPIRATION);
+        this(type, weight, DEFAULT_BATCH, DEFAULT_EXPIRATION);
         MelonRecord.countries.add(country);
     }
 
