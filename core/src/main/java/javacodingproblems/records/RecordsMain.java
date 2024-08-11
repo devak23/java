@@ -8,6 +8,7 @@ import java.util.Objects;
 public class RecordsMain {
 
     public static final String MELON_DATA = "./melon.data";
+    public static final String MELON2_DATA = "./melon2.data";
 
     public static void main(String[] args) {
         var cantaloupe = new MelonRecord("Cantaloupe", 2600, "ML9000SQA0", MelonRecord.DEFAULT_EXPIRATION);
@@ -21,14 +22,14 @@ public class RecordsMain {
         try {
             writeMelon(cantaloupe);
         } catch (Exception e) {
-            System.out.println("Exception occurred when trying to write melon to file");
+            System.out.println("Exception occurred when trying to write melon to file: " + e.getMessage());
         }
 
         MelonRecord deserialized = null;
         try {
-            deserialized = readMelon(MELON_DATA);
+            deserialized = readMelon(MELON2_DATA);
         } catch (Exception e) {
-            System.out.println("Exception occurred when trying to write melon to file");
+            System.out.println("Exception occurred when trying to write melon to file: " + e.getMessage());
         }
 
         boolean equals = Objects.equals(deserialized, cantaloupe);
@@ -47,7 +48,7 @@ public class RecordsMain {
 
         var existingData = marketRecord.retails();
         System.out.println(existingData);
-        existingData.put("TCS", 4554); // this too produces UnsupportedOperationException as the map is immutable
+        //existingData.put("TCS", 4554); // this too produces UnsupportedOperationException as the map is immutable
     }
 
     private static void writeMelon(MelonRecord melon) throws IOException {
