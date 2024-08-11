@@ -1,4 +1,4 @@
-package javacodingproblems;
+package javacodingproblems.records;
 
 import java.util.Map;
 
