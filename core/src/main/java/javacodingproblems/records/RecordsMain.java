@@ -5,7 +5,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-import static javacodingproblems.records.MelonRecord.*;
+import static java.util.stream.Collectors.*;
+import static javacodingproblems.records.MelonRecord.DEFAULT_EXPIRATION;
+import static javacodingproblems.records.MelonRecord.getDefaultMelon;
 
 public class RecordsMain {
 
@@ -40,10 +42,12 @@ public class RecordsMain {
         System.out.println("Is deserialized melon the same as serialized? " + equals);
 
 
+        MelonRecord mr1;
+        MelonRecord mr2;
         try {
             Constructor<MelonRecord> cmr = getCanonicalConstructor(MelonRecord.class);
-            MelonRecord mr1 = cmr.newInstance("GAC", 5000f, "ML9000SQA1", DEFAULT_EXPIRATION);
-            MelonRecord mr2 = cmr.newInstance("Hemi", 1400f, "ML9000SQA2", DEFAULT_EXPIRATION);
+            mr1 = cmr.newInstance("GAC", 5000f, "ML9000SQA1", DEFAULT_EXPIRATION);
+            mr2 = cmr.newInstance("Hemi", 1400f, "ML9000SQA2", DEFAULT_EXPIRATION);
             System.out.println(mr1);
             System.out.println(mr2);
 
@@ -53,6 +57,17 @@ public class RecordsMain {
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
+
+        // PROBLEM: For a given list of Melons, extract the total weight and the list of weights.
+        // Answer:  This data can be carried by a regular Java class or by another record 'WeightsAndTotalRecord'
+        WeightsAndTotalRecord wr = List.of(cantaloupe, watermelon, muskMelon, mr1, mr2).stream()
+                .collect(teeing(
+                        summingDouble(MelonRecord::weight)
+                        , mapping(MelonRecord::weight, toList())
+                        , WeightsAndTotalRecord::new
+                        )
+                );
+        System.out.println("Total weight = " + wr.totalWeight() + ", list Of weights = " + wr.weights());
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Map<String, Integer> marketRepo = new HashMap<>(10);
