@@ -101,6 +101,15 @@ public class RecordsMain {
         // order to deduce what Double and Long represent. We can be even more expressive and rename the Elevation
         // record as PositiveElevation.
 
+        var melonRecord = new FruitRecord<>(mr1, "India");
+        var hamiRecord = new FruitRecord<>(new MelonRecord("Hami", 1000), "China");
+
+        log.info("melonRecord (with generics): {}", melonRecord);
+        log.info("hamiRecord (with generics): {}", hamiRecord);
+
+        if (hamiRecord instanceof FruitRecord<MelonRecord>(MelonRecord melon, String country)) {
+            log.info("Melon: {} is from: {}", melon, country);
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Map<String, Integer> marketRepo = new HashMap<>(10);
