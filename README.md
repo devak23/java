@@ -29,6 +29,7 @@ Consists of:
 - Added a program to find the first non repeating character in a string
 - Added a sample program for testing String Deduplication (VM argument)
 - Added a vmoptions list from my machine (linux antergos - thinkpad X220 core i5)
+- Added experimental programs for Java 22. Please add VMOptions: --add-modules=jdk.incubator.vector --enable-preview
 6. Guava examples
 - Added example of immutable maps, mutable arraylist
 - Converting an InputStream to String
