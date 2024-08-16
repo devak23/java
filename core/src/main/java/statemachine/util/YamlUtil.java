@@ -14,6 +14,7 @@ public final class YamlUtil {
 
     private YamlUtil() {}
 
+    // Load a given Yaml to the desired model object.
     public static <T> T loadYaml(String file, Class<T> clazz) {
         // loading the global Tag
         var loaderOptions = new LoaderOptions();

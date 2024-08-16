@@ -2,6 +2,7 @@ package statemachine.model;
 
 import lombok.Getter;
 
+// An enumeration of states that a payment goes through. This will be the basis of our state machine logic.
 @Getter
 public enum PaymentStatus {
     DRAFT(0) {

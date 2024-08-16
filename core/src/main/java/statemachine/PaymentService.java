@@ -8,6 +8,10 @@ import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+// The class which actually does the job of processing the payment. HEre, our focus is basically to move the payment
+// in different states. This is done in the method processPayment(). However, the customer/client only "see's" the
+// makePayment() method which accepts a very simplistic input viz: a Sender, a Receiver and an Amount. Rest of the
+// gory details is hidden from the client. Check PaymentMain.java
 @Slf4j
 public class PaymentService {
     private CustomerRegisteredBanks customerRegisteredBanks
