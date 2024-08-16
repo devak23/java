@@ -1,0 +1,10 @@
+!!statemachine.model.CustomerRegisteredBanks
+
+bankBranch:
+  abhay: HDFC Bank
+  guru: ICICI Bank
+  tejas: AXIS Bank
+  meenakshi: RBL Bank
+  kavita: HDFC Bank
+  suhas: IDFC Bank
+  varkha: YES Bank

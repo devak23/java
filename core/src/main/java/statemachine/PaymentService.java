@@ -2,6 +2,7 @@ package statemachine;
 
 import lombok.extern.slf4j.Slf4j;
 import statemachine.model.*;
+import statemachine.util.YamlUtil;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -9,8 +10,11 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class PaymentService {
-    public PaymentResult makePayment(String from, String to, BigDecimal ten) {
-        Payment payment = createPayment(from, to, BigDecimal.TEN);
+    private CustomerRegisteredBanks customerRegisteredBanks
+            = YamlUtil.loadYaml("customer-registered-banks.yaml", CustomerRegisteredBanks.class);
+
+    public PaymentResult makePayment(String from, String to, BigDecimal amount) {
+        Payment payment = createPayment(from, to, amount);
         return processPayment(payment);
     }
 
@@ -31,10 +35,10 @@ public class PaymentService {
 
     private PaymentResult processPayment(Payment payment) {
         if (payment.status() == PaymentStatus.COMPLETED) {
-            return createPaymentResult(payment);
+            return createResult(payment);
         }
 
-        PaymentResult result = createPaymentResult(payment);
+        PaymentResult result = createResult(payment);
         while (payment.status() != PaymentStatus.COMPLETED) {
             log.info("{}", result );
 
@@ -45,14 +49,14 @@ public class PaymentService {
                 throw new RuntimeException(e);
             }
             Payment newPayment = movePayment(payment);
-            result = createPaymentResult(newPayment);
+            result = createResult(newPayment);
             payment = newPayment;
         }
 
         return result;
     }
 
-    private static PaymentResult createPaymentResult(Payment payment) {
+    private static PaymentResult createResult(Payment payment) {
         return new PaymentResult(payment.status().name(), payment.status().toString());
     }
 
@@ -61,6 +65,6 @@ public class PaymentService {
     }
 
     private Optional<String> getBank(String customer) {
-        return Optional.of("HDFC Bank");
+        return Optional.of(customerRegisteredBanks.getBankBranch().get(customer));
     }
 }
