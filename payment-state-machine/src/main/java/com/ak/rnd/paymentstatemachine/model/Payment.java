@@ -1,9 +1,6 @@
 package com.ak.rnd.paymentstatemachine.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +18,7 @@ import java.math.BigDecimal;
 @Entity
 public class Payment {
     @Id
+    @GeneratedValue
     private Long id;
 
     @Enumerated(EnumType.STRING)

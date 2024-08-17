@@ -1,5 +1,7 @@
 package com.ak.rnd.paymentstatemachine.config;
 
+import com.ak.rnd.paymentstatemachine.actions.PaymentGuard;
+import com.ak.rnd.paymentstatemachine.actions.PreAuthAction;
 import com.ak.rnd.paymentstatemachine.model.PaymentEvent;
 import com.ak.rnd.paymentstatemachine.model.PaymentState;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +43,7 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<PaymentSta
                 .source(PaymentState.NEW)
                 .target(PaymentState.NEW)
                 .event(PaymentEvent.PRE_AUTHORIZE)
+                .action(new PreAuthAction()).guard(new PaymentGuard())
             .and()
             .withExternal()
                 .source(PaymentState.NEW)
