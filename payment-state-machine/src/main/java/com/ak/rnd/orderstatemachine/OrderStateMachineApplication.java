@@ -1,13 +1,13 @@
-package com.ak.rnd.turnstile;
+package com.ak.rnd.orderstatemachine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TurnstileStateMachineApplication {
+public class OrderStateMachineApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TurnstileStateMachineApplication.class, args);
+		SpringApplication.run(OrderStateMachineApplication.class, args);
 	}
 
 }

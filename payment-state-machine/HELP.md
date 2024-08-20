@@ -15,3 +15,5 @@
 13. Link the PreAuthAction and PaymentGuard in TransitionConfigurer
 
 
+## Accessing
+http://localhost:8080/turnstile/v1

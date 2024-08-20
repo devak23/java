@@ -1,7 +1,7 @@
-package com.ak.rnd.turnstile.controller;
+package com.ak.rnd.turnstilestatemachine.controller;
 
-import com.ak.rnd.turnstile.model.TurnstileEvent;
-import com.ak.rnd.turnstile.model.TurnstileState;
+import com.ak.rnd.turnstilestatemachine.model.TurnstileEvent;
+import com.ak.rnd.turnstilestatemachine.model.TurnstileState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.statemachine.StateMachine;

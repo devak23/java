@@ -1,7 +1,7 @@
-package com.ak.rnd.turnstile.config;
+package com.ak.rnd.turnstilestatemachine.config;
 
-import com.ak.rnd.turnstile.model.TurnstileEvent;
-import com.ak.rnd.turnstile.model.TurnstileState;
+import com.ak.rnd.turnstilestatemachine.model.TurnstileEvent;
+import com.ak.rnd.turnstilestatemachine.model.TurnstileState;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
