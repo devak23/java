@@ -5,6 +5,7 @@ import com.ak.rnd.orderstatemachine.model.OrderInvoice;
 import com.ak.rnd.orderstatemachine.model.OrderStates;
 import com.ak.rnd.orderstatemachine.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
@@ -13,14 +14,12 @@ import org.springframework.statemachine.state.State;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
 import org.springframework.statemachine.support.StateMachineInterceptorAdapter;
 import org.springframework.statemachine.transition.Transition;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order/v1/workflow")
 @RequiredArgsConstructor
+@Slf4j
 public class WorkflowController {
     private final OrderRepository orderRepository;
     private final StateMachineFactory<OrderStates, OrderEvents> stateMachineFactory;
@@ -44,14 +43,20 @@ public class WorkflowController {
                         .setHeader("state", order.getState())
                         .build()
         );
-        return "state changed";
+        return "Change initiated";
+    }
+
+    @GetMapping
+    @RequestMapping("/currentState")
+    public String state() {
+        return stateMachineFactory.getStateMachine().getId();
     }
 
     // Pulling the state from the database and reset the machine to that state.
     public StateMachine<OrderStates, OrderEvents> build(final OrderInvoice order) {
         var orderFromDb = orderRepository.findById(order.getId()).orElseThrow();
         var stateMachine = stateMachineFactory.getStateMachine(orderFromDb.getId().toString());
-        stateMachine.stopReactively();
+        stateMachine.stop();
         stateMachine.getStateMachineAccessor()
                 .doWithAllRegions(sma -> {
                     // Once we have reset the machine to existing state with help of db, we just have to send the event
@@ -69,6 +74,7 @@ public class WorkflowController {
                             var order = orderRepository.findById(orderId).orElseThrow();
                             order.setState(state.getId().name());
                             orderRepository.save(order);
+                            log.info("Order {} saved.", order);
                         }
                     });
 
@@ -78,7 +84,7 @@ public class WorkflowController {
                                     OrderStates.valueOf(orderFromDb.getState()), null, null, null)
                     );
                 });
-        stateMachine.startReactively();
+        stateMachine.start();
         return stateMachine;
 
         // As, we can see that we have pulled the state machine first from stateMachineFactory which we have injected

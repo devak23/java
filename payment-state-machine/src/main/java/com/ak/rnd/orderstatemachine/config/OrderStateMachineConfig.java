@@ -42,7 +42,10 @@ public class OrderStateMachineConfig extends StateMachineConfigurerAdapter<Order
                 .guard(ctx -> {
                    log.info("true -> stateChanged, false -> state not changed");
                    var paymentType = String.class.cast(ctx.getExtendedState().getVariables().get("paymentType"));
-                   return !"cod".equalsIgnoreCase(paymentType);
+                   log.info("PaymentType = {}", paymentType);
+                    boolean result = !"cod".equalsIgnoreCase(paymentType);
+                    log.info("Result from the guard: {}", result);
+                    return result;
                 })
             .and()
             .withExternal()

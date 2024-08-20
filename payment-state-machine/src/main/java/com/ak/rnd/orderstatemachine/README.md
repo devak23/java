@@ -37,11 +37,5 @@ curl --location --request PUT 'localhost:8080/order/v1/workflow/change' \
 For this input the state will not be changed.
 
 ```
-curl --location --request PUT 'localhost:8080/order/v1/workflow/change' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "id": 1,
-    "event": "PAY",
-    "paymentType" : "cod"
-}'
+curl --location --request PUT 'localhost:8080/order/v1/workflow/change' --header 'Content-Type: application/json' --data-raw '{"id": 1,"event": "PAY", "paymentType" : "cod"}'
 ```
