@@ -39,4 +39,9 @@ public class CustomerDAO {
             throw new RuntimeException(ex);
         }
     }
+
+    public Flux<Customer> getCustomers() {
+        return Flux.range(1, 50)
+                .map(i -> Customer.builder().id(Long.valueOf(i)).name("Customer " + i).build());
+    }
 }
