@@ -17,6 +17,6 @@ public class CustomerFetchStreamHandler {
     public Mono<ServerResponse> getCustomersStream(ServerRequest request) {
         return ServerResponse.ok()
                 .contentType(MediaType.TEXT_EVENT_STREAM)
-                .body(customerDAO.getCustomersViaNonBlockingCall(), Customer.class);
+                .body(customerDAO.getCustomersReactive(), Customer.class);
     }
 }

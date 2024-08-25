@@ -20,6 +20,8 @@ public class RouterConfig {
         return RouterFunctions.route()
                 .GET("/router/customers", customerFetchHandler::getCustomers)
                 .GET("/router/customers/stream", customerFetchStreamHandler::getCustomersStream)
+                .GET("/router/customers/{customerId}", customerFetchHandler::getCustomer)
+                .POST("/router/customers", customerFetchHandler::saveCustomer)
                 .build();
     }
 }

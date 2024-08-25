@@ -16,11 +16,11 @@ public class CustomerService {
 
     @TimeIt
     public List<Customer> getAllCustomers() {
-        return customerDAO.getCustomersViaBlockingCall();
+        return customerDAO.getCustomersImperative();
     }
 
     @TimeIt
     public Flux<Customer> getAllCustomersStream() {
-        return customerDAO.getCustomersViaNonBlockingCall();
+        return customerDAO.getCustomersReactive();
     }
 }
