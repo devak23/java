@@ -3,13 +3,15 @@ package com.rnd.ak.controller;
 import com.rnd.ak.dto.ProductDTO;
 import com.rnd.ak.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 @RequiredArgsConstructor
+@Slf4j
 public class ProductController {
     private final ProductService productService;
 
@@ -29,16 +31,17 @@ public class ProductController {
     }
 
     @PostMapping
-    public Mono<ProductDTO> saveProduct(@RequestBody Mono<ProductDTO> productDTO) {
-        return productService.saveProduct(productDTO);
+    public Mono<ProductDTO> saveProduct(@RequestBody ProductDTO productDTO) {
+        log.info("Saving product {}", productDTO);
+        return productService.saveProduct(Mono.just(productDTO));
     }
 
-    @PutMapping("/{id}")
-    public Mono<ProductDTO> updateProduct(@RequestBody Mono<ProductDTO> productDTO, @PathVariable String id) {
-        return productService.updateProduct(productDTO, id);
+    @PutMapping("/update/{id}")
+    public Mono<ProductDTO> updateProduct(@RequestBody ProductDTO productDTO, @PathVariable String id) {
+        return productService.updateProduct(Mono.just(productDTO), id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public Mono<Void> deleteProduct(@PathVariable String id) {
         return productService.deleteProduct(id);
     }
