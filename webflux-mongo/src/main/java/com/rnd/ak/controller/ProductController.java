@@ -32,16 +32,15 @@ public class ProductController {
 
     @PostMapping
     public Mono<ProductDTO> saveProduct(@RequestBody ProductDTO productDTO) {
-        log.info("Saving product {}", productDTO);
         return productService.saveProduct(Mono.just(productDTO));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Mono<ProductDTO> updateProduct(@RequestBody ProductDTO productDTO, @PathVariable String id) {
         return productService.updateProduct(Mono.just(productDTO), id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public Mono<Void> deleteProduct(@PathVariable String id) {
         return productService.deleteProduct(id);
     }
