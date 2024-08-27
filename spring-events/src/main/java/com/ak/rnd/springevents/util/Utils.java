@@ -12,7 +12,7 @@ public class Utils {
         return new RandomPerson().next();
     }
 
-    public static void sleep() {
+    public static void simulateDelay() {
         try {
             TimeUnit.SECONDS.sleep(new Random(17).nextInt(1,8));
         } catch (InterruptedException e) {
