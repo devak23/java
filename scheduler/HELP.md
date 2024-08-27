@@ -115,7 +115,7 @@ Query OK, 0 rows affected (0.016 sec)
 MariaDB [TEST]> grant all privileges on TEST to 'testuser'@'localhost';
 Query OK, 0 rows affected (0.003 sec)
 
-MariaDB [(none)]> GRANT SELECT,UPDATE,INSERT,DELETE,DROP,CREATE ON TEST.* TO 'testuser'@'localhost';
+MariaDB [(none)]> GRANT SELECT,UPDATE,INSERT,DELETE,DROP,CREATE,ALTER ON TEST.* TO 'testuser'@'localhost';
 Query OK, 0 rows affected (0.016 sec)
 
 MariaDB [TEST]> FLUSH PRIVILEGES;
