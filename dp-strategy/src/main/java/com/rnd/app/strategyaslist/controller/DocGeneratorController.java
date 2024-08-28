@@ -1,7 +1,7 @@
-package com.rnd.app.dpstrategy.controller;
+package com.rnd.app.strategyaslist.controller;
 
-import com.rnd.app.dpstrategy.model.OutputType;
-import com.rnd.app.dpstrategy.service.DocumentService;
+import com.rnd.app.strategyaslist.model.OutputType;
+import com.rnd.app.strategyaslist.service.DocumentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

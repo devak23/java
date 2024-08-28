@@ -1,4 +1,4 @@
-package com.rnd.app.dpstrategy.model;
+package com.rnd.app.strategyaslist.model;
 
 public enum OutputType {
     PDF,

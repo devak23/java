@@ -1,6 +1,6 @@
-package com.rnd.app.dpstrategy.config;
+package com.rnd.app.strategyaslist.config;
 
-import com.rnd.app.dpstrategy.strategy.IDocCreationStrategy;
+import com.rnd.app.strategyaslist.strategy.IDocCreationStrategy;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

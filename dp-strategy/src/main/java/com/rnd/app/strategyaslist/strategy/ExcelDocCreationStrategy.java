@@ -1,6 +1,6 @@
-package com.rnd.app.dpstrategy.strategy;
+package com.rnd.app.strategyaslist.strategy;
 
-import com.rnd.app.dpstrategy.model.OutputType;
+import com.rnd.app.strategyaslist.model.OutputType;
 import org.springframework.stereotype.Component;
 
 @Component

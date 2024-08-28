@@ -1,8 +1,8 @@
-package com.rnd.app.dpstrategy;
+package com.rnd.app.strategyaslist;
 
 
-import com.rnd.app.dpstrategy.model.OutputType;
-import com.rnd.app.dpstrategy.service.DocumentServiceListServiceImpl;
+import com.rnd.app.strategyaslist.model.OutputType;
+import com.rnd.app.strategyaslist.service.DocumentServiceListServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,7 +1,7 @@
-package com.rnd.app.dpstrategy.service;
+package com.rnd.app.strategyaslist.service;
 
-import com.rnd.app.dpstrategy.config.DocumentConfig;
-import com.rnd.app.dpstrategy.model.OutputType;
+import com.rnd.app.strategyaslist.config.DocumentConfig;
+import com.rnd.app.strategyaslist.model.OutputType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
