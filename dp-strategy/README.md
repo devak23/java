@@ -62,6 +62,14 @@ public class DoocumentCreatorImpl implements DocumentCreator {
 ```
 
 ### Step 5: Test the application
+Run the following curls after starting the application:
+```
+curl --location --request POST 'localhost:8080/api/generate/PDF' -d '' -H "Content-Type: application/json"  
+curl --location --request POST 'localhost:8080/api/generate/EXCEL' -d '' -H "Content-Type: application/json" 
+curl --location --request POST 'localhost:8080/api/generate/HTML' -d '' -H "Content-Type: application/json" 
+curl --location --request POST 'localhost:8080/api/generate/CSV' -d '' -H "Content-Type: application/json" 
+```
+
 
 courtesy: 
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class DocumentImpl implements Document {
+public class DocumentServiceListServiceImpl implements DocumentService {
     private final DocumentConfig config;
 
     @Override

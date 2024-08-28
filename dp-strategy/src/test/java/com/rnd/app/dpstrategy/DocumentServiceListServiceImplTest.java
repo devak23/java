@@ -2,7 +2,7 @@ package com.rnd.app.dpstrategy;
 
 
 import com.rnd.app.dpstrategy.model.OutputType;
-import com.rnd.app.dpstrategy.service.DocumentImpl;
+import com.rnd.app.dpstrategy.service.DocumentServiceListServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class DocumentImplTest {
+class DocumentServiceListServiceImplTest {
     @Autowired
-    private DocumentImpl impl;
+    private DocumentServiceListServiceImpl impl;
 
     @Test
     public void givenPDF_whenInvokedCreateDocument_thenProducesPDFDoc() {
