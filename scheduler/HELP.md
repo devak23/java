@@ -1,3 +1,18 @@
+# Testing
+
+To run a job:
+```
+curl --location --request POST 'localhost:7612/api/timer/runHelloWorld' -d '' -H "Content-Type: application/json" 
+```
+To list all running timers:
+```
+curl --location --request GET 'localhost:7612/api/timer' -d '' -H "Content-Type: application/json"
+```
+To list a specific timer:
+```
+curl --location --request GET 'localhost:7612/api/timer/HelloWorldJob' -d '' -H "Content-Type: application/json" 
+```
+
 # MariaDB setup
 
 ### STARTING THE DATABASE

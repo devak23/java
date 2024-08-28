@@ -7,7 +7,12 @@ import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
+import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -36,7 +41,7 @@ public class SchedulerService {
         }
     }
 
-    public void schedule(final Class<? extends Job> jobClass, final TimerInfo timerInfo) {
+    public <T> void schedule(final Class<? extends Job> jobClass, final TimerInfo<T> timerInfo) {
         final JobDetail jobDetail = TimerUtils.buildJobDetail(jobClass, timerInfo);
         final Trigger trigger = TimerUtils.buildTrigger(jobClass, timerInfo);
 
@@ -45,6 +50,43 @@ public class SchedulerService {
             scheduler.scheduleJob(jobDetail, trigger);
         } catch (Exception e) {
             log.error("Error scheduling job", e);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> List<TimerInfo<T>> getAllRunningTimers() {
+        try {
+            return scheduler.getJobKeys(GroupMatcher.anyGroup())
+                    .stream()
+                    .map(jobKey -> {
+                        try {
+                            JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+                            return (TimerInfo<T>) jobDetail.getJobDataMap().get(jobKey.getName());
+                        } catch (SchedulerException e) {
+                            log.error("Error getting job detail", e);
+                            return null;
+                        }
+                    })
+                    .filter(Objects::nonNull)
+                    .toList();
+        } catch (SchedulerException e) {
+            log.error("Error getting all running timers", e);
+            return Collections.emptyList();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> TimerInfo<T> getRunningTimer(String timerId) {
+        try {
+            JobDetail jobDetail = scheduler.getJobDetail(new JobKey(timerId));
+            if (jobDetail == null) {
+                return null;
+            }
+
+            return (TimerInfo<T>) jobDetail.getJobDataMap().get(timerId);
+        } catch (SchedulerException e) {
+            log.error("Error getting job detail", e);
+            return null;
         }
     }
 }
