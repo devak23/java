@@ -16,6 +16,6 @@ public class HelloWorldJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) {
         JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
         TimerInfo<String> timerInfo = (TimerInfo<String>) jobDataMap.get(HelloWorldJob.class.getSimpleName());
-        log.info(timerInfo.callbackData());
+        log.info("Remaining fire count: {}", timerInfo.getRemainingFireCount());
     }
 }

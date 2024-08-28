@@ -25,18 +25,18 @@ public final class TimerUtils {
     public static Trigger buildTrigger(final Class<? extends Job> jobClass, final TimerInfo timerInfo) {
         SimpleScheduleBuilder builder = SimpleScheduleBuilder
                 .simpleSchedule()
-                .withIntervalInMilliseconds(timerInfo.repeatIntervalMs());
+                .withIntervalInMilliseconds(timerInfo.getRepeatIntervalMs());
 
-        if (timerInfo.runForever()) {
+        if (timerInfo.isRunForever()) {
             builder = builder.repeatForever();
         } else {
-            builder = builder.withRepeatCount(timerInfo.totalFireCount() - 1);
+            builder = builder.withRepeatCount(timerInfo.getTotalFireCount() - 1);
         }
 
         return TriggerBuilder.newTrigger()
                 .withIdentity(jobClass.getSimpleName())
                 .withSchedule(builder)
-                .startAt(new Date(System.currentTimeMillis() + timerInfo.initialOffsetMs()))
+                .startAt(new Date(System.currentTimeMillis() + timerInfo.getInitialOffsetMs()))
                 .build();
     }
 }

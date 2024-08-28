@@ -26,6 +26,7 @@ public class SchedulerService {
         log.info("starting scheduler...");
         try {
             scheduler.start();
+            scheduler.getListenerManager().addTriggerListener(new SimpleTriggerListener(this));
         } catch (SchedulerException e) {
             log.error("Error starting scheduler", e);
         }
@@ -85,8 +86,29 @@ public class SchedulerService {
 
             return (TimerInfo<T>) jobDetail.getJobDataMap().get(timerId);
         } catch (SchedulerException e) {
-            log.error("Error getting job detail", e);
+            log.error("Error getting job detail for timerId: {}", timerId, e);
             return null;
         }
+    }
+
+    public <T> void updateTimer(final String timerId, final TimerInfo<T> timerInfo) {
+        try {
+            JobDetail jobDetail = scheduler.getJobDetail(new JobKey(timerId));
+            if (jobDetail != null) {
+                log.info("Updating timer({}) with timerInfo: {}", timerId, timerInfo);
+                jobDetail.getJobDataMap().put(timerId, timerInfo);
+            }
+        } catch (SchedulerException e) {
+            log.error("Error getting job detail for timerId: {}", timerId, e);
+        }
+    }
+
+    public boolean deleteTimer(final String timerId) {
+        try {
+            return scheduler.deleteJob(new JobKey(timerId));
+        } catch (SchedulerException e) {
+            log.error("Error deleting job detail for timerId: {}", timerId, e);
+        }
+        return false;
     }
 }

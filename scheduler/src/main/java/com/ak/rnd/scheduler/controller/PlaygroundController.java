@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/timer")
@@ -27,5 +26,10 @@ public class PlaygroundController {
     @GetMapping("/{timerId}")
     public <T> TimerInfo<T> getRunningTimer(@PathVariable final String timerId) {
         return playgroundService.getRunningTimer(timerId);
+    }
+
+    @DeleteMapping("/{timerId}")
+    public boolean deleteTimer(@PathVariable final String timerId) {
+        return playgroundService.deleteTimer(timerId);
     }
 }
