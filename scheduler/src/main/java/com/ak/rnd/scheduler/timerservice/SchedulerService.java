@@ -36,7 +36,7 @@ public class SchedulerService {
         }
     }
 
-    public void schedule(final Class jobClass, final TimerInfo timerInfo) {
+    public void schedule(final Class<? extends Job> jobClass, final TimerInfo timerInfo) {
         final JobDetail jobDetail = TimerUtils.buildJobDetail(jobClass, timerInfo);
         final Trigger trigger = TimerUtils.buildTrigger(jobClass, timerInfo);
 

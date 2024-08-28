@@ -1,7 +1,9 @@
 package com.ak.rnd.scheduler.jobs;
 
+import com.ak.rnd.scheduler.config.TimerInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
+import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +12,10 @@ import org.springframework.stereotype.Component;
 //~ 1!
 public class HelloWorldJob implements Job {
     @Override
+    @SuppressWarnings("unchecked")
     public void execute(JobExecutionContext jobExecutionContext) {
-        log.info("Hello World!");
+        JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
+        TimerInfo<String> timerInfo = (TimerInfo<String>) jobDataMap.get(HelloWorldJob.class.getSimpleName());
+        log.info(timerInfo.callbackData());
     }
 }

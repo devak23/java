@@ -14,9 +14,9 @@ public class PlaygroundService {
     private final SchedulerService schedulerService;
 
     public void runHelloWorldJob() {
-        final TimerInfo timerInfo = TimerInfo.builder()
+        final TimerInfo<String> timerInfo = TimerInfo.<String>builder()
                 .totalFireCount(5)
-                .repeatIntervalMs(5000)
+                .repeatIntervalMs(2000)
                 .initialOffsetMs(1000)
                 .callbackData("My Callback")
                 .build();
