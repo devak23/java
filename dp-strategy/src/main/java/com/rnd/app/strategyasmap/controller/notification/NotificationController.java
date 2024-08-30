@@ -1,6 +1,6 @@
-package com.rnd.app.strategyasmap.controller;
+package com.rnd.app.strategyasmap.controller.notification;
 
-import com.rnd.app.strategyasmap.config.NotificationServiceFactory;
+import com.rnd.app.strategyasmap.config.notification.NotificationServiceFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

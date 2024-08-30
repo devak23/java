@@ -1,6 +1,6 @@
-package com.rnd.app.strategyasmap.config;
+package com.rnd.app.strategyasmap.config.notification;
 
-import com.rnd.app.strategyasmap.service.NotificationService;
+import com.rnd.app.strategyasmap.service.notification.NotificationService;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

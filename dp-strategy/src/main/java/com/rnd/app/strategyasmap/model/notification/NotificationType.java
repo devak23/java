@@ -1,4 +1,4 @@
-package com.rnd.app.strategyasmap.model;
+package com.rnd.app.strategyasmap.model.notification;
 
 
 public final class NotificationType {
