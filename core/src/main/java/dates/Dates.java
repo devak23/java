@@ -2,8 +2,7 @@ package dates;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoField;
-import java.time.temporal.WeekFields;
+import java.time.temporal.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -145,5 +144,20 @@ public final class Dates {
 
     public static boolean isLeapYearDefault(int year) {
         return Year.isLeap(year);
+    }
+
+    // Getting the first and last days of a quarter for a given date
+    public static Quarter getQuarterDays(Date date) {
+        ZoneId defaultZone = ZoneId.systemDefault();
+
+        LocalDate localDate = date.toInstant().atZone(defaultZone).toLocalDate();
+
+        LocalDate firstDay = localDate.with(IsoFields.DAY_OF_QUARTER, 1L);
+        LocalDate lastDay = firstDay.plusMonths(2).with(TemporalAdjusters.lastDayOfMonth());
+
+        return new Quarter(
+                Date.from(firstDay.atStartOfDay(defaultZone).toInstant())
+                , Date.from(lastDay.atStartOfDay(defaultZone).toInstant())
+        );
     }
 }

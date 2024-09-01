@@ -36,6 +36,13 @@ public class DatesMain {
         log.info("Is 2030 leap year: {}", Dates.isLeapYear(2030));
         log.info("Is 2024 leap year: {}", Dates.isLeapYearGregorian(2024));
         log.info("Is 2028 leap year: {}", Dates.isLeapYearDefault(2028));
+        Quarter quarterDays = Dates.getQuarterDays(createDate(2024, 9, 1));
+        log.info("First and last day of the quarter of 1-Sep-2024 are: {}, {}", quarterDays.firstDay(), quarterDays.lastDay());
+    }
+
+    public static Date createDate(int year, int month, int day) {
+        LocalDate localDate = LocalDate.of(year, month, day);
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     public static void printDateInfo(BiFunction<Date, ZoneId, String> func) {
