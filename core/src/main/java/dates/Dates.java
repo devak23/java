@@ -6,6 +6,7 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.WeekFields;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public final class Dates {
@@ -114,5 +115,35 @@ public final class Dates {
         return calendar.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
+    }
+
+    public static DateElements getFieldsFromLocalDate(LocalDate localDate) {
+        return new DateElements(localDate.getYear()
+                , localDate.getMonth().getValue()
+                , localDate.getDayOfMonth()
+                , 0 // localDate.get(ChronoField.HOUR_OF_AMPM) // unsupported
+                , 0 // localDate.get(ChronoField.MINUTE_OF_HOUR) // unsupported
+                , 0 // localDate.get(ChronoField.SECOND_OF_MINUTE) // unsupported
+        );
+    }
+
+    // is given year a leap year?
+    public static boolean isLeapYear(int year) {
+        // a leap year is any year divisible by 4 (so, year % 4 == 0) that it is not a century (for instance, 100, 200,
+        // ..., n00). However, if the year represents a century that is divisible by 400 (so, year % 400 == 0), then it
+        // is a leap year
+        if (year % 4 != 0) {
+            return false;
+        } else if (year % 400 == 0) {
+            return true;
+        } else return year % 100 != 0;
+    }
+
+    public static boolean isLeapYearGregorian(int year) {
+        return new GregorianCalendar(year, 1 , 1).isLeapYear(year);
+    }
+
+    public static boolean isLeapYearDefault(int year) {
+        return Year.isLeap(year);
     }
 }

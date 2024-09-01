@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -28,8 +27,15 @@ public class DatesMain {
         log.info("Elements of a date =  Year: {}, Month: {}, Day: {}, Hours: {}, Minutes: {}, Seconds: {}"
                 , elements.year(), elements.month(), elements.day(), elements.hour(), elements.minute(), elements.second()
         );
-
         log.info("util.date = {}, LocalDate = {}", now, Dates.from(now));
+        log.info("Fields from LocalDate: {}", Dates.getFieldsFromLocalDate(LocalDate.now()));
+        log.info("Is 300 leap year: {}", Dates.isLeapYear(300));
+        log.info("Is 400 leap year: {}", Dates.isLeapYear(400));
+        log.info("Is 600 leap year: {}", Dates.isLeapYear(400));
+        log.info("Is 2020 leap year: {}", Dates.isLeapYear(2020));
+        log.info("Is 2030 leap year: {}", Dates.isLeapYear(2030));
+        log.info("Is 2024 leap year: {}", Dates.isLeapYearGregorian(2024));
+        log.info("Is 2028 leap year: {}", Dates.isLeapYearDefault(2028));
     }
 
     public static void printDateInfo(BiFunction<Date, ZoneId, String> func) {
