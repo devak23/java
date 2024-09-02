@@ -7,19 +7,20 @@ import java.time.YearMonth;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
 
 @Slf4j
 public class DatesMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Date now = new Date();
 
         printDateInfo(Dates::toDayPeriod);
         printDateInfo(Dates::toDayPeriodWithNewPattern);
         YearMonth yearMonth = Dates.toYearMonth(now, ZoneId.systemDefault());
         log.info("YearMonth = {}", yearMonth);
-        log.info("Date = {}", Dates.toDate(21, yearMonth, ZoneId.of("Asia/Kolkata")));
+        log.info("Date = {}", Dates.toDate(21, yearMonth, ZoneId.of("America/Montreal")));
         log.info("Int from YearMonth = {}", Dates.to(YearMonth.now()));
         log.info("Date from week and year: {}", Dates.from(2024, 20));
         log.info("LocalDate from week and year: {}", Dates.fromLocal(2024, 20));
@@ -36,16 +37,22 @@ public class DatesMain {
         log.info("Is 2030 leap year: {}", Dates.isLeapYear(2030));
         log.info("Is 2024 leap year: {}", Dates.isLeapYearGregorian(2024));
         log.info("Is 2028 leap year: {}", Dates.isLeapYearDefault(2028));
-        Date date = createDate(2024, 9, 1);
+        Date date = createDate(2024, 9, 1, ZoneId.systemDefault());
         Quarter quarterDays = Dates.getQuarterDays(date);
         log.info("First and last day of the quarter of 1-Sep-2024 are: {}, {}", quarterDays.firstDay(), quarterDays.lastDay());
         log.info("Months of a quarter for date: {} = {}", date, Dates.getMonthsOfQuarter(date));
-        log.info("Months of a quarter (Functional): {}", Dates.getMonthsOfQuarter(3));
+        log.info("Months of the 3rd quarter: {}", Dates.getMonthsOfQuarter(3));
+        NanoStopwatch stopwatch = new NanoStopwatch();
+        stopwatch.start();
+        log.info("Elapsed time in nanoseconds =  {}", stopwatch.timeElapsedInNanoSeconds());
+        TimeUnit.SECONDS.sleep(1);
+        stopwatch.stop();
+        log.info("Elapsed time in milliseconds =  {}", stopwatch.timeElapsedInMilliseconds());
     }
 
-    public static Date createDate(int year, int month, int day) {
+    public static Date createDate(int year, int month, int day, ZoneId zoneId) {
         LocalDate localDate = LocalDate.of(year, month, day);
-        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        return Date.from(localDate.atStartOfDay(zoneId).toInstant());
     }
 
     public static void printDateInfo(BiFunction<Date, ZoneId, String> func) {
