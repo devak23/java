@@ -3,10 +3,8 @@ package dates;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public final class Dates {
 
@@ -159,5 +157,26 @@ public final class Dates {
                 Date.from(firstDay.atStartOfDay(defaultZone).toInstant())
                 , Date.from(lastDay.atStartOfDay(defaultZone).toInstant())
         );
+    }
+
+    // Get months of quarter.
+    public static List<String> getMonthsOfQuarter(Date date) {
+        LocalDate lDate = LocalDate.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        List<String> months = new ArrayList<>();
+        int qMonth = Month.from(lDate).firstMonthOfQuarter().getValue();
+        months.add(Month.of(qMonth).name());
+        months.add(Month.of(++qMonth).name());
+        months.add(Month.of(++qMonth).name());
+
+        return months;
+    }
+
+    // Get months of the quarter functional style
+    public static List<String> getMonthsOfQuarter(int quarterMonth) {
+        int qMonth = quarterMonth * 3 - 2;
+        return IntStream.of(qMonth, ++qMonth, ++qMonth)
+                .mapToObj(Month::of)
+                .map(Enum::name)
+                .toList();
     }
 }
