@@ -193,4 +193,23 @@ public final class Dates {
 
         return dates;
     }
+
+    // return first and last day of the year
+    public static List<String> firstAndLastDaysOfTheYear(int year, boolean justName) {
+        LocalDate firstDayLd = LocalDate.ofYearDay(year, 1);
+        LocalDate firstDay = firstDayLd.with(TemporalAdjusters.firstDayOfYear());
+
+        LocalDate lastDayLd = LocalDate.ofYearDay(year, 31);
+        LocalDate lastDay = lastDayLd.with(TemporalAdjusters.lastDayOfYear());
+
+        if (!justName) {
+            // return the dates
+            return List.of(firstDay.toString(), lastDay.toString());
+        }
+
+        // figure out the days
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE");
+        return List.of(formatter.format(firstDay), formatter.format(lastDay));
+    }
+
 }

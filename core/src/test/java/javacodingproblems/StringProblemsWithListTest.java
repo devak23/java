@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StringProblemsMainTest {
+public class StringProblemsWithListTest {
 
     @DisplayName("Checking for duplicates using first method")
     @Test

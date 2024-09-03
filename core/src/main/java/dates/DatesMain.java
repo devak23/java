@@ -70,6 +70,8 @@ public class DatesMain {
         log.info("Short days of the week: {}", Arrays.stream(dateFormatSymbols.getShortWeekdays()).filter(StringUtils::isNotBlank).toList());
         log.info("Months of a year: {}", Arrays.stream(dateFormatSymbols.getMonths()).filter(StringUtils::isNotBlank).toList());
         log.info("Short months of a year: {}", Arrays.stream(dateFormatSymbols.getShortMonths()).filter(StringUtils::isNotBlank).toList());
+        log.info("First and last day of the year 2024: {}", Dates.firstAndLastDaysOfTheYear(2024, true));
+        log.info("First and last dates of the year 2024: {}", Dates.firstAndLastDaysOfTheYear(2024, false));
 }
 
 
