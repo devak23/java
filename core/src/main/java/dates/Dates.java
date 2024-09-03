@@ -179,4 +179,18 @@ public final class Dates {
                 .map(Enum::name)
                 .toList();
     }
+
+    public static List<LocalDateTime> splitInEqualIntervals(LocalDateTime start, LocalDateTime end, int parts) {
+        Duration range = Duration.between(start, end);
+        Duration interval = range.dividedBy(parts - 1);
+        List<LocalDateTime> dates = new ArrayList<>();
+        LocalDateTime timeline = start;
+        for (int i = 1; i < parts; i++) {
+            dates.add(timeline);
+            timeline = timeline.plus(interval);
+        }
+        dates.add(end);
+
+        return dates;
+    }
 }

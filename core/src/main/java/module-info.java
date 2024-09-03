@@ -10,5 +10,6 @@ module core {
     requires org.slf4j;
     requires com.fasterxml.jackson.databind;
     requires org.yaml.snakeyaml;
+    requires org.apache.commons.lang3;
     exports statemachine.model;
 }
