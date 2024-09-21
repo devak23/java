@@ -40,11 +40,14 @@ public class InvokeAllMain {
 
         // [20:46:57] [INFO   ] result: pass01
 
-        TestingTeam testingTeam = buildTestingTeam();
+        TestingTeam testingTeam = buildTestingTeamWithInvokeAll();
+        LOGGER.info("testingTeam: " + testingTeam);
+
+        TestingTeam testingTeam1 = buildTestingTeamWithInvokeAny();
         LOGGER.info("testingTeam: " + testingTeam);
     }
 
-    public static TestingTeam buildTestingTeam() throws InterruptedException {
+    public static TestingTeam buildTestingTeamWithInvokeAll() throws InterruptedException {
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
             List<Future<String>> futures = executor.invokeAll(
                 List.of(() -> fetchTester(1), () -> fetchTester(2), () -> fetchTester(3))
@@ -56,6 +59,16 @@ public class InvokeAllMain {
                     , futures.get(1).resultNow()
                     , futures.get(2).resultNow()
             );
+        }
+    }
+
+    public static TestingTeam buildTestingTeamWithInvokeAny() throws InterruptedException, ExecutionException {
+        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            String result = executor.invokeAny(
+                List.of(() -> fetchTester(1), () -> fetchTester(2), () -> fetchTester(3))
+            );
+
+            return new TestingTeam(result);
         }
     }
 
