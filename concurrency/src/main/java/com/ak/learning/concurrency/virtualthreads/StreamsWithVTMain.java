@@ -24,18 +24,57 @@ public class StreamsWithVTMain {
 
             // For instance, the following stream pipeline returns a List of results (it filters all Future instances
             // that haven’t completed successfully)
-            try {
-                List<String> results = executorService.invokeAll(
-                        List.of(() -> "pass01", () -> "pass02", () -> "pass03", () -> "pass04" ))
-                        .stream()
-                        .filter(f -> f.state() == Future.State.SUCCESS)
-                        .<String>mapMulti((future, consumer) -> consumer.accept((String) future.resultNow()))
-                        .toList();
+            List<String> results = process1(executorService);
+            LOGGER.info("results = " + results);
 
-                LOGGER.info("results = " + results);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            // ofcourse the same thing can be written as
+            List<String> results2 = process2(executorService);
+            LOGGER.info("results2 = " + results2);
+
+            // On the other hand, you may need to collect all the Future that has been completed exceptionally. This can
+            // be achieved via exceptionNow(), as follows
+            List<Throwable> exceptions = process3(executorService);
+            LOGGER.info("exceptions = " + exceptions);
+        }
+    }
+
+    private static List<Throwable> process3(ExecutorService executorService) {
+        try {
+            return executorService.invokeAll(
+                    List.of(() -> "pass01", () -> "pass02".substring(50), () -> "pass03"))
+                    .stream()
+                    .filter(f -> f.state() == Future.State.FAILED)
+                    .<Throwable>mapMulti( (f,c) -> c.accept(f.exceptionNow())).toList();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static List<String> process2(ExecutorService executorService) {
+        try {
+            return executorService.invokeAll(
+                    List.of(() -> "pass01", () -> "pass02", () -> "pass03", () -> "pass04" ))
+                    .stream()
+                    .filter(f -> f.state() == Future.State.SUCCESS)
+                    .map(f -> f.resultNow().toString())
+                    .toList();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private static List<String> process1(ExecutorService executorService) {
+        try {
+            return executorService.invokeAll(
+                    List.of(() -> "pass01", () -> "pass02", () -> "pass03", () -> "pass04" ))
+                    .stream()
+                    .filter(f -> f.state() == Future.State.SUCCESS)
+                    .<String>mapMulti((future, consumer) -> consumer.accept((String) future.resultNow()))
+                    .toList();
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
