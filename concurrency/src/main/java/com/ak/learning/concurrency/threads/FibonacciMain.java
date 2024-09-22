@@ -1,4 +1,4 @@
-package threads;
+package com.ak.learning.concurrency.threads;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;

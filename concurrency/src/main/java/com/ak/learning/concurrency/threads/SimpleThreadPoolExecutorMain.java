@@ -1,29 +1,30 @@
-package threads;
-
-import lombok.extern.slf4j.Slf4j;
+package com.ak.learning.concurrency.threads;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
-@Slf4j
 public class SimpleThreadPoolExecutorMain {
+    private static final Logger LOGGER = Logger.getLogger(SimpleThreadPoolExecutorMain.class.getName());
 
     // The main() method fires 50 instances of Runnable. Each Runnable sleeps for two seconds and prints a message. The work queue is limited to
     // five instances of Runnable—the core threads to 10, the maximum number of threads to 20, and the idle timeout to one second
 
     public static void main(String[] args) {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tT] [%4$-7s] %5$s %n");
+
         BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>();
         final AtomicInteger counter = new AtomicInteger();
 
         ThreadFactory threadFactory = (Runnable r ) -> {
-            log.info("Creating a cool-thread-{}", counter.incrementAndGet());
+            LOGGER.info("Creating a cool-thread-" + counter.incrementAndGet());
             return new Thread(r, "Cool-Thread-" + counter.get());
         };
 
         RejectedExecutionHandler rejectedHandler = (r, executor) -> {
           if (r instanceof SimpleThreadPoolExecutor task) {
-              log.info("Rejecting task {}", task.getTaskId());
+              LOGGER.info("Rejecting task: " + task.getTaskId());
           }
         };
 

@@ -1,4 +1,4 @@
-package threads;
+package com.ak.learning.concurrency.threads;
 
 public class AddMain {
 

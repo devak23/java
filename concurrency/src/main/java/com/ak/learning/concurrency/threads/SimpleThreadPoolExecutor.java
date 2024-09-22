@@ -1,4 +1,4 @@
-package threads;
+package com.ak.learning.concurrency.threads;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

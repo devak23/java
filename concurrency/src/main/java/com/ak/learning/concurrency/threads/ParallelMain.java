@@ -1,4 +1,4 @@
-package threads;
+package com.ak.learning.concurrency.threads;
 
 import java.util.List;
 import java.util.concurrent.*;

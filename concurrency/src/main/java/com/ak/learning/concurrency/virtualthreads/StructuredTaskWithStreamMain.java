@@ -27,10 +27,6 @@ public class StructuredTaskWithStreamMain {
 
             scope.join();
 
-            subtasks.stream()
-                    .filter(f -> f.state() == StructuredTaskScope.Subtask.State.FAILED)
-                    .map()
-
             List<String> results = subtasks.stream()
                     .filter(f -> f.state() == StructuredTaskScope.Subtask.State.SUCCESS)
                     .map(StructuredTaskScope.Subtask::get)
