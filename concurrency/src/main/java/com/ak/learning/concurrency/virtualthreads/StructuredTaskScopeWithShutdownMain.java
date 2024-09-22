@@ -32,7 +32,7 @@ public class StructuredTaskScopeWithShutdownMain {
         try (StructuredTaskScope.ShutdownOnFailure scope = new StructuredTaskScope.ShutdownOnFailure()) {
             StructuredTaskScope.Subtask subtask1 = scope.fork(() -> fetchTester(1));
             StructuredTaskScope.Subtask subtask2 = scope.fork(() -> fetchTester(2));
-            StructuredTaskScope.Subtask subtask3 = scope.fork(() -> fetchTester(Integer.MAX_VALUE));
+            StructuredTaskScope.Subtask subtask3 = scope.fork(() -> fetchTester(Integer.MAX_VALUE)); // will cause exception
 
             scope.join();
             LOGGER.info("subtask1-state: " + subtask1.state());
