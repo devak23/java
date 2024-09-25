@@ -6,6 +6,7 @@ import com.rnd.artemis.framework.model.DataRow;
 import com.rnd.artemis.framework.model.ProcessorConfig;
 import com.rnd.artemis.framework.module.AbstractBaseModule;
 import com.rnd.artemis.framework.actions.ProcessAction;
+import com.rnd.artemis.framework.util.TimeIt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -24,12 +25,13 @@ import java.util.concurrent.Future;
 @PropertySource(value = "classpath:/process-${artifactType}-config.yml", factory = CustomYamlParserFactory.class)
 @RequiredArgsConstructor
 public class BaseProcessor implements ProcessAction {
-    public static final String BASE_PROCESSOR = "baseProcessor";
+    public static final String QUALIFIER = "baseProcessor";
 
     private final ApplicationContext applicationContext;
     private final ProcessorConfig processorConfig;
 
     @Override
+    @TimeIt
     public void execute(Data data) {
         if (processorConfig.isEnabled()) {
             try (ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor()) {
