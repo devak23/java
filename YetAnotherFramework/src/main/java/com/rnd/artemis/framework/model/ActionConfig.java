@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(callSuper = true)
-public class StepConfig extends BaseConfig {
+public class ActionConfig extends BaseConfig {
     private List<ConditionalConfig> conditionalConfig;
     private String configurationFile;
 }

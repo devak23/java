@@ -6,7 +6,7 @@ artemis:
         modules:
           - name: Ingestion Module
             qualifier: ingestorModule
-            steps:
+            actions:
               - name: Data Extract Action
                 qualifier: dataExtractAction
               - name: Data Validate Action

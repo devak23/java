@@ -12,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class ModuleConfig extends BaseConfig {
-    private List<StepConfig> steps;
+    private List<ActionConfig> steps;
 }

@@ -16,7 +16,7 @@ public class ConditionalConfig extends BaseConfig {
 
     public boolean evaluateCondition(DataRow dataRow) {
         if (!StringUtils.hasText(criteria)) {
-            throw new IllegalArgumentException("Conditional configuration is opted by criteria is not provided");
+            throw new IllegalArgumentException("Conditional configuration is opted in but criteria is not provided");
         }
 
         Expression expression = new SpelExpressionParser().parseExpression(criteria);
