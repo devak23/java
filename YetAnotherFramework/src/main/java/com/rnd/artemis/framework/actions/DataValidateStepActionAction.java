@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
+@Qualifier("dataValidateAction")
 @Slf4j
-@Qualifier("dataSinkAction")
-public class DataSinkStepAction extends AbstractBaseStep {
+public class DataValidateStepActionAction extends AbstractBaseStepAction {
+
     @Override
     public void performAction(DataRow row) {
-        log.info("Persisting data into the database");
+        log.info("validating the data");
     }
 }

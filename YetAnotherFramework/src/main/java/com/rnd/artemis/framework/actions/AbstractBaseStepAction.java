@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 
 @Slf4j
-public abstract class AbstractBaseStep implements StepAction {
+public abstract class AbstractBaseStepAction implements StepAction {
     protected ActionConfig actionConfig;
     protected ApplicationContext applicationContext;
 

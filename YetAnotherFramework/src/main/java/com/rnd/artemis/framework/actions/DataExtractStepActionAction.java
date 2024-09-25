@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Qualifier ("dataExtractAction")
 @Slf4j
-public class DataExtractStepAction extends AbstractBaseStep {
+public class DataExtractStepActionAction extends AbstractBaseStepAction {
     @Override
     public void performAction(DataRow row) {
         log.info("DataExtractStepAction performAction");

@@ -5,13 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
-@Qualifier("dataValidateAction")
 @Slf4j
-public class DataValidateStepAction extends AbstractBaseStep {
-
+@Component
+@Qualifier ("dataEnrichAction")
+public class DataEnrichStepActionAction extends AbstractBaseStepAction {
     @Override
     public void performAction(DataRow row) {
-        log.info("validating the data");
+        log.info("Enriching data for row: {}", row);
     }
 }
