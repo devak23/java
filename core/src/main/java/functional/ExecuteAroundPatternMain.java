@@ -51,6 +51,10 @@ public class ExecuteAroundPatternMain {
         // And then it goes on. What's the max of all the doubles?
         Double max = read(ExecuteAroundPatternMain::getMax);
         log.info("max: {}", max);
+
+        // And what's' the minimum of all the doubles? and what's the average of all doubles? You get the drift!
+        // The one thing to note here is all these summation and functions that we need require us to loop on the
+        // elements read from the file. So what if we could abstract that boilerplate code out as well?
     }
 
     private static double getMax(Scanner scanner) {
