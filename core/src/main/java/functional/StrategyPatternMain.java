@@ -1,9 +1,10 @@
 package functional;
 
+import functional.spec.RemovalStrategy;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class StrategyPatternRemoverMain {
+public class StrategyPatternMain {
 
     public static void main(String[] args) {
 
@@ -15,4 +16,14 @@ public class StrategyPatternRemoverMain {
         log.info("NoNumbers: {}", noNumbers);
         log.info("NoSpaces: {}", noSpaces);
     }
+
+    static class Remover {
+
+        private Remover() {}
+
+        public static String remove(String source, RemovalStrategy strategy) {
+            return strategy.applyRemoval(source);
+        }
+    }
+
 }
