@@ -5,7 +5,7 @@ import functional.model.Melon;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class MelonFactoryMain {
+public class MelonFactoryPatternMain {
 
     public static void main(String[] args) {
 
