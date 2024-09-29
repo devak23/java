@@ -1,4 +1,4 @@
-package functional;
+package functional.patterns;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +15,7 @@ public class ExecuteAroundPatternNeedMain {
     public static void main(String[] args) throws IOException {
 
         Double doubleVal = getDouble(); // contains boilerplate code
-        log.info("double: {}", doubleVal);
+        log.info("value = {}", doubleVal);
         printDouble(); // contains boilerplate code
 
     }

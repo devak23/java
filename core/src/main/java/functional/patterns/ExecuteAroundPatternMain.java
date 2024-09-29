@@ -1,4 +1,4 @@
-package functional;
+package functional.patterns;
 
 import functional.spec.ScannerDoubleFunction;
 import lombok.extern.slf4j.Slf4j;
@@ -90,3 +90,9 @@ public class ExecuteAroundPatternMain {
         }
     }
 }
+
+// OUTPUT:
+// 02:47:04.062 [main] INFO functional.patterns.ExecuteAroundPatternMain -- doubleNumber: 23.2
+// 02:47:04.070 [main] INFO functional.patterns.ExecuteAroundPatternMain -- summation: 111.59
+// 02:47:04.074 [main] INFO functional.patterns.ExecuteAroundPatternMain -- product: 457363.2873600001
+// 02:47:04.077 [main] INFO functional.patterns.ExecuteAroundPatternMain -- max: 45.2

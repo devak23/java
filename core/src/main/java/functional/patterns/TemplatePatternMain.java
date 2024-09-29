@@ -1,4 +1,4 @@
-package functional;
+package functional.patterns;
 
 import functional.model.Pizza;
 import lombok.extern.slf4j.Slf4j;
@@ -43,3 +43,12 @@ public class TemplatePatternMain {
         }
     }
 }
+
+
+// OUTPUT:
+// 02:47:26.386 [main] INFO functional.patterns.TemplatePatternMain -- Making the dough for Sicilian pizza.
+// 02:47:26.390 [main] INFO functional.patterns.TemplatePatternMain -- Adding toppings: tomato, onion, anchovies and herbs to Sicilian pizza
+// 02:47:26.390 [main] INFO functional.patterns.TemplatePatternMain -- Baking the Sicilian pizza.
+// 02:47:26.390 [main] INFO functional.patterns.TemplatePatternMain -- Making the dough for Hawaiian pizza.
+// 02:47:26.390 [main] INFO functional.patterns.TemplatePatternMain -- Adding toppings: cheese, tomato, onion, pineapple, paprika to Hawaiian pizza
+// 02:47:26.390 [main] INFO functional.patterns.TemplatePatternMain -- Baking the Hawaiian pizza.
