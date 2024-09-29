@@ -13,3 +13,8 @@ package functional.spec;
 public interface FireObserver {
     void fire(String address);
 }
+
+
+// This functional interface is an argument of the Fire.registerFireStation() method. In this context, we can pass a
+// lambda to this method instead of a new instance of a local fire station. The lambda will contain the behavior in its
+// body; therefore, we can delete the local station classes and rely on lambdas alone. Checkout ObserverPatternMain.java
