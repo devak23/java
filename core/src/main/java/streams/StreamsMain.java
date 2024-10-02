@@ -274,6 +274,13 @@ public class StreamsMain {
                 .toList(); // .collect(Collectors.toList()) provides a mutable list Vs .toList() provides an immutable one.
 
         log.info("Passwords: {}", passwords);
+
+        // How about fetching a list of passwords until the first generated one doesn't contain !
+        List<String> passwords1 = Stream.generate(passwordSupplier)
+                .takeWhile(s -> s.contains("!"))
+                .collect(Collectors.toList());
+        passwords1.add("TestMe"); // his proves .collect(Collectors.toList()) produces a mutable list.
+        log.info("Passwords1: {}", passwords1);
     }
 
     // Password generator of 10 chars
