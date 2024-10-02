@@ -202,6 +202,64 @@ public class StreamsMain {
           )
         );
         System.out.println(languageNames);
+
+        log.info("========================================");
+        getDistrictsOfMaharashtra()
+                .stream()
+                .peek(d -> log.info("d = {}",d))
+                .map(String::toUpperCase)
+                .count(); // no output
+        log.info("========================================");
+
+        // NO PEEKING!
+
+        IntStream.range(1, 10).peek(System.out::println).count(); // no output
+        IntStream.range(1, 10).filter(i -> i%2==0).peek(System.out::println).count(); // output: 2 4 6 8
+        IntStream.range(1, 10).map(i -> i * 2).peek(System.out::println).count(); // no output
+        Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9).peek(System.out::println).count(); // no output
+        Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9).stream().peek(System.out::println).count();
+        IntStream.range(1, 10).filter(i -> true).peek(System.out::println).count(); // output: 1 2 3 4 5 6 7 8 9
+
+        List<Integer> list = new ArrayList<>();
+        Stream.of(1, 5, 2, 7, 3, 9, 8, 4, 6).sorted().peek(list::add).count(); // no output
+
+        // The important thing you have to understand is that streams are driven by the terminal operation. The terminal
+        // operation determines whether all elements have to be processed or any at all. So collect is an operation
+        // that processes each item, whereas findAny may stop processing items once it encountered a matching element.
+        //
+        // count() may not process any elements at all when it can determine the size of the stream without processing
+        // the items. Since this is an optimization not made in Java 8, but which will be in Java 9, there might be
+        // surprises when you switch to Java 9 and have code relying on count() processing all items. This is also
+        // connected to other implementation-dependent details, e.g. even in Java 9, the reference implementation will
+        // not be able to predict the size of an infinite stream source combined with limit while there is no
+        // fundamental limitation preventing such prediction.
+        //
+        // Since peek allows “performing the provided action on each element as elements are consumed from the resulting
+        // stream”, it does not mandate processing of elements but will perform the action depending on what the
+        // terminal operation needs. This implies that you have to use it with great care if you need a particular
+        // processing, e.g. want to apply an action on all elements. It works if the terminal operation is guaranteed
+        // to process all items, but even then, you must be sure that not the next developer changes the terminal
+        // operation (or you forget that subtle aspect).
+        //
+        // Further, while streams guarantee to maintain the encounter order for a certain combination of operations
+        // even for parallel streams, these guarantees do not apply to peek. When collecting into a list, the resulting
+        // list will have the right order for ordered parallel streams, but the peek action may get invoked in an
+        // arbitrary order and concurrently.
+        //
+        // So the most useful thing you can do with peek is to find out whether a stream element has been processed
+        // which is exactly what the API documentation says: "This method exists mainly to support debugging, where you
+        // want to see the elements as they flow past a certain point in a pipeline".
+    }
+
+
+    public static List<String> getDistrictsOfMaharashtra() {
+        String[] districts = {"Mumbai", "Palghar", "Thane", "Pune", "Satar","Raigad","Ratnagiri","Sangli"
+                , "Kolhapur", "Sindhudurga", "Nashik", "Ahmednagar", "Solapur", "Nandurbar", "Dhule", "Aurangabad","Beed"
+                , "Osmanabad", "Jalgaon","Buldhana","Jalna", "Parbhani", "Latur","Amravati", "Akola", "Washim", "Hingoli"
+                , "Nanded", "Nagpur", "Vardha", "Yavatmal", "Bhandardara", "Chandrapur", "Gondia", "Gadchiroli"
+        };
+
+        return Arrays.asList(districts);
     }
 
     // The following class simply stores the number of elements in a stream of integers and their sum
