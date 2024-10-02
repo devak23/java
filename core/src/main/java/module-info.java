@@ -11,5 +11,7 @@ module core {
     requires com.fasterxml.jackson.databind;
     requires org.yaml.snakeyaml;
     requires org.apache.commons.lang3;
+    requires org.checkerframework.checker.qual;
 //    exports statemachine.model;
+    exports functional.model;
 }
