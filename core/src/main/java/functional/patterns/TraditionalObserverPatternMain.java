@@ -1,5 +1,6 @@
 package functional.patterns;
 
+import functional.model.FireStation;
 import functional.spec.FireObserver;
 import lombok.extern.slf4j.Slf4j;
 

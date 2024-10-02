@@ -14,4 +14,5 @@ module core {
     requires org.checkerframework.checker.qual;
 //    exports statemachine.model;
     exports functional.model;
+    exports functional.spec;
 }

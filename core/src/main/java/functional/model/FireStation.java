@@ -1,4 +1,4 @@
-package functional.patterns;
+package functional.model;
 
 import functional.spec.FireObserver;
 import functional.spec.FireStationRegister;

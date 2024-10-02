@@ -1,5 +1,6 @@
 package functional.patterns;
 
+import functional.model.FireStation;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
