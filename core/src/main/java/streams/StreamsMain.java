@@ -2,6 +2,7 @@ package streams;
 
 import com.arakelian.faker.model.Person;
 import com.arakelian.faker.service.RandomPerson;
+import functional.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -281,6 +282,14 @@ public class StreamsMain {
                 .collect(Collectors.toList());
         passwords1.add("TestMe"); // his proves .collect(Collectors.toList()) produces a mutable list.
         log.info("Passwords1: {}", passwords1);
+
+        // getting only the full names of all the people.
+        List<String> fullNames = IntStream.range(1,10)
+                .mapToObj(CommonUtil::fetchPersonName)
+                .map(functional.model.Person::fullName)
+                .toList();
+        log.info("Fullnames: {}", fullNames);
+
     }
 
     // Password generator of 10 chars
