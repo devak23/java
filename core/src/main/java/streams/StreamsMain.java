@@ -9,10 +9,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.SecureRandom;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -204,7 +206,8 @@ public class StreamsMain {
         System.out.println(languageNames);
 
         log.info("========================================");
-        getDistrictsOfMaharashtra()
+        List<String> districtsOfMaharashtra = getDistrictsOfMaharashtra();
+        districtsOfMaharashtra
                 .stream()
                 .peek(d -> log.info("d = {}",d))
                 .map(String::toUpperCase)
@@ -249,6 +252,37 @@ public class StreamsMain {
         // So the most useful thing you can do with peek is to find out whether a stream element has been processed
         // which is exactly what the API documentation says: "This method exists mainly to support debugging, where you
         // want to see the elements as they flow past a certain point in a pipeline".
+
+        districtsOfMaharashtra.stream().forEach(log::info);
+
+        List<Integer> integers = Stream
+                .iterate(1, i -> i + 1)
+                .filter(i -> i % 2 == 0)
+                .limit(10)
+                .toList();
+
+        log.info("Integers: {}", integers);
+
+        // In order to create an infinite sequential unordered stream, we can rely on
+        // Stream.generate(Supplier<? extends T> s). Let's assume that we have a simple helper that generates passwords
+        // of ten characters
+        Supplier<String> passwordSupplier = StreamsMain::randomPassword;
+        Stream<String> passwordStream = Stream.generate(passwordSupplier);
+        // At this point, passwordStream can create passwords indefinitely. But let's create 10 such passwords:
+        List<String> passwords = passwordStream
+                .limit(10)
+                .toList(); // .collect(Collectors.toList()) provides a mutable list Vs .toList() provides an immutable one.
+
+        log.info("Passwords: {}", passwords);
+    }
+
+    // Password generator of 10 chars
+    public static String randomPassword() {
+        String chars = "abcdefghABCDEFGHijklmnopIJKLMNOPqrstuvwQRSTUVWxyzXYZ123456789!#%$.";
+        return new SecureRandom()
+                .ints(10, 0, chars.length())
+                .mapToObj(i -> String.valueOf(chars.charAt(i)))
+                .collect(Collectors.joining());
     }
 
 
