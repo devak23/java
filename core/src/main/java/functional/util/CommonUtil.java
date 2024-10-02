@@ -41,4 +41,12 @@ public class CommonUtil {
             throw new RuntimeException(e);
         }
     }
+
+    public static String eraseSpace(String s) {
+        return s.replaceAll("\\s", "");
+    }
+
+    public static String eraseNumbers(String s) {
+        return s.replaceAll("\\d+", "");
+    }
 }
