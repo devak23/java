@@ -2,6 +2,7 @@ package streams;
 
 import com.arakelian.faker.model.Person;
 import com.arakelian.faker.service.RandomPerson;
+import functional.model.Melon;
 import functional.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -289,6 +290,9 @@ public class StreamsMain {
                 .map(functional.model.Person::fullName)
                 .toList();
         log.info("Fullnames: {}", fullNames);
+
+        String melons = Melon.getMelons().stream().distinct().map(Melon::getType).collect(Collectors.joining(", ", "Available Melons: [", "] Thank You!"));
+        log.info("{}", melons);
 
     }
 
