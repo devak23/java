@@ -4,6 +4,8 @@ import lombok.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 import static functional.model.Melon.Sugar.*;
 
@@ -13,7 +15,7 @@ import static functional.model.Melon.Sugar.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Melon implements Fruit {
-
+    public static final String[] MELON_TYPES = {"Gac", "Hemi", "Apollo", "Watermelon", "Horned", "Cantaloupe"};
     enum Sugar {
         LOW, MEDIUM, HIGH, UNKNOWN
     }
@@ -62,8 +64,17 @@ public class Melon implements Fruit {
                 new Melon("Gac", 3000f), new Melon("Hemi", 2600f),
                 new Melon("Hemi", 1600f), new Melon("Gac", 1200f),
                 new Melon("Apollo", 2600f), new Melon("Horned", 1700f),
-                new Melon("Gac", 3000f), new Melon("Hemi", 2600f)
+                new Melon("Gac", 3000f), new Melon("Hemi", 2600f),
+                new Melon("Horned", 1950f)
         );
+    }
+
+    public static List<Melon> get100Melons() {
+        Random random = new Random(17);
+        return IntStream.rangeClosed(1, 100).mapToObj(i -> {
+            int randomInt = random.nextInt(MELON_TYPES.length);
+            return new Melon(MELON_TYPES[randomInt], random.nextInt(1000, 6000));
+        }).toList();
     }
 
     public static List<Melon> getMelonsWithSugar() {
