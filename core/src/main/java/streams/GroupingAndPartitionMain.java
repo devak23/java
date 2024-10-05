@@ -17,15 +17,14 @@ public class GroupingAndPartitionMain {
 
     public static void main(String[] args) {
         List<Melon> melons = getMelons();
+        List<Melon> _100MElons = get100Melons();
 
         partitions(melons);
         groupings(melons);
-        splitsByWeight();
+        splitsByWeight(_100MElons);
     }
 
-    private static void splitsByWeight() {
-        List<Melon> _100Melons = get100Melons(); // assume that we have 100 Melons
-        //log.info("100 melons: {}", _100Melons);
+    private static void splitsByWeight(List<Melon> _100Melons) {
 
         // we want to split into 10 lists of 10 weights each. So first we find all the weights like so:
         List<Float> allWeights = _100Melons.stream().map(Melon::getWeight).toList();
