@@ -17,7 +17,14 @@ import static functional.model.Melon.Sugar.*;
 public class Melon implements Fruit {
     public static final String[] MELON_TYPES = {"Gac", "Hemi", "Apollo", "Watermelon", "Horned", "Cantaloupe"};
     enum Sugar {
-        LOW, MEDIUM, HIGH, UNKNOWN
+        LOW(1), MEDIUM(2), HIGH(3), UNKNOWN(-1), NONE(0);
+
+        @Getter
+        private int sweetness; // higher the number, sweeter the melon
+        Sugar(int i) {
+            sweetness = i;
+        }
+
     }
 
     private String type;
@@ -91,7 +98,7 @@ public class Melon implements Fruit {
         return Arrays.asList(new Melon("Crenshaw", 1200, MEDIUM),
                 new Melon("Gac", 3000, LOW), new Melon("Hemi", 2600, HIGH),
                 new Melon("Hemi", 1600), new Melon("Gac", 1200, LOW),
-                new Melon("Cantaloupe", 2600, MEDIUM), new Melon("Cantaloupe", 3600, MEDIUM),
+                new Melon("Cantaloupe", 2600, NONE), new Melon("Cantaloupe", 3600, MEDIUM),
                 new Melon("Apollo", 2600, MEDIUM), new Melon("Horned", 1200, HIGH),
                 new Melon("Gac", 3000, LOW), new Melon("Hemi", 2600, HIGH)
         );
