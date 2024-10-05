@@ -75,18 +75,20 @@ public class CompositionMain {
         String article  = editor.apply("\r\nArticle name\r\n");
         log.info("article: {}", article);
 
-        Function<String, String> conclusion = Editor::addConclusion;
-        Function<String, String> body = Editor::addBody;
-        Function<String, String> editorCompose = conclusion.compose(body).compose(introduction);
-        log.info("editorCompose: {}", editorCompose.apply("\r\nArticle name\r\n"));
-
-        // OUTPUT:
+        // OUTPUT
         // 02:41:44.813 [main] INFO functional.CompositionMain -- article:
         // Article name
         //
         // Introduction: ...
         // Body: ...
         // End: ...
+
+        Function<String, String> conclusion = Editor::addConclusion;
+        Function<String, String> body = Editor::addBody;
+        Function<String, String> editorCompose = conclusion.compose(body).compose(introduction);
+        log.info("editorCompose: {}", editorCompose.apply("\r\nArticle name\r\n"));
+
+        // OUTPUT:
         // 02:41:44.813 [main] INFO functional.CompositionMain -- editorCompose:
         // Article name
         //
