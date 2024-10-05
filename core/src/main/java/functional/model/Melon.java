@@ -69,6 +69,16 @@ public class Melon implements Fruit {
         );
     }
 
+    public static List<Melon> getCaseSensitiveMelonsType() {
+        return Arrays.asList(new Melon("Crenshaw", 1200f),
+                new Melon("Gac", 3000f), new Melon("Hemi", 2600f),
+                new Melon("hemi", 1600f), new Melon("Gac", 1200f),
+                new Melon("Apollo", 2600f), new Melon("Horned", 1700f),
+                new Melon("gac", 3000f), new Melon("Hemi", 2600f),
+                new Melon("horned", 1950f)
+        );
+    }
+
     public static List<Melon> get100Melons() {
         Random random = new Random(17);
         return IntStream.rangeClosed(1, 100).mapToObj(i -> {
