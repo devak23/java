@@ -3,6 +3,7 @@ package streams;
 import com.arakelian.faker.model.Person;
 import com.arakelian.faker.service.RandomPerson;
 import functional.model.Melon;
+import functional.util.AsStream;
 import functional.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -291,8 +292,23 @@ public class StreamsMain {
                 .toList();
         log.info("Fullnames: {}", fullNames);
 
-        String melons = Melon.getMelons().stream().distinct().map(Melon::getType).collect(Collectors.joining(", ", "Available Melons: [", "] Thank You!"));
+        String melons = Melon.getMelons()
+                .stream()
+                .distinct()
+                .map(Melon::getType)
+                .collect(Collectors.joining(", ", "Available Melons: [", "] Thank You!"));
         log.info("{}", melons);
+
+        log.info("Null element: {}", AsStream.elementAsStream(null).count()); // 0
+        log.info("Not null element: {}", AsStream.elementAsStream("Hello World").count()); // 1
+
+        List<Integer> someInts = Arrays.asList(5, null, 25, 6, null, 36, 7, null, 8, null);
+        log.info("Null collection: {}", AsStream.elementsWithNullsAsStream(null).count()); // 0
+        log.info("Non null collection with some nulls: {}", AsStream.elementsWithNullsAsStream(someInts).count()); // 10
+        log.info("Non null collection without nulls: {}", AsStream.elementsWithoutNullsAsStream(someInts).count()); // 6
+
+        log.info("Null collection: {}", AsStream.collectionAsStream(null).count()); // 0
+        log.info("Not Null collection with some nulls: {}", AsStream.collectionAsStream(someInts).count()); // 6
 
     }
 

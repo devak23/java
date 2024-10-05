@@ -41,7 +41,7 @@ public class CompositionMain {
 
 
 
-        // If composition just switches the function application. Can we work up an example where we have 2 functions
+        // If composition just switches the function application, can we work up an example where we have 2 functions
         // producing two different messages being clubbed together? Like: Hello Abhay! How are you doing today?
         // and other message like: How are you doing today? Hello Abhay!
         Function<String, String> greetings = name -> STR."Hello \{name}";
