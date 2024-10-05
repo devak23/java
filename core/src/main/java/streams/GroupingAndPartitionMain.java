@@ -17,11 +17,11 @@ public class GroupingAndPartitionMain {
 
     public static void main(String[] args) {
         List<Melon> melons = getMelons();
-        List<Melon> _100MElons = get100Melons();
+        List<Melon> _100Melons = get100Melons();
 
         partitions(melons);
         groupings(melons);
-        splitsByWeight(_100MElons);
+        splitsByWeight(_100Melons);
     }
 
     private static void splitsByWeight(List<Melon> _100Melons) {
@@ -62,10 +62,10 @@ public class GroupingAndPartitionMain {
         log.info("Grouping by Weight (no dupes and asc ordered 2): {}", byWeightInSetOrdered2);
 
         // How can we group the lightest melons by type?
-        Map<String, Optional<Melon>> minMelonsByType = melons.stream()
+        Map<String, Optional<Melon>> lightestMelonsByType = melons.stream()
                 .collect(groupingBy(Melon::getType
                         , minBy(comparingDouble(Melon::getWeight))));
-        log.info("Grouping by Type with min weight: {}", minMelonsByType);
+        log.info("Grouping by Type with min weight: {}", lightestMelonsByType);
 
         // How can we group the heaviest melons by type?
         Map<String, Optional<Melon>> byTypeMaxWeight = melons.stream()

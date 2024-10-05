@@ -23,7 +23,7 @@ public class CollectionMain {
 
         List<Person> people = RandomPerson.get().listOf(5);
         log.info("list of people = {}", extractFirstNames.apply(people));
-
+        // list of people = [JONA,LYNWOOD,JAY,SIOBHAN,SHERILYN]
 
         printFirstAndLast(people);
         Person randomP1 = RandomPerson.get().next();
