@@ -1,12 +1,24 @@
 package javacodingproblems.rope;
 
-public record Node(Node left, Node right, int weight, String str) {
-    public Node(String str) {
-        this(null, null, str.length(), str);
-    }
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    public Node(Node left, Node right, int weight) {
-        this(left, right, weight, null);
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class Node {
+    private Node left;
+    private Node right;
+    private int weight;
+    private String str;
+
+
+    public Node(String str) {
+        this(null, null, str.length(), null);
     }
 
     public char indexAt(Node node, int index) {
