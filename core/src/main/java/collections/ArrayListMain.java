@@ -11,7 +11,7 @@ public class ArrayListMain {
 
     public static void main(String[] args) {
         List<String> friends = getFriends();
-        String expectedOutput = "Dhiren,Meenakshi,Nimisha,Saif,";
+        String expectedOutput = "Dhiren,Meenakshi,Nimisha,Saif";
 
 
         IntStream.range(0, 1000).forEach(i -> {
@@ -26,7 +26,7 @@ public class ArrayListMain {
 
         log.info("=========================dynamic loading===========================================");
 
-        String expectedOutput2 = "Suhas,Kavita,Abrar,Varkha,";
+        String expectedOutput2 = "Suhas,Kavita,Abrar,Varkha";
         IntStream.range(0, 1000).forEach(i -> {
             List<String> friends2 = new ArrayList<>(10);
             friends2.add("Suhas");
@@ -50,6 +50,7 @@ public class ArrayListMain {
         for(String friend: friends) {
             builder.append(friend).append(",");
         }
+        builder.deleteCharAt(builder.length() - 1);
         return builder.toString();
     }
 
