@@ -31,13 +31,14 @@ public class PlaygroundController {
         return person;
     }
 
-    @GetMapping("/person/uid/{uid}")
+    @GetMapping("/person/{uid}")
     public List<Person> getByUid(@PathVariable("uid") String uid) {
         return personService.getPeopleByUid(uid);
     }
 
     @GetMapping(value = "/person/stream/{uid}", produces = MediaType.APPLICATION_JSON_VALUE)
     public StreamingResponseBody streamJsonAsBytes(@PathVariable("uid") String uid) {
+        log.info("Received request for stream of people with uid {}", uid);
         return outputStream -> {
             List<Person> people = personService.getPeopleByUid(uid);
             for (Person person : people) {

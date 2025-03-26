@@ -9,4 +9,8 @@ spring:
 
 
 server:
-  port: 9292
+  port: 8081
+
+person:
+  ms:
+    url: http://localhost:8080/playground/person/stream/{uid}
