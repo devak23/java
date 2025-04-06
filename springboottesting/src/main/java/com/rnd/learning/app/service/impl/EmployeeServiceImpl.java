@@ -19,7 +19,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public Employee saveEmployee(Employee employee) throws InvalidResourceException {
         Optional<Employee> empOptional = repository.findByEmail(employee.getEmail());
         if (empOptional.isPresent()) {
-            throw new InvalidResourceException("Employee already exists!");
+            throw new InvalidResourceException("Employee with email " + employee.getEmail() + " already exists!");
         }
 
         return repository.save(employee);

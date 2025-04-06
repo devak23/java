@@ -10,6 +10,7 @@ public final class EmployeeFixture {
     public static Employee getSampleEmployee() {
 
         return Employee.builder()
+                .id(1L)
                 .firstName("Abhay")
                 .lastName("Kulkarni")
                 .email("abhayk@gmail.com")

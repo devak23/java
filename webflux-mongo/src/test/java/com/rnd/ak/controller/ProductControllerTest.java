@@ -1,6 +1,6 @@
-package com.rnd.ak;
+package com.rnd.ak.controller;
 
-import com.rnd.ak.controller.ProductController;
+import com.rnd.ak.ProductFixture;
 import com.rnd.ak.dto.ProductDTO;
 import com.rnd.ak.service.ProductService;
 import org.junit.Test;
