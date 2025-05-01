@@ -15,7 +15,6 @@ public class Main {
 
         Class<?> squareClass = Class.forName("reflection.Main$Square");
 
-//        printClassInfo(stringClass, hashmapClass, squareClass, Boolean.class);
         var circle = new Drawable() {
             @Override
             public int getNumberOfCorners() {
@@ -23,7 +22,14 @@ public class Main {
             }
         };
 
-        printClassInfo(Collection.class, boolean.class, int [][].class, Color.class, circle.getClass());
+        printClassInfo(Collection.class
+                , boolean.class
+                , int [][].class
+                , Color.class
+                , circle.getClass()
+                , stringClass
+                , squareClass
+                , hashmapClass);
     }
 
 

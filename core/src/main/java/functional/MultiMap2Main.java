@@ -60,3 +60,12 @@ public class MultiMap2Main {
         log.info("bookshelfMM2: {}", bookshelfMM2);
     }
 }
+
+/*
+ * OUTPUT:
+ * 21:54:55.292 [main] INFO functional.MultiMap2Main -- classic: [Bookshelf(author=Joana Nimar, book=Book1), Bookshelf(author=Joana Nimar, book=Book2), Bookshelf(author=Joana Nimar, book=Book3), Bookshelf(author=Olivia Goy, book=Book4), Bookshelf(author=Olivia Goy, book=Book5), Bookshelf(author=Marcel Joel, book=Book6), Bookshelf(author=Alexender Tohn, book=Book7), Bookshelf(author=Alexender Tohn, book=Book8), Bookshelf(author=Alexender Tohn, book=Book9), Bookshelf(author=Alexender Tohn, book=Book10)]
+ * 21:54:55.307 [main] INFO functional.MultiMap2Main -- modernMM: [Bookshelf(author=Joana Nimar, book=Book1), Bookshelf(author=Joana Nimar, book=Book2), Bookshelf(author=Joana Nimar, book=Book3), Bookshelf(author=Olivia Goy, book=Book4), Bookshelf(author=Olivia Goy, book=Book5), Bookshelf(author=Marcel Joel, book=Book6), Bookshelf(author=Alexender Tohn, book=Book7), Bookshelf(author=Alexender Tohn, book=Book8), Bookshelf(author=Alexender Tohn, book=Book9), Bookshelf(author=Alexender Tohn, book=Book10)]
+ * 21:54:55.309 [main] INFO functional.MultiMap2Main -- bookshelfGT2005Classic: [Bookshelf(author=Olivia Goy, book=Book5), Bookshelf(author=Marcel Joel, book=Book6), Bookshelf(author=Alexender Tohn, book=Book10)]
+ * 21:54:55.310 [main] INFO functional.MultiMap2Main -- bookshelfModern: [Bookshelf(author=Olivia Goy, book=Book5), Bookshelf(author=Marcel Joel, book=Book6), Bookshelf(author=Alexender Tohn, book=Book10)]
+ * 21:54:55.312 [main] INFO functional.MultiMap2Main -- bookshelfMM2: [Bookshelf(author=Olivia Goy, book=Book5), Bookshelf(author=Marcel Joel, book=Book6), Bookshelf(author=Alexender Tohn, book=Book10)]
+ */

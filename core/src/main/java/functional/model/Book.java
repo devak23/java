@@ -12,5 +12,12 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 public class Book {
     private String title;
+    private String genre;
+    private float rating;
     private LocalDate published;
+
+    public Book(String title, LocalDate localDate) {
+        this.title = title;
+        this.published = localDate;
+    }
 }
