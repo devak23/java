@@ -1,0 +1,266 @@
+[
+  {
+    "name": "Max",
+    "animal": "Dog",
+    "breed": "Labrador Retriever",
+    "color": "Golden",
+    "price": 800.0,
+    "description": "Friendly and outgoing lab with a golden coat."
+  },
+  {
+    "name": "Bella",
+    "animal": "Cat",
+    "breed": "Siamese",
+    "color": "Cream",
+    "price": 500.0,
+    "description": "Elegant and affectionate Siamese cat."
+  },
+  {
+    "name": "Charlie",
+    "animal": "Dog",
+    "breed": "German Shepherd",
+    "color": "Black and Tan",
+    "price": 1000.0,
+    "description": "Loyal and intelligent German Shepherd."
+  },
+  {
+    "name": "Luna",
+    "animal": "Cat",
+    "breed": "Persian",
+    "color": "White",
+    "price": 1200.0,
+    "description": "Fluffy Persian cat with beautiful white fur."
+  },
+  {
+    "name": "Coco",
+    "animal": "Bird",
+    "breed": "Cockatiel",
+    "color": "Yellow",
+    "price": 150.0,
+    "description": "Cheerful and sociable Cockatiel with a yellow crest."
+  },
+  {
+    "name": "Buddy",
+    "animal": "Dog",
+    "breed": "Golden Retriever",
+    "color": "Golden",
+    "price": 900.0,
+    "description": "Loving Golden Retriever perfect for families."
+  },
+  {
+    "name": "Milo",
+    "animal": "Cat",
+    "breed": "Maine Coon",
+    "color": "Brown",
+    "price": 800.0,
+    "description": "Large and friendly Maine Coon with a majestic look."
+  },
+  {
+    "name": "Ruby",
+    "animal": "Rabbit",
+    "breed": "Netherland Dwarf",
+    "color": "Gray",
+    "price": 250.0,
+    "description": "Adorable and small Netherland Dwarf rabbit."
+  },
+  {
+    "name": "Rocky",
+    "animal": "Dog",
+    "breed": "Bulldog",
+    "color": "White",
+    "price": 1100.0,
+    "description": "Chunky and calm Bulldog with a loving nature."
+  },
+  {
+    "name": "Lily",
+    "animal": "Cat",
+    "breed": "Bengal",
+    "color": "Gold Spotted",
+    "price": 1300.0,
+    "description": "Active and playful Bengal cat with stunning patterns."
+  },
+  {
+    "name": "Jack",
+    "animal": "Dog",
+    "breed": "Beagle",
+    "color": "Tri-colored",
+    "price": 700.0,
+    "description": "Curious and friendly Beagle that loves exploring."
+  },
+  {
+    "name": "Daisy",
+    "animal": "Bird",
+    "breed": "Parakeet",
+    "color": "Blue",
+    "price": 50.0,
+    "description": "Chirpy and colorful Parakeet, great for beginners."
+  },
+  {
+    "name": "Oscar",
+    "animal": "Fish",
+    "breed": "Betta",
+    "color": "Red",
+    "price": 20.0,
+    "description": "Vibrant Betta fish with long flowing fins."
+  },
+  {
+    "name": "Molly",
+    "animal": "Dog",
+    "breed": "Poodle",
+    "color": "White",
+    "price": 1300.0,
+    "description": "Elegant and intelligent Poodle, hypoallergenic."
+  },
+  {
+    "name": "Simba",
+    "animal": "Cat",
+    "breed": "Scottish Fold",
+    "color": "Gray",
+    "price": 1000.0,
+    "description": "Calm and quiet Scottish Fold with folded ears."
+  },
+  {
+    "name": "Rex",
+    "animal": "Dog",
+    "breed": "Doberman",
+    "color": "Black and Rust",
+    "price": 1200.0,
+    "description": "Confident and alert Doberman, great for security."
+  },
+  {
+    "name": "Willow",
+    "animal": "Rabbit",
+    "breed": "Lionhead",
+    "color": "Brown",
+    "price": 300.0,
+    "description": "Fluffy Lionhead rabbit known for its mane-like fur."
+  },
+  {
+    "name": "Sunny",
+    "animal": "Bird",
+    "breed": "Canary",
+    "color": "Yellow",
+    "price": 75.0,
+    "description": "Bright yellow Canary with a melodious song."
+  },
+  {
+    "name": "Nala",
+    "animal": "Cat",
+    "breed": "Ragdoll",
+    "color": "Cream",
+    "price": 1100.0,
+    "description": "Gentle and affectionate Ragdoll cat."
+  },
+  {
+    "name": "Fido",
+    "animal": "Dog",
+    "breed": "Shih Tzu",
+    "color": "White and Gold",
+    "price": 950.0,
+    "description": "Charming Shih Tzu with a sweet temperament."
+  },
+  {
+    "name": "Smokey",
+    "animal": "Cat",
+    "breed": "Russian Blue",
+    "color": "Gray",
+    "price": 1500.0,
+    "description": "Elegant Russian Blue cat with a luxurious coat."
+  },
+  {
+    "name": "Chirpy",
+    "animal": "Bird",
+    "breed": "Lovebird",
+    "color": "Green and Peach",
+    "price": 125.0,
+    "description": "Loving and social Lovebird, often kept in pairs."
+  },
+  {
+    "name": "Rusty",
+    "animal": "Dog",
+    "breed": "Cocker Spaniel",
+    "color": "Chestnut",
+    "price": 850.0,
+    "description": "Cheerful and friendly Cocker Spaniel with soft ears."
+  },
+  {
+    "name": "Midnight",
+    "animal": "Cat",
+    "breed": "Bombay",
+    "color": "Black",
+    "price": 900.0,
+    "description": "Sleek and mysterious Bombay cat, an all-black beauty."
+  },
+  {
+    "name": "Patch",
+    "animal": "Dog",
+    "breed": "Dalmatian",
+    "color": "White with Black Spots",
+    "price": 950.0,
+    "description": "Energetic Dalmatian with a signature spotted coat."
+  },
+  {
+    "name": "Snowball",
+    "animal": "Rabbit",
+    "breed": "Angora",
+    "color": "White",
+    "price": 350.0,
+    "description": "Soft and fluffy Angora rabbit, perfect for pet lovers."
+  },
+  {
+    "name": "Goldie",
+    "animal": "Fish",
+    "breed": "Goldfish",
+    "color": "Orange",
+    "price": 10.0,
+    "description": "Classic Goldfish, easy to care for and beautiful."
+  },
+  {
+    "name": "Shadow",
+    "animal": "Cat",
+    "breed": "Himalayan",
+    "color": "Seal Point",
+    "price": 1400.0,
+    "description": "Graceful Himalayan cat with stunning blue eyes."
+  },
+  {
+    "name": "Bailey",
+    "animal": "Dog",
+    "breed": "Boxer",
+    "color": "Brindle",
+    "price": 750.0,
+    "description": "Energetic Boxer with a playful and protective nature."
+  },
+  {
+    "name": "Peppy",
+    "animal": "Bird",
+    "breed": "Cockatoo",
+    "color": "White",
+    "price": 2500.0,
+    "description": "Exuberant Cockatoo known for its intelligence and charm."
+  },
+  {
+    "name": "Toby",
+    "animal": "Dog",
+    "breed": "Chihuahua",
+    "color": "Tan",
+    "price": 600.0,
+    "description": "Small yet brave Chihuahua, a loyal companion."
+  },
+  {
+    "name": "Misty",
+    "animal": "Cat",
+    "breed": "Abyssinian",
+    "color": "Ruddy",
+    "price": 1100.0,
+    "description": "Playful Abyssinian cat with an adventurous nature."
+  },
+  {
+    "name": "Ace",
+    "animal": "Dog",
+    "breed": "Akita",
+    "color": "White",
+    "price": 1700.0,
+    "description": "Majestic and quiet Akita, a dignified family guardian."
+  }
+]

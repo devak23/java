@@ -1,16 +1,15 @@
 package functional;
 
 import functional.model.Book;
+import util.DataLoader;
 
 import java.util.List;
 import java.util.function.Function;
 
-import static functional.FilterBooksByPredicate.getBooks;
-
 public class FilterBooksByCurrying {
 
     public static void main(String[] args) throws Exception {
-        List<Book> books = getBooks();
+        List<Book> books = DataLoader.loadList("books.json", Book.class);
 
         FilterBooksByCurrying demo = new FilterBooksByCurrying();
 

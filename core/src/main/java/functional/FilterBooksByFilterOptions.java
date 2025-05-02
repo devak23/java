@@ -1,6 +1,7 @@
 package functional;
 
 import functional.model.Book;
+import util.DataLoader;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,7 +33,7 @@ public class FilterBooksByFilterOptions {
     public static void main(String[] args) throws IOException {
         FilterBooksByFilterOptions demo = new FilterBooksByFilterOptions();
 
-        List<Book> books = FilterBooksByPredicate.getBooks();
+        List<Book> books = DataLoader.loadList("books.json", Book.class);
         List<Book> filteredBooks = demo.curriedFilter()
                 .apply(books)
                 .apply(new FilterOptions()
