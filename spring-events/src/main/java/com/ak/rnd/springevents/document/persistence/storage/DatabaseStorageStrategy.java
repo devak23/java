@@ -1,7 +1,9 @@
-package com.ak.rnd.springevents.document.persistence;
+package com.ak.rnd.springevents.document.persistence.storage;
 
 import com.ak.rnd.springevents.document.model.Document;
 import com.ak.rnd.springevents.document.model.entity.DocumentEntity;
+import com.ak.rnd.springevents.document.persistence.JPADocumentRepository;
+import com.ak.rnd.springevents.document.persistence.StorageStrategy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
