@@ -1,4 +1,4 @@
-package com.ak.rnd.springevents.event;
+package com.ak.rnd.springevents.hospital.event;
 
 import com.arakelian.faker.model.Person;
 import lombok.Getter;

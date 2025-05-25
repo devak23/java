@@ -1,6 +1,7 @@
 package assorted;
 
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
 // Run the program with the following VM arguments
 // -XX:+HeapDumpOnOutOfMemoryError -Xmx256m -XX:+UseG1GC -XX:+UseStringDeduplication -XX:+PrintStringDeduplicationStatistics
@@ -18,6 +19,7 @@ public class LotsOfStrings {
 			iteration++;
 			System.out.println("Survived iteration: " + iteration);
 			Thread.sleep(100);
+			TimeUnit.MINUTES.sleep(1);
 		}
 	}
 

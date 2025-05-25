@@ -1,7 +1,6 @@
 module core {
     requires faker;
     requires java.instrument;
-    requires java.management;
     requires java.net.http;
     requires jdk.httpserver;
     requires jdk.incubator.vector;
@@ -13,6 +12,7 @@ module core {
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.fasterxml.jackson.databind;
     requires java.sql;
+    requires org.assertj.core;
 //    exports statemachine.model;
     exports functional.model;
     exports functional.spec;
