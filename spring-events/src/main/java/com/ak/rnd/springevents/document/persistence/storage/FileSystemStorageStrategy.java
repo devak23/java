@@ -1,11 +1,14 @@
 package com.ak.rnd.springevents.document.persistence.storage;
 
 import com.ak.rnd.springevents.document.model.Document;
+import com.ak.rnd.springevents.document.model.entity.DocumentEntity;
 import com.ak.rnd.springevents.document.persistence.StorageStrategy;
+import com.ak.rnd.springevents.document.service.spec.TitleSpecification;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -16,6 +19,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.ak.rnd.springevents.document.util.DocumentUtil.convertToEntity;
 
 @Component
 @Slf4j
@@ -95,5 +100,40 @@ public class FileSystemStorageStrategy implements StorageStrategy {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<DocumentEntity> findAll(Specification<DocumentEntity> spec) {
+        try {
+            return Files.list(storageLocation)
+                    .filter(path -> path.toString().endsWith(".json"))
+                    .map(path -> {
+                        try {
+                            Document document = objectMapper.readValue(path.toFile(), Document.class);
+                            return convertToEntity(document);
+                        } catch (IOException e) {
+                            log.error("Error reading file: {}", path, e);
+                            return null;
+                        }
+                    })
+                    .filter(Objects::nonNull)
+                    .filter(documentEntity -> evaluateSpecification(spec, documentEntity))
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private boolean evaluateSpecification(Specification<DocumentEntity> spec, DocumentEntity documentEntity) {
+        if (spec == null) {
+            return true;
+        }
+
+        if (spec instanceof TitleSpecification) {
+            String specTitle = ((TitleSpecification) spec).getTitle();
+            return documentEntity.getTitle().contains(specTitle);
+        }
+
+        return true;
     }
 }

@@ -1,8 +1,10 @@
 package com.ak.rnd.springevents.document.persistence;
 
 import com.ak.rnd.springevents.document.model.Document;
+import com.ak.rnd.springevents.document.model.entity.DocumentEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -48,4 +50,7 @@ public class DocumentRepository {
         return UUID.randomUUID().toString();
     }
 
+    public List<DocumentEntity> findAll(Specification<DocumentEntity> spec) {
+        return storageStrategy.findAll(spec);
+    }
 }
