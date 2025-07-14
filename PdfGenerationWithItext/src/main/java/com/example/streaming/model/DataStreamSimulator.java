@@ -1,4 +1,4 @@
-package com.example.streaming;
+package com.example.streaming.model;
 
 import java.util.List;
 

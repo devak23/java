@@ -1,4 +1,4 @@
-package com.example.streaming;
+package com.example.streaming.model;
 
 public class DataRecord {
     private String timestamp;
