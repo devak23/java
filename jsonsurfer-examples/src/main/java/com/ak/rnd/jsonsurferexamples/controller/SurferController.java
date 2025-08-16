@@ -2,7 +2,7 @@ package com.ak.rnd.jsonsurferexamples.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsfr.json.JsonSurfer;
-import org.jsfr.json.JsonSurferGson;
+import org.jsfr.json.JsonSurferJackson;
 import org.jsfr.json.SurfingConfiguration;
 import org.jsfr.json.exception.JsonSurfingException;
 import org.springframework.core.io.ClassPathResource;
@@ -32,7 +32,7 @@ public class SurferController {
         ClassPathResource resource = new ClassPathResource("data/basic.json");
         String json = Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
 
-        JsonSurfer surfer = JsonSurferGson.INSTANCE;
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
         
         // Extract the name field
         Object name = surfer.collectOne(json, "$.name");
@@ -44,7 +44,7 @@ public class SurferController {
         return "Name: " + name + ", Age: " + age;
 
         // Key concepts:
-        //JsonSurferGson.INSTANCE - Using Gson as the JSON provider
+        //JsonSurferJackson.INSTANCE - Using Gson as the JSON provider
         //collectOne() - Extracts a single value matching the JsonPath
         //$.name - JsonPath expression to select the "name" field
     }
@@ -54,7 +54,7 @@ public class SurferController {
         ClassPathResource resource = new ClassPathResource("data/basic-arrays.json");
         String json = Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
 
-        JsonSurfer surfer = JsonSurferGson.INSTANCE;
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
         
         // Extract all names from 'users' array
         Collection<Object> names = surfer.collectAll(json, "$.users[*].name");
@@ -87,7 +87,7 @@ public class SurferController {
         List<String> products = new ArrayList<>();
         List<Double> prices = new ArrayList<>();
      
-        JsonSurfer surfer = JsonSurferGson.INSTANCE;
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
 
         SurfingConfiguration config = SurfingConfiguration.builder()
                 .bind("$.products[*].name", (value, context) -> products.add(value.toString()))
@@ -108,7 +108,7 @@ public class SurferController {
         ClassPathResource resource = new ClassPathResource("data/complex-data-structure.json");
         String json = Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
         Map<String, Object> result = new HashMap<>();
-        JsonSurfer surfer = JsonSurferGson.INSTANCE;
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
 
         // Get the company name
         result.put("companyName", surfer.collectOne(json, "$.company.name"));
@@ -133,7 +133,7 @@ public class SurferController {
     public Map<String, Object> stateManagement() throws IOException {
         ClassPathResource resource = new ClassPathResource("data/state-management.json");
         String json = Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
-        JsonSurfer surfer = JsonSurferGson.INSTANCE;
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
 
         // State management for aggregating data
         Map<String, Double> regionTotals = new HashMap<>();
@@ -166,7 +166,7 @@ public class SurferController {
         String invalidJson = "{\"data\":{\"value\":}"; // Invalid JSON
         String missingFieldJson = "{\"other\":\"field\"}";
 
-        JsonSurfer surfer = JsonSurferGson.INSTANCE;
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
         Map<String, List<String>> errorMap = new HashMap<>();
         List<String> errors = new ArrayList<>();
         errorMap.put("ERRORS", errors);
