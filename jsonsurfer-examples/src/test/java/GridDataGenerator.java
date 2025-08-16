@@ -32,19 +32,24 @@ public class GridDataGenerator {
         "International remittance",
         "Tax payment",
         "Subscription renewal",
-        "Freelance payment received"
+        "Freelance payment received",
+        "Stock dividend received",
+        "Rental income",
+        "Business expense",
+        "Medical bill payment",
+        "Educational fee payment"
     };
     
     private static final String[] TYPES = {
-        "Wires", "ACH", "IMPS", "NEFT", "RTGS", "UPI", "Card", "Check"
+        "Wires", "ACH", "IMPS", "NEFT", "RTGS", "UPI", "Card", "Check", "Cash", "Online"
     };
     
     private static final String[] CURRENCIES = {
-        "USD", "EUR", "GBP", "INR", "JPY", "CAD", "AUD"
+        "USD", "EUR", "GBP", "INR", "JPY", "CAD", "AUD", "CHF", "CNY", "SGD"
     };
     
     private static final String[] CATEGORIES = {
-        "High", "Medium", "Low", "Critical", "Normal"
+        "High", "Medium", "Low", "Critical", "Normal", "Urgent", "Standard"
     };
     
     public static void main(String[] args) {
@@ -62,6 +67,10 @@ public class GridDataGenerator {
         
         // Read the original grid-definition.json
         File inputFile = new File("src/main/resources/data/grid-definition.json");
+        if (!inputFile.exists()) {
+            throw new IOException("Input file not found: " + inputFile.getAbsolutePath());
+        }
+        
         JsonNode rootNode = mapper.readTree(inputFile);
         
         // Get the gridInfo section
@@ -70,6 +79,8 @@ public class GridDataGenerator {
         
         // Generate 10,000 rows
         BigDecimal runningBalance = new BigDecimal("21446000.00");
+        
+        System.out.println("Generating 10,000 transaction rows...");
         
         for (int i = 0; i < 10000; i++) {
             ObjectNode row = mapper.createObjectNode();
@@ -100,6 +111,11 @@ public class GridDataGenerator {
             row.put("Category", CATEGORIES[random.nextInt(CATEGORIES.length)]);
             
             rowsArray.add(row);
+            
+            // Progress indicator
+            if ((i + 1) % 1000 == 0) {
+                System.out.println("Generated " + (i + 1) + " rows...");
+            }
         }
         
         // Replace the rows array in gridInfo
@@ -107,17 +123,22 @@ public class GridDataGenerator {
         
         // Update footer info with total count
         ObjectNode footerInfo = (ObjectNode) rootNode.get("footerInfo");
-        ObjectNode footerRows = (ObjectNode) footerInfo.get("rows");
+        ObjectNode footerRows = mapper.createObjectNode();
         footerRows.put("Total Transactions", "10,000");
         footerRows.put("Generated Date", LocalDate.now().format(DATE_FORMAT));
+        footerRows.put("Final Running Balance", formatAmount(runningBalance));
+        footerInfo.set("rows", footerRows);
         
         // Write the updated JSON to a new file
         File outputFile = new File("src/main/resources/data/grid-definition-with-data.json");
         mapper.writerWithDefaultPrettyPrinter().writeValue(outputFile, rootNode);
         
-        System.out.println("Generated file: " + outputFile.getAbsolutePath());
+        System.out.println("\n=== Generation Complete ===");
+        System.out.println("Input file: " + inputFile.getAbsolutePath());
+        System.out.println("Output file: " + outputFile.getAbsolutePath());
         System.out.println("Total rows generated: 10,000");
         System.out.println("Final running balance: " + formatAmount(runningBalance));
+        System.out.println("File size: " + String.format("%.2f MB", outputFile.length() / (1024.0 * 1024.0)));
     }
     
     private static String formatAmount(BigDecimal amount) {

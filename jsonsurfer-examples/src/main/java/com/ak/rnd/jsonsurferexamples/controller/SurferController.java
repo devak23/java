@@ -9,6 +9,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -16,6 +20,9 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.io.StringWriter;
+import com.opencsv.CSVWriter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Slf4j
 @RestController
@@ -262,6 +269,131 @@ public class SurferController {
         result.put("footerInfo", footerInfo.get());
 
         return result;
+    }
+    
+    @GetMapping("/csv-grid-data")
+    public ResponseEntity<StreamingResponseBody> csvGridData() throws IOException {
+        ClassPathResource resource = new ClassPathResource("data/grid-definition-with-data.json");
+        
+        // Set up HTTP headers for CSV download
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("text/csv; charset=UTF-8"));
+        headers.setContentDispositionFormData("attachment", "grid-data.csv");
+        headers.setCacheControl("no-cache, no-store, must-revalidate");
+        headers.setPragma("no-cache");
+        headers.setExpires(0);
+        
+        StreamingResponseBody stream = outputStream -> {
+            try {
+                long startTime = System.currentTimeMillis();
+                JsonSurfer surfer = JsonSurferJackson.INSTANCE;
+                
+                // Memory-efficient CSV writer with buffered output for proper line breaks
+                java.io.OutputStreamWriter writer = new java.io.OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
+                java.io.BufferedWriter bufferedWriter = new java.io.BufferedWriter(writer);
+                CSVWriter csvWriter = new CSVWriter(
+                    bufferedWriter,
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.DEFAULT_QUOTE_CHARACTER,
+                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                    System.lineSeparator()  // Use system line separator
+                );
+                
+                // Track columns and whether header is written
+                List<String> columns = new ArrayList<>();
+                AtomicReference<Boolean> headerWritten = new AtomicReference<>(false);
+                AtomicInteger rowCount = new AtomicInteger(0);
+                
+                // Read file as stream to avoid loading entire JSON into memory
+                try (java.io.InputStream inputStream = resource.getInputStream()) {
+                    
+                    // First pass: collect columns
+                    SurfingConfiguration columnsConfig = SurfingConfiguration.builder()
+                            .bind("$.gridInfo.columns[*]", (value, context) -> {
+                                // Remove extra quotes if present - value.toString() adds quotes around strings
+                                String columnName = value.toString();
+                                if (columnName.startsWith("\"") && columnName.endsWith("\"")) {
+                                    columnName = columnName.substring(1, columnName.length() - 1);
+                                }
+                                columns.add(columnName);
+                                log.info("Found column: {}", columnName);
+                            })
+                            .build();
+                    
+                    // Process to get columns first
+                    surfer.surf(inputStream, columnsConfig);
+                    
+                    // Write header now that we have columns
+                    if (!columns.isEmpty()) {
+                        String[] headerArray = columns.toArray(new String[0]);
+                        csvWriter.writeNext(headerArray);
+                        csvWriter.flush();
+                        headerWritten.set(true);
+                        log.info("CSV header written with {} columns: {}", columns.size(), columns);
+                    }
+                }
+                
+                // Second pass: process rows with a fresh input stream
+                try (java.io.InputStream inputStream = resource.getInputStream()) {
+                    log.info("Starting row processing phase...");
+                    
+                    SurfingConfiguration rowsConfig = SurfingConfiguration.builder()
+                            .bind("$.gridInfo.rows[*]", (value, context) -> {
+                                try {
+                                    log.info("ROW FOUND! Processing row data: {}", value.getClass().getSimpleName());
+                                    log.info("Raw row value: {}", value.toString());
+                                    
+                                    // The value is a Jackson ObjectNode, need to extract data properly
+                                    com.fasterxml.jackson.databind.node.ObjectNode rowNode = 
+                                        (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                                    
+                                    // Create row data array in the same order as columns
+                                    String[] rowData = new String[columns.size()];
+                                    log.info("Processing row with {} columns", columns.size());
+                                    
+                                    for (int i = 0; i < columns.size(); i++) {
+                                        String columnName = columns.get(i);
+                                        com.fasterxml.jackson.databind.JsonNode fieldNode = rowNode.get(columnName);
+                                        String fieldValue = fieldNode != null && !fieldNode.isNull() ? fieldNode.asText() : "";
+                                        rowData[i] = fieldValue;
+                                        log.info("Column '{}' = '{}'", columnName, fieldValue);
+                                    }
+                                    
+                                    csvWriter.writeNext(rowData);
+                                    csvWriter.flush(); // Flush immediately for debugging
+                                    
+                                    int currentCount = rowCount.incrementAndGet();
+                                    log.info("Successfully processed and wrote row {}", currentCount);
+                                    
+                                } catch (Exception e) {
+                                    log.error("Error processing row: " + e.getMessage(), e);
+                                }
+                            })
+                            .build();
+                    
+                    log.info("About to start surfing for rows...");
+                    // Stream process the JSON file for rows
+                    surfer.surf(inputStream, rowsConfig);
+                    log.info("Finished surfing for rows. Total rows processed: {}", rowCount.get());
+                }
+                
+                // Final flush and close
+                csvWriter.flush();
+                csvWriter.close();
+                
+                long totalTime = System.currentTimeMillis() - startTime;
+                log.info("CSV streaming complete - Total rows: {}, Total time: {}ms, Memory efficient: true", 
+                        rowCount.get(), totalTime);
+                
+            } catch (Exception e) {
+                log.error("Error during CSV streaming: " + e.getMessage(), e);
+                throw new RuntimeException("CSV generation failed", e);
+            }
+        };
+        
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(stream);
     }
 }
 // COMMON JSONPATH EXPRESSIONS

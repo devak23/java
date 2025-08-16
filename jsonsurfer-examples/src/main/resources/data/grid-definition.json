@@ -1,41 +1,50 @@
 {
   "headerInfo": {
-    "title": "Transactions Report",
     "rows": {
+      "ReportName": "Transactions Report",
       "Prepared for User": "Hercule Poirot",
       "Generated Date": "12 Aug 2025"
     }
   },
   "configInfo": {
-    "title": "Report Filters",
-    "rows" : {
+    "rows": {
+      "Report Filters": "",
       "Date": "Last 7 days, 5th Aug - 12th Aug 2025",
-      "Transaction Type":  "ACH, IMPS"
+      "Transaction Type": "ACH, IMPS"
     }
   },
   "entityInfo": {
-    "title": "Account Details",
     "rows": {
+      "Account Details": "",
       "Account Name": "ABC",
       "Account Number": "*****123"
     }
   },
   "gridInfo": {
-    "title": "",
-    "columnHeaders": ["Date", "Description", "Type", "Amount", "Currency", "Running Balance", "Category"],
-    "rows": [{
-      "Date": "12-12-2025",
-      "Description": "Incoming transaction from India",
-      "Type": "Wires",
-      "Amount": "12,500.00",
-      "Currency": "USD",
-      "Running Balance": "21,446,000.00",
-      "Category": "High"
-    }]
+    "columns": [
+      "Date",
+      "Description",
+      "Type",
+      "Amount",
+      "Currency",
+      "Running Balance",
+      "Category"
+    ],
+    "rows": [
+      {
+        "Date": "12-12-2025",
+        "Description": "Incoming transaction from India",
+        "Type": "Wires",
+        "Amount": "12,500.00",
+        "Currency": "USD",
+        "Running Balance": "21,446,000.00",
+        "Category": "High"
+      }
+    ]
   },
   "footerInfo": {
-    "title": "Summary: Total no of transactions",
     "rows": {
+      "Summary": "Total no of transactions"
     }
   }
 }
