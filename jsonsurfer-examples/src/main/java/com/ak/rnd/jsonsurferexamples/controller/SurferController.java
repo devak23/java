@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Slf4j
 @RestController
@@ -34,14 +35,21 @@ public class SurferController {
 
         JsonSurfer surfer = JsonSurferJackson.INSTANCE;
         
-        // Extract the name field
-        Object name = surfer.collectOne(json, "$.name");
-        log.info("Name: " + name);
-
-        Object age = surfer.collectOne(json, "$.age");
-        log.info("Age: " + age);
+        // Extract the name and age fields using modern API
+        AtomicReference<Object> name = new AtomicReference<>();
+        AtomicReference<Object> age = new AtomicReference<>();
         
-        return "Name: " + name + ", Age: " + age;
+        SurfingConfiguration config = SurfingConfiguration.builder()
+                .bind("$.name", (value, context) -> name.set(value))
+                .bind("$.age", (value, context) -> age.set(value))
+                .build();
+        
+        surfer.surf(json, config);
+        
+        log.info("Name: " + name.get());
+        log.info("Age: " + age.get());
+        
+        return "Name: " + name.get() + ", Age: " + age.get();
 
         // Key concepts:
         //JsonSurferJackson.INSTANCE - Using Gson as the JSON provider
@@ -56,20 +64,24 @@ public class SurferController {
 
         JsonSurfer surfer = JsonSurferJackson.INSTANCE;
         
-        // Extract all names from 'users' array
-        Collection<Object> names = surfer.collectAll(json, "$.users[*].name");
-        log.info("Names: " + names);
+        // Extract all names from 'users' array using modern API
+        List<Object> names = new ArrayList<>();
+        AtomicReference<Object> firstName = new AtomicReference<>();
+        List<Object> olderUsers = new ArrayList<>();
         
-        // Extract 1st user's name
-        Object firstName = surfer.collectOne(json, "$.users[0].name");
-        log.info("First Name: " + firstName);
-
-        // extract ages greather than 28
-        Collection<Object> olderUsers = surfer.collectAll(json, "$.users[?(@.age > 28)].name");
+        SurfingConfiguration config = SurfingConfiguration.builder()
+                .bind("$.users[*].name", (value, context) -> names.add(value))
+                .bind("$.users[0].name", (value, context) -> firstName.set(value))
+                .bind("$.users[?(@.age > 28)].name", (value, context) -> olderUsers.add(value))
+                .build();
+        
+        surfer.surf(json, config);
+        
+        log.info("Names: " + names);
+        log.info("First Name: " + firstName.get());
         log.info("Older Users: " + olderUsers);
         
-        
-        return Map.of("names", names, "firstName", firstName, "olderUsers", olderUsers);
+        return Map.of("names", names, "firstName", firstName.get(), "olderUsers", olderUsers);
 
 
         // Key concepts:
@@ -110,20 +122,28 @@ public class SurferController {
         Map<String, Object> result = new HashMap<>();
         JsonSurfer surfer = JsonSurferJackson.INSTANCE;
 
-        // Get the company name
-        result.put("companyName", surfer.collectOne(json, "$.company.name"));
+        // Using modern API to extract data
+        AtomicReference<Object> companyName = new AtomicReference<>();
+        List<Object> departments = new ArrayList<>();
+        List<Object> employees = new ArrayList<>();
+        List<Object> skills = new ArrayList<>();
+        List<Object> engineeringEmployees = new ArrayList<>();
 
-        // Get all the departments
-        result.put("departments", surfer.collectAll(json, "$.company.departments[*].name"));
+        SurfingConfiguration config = SurfingConfiguration.builder()
+                .bind("$.company.name", (value, context) -> companyName.set(value))
+                .bind("$.company.departments[*].name", (value, context) -> departments.add(value))
+                .bind("$.company.departments[*].employees[*].name", (value, context) -> employees.add(value))
+                .bind("$.company.departments[*].employees[*].skills[*]", (value, context) -> skills.add(value))
+                .bind("$.company.departments[?(@.name == 'Engineering')].employees[*].name", (value, context) -> engineeringEmployees.add(value))
+                .build();
 
-        // Get all employees across all departments
-        result.put("employees", surfer.collectAll(json, "$.company.departments[*].employees[*].name"));
+        surfer.surf(json, config);
 
-        // Get all skills flattened
-        result.put("skills", surfer.collectAll(json,"$.company.departments[*].employees[*].skills[*]"));
-
-        // Find employees in the engineering department
-        result.put("engineeringEmployees", surfer.collectAll(json, "$.company.departments[?(@.name == 'Engineering')].employees[*].name"));
+        result.put("companyName", companyName.get());
+        result.put("departments", departments);
+        result.put("employees", employees);
+        result.put("skills", skills);
+        result.put("engineeringEmployees", engineeringEmployees);
 
         return result;
     }
@@ -143,13 +163,20 @@ public class SurferController {
                 .bind("$.sales[*]", (value, context) -> {
                     recordCount.incrementAndGet();
 
-                    // Extract region and amount from the current sale record
-                    Object regionObject = surfer.collectOne(value.toString(), "$.region");
-                    Object amountObject = surfer.collectOne(value.toString(), "$.amount");
+                    // Extract region and amount from the current sale record using modern API
+                    AtomicReference<Object> regionObject = new AtomicReference<>();
+                    AtomicReference<Object> amountObject = new AtomicReference<>();
+                    
+                    SurfingConfiguration innerConfig = SurfingConfiguration.builder()
+                            .bind("$.region", (val, ctx) -> regionObject.set(val))
+                            .bind("$.amount", (val, ctx) -> amountObject.set(val))
+                            .build();
+                    
+                    surfer.surf(value.toString(), innerConfig);
 
-                    if (regionObject != null && amountObject != null) {
-                        String region = regionObject.toString();
-                        double amount = Double.parseDouble(amountObject.toString());
+                    if (regionObject.get() != null && amountObject.get() != null) {
+                        String region = regionObject.get().toString();
+                        double amount = Double.parseDouble(amountObject.get().toString());
                         regionTotals.merge(region, amount, Double::sum);
                         log.info("Processed sale region: " + region + ", amount: " + amount);
                     }
@@ -180,9 +207,17 @@ public class SurferController {
 
     private String processJsonSafely(JsonSurfer surfer, String json, String path) {
         try {
-            Object result = surfer.collectOne(json, path);
-            if (result != null) {
-                log.info("Found value: " + result);
+            AtomicReference<Object> result = new AtomicReference<>();
+            
+            SurfingConfiguration config = SurfingConfiguration.builder()
+                    .bind(path, (value, context) -> result.set(value))
+                    .build();
+            
+            surfer.surf(json, config);
+            
+            if (result.get() != null) {
+                log.info("Found value: " + result.get());
+                return "Found value: " + result.get();
             } else {
                 return "No value found for path: " + path;
             }
@@ -193,7 +228,40 @@ public class SurferController {
             log.error("Unexpected error: " + e.getMessage());
             return e.getMessage();
         }
-        return json;
+    }
+    
+    @GetMapping("/basic-grid-data")
+    public Map<String, Object> basicGridData() throws IOException {
+        ClassPathResource resource = new ClassPathResource("data/grid-definition.json");
+        String json =  Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
+
+        Map<String, Object> result = new HashMap<>();
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
+        
+        // Extract all information using modern API
+        AtomicReference<Object> headerInfo = new AtomicReference<>();
+        AtomicReference<Object> configInfo = new AtomicReference<>();
+        AtomicReference<Object> entityInfo = new AtomicReference<>();
+        AtomicReference<Object> gridInfo = new AtomicReference<>();
+        AtomicReference<Object> footerInfo = new AtomicReference<>();
+        
+        SurfingConfiguration config = SurfingConfiguration.builder()
+                .bind("$.headerInfo", (value, context) -> headerInfo.set(value))
+                .bind("$.configInfo", (value, context) -> configInfo.set(value))
+                .bind("$.entityInfo", (value, context) -> entityInfo.set(value))
+                .bind("$.gridInfo", (value, context) -> gridInfo.set(value))
+                .bind("$.footerInfo", (value, context) -> footerInfo.set(value))
+                .build();
+        
+        surfer.surf(json, config);
+        
+        result.put("headerInfo", headerInfo.get());
+        result.put("configInfo", configInfo.get());
+        result.put("entityInfo", entityInfo.get());
+        result.put("gridInfo", gridInfo.get());
+        result.put("footerInfo", footerInfo.get());
+
+        return result;
     }
 }
 // COMMON JSONPATH EXPRESSIONS
