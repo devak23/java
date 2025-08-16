@@ -29,7 +29,7 @@ public class SurferController {
 
     @GetMapping("/basic")
     public String basic() throws IOException {
-        ClassPathResource resource = new ClassPathResource("data/basic-1.json");
+        ClassPathResource resource = new ClassPathResource("data/basic.json");
         String json = Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
 
         JsonSurfer surfer = JsonSurferGson.INSTANCE;
@@ -51,7 +51,7 @@ public class SurferController {
     
     @GetMapping("/basic-arrays")
     public Map<String, Object> basicArrays() throws IOException {
-        ClassPathResource resource = new ClassPathResource("data/basic-arrays-1.json");
+        ClassPathResource resource = new ClassPathResource("data/basic-arrays.json");
         String json = Files.readString(resource.getFile().toPath(), StandardCharsets.UTF_8);
 
         JsonSurfer surfer = JsonSurferGson.INSTANCE;
