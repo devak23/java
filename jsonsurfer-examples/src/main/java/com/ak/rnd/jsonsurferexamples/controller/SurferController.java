@@ -292,15 +292,9 @@ public class SurferController {
         headers.setExpires(0);
         
         StreamingResponseBody stream = outputStream -> {
-            try {
-                // Delegate CSV generation to the service layer using a supplier for fresh input streams
-                generator.generate(() -> {
-                    try {
-                        return resource.getInputStream();
-                    } catch (IOException e) {
-                        throw new RuntimeException("Failed to get input stream", e);
-                    }
-                }, outputStream);
+            try (java.io.InputStream inputStream = resource.getInputStream()) {
+                // Use single-pass processing for memory efficiency in Kubernetes environment
+                generator.generate(inputStream, outputStream);
             } catch (Exception e) {
                 log.error("Error during CSV streaming: " + e.getMessage(), e);
                 throw new RuntimeException("CSV generation failed", e);

@@ -21,6 +21,149 @@ import java.util.function.Supplier;
 public class CSVGenerator implements Generator {
 
     @Override
+    public void generate(InputStream jsonInputStream, OutputStream outputStream) throws Exception {
+        long startTime = System.currentTimeMillis();
+        JsonSurfer surfer = JsonSurferJackson.INSTANCE;
+        
+        // Memory-efficient CSV writer with buffered output for proper line breaks
+        java.io.OutputStreamWriter writer = new java.io.OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
+        java.io.BufferedWriter bufferedWriter = new java.io.BufferedWriter(writer);
+        CSVWriter csvWriter = new CSVWriter(
+            bufferedWriter,
+            CSVWriter.DEFAULT_SEPARATOR,
+            CSVWriter.DEFAULT_QUOTE_CHARACTER,
+            CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+            System.lineSeparator()
+        );
+        
+        // Data holders for single-pass processing
+        List<String> headerLines = new ArrayList<>();
+        List<String> configLines = new ArrayList<>();
+        List<String> entityLines = new ArrayList<>();
+        List<String> columns = new ArrayList<>();
+        AtomicInteger rowCount = new AtomicInteger(0);
+        
+        try {
+            // Single pass: collect all data
+            SurfingConfiguration config = SurfingConfiguration.builder()
+                    .bind("$.headerInfo.rows", (value, context) -> {
+                        try {
+                            log.info("Found headerInfo rows: {}", value.getClass().getSimpleName());
+                            com.fasterxml.jackson.databind.node.ObjectNode headerNode = 
+                                (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                            
+                            headerNode.fields().forEachRemaining(entry -> {
+                                String key = entry.getKey();
+                                String val = entry.getValue().asText();
+                                String headerLine = key + ": " + val;
+                                headerLines.add(headerLine);
+                                log.info("Collected header line: {}", headerLine);
+                            });
+                        } catch (Exception e) {
+                            log.error("Error processing headerInfo: " + e.getMessage(), e);
+                        }
+                    })
+                    .bind("$.configInfo.rows", (value, context) -> {
+                        try {
+                            log.info("Found configInfo rows: {}", value.getClass().getSimpleName());
+                            com.fasterxml.jackson.databind.node.ObjectNode configNode = 
+                                (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                            
+                            configNode.fields().forEachRemaining(entry -> {
+                                String key = entry.getKey();
+                                String val = entry.getValue().asText();
+                                String configLine = key + ": " + val;
+                                configLines.add(configLine);
+                                log.info("Collected config line: {}", configLine);
+                            });
+                        } catch (Exception e) {
+                            log.error("Error processing configInfo: " + e.getMessage(), e);
+                        }
+                    })
+                    .bind("$.entityInfo.rows", (value, context) -> {
+                        try {
+                            log.info("Found entityInfo rows: {}", value.getClass().getSimpleName());
+                            com.fasterxml.jackson.databind.node.ObjectNode entityNode = 
+                                (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                            
+                            entityNode.fields().forEachRemaining(entry -> {
+                                String key = entry.getKey();
+                                String val = entry.getValue().asText();
+                                String entityLine = key + ": " + val;
+                                entityLines.add(entityLine);
+                                log.info("Collected entity line: {}", entityLine);
+                            });
+                        } catch (Exception e) {
+                            log.error("Error processing entityInfo: " + e.getMessage(), e);
+                        }
+                    })
+                    .bind("$.gridInfo.columns[*]", (value, context) -> {
+                        String columnName = value.toString();
+                        if (columnName.startsWith("\"") && columnName.endsWith("\"")) {
+                            columnName = columnName.substring(1, columnName.length() - 1);
+                        }
+                        columns.add(columnName);
+                        log.info("Collected column: {}", columnName);
+                    })
+                    .bind("$.gridInfo.rows[*]", (value, context) -> {
+                        try {
+                            // Write header sections only once when we encounter the first data row
+                            if (rowCount.get() == 0) {
+                                writeHeaderSection(csvWriter, headerLines);
+                                writeConfigEntitySection(csvWriter, configLines, entityLines);
+                                writeGridHeader(csvWriter, columns);
+                            }
+                            
+                            // Process and write data row immediately
+                            com.fasterxml.jackson.databind.node.ObjectNode rowNode = 
+                                (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                            
+                            String[] rowData = new String[columns.size()];
+                            for (int i = 0; i < columns.size(); i++) {
+                                String columnName = columns.get(i);
+                                com.fasterxml.jackson.databind.JsonNode fieldNode = rowNode.get(columnName);
+                                String fieldValue = fieldNode != null && !fieldNode.isNull() ? fieldNode.asText() : "";
+                                rowData[i] = fieldValue;
+                            }
+                            
+                            csvWriter.writeNext(rowData);
+                            
+                            int currentCount = rowCount.incrementAndGet();
+                            if (currentCount % 1000 == 0) {
+                                csvWriter.flush();
+                                log.info("Processed {} rows", currentCount);
+                            }
+                            
+                        } catch (Exception e) {
+                            log.error("Error processing row: " + e.getMessage(), e);
+                        }
+                    })
+                    .build();
+            
+            // Single pass through the JSON
+            surfer.surf(jsonInputStream, config);
+            
+            // If no data rows were found, still write the header sections
+            if (rowCount.get() == 0) {
+                writeHeaderSection(csvWriter, headerLines);
+                writeConfigEntitySection(csvWriter, configLines, entityLines);
+                writeGridHeader(csvWriter, columns);
+            }
+            
+            csvWriter.flush();
+            csvWriter.close();
+            
+            long totalTime = System.currentTimeMillis() - startTime;
+            log.info("Single-pass CSV generation complete - Total rows: {}, Total time: {}ms", 
+                    rowCount.get(), totalTime);
+                    
+        } catch (Exception e) {
+            log.error("Error during single-pass CSV generation: " + e.getMessage(), e);
+            throw new RuntimeException("CSV generation failed", e);
+        }
+    }
+
+    @Override
     public void generate(Supplier<InputStream> inputStreamSupplier, OutputStream outputStream) throws Exception {
         long startTime = System.currentTimeMillis();
         JsonSurfer surfer = JsonSurferJackson.INSTANCE;
@@ -255,5 +398,62 @@ public class CSVGenerator implements Generator {
         // Stream process the JSON file for rows
         surfer.surf(jsonInputStream, rowsConfig);
         log.info("Finished surfing for rows. Total rows processed: {}", rowCount.get());
+    }
+    
+    // Helper methods for single-pass processing
+    private void writeHeaderSection(CSVWriter csvWriter, List<String> headerLines) {
+        try {
+            for (String headerLine : headerLines) {
+                csvWriter.writeNext(new String[]{headerLine});
+                log.info("Written header line: {}", headerLine);
+            }
+            
+            // Add 2 blank lines after header info
+            for (int i = 0; i < 2; i++) {
+                csvWriter.writeNext(new String[]{""});
+            }
+            csvWriter.flush();
+            log.info("Header section written with {} lines", headerLines.size());
+        } catch (Exception e) {
+            log.error("Error writing header section: " + e.getMessage(), e);
+        }
+    }
+    
+    private void writeConfigEntitySection(CSVWriter csvWriter, List<String> configLines, List<String> entityLines) {
+        try {
+            // Write configInfo and entityInfo side by side
+            int maxRows = Math.max(configLines.size(), entityLines.size());
+            for (int i = 0; i < maxRows; i++) {
+                String configValue = i < configLines.size() ? configLines.get(i) : "";
+                String entityValue = i < entityLines.size() ? entityLines.get(i) : "";
+                
+                // Write side by side with 3 empty columns in between
+                csvWriter.writeNext(new String[]{configValue, "", "", "", entityValue});
+                log.info("Written side-by-side row {}: '{}' | '{}'", i + 1, configValue, entityValue);
+            }
+            
+            // Add 2 blank lines after config and entity info
+            for (int i = 0; i < 2; i++) {
+                csvWriter.writeNext(new String[]{""});
+            }
+            
+            csvWriter.flush();
+            log.info("Config and entity section written");
+        } catch (Exception e) {
+            log.error("Error writing config/entity section: " + e.getMessage(), e);
+        }
+    }
+    
+    private void writeGridHeader(CSVWriter csvWriter, List<String> columns) {
+        try {
+            if (!columns.isEmpty()) {
+                String[] headerArray = columns.toArray(new String[0]);
+                csvWriter.writeNext(headerArray);
+                csvWriter.flush();
+                log.info("Grid header written with {} columns: {}", columns.size(), columns);
+            }
+        } catch (Exception e) {
+            log.error("Error writing grid header: " + e.getMessage(), e);
+        }
     }
 }
