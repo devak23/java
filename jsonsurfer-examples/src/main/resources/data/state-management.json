@@ -1,0 +1,24 @@
+{
+  "sales": [
+    {
+      "region": "North",
+      "month": "Jan",
+      "amount": 1000
+    },
+    {
+      "region": "South",
+      "month": "Jan",
+      "amount": 1500
+    },
+    {
+      "region": "North",
+      "month": "Feb",
+      "amount": 1200
+    },
+    {
+      "region": "South",
+      "month": "Feb",
+      "amount": 1800
+    }
+  ]
+}

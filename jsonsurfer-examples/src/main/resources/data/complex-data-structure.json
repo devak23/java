@@ -1,0 +1,20 @@
+{
+  "company": {
+    "name": "TechCorp",
+    "departments": [
+      {
+        "name": "Engineering",
+        "employees": [
+          {"name": "Alice", "skills": ["Java", "Python"]},
+          {"name": "Bob", "skills": ["JavaScript", "React"]}
+        ]
+      },
+      {
+        "name": "Marketing",
+        "employees": [
+          {"name": "Charlie", "skills": ["SEO", "Analytics"]}
+        ]
+      }
+    ]
+  }
+}
