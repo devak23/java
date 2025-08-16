@@ -304,10 +304,48 @@ public class SurferController {
                 AtomicReference<Boolean> headerWritten = new AtomicReference<>(false);
                 AtomicInteger rowCount = new AtomicInteger(0);
                 
-                // Read file as stream to avoid loading entire JSON into memory
+                // First pass: Process headerInfo
+                try (java.io.InputStream inputStream = resource.getInputStream()) {
+                    log.info("Processing headerInfo...");
+                    
+                    SurfingConfiguration headerConfig = SurfingConfiguration.builder()
+                            .bind("$.headerInfo.rows", (value, context) -> {
+                                try {
+                                    log.info("Found headerInfo rows: {}", value.getClass().getSimpleName());
+                                    
+                                    com.fasterxml.jackson.databind.node.ObjectNode headerNode = 
+                                        (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                                    
+                                    // Process each key-value pair in headerInfo.rows
+                                    headerNode.fields().forEachRemaining(entry -> {
+                                        String key = entry.getKey();
+                                        String val = entry.getValue().asText();
+                                        String headerLine = key + ": " + val;
+                                        
+                                        // Write as single column CSV row
+                                        csvWriter.writeNext(new String[]{headerLine});
+                                        log.info("Written header line: {}", headerLine);
+                                    });
+                                    
+                                    // Add 10 blank lines after header info
+                                    for (int i = 0; i < 10; i++) {
+                                        csvWriter.writeNext(new String[]{""});
+                                    }
+                                    csvWriter.flush();
+                                    log.info("Header info and blank lines written");
+                                    
+                                } catch (Exception e) {
+                                    log.error("Error processing headerInfo: " + e.getMessage(), e);
+                                }
+                            })
+                            .build();
+                    
+                    surfer.surf(inputStream, headerConfig);
+                }
+                
+                // Second pass: collect columns
                 try (java.io.InputStream inputStream = resource.getInputStream()) {
                     
-                    // First pass: collect columns
                     SurfingConfiguration columnsConfig = SurfingConfiguration.builder()
                             .bind("$.gridInfo.columns[*]", (value, context) -> {
                                 // Remove extra quotes if present - value.toString() adds quotes around strings
@@ -320,16 +358,16 @@ public class SurferController {
                             })
                             .build();
                     
-                    // Process to get columns first
+                    // Process to get columns
                     surfer.surf(inputStream, columnsConfig);
                     
-                    // Write header now that we have columns
+                    // Write grid header now that we have columns
                     if (!columns.isEmpty()) {
                         String[] headerArray = columns.toArray(new String[0]);
                         csvWriter.writeNext(headerArray);
                         csvWriter.flush();
                         headerWritten.set(true);
-                        log.info("CSV header written with {} columns: {}", columns.size(), columns);
+                        log.info("CSV grid header written with {} columns: {}", columns.size(), columns);
                     }
                 }
                 
