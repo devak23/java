@@ -327,8 +327,8 @@ public class SurferController {
                                         log.info("Written header line: {}", headerLine);
                                     });
                                     
-                                    // Add 10 blank lines after header info
-                                    for (int i = 0; i < 10; i++) {
+                                    // Add 2 blank lines after header info
+                                    for (int i = 0; i < 2; i++) {
                                         csvWriter.writeNext(new String[]{""});
                                     }
                                     csvWriter.flush();
@@ -343,9 +343,81 @@ public class SurferController {
                     surfer.surf(inputStream, headerConfig);
                 }
                 
-                // Second pass: collect columns
+                // Second pass: Process configInfo and entityInfo side by side
                 try (java.io.InputStream inputStream = resource.getInputStream()) {
+                    log.info("Processing configInfo and entityInfo...");
                     
+                    List<String> configRows = new ArrayList<>();
+                    List<String> entityRows = new ArrayList<>();
+                    
+                    SurfingConfiguration configEntityConfig = SurfingConfiguration.builder()
+                            .bind("$.configInfo.rows", (value, context) -> {
+                                try {
+                                    log.info("Found configInfo rows: {}", value.getClass().getSimpleName());
+                                    
+                                    com.fasterxml.jackson.databind.node.ObjectNode configNode = 
+                                        (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                                    
+                                    // Process each key-value pair in configInfo.rows
+                                    configNode.fields().forEachRemaining(entry -> {
+                                        String key = entry.getKey();
+                                        String val = entry.getValue().asText();
+                                        String configLine = key + ": " + val;
+                                        configRows.add(configLine);
+                                        log.info("Added config line: {}", configLine);
+                                    });
+                                    
+                                } catch (Exception e) {
+                                    log.error("Error processing configInfo: " + e.getMessage(), e);
+                                }
+                            })
+                            .bind("$.entityInfo.rows", (value, context) -> {
+                                try {
+                                    log.info("Found entityInfo rows: {}", value.getClass().getSimpleName());
+                                    
+                                    com.fasterxml.jackson.databind.node.ObjectNode entityNode = 
+                                        (com.fasterxml.jackson.databind.node.ObjectNode) value;
+                                    
+                                    // Process each key-value pair in entityInfo.rows
+                                    entityNode.fields().forEachRemaining(entry -> {
+                                        String key = entry.getKey();
+                                        String val = entry.getValue().asText();
+                                        String entityLine = key + ": " + val;
+                                        entityRows.add(entityLine);
+                                        log.info("Added entity line: {}", entityLine);
+                                    });
+                                    
+                                } catch (Exception e) {
+                                    log.error("Error processing entityInfo: " + e.getMessage(), e);
+                                }
+                            })
+                            .build();
+                    
+                    surfer.surf(inputStream, configEntityConfig);
+                    
+                    // Write configInfo and entityInfo side by side
+                    int maxRows = Math.max(configRows.size(), entityRows.size());
+                    for (int i = 0; i < maxRows; i++) {
+                        String configValue = i < configRows.size() ? configRows.get(i) : "";
+                        String entityValue = i < entityRows.size() ? entityRows.get(i) : "";
+                        
+                        // Write side by side with 3 empty columns in between
+                        csvWriter.writeNext(new String[]{configValue, "", "", "", entityValue});
+                        log.info("Written side-by-side row {}: '{}' | '{}'", i + 1, configValue, entityValue);
+                    }
+                    
+                    csvWriter.flush();
+                    log.info("Config and entity info written side by side");
+                }
+                
+                // Third pass: collect columns
+                try (java.io.InputStream inputStream = resource.getInputStream()) {
+
+                    // Add 2 blank lines after config and entity info
+                    for (int i = 0; i < 2; i++) {
+                        csvWriter.writeNext(new String[]{""});
+                    }
+
                     SurfingConfiguration columnsConfig = SurfingConfiguration.builder()
                             .bind("$.gridInfo.columns[*]", (value, context) -> {
                                 // Remove extra quotes if present - value.toString() adds quotes around strings
