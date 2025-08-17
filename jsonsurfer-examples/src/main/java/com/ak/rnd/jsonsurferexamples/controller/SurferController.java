@@ -35,7 +35,11 @@ public class SurferController {
 
     @Autowired
     @Qualifier("csvGenerator")
-    private Generator generator;
+    private Generator csvGenerator;
+    
+    @Autowired
+    @Qualifier("pdfGenerator")
+    private Generator pdfGenerator;
     
     @GetMapping("/")
     public String hello() throws IOException {
@@ -294,10 +298,37 @@ public class SurferController {
         StreamingResponseBody stream = outputStream -> {
             try (java.io.InputStream inputStream = resource.getInputStream()) {
                 // Use single-pass processing for memory efficiency in Kubernetes environment
-                generator.generate(inputStream, outputStream);
+                csvGenerator.generate(inputStream, outputStream);
             } catch (Exception e) {
                 log.error("Error during CSV streaming: " + e.getMessage(), e);
                 throw new RuntimeException("CSV generation failed", e);
+            }
+        };
+        
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(stream);
+    }
+    
+    @GetMapping("/pdf-grid-data")
+    public ResponseEntity<StreamingResponseBody> pdfGridData() throws IOException {
+        ClassPathResource resource = new ClassPathResource("data/grid-definition-with-data.json");
+        
+        // Set up HTTP headers for PDF download
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("application/pdf"));
+        headers.setContentDispositionFormData("attachment", "grid-data.pdf");
+        headers.setCacheControl("no-cache, no-store, must-revalidate");
+        headers.setPragma("no-cache");
+        headers.setExpires(0);
+        
+        StreamingResponseBody stream = outputStream -> {
+            try (java.io.InputStream inputStream = resource.getInputStream()) {
+                // Use single-pass processing for memory efficiency in Kubernetes environment
+                pdfGenerator.generate(inputStream, outputStream);
+            } catch (Exception e) {
+                log.error("Error during PDF streaming: " + e.getMessage(), e);
+                throw new RuntimeException("PDF generation failed", e);
             }
         };
         
