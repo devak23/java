@@ -1,6 +1,5 @@
 package com.ak.rnd.jsonsurferexamples.components;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -9,12 +8,17 @@ import java.util.Map;
 import java.util.Random;
 import java.util.stream.Stream;
 
-@Component
-@RequiredArgsConstructor
 @Slf4j
+@Component
 public class TransactionDataClient {
+
     private final Random random = new Random();
-    private final String[] banks = {"HDFC Bank", "Axis Bank", "ICICI Bank"};
+    private final String[] banks = {"HDFC Bank", "ICICI Bank", "Axis Bank"};
+    private final Map<String, String> branchCodes = Map.of(
+            "HDFC Bank", "554",
+            "ICICI Bank", "832",
+            "Axis Bank", "244"
+    );
 
     /**
      * Simulates streaming data from a third-party service.
@@ -42,11 +46,14 @@ public class TransactionDataClient {
     private Map<String, String> generateMockTransaction() {
         Map<String, String> transaction = new HashMap<>();
 
+        // Select random bank
+        String bank = banks[random.nextInt(banks.length)];
+
         transaction.put("transactionRef", generateTransactionRef());
         transaction.put("amount", String.format("%.2f", random.nextDouble() * 100000));
-        transaction.put("bank", banks[random.nextInt(banks.length)]);
+        transaction.put("bank", bank);
         transaction.put("currency", "INR");
-        transaction.put("branchCode", String.format("BR%04d", random.nextInt(9999)));
+        transaction.put("branchCode", branchCodes.get(bank)); // Use bank-specific branch code
 
         return transaction;
     }

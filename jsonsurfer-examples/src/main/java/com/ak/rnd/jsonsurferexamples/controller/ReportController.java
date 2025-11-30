@@ -2,7 +2,7 @@ package com.ak.rnd.jsonsurferexamples.controller;
 
 import com.ak.rnd.jsonsurferexamples.model.GridExportRequest;
 import com.ak.rnd.jsonsurferexamples.model.GridExportResponse;
-import com.ak.rnd.jsonsurferexamples.service.PDFGeneratorService;
+import com.ak.rnd.jsonsurferexamples.service.StreamingPDFGeneratorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeoutException;
 @RequiredArgsConstructor
 @RequestMapping("api/reports")
 public class ReportController {
-    private final PDFGeneratorService pdfGeneratorService;
+    private final StreamingPDFGeneratorService streamingPdfGeneratorService;
 
     @Qualifier("pdfGeneratorThread")
     private final Executor pdfExecutor;
@@ -40,7 +40,7 @@ public class ReportController {
         // We will now try to generate the report and stream it to the client
         CompletableFuture<InputStream> pdfFuture = CompletableFuture.supplyAsync(() -> {
             try {
-                return pdfGeneratorService.generatePDFStream(request.getRequestId(), documentId);
+                return streamingPdfGeneratorService.generatePDFStream(request.getRequestId(), documentId);
             } catch (Exception e) {
                 log.error("Error generating PDF for requestId: {}, documentId: {}", request.getRequestId(), documentId, e);
                 return null;
@@ -108,7 +108,7 @@ public class ReportController {
         log.info("Retrieving report for documentId: {}", documentId);
 
         try {
-            InputStream pdfStream = pdfGeneratorService.retrieveGeneratedPDF(documentId);
+            InputStream pdfStream = streamingPdfGeneratorService.retrieveGeneratedPDF(documentId);
 
             if (pdfStream == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
