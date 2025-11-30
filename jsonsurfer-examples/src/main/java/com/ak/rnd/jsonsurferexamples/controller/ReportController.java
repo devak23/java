@@ -5,6 +5,7 @@ import com.ak.rnd.jsonsurferexamples.model.GridExportResponse;
 import com.ak.rnd.jsonsurferexamples.service.PDFGeneratorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -26,6 +28,9 @@ import java.util.concurrent.TimeoutException;
 public class ReportController {
     private final PDFGeneratorService pdfGeneratorService;
 
+    @Qualifier("pdfGeneratorThread")
+    private final Executor pdfExecutor;
+
     @PostMapping("/generate")
     public ResponseEntity<?> generateReport(@RequestBody GridExportRequest request) throws IOException {
         log.info("Generating report for request: {}", request);
@@ -33,18 +38,14 @@ public class ReportController {
         String documentId = UUID.randomUUID().toString();
 
         // We will now try to generate the report and stream it to the client
-//        CompletableFuture<InputStream> pdfFuture = CompletableFuture.supplyAsync(() -> {
-//            try {
-//                return pdfGeneratorService.generatePDFStream(request.getRequestId(), documentId);
-//            } catch (Exception e) {
-//                log.error("Error generating PDF for requestId: {}, documentId: {}", request.getRequestId(), documentId, e);
-//                return null;
-//            }
-//        }, pdfExecutor);
-
-        CompletableFuture<InputStream> pdfFuture = CompletableFuture.supplyAsync(() ->
-                pdfGeneratorService.generatePDFStream(request.getRequestId(), documentId)
-        );
+        CompletableFuture<InputStream> pdfFuture = CompletableFuture.supplyAsync(() -> {
+            try {
+                return pdfGeneratorService.generatePDFStream(request.getRequestId(), documentId);
+            } catch (Exception e) {
+                log.error("Error generating PDF for requestId: {}, documentId: {}", request.getRequestId(), documentId, e);
+                return null;
+            }
+        }, pdfExecutor);
 
 
         // This call will be blocked until the future is completed or the timeout is reached
