@@ -2,9 +2,6 @@ package com.ak.rnd.jsonsurferexamples.service;
 
 import com.ak.rnd.jsonsurferexamples.components.TransactionDataClient;
 import com.itextpdf.kernel.colors.ColorConstants;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -39,13 +36,14 @@ import java.util.stream.Stream;
 @Service
 @RequiredArgsConstructor
 public class StreamingPDFGeneratorService {
-    private final String pdfStorageDirectory = "/tmp";
     private final TransactionDataClient transactionDataClient;
+    private final String pdfStorageDirectory = "/tmp/reports"; // For K8s, use a mounted volume
     private static final int ROWS_PER_PAGE = 17; // Optimal rows that fit in one page
     private static final DecimalFormat NUMBER_FORMAT = new DecimalFormat("#,##0.00");
 
     public InputStream generatePDFStream(String requestId, String documentId) {
         Path pdfPath = null;
+        int totalPages = 0;
 
         try {
             // Create storage directory if it doesn't exist
@@ -65,10 +63,6 @@ public class StreamingPDFGeneratorService {
 
                 // Set page size to landscape A4
                 pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
-
-                // Add page number event handler
-                PageNumberHandler pageNumberHandler = new PageNumberHandler();
-                pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, pageNumberHandler);
 
                 // Create document with margins
                 Document document = new Document(pdfDoc);
@@ -94,15 +88,14 @@ public class StreamingPDFGeneratorService {
                 Table table = new Table(UnitValue.createPercentArray(columnWidths));
                 table.setWidth(UnitValue.createPercentValue(100));
 
-                // Make header repeat on each page
-                table.setSkipFirstHeader(false);
-
                 // Add headers
                 addTableHeader(table);
 
                 // Stream data from external service and add to PDF
                 long recordCount = 0;
                 int rowsSinceLastFlush = 0;
+                boolean isFirstPage = true;
+                int rowsForCurrentPage = ROWS_PER_PAGE; // First page: 17 rows
 
                 try (Stream<Map<String, String>> dataStream = transactionDataClient.streamTransactionData(requestId)) {
 
@@ -111,15 +104,20 @@ public class StreamingPDFGeneratorService {
                         recordCount++;
                         rowsSinceLastFlush++;
 
-                        // Flush based on rows per page to maintain layout consistency
-                        // Flush every 17 rows (one page worth) to keep tables continuous
-                        if (rowsSinceLastFlush >= ROWS_PER_PAGE) {
+                        // Flush based on rows per page
+                        // First page: 17 rows (header takes space), Subsequent pages: 20 rows
+                        if (rowsSinceLastFlush >= rowsForCurrentPage) {
                             document.add(table);
+
+                            // After first page, we can fit more rows
+                            if (isFirstPage) {
+                                isFirstPage = false;
+                                rowsForCurrentPage = 20; // Subsequent pages can hold 20 rows
+                            }
 
                             // Create new table for next page
                             table = new Table(UnitValue.createPercentArray(columnWidths));
                             table.setWidth(UnitValue.createPercentValue(100));
-                            table.setSkipFirstHeader(false);
 
                             // Re-add headers
                             addTableHeader(table);
@@ -139,20 +137,24 @@ public class StreamingPDFGeneratorService {
                     }
                 }
 
-                // Update total pages in the handler before closing
-                pageNumberHandler.setTotalPages(pdfDoc.getNumberOfPages());
-
                 // Add footer with total count on last page
                 document.add(new Paragraph("\nTotal Records: " + NUMBER_FORMAT.format(recordCount))
                         .setFontSize(12)
                         .setBold()
                         .setMarginTop(15));
 
+                // Get total pages BEFORE closing
+                totalPages = pdfDoc.getNumberOfPages();
+
                 // Close document (this also closes pdfDoc and writer)
                 document.close();
 
-                log.info("PDF generation completed for documentId: {}. Total records: {}", documentId, recordCount);
+                log.info("PDF generation completed for documentId: {}. Total records: {}, Total pages: {}",
+                        documentId, recordCount, totalPages);
             }
+
+            // Now add page numbers as a post-processing step
+            addPageNumbers(pdfPath, totalPages);
 
             // Return input stream of generated PDF
             return new FileInputStream(pdfPath.toFile());
@@ -170,6 +172,67 @@ public class StreamingPDFGeneratorService {
             }
 
             throw new RuntimeException("Failed to generate PDF", e);
+        }
+    }
+
+    /**
+     * Add page numbers to already generated PDF
+     * This is done after document is closed so we know the total pages
+     */
+    private void addPageNumbers(Path pdfPath, int totalPages) throws IOException {
+        try {
+            // Create a temp file for the updated PDF
+            Path tempPath = Paths.get(pdfPath.toString() + ".tmp");
+
+            // Open existing PDF for reading
+            PdfDocument pdfDoc = new PdfDocument(
+                    new com.itextpdf.kernel.pdf.PdfReader(pdfPath.toFile()),
+                    new PdfWriter(tempPath.toFile())
+            );
+
+            // Add page numbers to each page
+            for (int i = 1; i <= totalPages; i++) {
+                PdfPage page = pdfDoc.getPage(i);
+                Rectangle pageSize = page.getPageSize();
+
+                PdfCanvas pdfCanvas = new PdfCanvas(page);
+                Canvas canvas = new Canvas(pdfCanvas, pageSize);
+
+                Paragraph footer = new Paragraph(String.format("Page %d of %d", i, totalPages))
+                        .setFontSize(10)
+                        .setTextAlignment(TextAlignment.CENTER);
+
+                // Position at bottom center of page
+                canvas.showTextAligned(footer, pageSize.getWidth() / 2, 30, TextAlignment.CENTER);
+                canvas.close();
+            }
+
+            pdfDoc.close();
+
+            // Replace original with updated PDF
+            Files.delete(pdfPath);
+            Files.move(tempPath, pdfPath);
+
+        } catch (Exception e) {
+            log.error("Error adding page numbers", e);
+            throw new IOException("Failed to add page numbers", e);
+        }
+    }
+
+    public InputStream retrieveGeneratedPDF(String documentId) {
+        try {
+            Path pdfPath = Paths.get(pdfStorageDirectory, documentId + ".pdf");
+
+            if (Files.exists(pdfPath)) {
+                return new FileInputStream(pdfPath.toFile());
+            }
+
+            log.warn("PDF not found for documentId: {}", documentId);
+            return null;
+
+        } catch (Exception e) {
+            log.error("Error retrieving PDF for documentId: {}", documentId, e);
+            return null;
         }
     }
 
@@ -217,61 +280,5 @@ public class StreamingPDFGeneratorService {
                 .setPadding(4)
                 .setTextAlignment(alignment);
         table.addCell(cell);
-    }
-
-
-    public InputStream retrieveGeneratedPDF(String documentId) {
-        try {
-            Path pdfPath = Paths.get(pdfStorageDirectory, documentId + ".pdf");
-
-            if (Files.exists(pdfPath)) {
-                return new FileInputStream(pdfPath.toFile());
-            }
-
-            log.warn("PDF not found for documentId: {}", documentId);
-            return null;
-
-        } catch (Exception e) {
-            log.error("Error retrieving PDF for documentId: {}", documentId, e);
-            return null;
-        }
-    }
-
-
-    /**
-     * Event handler for adding page numbers in footer
-     */
-    private static class PageNumberHandler implements IEventHandler {
-        private int totalPages = 0;
-
-        public void setTotalPages(int totalPages) {
-            this.totalPages = totalPages;
-        }
-
-        @Override
-        public void handleEvent(Event event) {
-            PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
-            PdfDocument pdfDoc = docEvent.getDocument();
-            PdfPage page = docEvent.getPage();
-            int pageNumber = pdfDoc.getPageNumber(page);
-
-            Rectangle pageSize = page.getPageSize();
-            PdfCanvas pdfCanvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
-
-            Canvas canvas = new Canvas(pdfCanvas, pageSize);
-
-            // Calculate total pages if not set yet (will be set on document close)
-            int total = totalPages > 0 ? totalPages : pdfDoc.getNumberOfPages();
-
-            // Add page number in footer
-            Paragraph footer = new Paragraph(String.format("Page %d of %d", pageNumber, total))
-                    .setFontSize(10)
-                    .setTextAlignment(TextAlignment.CENTER);
-
-            // Position at bottom center of page
-            canvas.showTextAligned(footer, pageSize.getWidth() / 2, 30, TextAlignment.CENTER);
-
-            canvas.close();
-        }
     }
 }
