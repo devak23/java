@@ -1,0 +1,4 @@
+# Bad - inconsistent indentation
+server:
+  port: 8080
+    host: localhost  # Extra space - CAUGHT

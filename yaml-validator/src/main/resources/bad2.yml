@@ -1,0 +1,3 @@
+# Bad - tabs instead of spaces
+server:
+  port: 8080  # Tab character - CAUGHT

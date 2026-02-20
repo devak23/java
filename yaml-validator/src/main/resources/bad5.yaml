@@ -1,0 +1,4 @@
+# Bad
+items:
+  - item1
+    - item2  # CAUGHT - wrong indentation

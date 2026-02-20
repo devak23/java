@@ -1,0 +1,3 @@
+# Bad - missing colon
+  server
+port: 8080  # CAUGHT
